@@ -139,7 +139,7 @@
            「3」だけ punch-anim を付けてスクロール時にポンと弾ませる演出は維持。 -->
       <h2 class="quiz-lead-text">たった<span class="quiz-lead-num punch-anim">3</span>つの質問で<br>査定スタート！</h2>
       <div class="quiz-sub-row fade-anim">
-        <p class="quiz-sub">無料でお試し査定！ご所有のバイクについて教えてください</p>
+        <p class="quiz-sub">無料でお試し査定！<br>ご所有のバイクについて教えてください</p>
       </div>
 
       <div class="quiz-panel">
@@ -172,10 +172,16 @@
             <option value="わからない">わからない</option>
           </select>
         </div>
-        <div class="quiz-field-row">
+        <!-- 車種名：国内4メーカーはプルダウン選択、その他のメーカーは自由入力 -->
+        <div class="quiz-field-row hidden" id="hero-model-row">
           <span class="quiz-field-label">車種名</span>
-          <input type="text" id="hero-model" list="hero-model-list" placeholder="わかれば結構です" autocomplete="off">
-          <datalist id="hero-model-list"></datalist>
+          <select id="hero-model">
+            <option value="">選択してください</option>
+          </select>
+        </div>
+        <div class="quiz-field-row" id="hero-model-other-row">
+          <span class="quiz-field-label">車種名</span>
+          <input type="text" id="hero-model-other" placeholder="わかれば結構です" autocomplete="off">
         </div>
 
         <button class="btn btn-primary" id="hero-quiz-next" onclick="heroStartAssessment()" disabled>この内容で無料査定に進む →</button>
@@ -401,7 +407,7 @@
             <svg class="icon icon-lg"><use href="#ic-award"/></svg>
           </div>
           <div class="reason-card-body">
-            <h3><span class="reason-num">04</span><span class="hl-orange">改造車・レアバイクも大歓迎！</span><br>他社で断られたバイクもご相談を</h3>
+            <h3><span class="reason-num">04</span><span class="hl-orange">改造車・レアバイクも大歓迎！</span><br>他社で断られたバイクも買取り</h3>
             <p>「改造しているから値段がつかないかも…」「珍しい車種だから…」そう思っていませんか？カスタム車・レア車両の買取り実績も豊富です。改造内容によってはプラス査定になることも！</p>
           </div>
         </div>
@@ -715,9 +721,9 @@
 
       <p class="docs-note">バイクの排気量によって追加で必要な書類が異なります。</p>
       <ul class="docs-extra-list">
-        <li><strong>125cc以下：</strong>標識交付証明書（市区町村で発行されたもの）</li>
+        <li><strong>125cc以下：</strong>標識交付証明書<small>（市区町村で発行されたもの）</small></li>
         <li><strong>126cc超〜250cc以下：</strong>軽自動車届出済証</li>
-        <li><strong>251cc以上：</strong>自動車検査証（車検証）、印鑑登録証明書</li>
+        <li><strong>251cc以上：</strong>自動車検査証<small>（車検証）</small>、印鑑登録証明書</li>
       </ul>
       <p class="docs-note">必要書類については、ティーバイティーガレージのスタッフがご説明します！</p>
     </div>
@@ -1103,37 +1109,57 @@ function el(id){ return document.getElementById(id); }
 /* ---------- ヒーロー埋め込みミニ査定（3項目を最初から表示） ---------- */
 const heroMakerSelect = el('hero-maker');
 const heroDisplacementSelect = el('hero-displacement');
-const heroModelInput = el('hero-model');
-const heroModelList = el('hero-model-list');
+const heroModelSelect = el('hero-model');
+const heroModelRow = el('hero-model-row');
+const heroModelOther = el('hero-model-other');
+const heroModelOtherRow = el('hero-model-other-row');
 const heroNextBtn = el('hero-quiz-next');
+const HERO_MODEL_OTHER = '__other__';
 
-/* 車種名の入力補完：メーカー（＋排気量）で候補を絞る。
-   マスターにないメーカー（輸入車・わからない）は候補なしの自由入力のまま。 */
+/* 車種名：国内4メーカーはメーカー（＋排気量）で絞ったプルダウン。
+   マスターにないメーカー（輸入車・わからない）は自由入力欄に切り替える。 */
 function heroModelCandidates(){
   const master = window.BIKE_MASTER || {};
   const byCc = master[heroMakerSelect.value];
-  if(!byCc) return [];
+  if(!byCc) return null;
   const cc = heroDisplacementSelect.value;
   if(byCc[cc]) return byCc[cc];
   return Object.values(byCc).flat();
 }
 function heroRefreshModelList(){
-  heroModelList.innerHTML = '';
+  const names = heroModelCandidates();
+  if(!names){
+    heroModelRow.classList.add('hidden');
+    heroModelOtherRow.classList.remove('hidden');
+    return;
+  }
+  const prev = heroModelSelect.value;
+  heroModelSelect.innerHTML = '';
   const frag = document.createDocumentFragment();
-  heroModelCandidates().forEach(name => {
+  const head = document.createElement('option');
+  head.value = ''; head.textContent = '選択してください';
+  frag.appendChild(head);
+  names.forEach(name => {
     const opt = document.createElement('option');
-    opt.value = name;
+    opt.value = name; opt.textContent = name;
     frag.appendChild(opt);
   });
-  heroModelList.appendChild(frag);
+  const other = document.createElement('option');
+  other.value = HERO_MODEL_OTHER; other.textContent = 'その他（リストにない車種）';
+  frag.appendChild(other);
+  heroModelSelect.appendChild(frag);
+  heroModelSelect.value = (prev === HERO_MODEL_OTHER || names.includes(prev)) ? prev : '';
+  heroModelRow.classList.remove('hidden');
+  heroModelOtherRow.classList.toggle('hidden', heroModelSelect.value !== HERO_MODEL_OTHER);
 }
-/* 候補から車種を選んだら、その車種の排気量区分を自動で入れる */
-function heroSyncDisplacementFromModel(){
+/* プルダウンで車種を選んだら、その車種の排気量区分を自動で入れる */
+function heroOnModelChange(){
+  const val = heroModelSelect.value;
+  heroModelOtherRow.classList.toggle('hidden', val !== HERO_MODEL_OTHER);
   const byCc = (window.BIKE_MASTER || {})[heroMakerSelect.value];
-  if(!byCc) return;
-  const name = heroModelInput.value.trim();
+  if(!byCc || !val || val === HERO_MODEL_OTHER) return;
   for(const cc of Object.keys(byCc)){
-    if(byCc[cc].includes(name)){
+    if(byCc[cc].includes(val)){
       if(heroDisplacementSelect.value !== cc){
         heroDisplacementSelect.value = cc;
         heroRefreshModelList();
@@ -1142,18 +1168,26 @@ function heroSyncDisplacementFromModel(){
     }
   }
 }
+function heroModelValue(){
+  if(!heroModelRow.classList.contains('hidden')){
+    const v = heroModelSelect.value;
+    if(v && v !== HERO_MODEL_OTHER) return v;
+  }
+  return heroModelOther.value.trim();
+}
 heroMakerSelect.addEventListener('change', () => {
   heroNextBtn.disabled = !heroMakerSelect.value;
+  heroModelSelect.value = '';   // メーカーを変えたら車種の選択はリセット
   heroRefreshModelList();
 });
 heroDisplacementSelect.addEventListener('change', heroRefreshModelList);
-heroModelInput.addEventListener('change', heroSyncDisplacementFromModel);
-heroModelInput.addEventListener('input', heroSyncDisplacementFromModel);
+heroModelSelect.addEventListener('change', heroOnModelChange);
 function heroStartAssessment(){
   if(!heroMakerSelect.value) return;
   el('f-maker').value = heroMakerSelect.value;
   if(heroDisplacementSelect.value){ el('f-displacement').value = heroDisplacementSelect.value; }
-  if(heroModelInput.value){ el('f-model').value = heroModelInput.value; }
+  const model = heroModelValue();
+  if(model){ el('f-model').value = model; }
   openForm();
 }
 

@@ -43,6 +43,9 @@
     <symbol id="ic-store" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5"/><path d="M3 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/><path d="M4 9v10h16V9"/></symbol>
     <symbol id="ic-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></symbol>
     <symbol id="ic-play" viewBox="0 0 24 24"><polygon points="9 6 19 12 9 18" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="ic-moto" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="2.8"/><circle cx="18.5" cy="17.5" r="2.8"/><path d="M5.5 17.5 9 10h4l2 3h4.5"/><path d="M9 10 7.5 6.5h-2"/><path d="M13 10l2.2 4.5"/></symbol>
+    <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></symbol>
+    <symbol id="ic-stamp" viewBox="0 0 24 24"><circle cx="12" cy="10" r="7"/><path d="M9 8.5c1 1.4 5 1.4 6 0M8.5 13c1.5 1 5.5 1 7 0"/><path d="M6 21h12l-2-4H8z"/></symbol>
   </defs>
 </svg>
 
@@ -52,13 +55,34 @@
      フォームに進むとヘッダーが差し替わって見えていた。
      view-lp / view-form の外に置き、どちらの表示状態でも隠さない。 -->
 <!-- ============================================================ -->
-<!-- PCの広い画面（1100px〜）だけ、参考サイト（takaone.jp/media/）風に
-     左：大きいロゴの装飾パネル／中央：LP本体／右：目次パネル、の3カラムにする。
-     スマホでは.pc-left/.pc-rightは非表示になり、レイアウトへの影響はない。 -->
+<!-- PCの広い画面（1100px〜）だけ、参考サイト（hanamaru870.net ソコカラLP）風に
+     青地の全画面に「左：白カード（ロゴ＋目次＋CTA）／右端：LP本体」の2カラムにする。
+     スマホでは.pc-leftは非表示になり、レイアウトへの影響はない。 -->
 <div class="pc-left">
   <div class="pc-left-inner">
-    <img class="pc-left-logo" src="img/logo.svg" alt="ティーバイティーガレージ">
-    <p class="pc-left-tagline">全国どこでも無料出張査定に伺います<br>バイクを売るのもティーバイティー</p>
+    <div class="pc-left-card">
+      <p class="pc-left-kicker">バイク買取り専門</p>
+      <img class="pc-left-logo" src="img/logo.svg" alt="ティーバイティーガレージ">
+      <p class="pc-left-lead">動かなくても、古くても、壊れていても。<br><strong>全国どこでも無料出張査定</strong>・最短即日現金払い</p>
+      <nav class="pc-toc">
+        <a href="#sec-quiz">無料査定スタート</a>
+        <a href="#sec-voice">買取り実績</a>
+        <a href="#sec-maker">対象メーカー</a>
+        <a href="#sec-review">お客様の口コミ</a>
+        <a href="#sec-reason">選ばれる理由</a>
+        <a href="#sec-tips">高く売るコツ</a>
+        <a href="#sec-style">査定スタイル</a>
+        <a href="#sec-flow">お申し込みの流れ</a>
+        <a href="#sec-shop">店舗・対応エリア</a>
+        <a href="#sec-faq">よくあるご質問</a>
+      </nav>
+      <button class="pc-left-cta" onclick="scrollToQuiz()">無料出張査定に申し込む <svg class="icon icon-fill"><use href="#ic-play"/></svg></button>
+      <a class="pc-left-tel" href="tel:0120999999">
+        <img src="img/tel.svg" alt="フリーダイヤル 0120-999-999" width="326" height="36">
+        <span>【受付時間】8：00〜20：00</span>
+      </a>
+    </div>
+    <p class="pc-left-copy">Copyright(C) T×T GARAGE All Rights Reserved</p>
   </div>
 </div>
 <div class="lp-main">
@@ -88,49 +112,18 @@
          キャッチコピー・バイクの状態・CTAの誘導帯まで画像に含まれているため、
          HTML側で文字を重ねると二重になる。
          ただし h1 は SEO とスクリーンリーダー用に .sr-only で残す。 -->
-    <h1 class="sr-only">壊れたバイク・動かないバイク・眠ってるバイク、買取ります｜ティーバイティーガレージの全国無料出張査定</h1>
+    <p class="sr-only">壊れたバイク・動かないバイク・眠ってるバイク、買取ります｜ティーバイティーガレージの全国無料出張査定</p>
     <div class="hero-photo">
-      <!-- ★キービジュアル：img/hero2.jpg（960×1081） -->
-      <img class="hero-key" src="img/hero2.jpg" width="960" height="1081"
+      <!-- ★キービジュアル：img/TxT_TOP.png（1180×1461） -->
+      <img class="hero-key" src="img/TxT_TOP.png" width="1180" height="1461"
            fetchpriority="high" decoding="async"
-           alt="バイクを売るのもティーバイティーガレージ。壊れたバイク・動かないバイク・眠ってるバイク、買取ります"
+           alt="バイクを売るのもティーバイティーガレージ。事故で壊れた・動かなくなった・もう乗ってないバイクも買取ります。無料出張査定後、最短即日現金払い"
            onerror="this.remove()"
            onload="var n=this.parentNode.querySelector('.hero-photo-note'); if(n) n.remove();">
       <div class="hero-photo-note">
         <svg class="icon"><use href="#ic-photo"/></svg>
-        <span>img/hero2.jpg</span>
+        <span>img/TxT_TOP.png</span>
         <span style="opacity:.7;">を置くとここに表示されます</span>
-      </div>
-    </div>
-
-    <!-- キービジュアル直下の訴求ブロック（アセット8の黒帯部分をHTML化）
-         画像に焼き込まず組むことで、文言修正・テキスト検索・読み上げに対応できる。
-         LINEボタンは画面下部の追従CTAに常時あるため、ここは申し込みの1本に絞る。 -->
-    <div class="hero-points">
-      <div class="wrap">
-        <div class="hp-label">
-          <svg class="hp-label-frame" viewBox="0 0 180 42" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-            <path d="M1.4 1.4 H178.6 V28.6 H62 L52 39.6 L42 28.6 H1.4 Z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="miter"/>
-          </svg>
-          <span>ティーバイティーなら</span>
-        </div>
-
-        <ul class="hp-list">
-          <li>
-            <svg class="hp-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="3 12.5 9 18.5 21 4.5"/></svg>
-            <span><em>&ldquo;他社で断られたバイク&rdquo;</em> 買取ります</span>
-          </li>
-          <li>
-            <svg class="hp-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="3 12.5 9 18.5 21 4.5"/></svg>
-            <span><em>&ldquo;全国どこでも無料出張査定&rdquo;</em> 伺います</span>
-          </li>
-          <li>
-            <svg class="hp-check" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="3 12.5 9 18.5 21 4.5"/></svg>
-            <span><em>&ldquo;面倒な手続き&rdquo;</em> 全部代行します</span>
-          </li>
-        </ul>
-
-        <button class="btn btn-primary hp-cta" onclick="scrollToQuiz()">無料出張査定を申し込む</button>
       </div>
     </div>
 
@@ -142,31 +135,24 @@
   <!-- ============================================================ -->
   <section class="section quiz-section" id="sec-quiz">
     <div class="wrap">
-      <!-- 見出しは画像2枚を同じ座標で重ねた構成。
-           question_2.png ＝ 赤い「3」の部分だけ透明に抜いた本体、
-           question_3.png ＝ その「3」だけを切り出したもの（同じキャンバスサイズ）。
-           重ねると元のロゴになり、「3」だけを別レイヤーとして
-           スクロール時にポンと弾ませて出せる。
-           画像だけだと読み上げに残らないため、見出しはsr-onlyで別途用意する。 -->
-      <h2 class="sr-only">たった3つの質問で査定スタート</h2>
-      <div class="quiz-lead-wrap">
-        <img class="quiz-lead-base" src="img/question_2.png" width="1933" height="814" alt="" aria-hidden="true">
-        <img class="quiz-lead-3 punch-anim" src="img/question_3.png" width="1933" height="814" alt="" aria-hidden="true">
-      </div>
+      <!-- 見出しは画像2枚重ねをやめ、文字組みに変更。
+           「3」だけ punch-anim を付けてスクロール時にポンと弾ませる演出は維持。 -->
+      <h2 class="quiz-lead-text">たった<span class="quiz-lead-num punch-anim">3</span>つの質問で<br>査定スタート！</h2>
       <div class="quiz-sub-row fade-anim">
         <p class="quiz-sub">無料でお試し査定！ご所有のバイクについて教えてください</p>
       </div>
 
       <div class="quiz-panel">
+        <div class="quiz-panel-head">10秒でカンタン入力査定</div>
         <div class="quiz-body">
           <div class="quiz-mascot placeholder-img"><img src="img/shinjo01.png" width="192" height="192" alt="ティーバイティーガレージの査定スタッフ" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-user"/></svg></div>
           <div class="quiz-bubble">分かる範囲でOKです！まずは3つ教えてください</div>
         </div>
 
         <div class="quiz-field-row">
-          <span class="quiz-field-num">1</span>
+          <span class="quiz-field-label">メーカー</span>
           <select id="hero-maker">
-            <option value="">メーカー</option>
+            <option value="">選択してください</option>
             <option value="honda">ホンダ</option>
             <option value="yamaha">ヤマハ</option>
             <option value="suzuki">スズキ</option>
@@ -176,9 +162,9 @@
           </select>
         </div>
         <div class="quiz-field-row">
-          <span class="quiz-field-num">2</span>
+          <span class="quiz-field-label">排気量</span>
           <select id="hero-displacement">
-            <option value="">排気量</option>
+            <option value="">選択してください</option>
             <option value="〜125cc">〜125cc</option>
             <option value="126〜250cc">126〜250cc</option>
             <option value="251〜400cc">251〜400cc</option>
@@ -187,8 +173,9 @@
           </select>
         </div>
         <div class="quiz-field-row">
-          <span class="quiz-field-num">3</span>
-          <input type="text" id="hero-model" placeholder="バイク名（わかれば）例：CB400SF">
+          <span class="quiz-field-label">車種名</span>
+          <input type="text" id="hero-model" list="hero-model-list" placeholder="わかれば結構です" autocomplete="off">
+          <datalist id="hero-model-list"></datalist>
         </div>
 
         <button class="btn btn-primary" id="hero-quiz-next" onclick="heroStartAssessment()" disabled>この内容で無料査定に進む →</button>
@@ -196,151 +183,256 @@
     </div>
   </section>
 
-  <!-- リアクション演出：ティーバイティーらしいノリ -->
-  <section class="reaction-strip">
+  <section class="section check-section">
     <div class="wrap">
-      <img src="img/section3.png" alt="" class="reaction-section-img" loading="lazy">
-      <div class="reaction-inner">
-        <div class="reaction-avatar placeholder-img"><img src="img/sugiya02.png" width="192" height="192" alt="ティーバイティーガレージのスタッフ" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-user"/></svg></div>
-        <div>
-          <div class="reaction-bubble">え！？</div>
-          <h3>こんなバイクまで！？</h3>
-        </div>
-      </div>
-      <p>売れるか不安なバイクでも、まずはご相談ください！壊れてても、動かなくても、ティーバイティーは全部買います。</p>
-      <p class="reaction-lead">確かな実績と安心の対応！満足の声が続々届いています。</p>
-      <div class="reaction-photorow">
-        <div class="placeholder-img"><img src="img/1_FTR223.jpg" width="360" height="240" alt="買取させていただいたホンダ FTR223 とお客様" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-photo"/></svg></div>
-        <div class="placeholder-img"><img src="img/2_LET.jpg" width="360" height="240" alt="買取させていただいたスズキのスクーター LET とお客様" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-photo"/></svg></div>
-        <div class="placeholder-img"><img src="img/3_CB400.jpg" width="360" height="240" alt="買取させていただいたホンダ CB400 とお客様" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-photo"/></svg></div>
-      </div>
-    </div>
-  </section>
+      <h1 class="check-catch"><span class="check-catch-big">バイク買取りのことなら</span><span class="check-catch-sub">ティーバイティーガレージにお任せください！</span></h1>
+      <h2 class="h-title check-question-block">
+        <span class="check-question-row check-question-row-left">
+          <img class="check-question-face" src="img/shinjo05.png" alt="" aria-hidden="true">
+          <span class="check-question-text">もう乗っていない<br>バイクだけど売れる？</span>
+        </span>
+        <span class="check-question-row check-question-row-right">
+          <span class="check-question-text">事故で故障した<br>バイクでも売れる？</span>
+          <img class="check-question-face" src="img/shinjo06.png" alt="" aria-hidden="true">
+        </span>
+      </h2>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="eyebrow">CHECK</div>
-      <h2 class="h-title">こんなバイク、ありませんか？</h2>
-      <div class="check-grid">
-        <div class="check-card">
-          <div class="check-photo placeholder-img"><img src="img/bike1.jpg" width="320" height="320" alt="事故や故障で放置された、傷んだ状態のバイク" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-wrench"/></svg></div>
-          <div>
+      <div class="check-photo-grid">
+        <div class="check-photo-card">
+          <img src="img/bike-1.png" alt="事故や故障で放置された、傷んだ状態のバイク" loading="lazy">
+          <div class="check-photo-overlay">
             <h3>壊れたバイク</h3>
-            <p>事故・故障でそのまま放置している</p>
+            <p>事故・故障でそのまま<u>放置していませんか。</u></p>
           </div>
-          <div class="check-ok">査定<br>OK</div>
         </div>
-        <div class="check-card">
-          <div class="check-photo placeholder-img"><img src="img/bike2.jpg" width="320" height="320" alt="ガレージに置かれたまま動かなくなったバイク" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-alert"/></svg></div>
-          <div>
+        <div class="check-photo-card">
+          <img src="img/bike-2.png" alt="ガレージに置かれたまま動かなくなったバイク" loading="lazy">
+          <div class="check-photo-overlay">
             <h3>動かないバイク</h3>
-            <p>エンジンがかからない・不動車になった</p>
+            <p>エンジンがかからない<u>不動車になったバイクありませんか。</u></p>
           </div>
-          <div class="check-ok">査定<br>OK</div>
         </div>
-        <div class="check-card">
-          <div class="check-photo placeholder-img"><img src="img/bike3.jpg" width="320" height="320" alt="カバーを掛けたまま長期間保管されているバイク" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-moon"/></svg></div>
-          <div>
+        <div class="check-photo-card">
+          <img src="img/bike-3.png" alt="カバーを掛けたまま長期間保管されているバイク" loading="lazy">
+          <div class="check-photo-overlay">
             <h3>眠ってるバイク</h3>
-            <p>倉庫や車庫に長期間しまったまま</p>
+            <p>倉庫や車庫に長期間<u>しまったままにしていませんか。</u></p>
           </div>
-          <div class="check-ok">査定<br>OK</div>
         </div>
       </div>
-      <p class="check-lead">1つでも当てはまったら、まずは無料査定へ。</p>
+      <p class="check-lead">1つでも当てはまったら<br><span class="check-lead-big">まずは無料査定へ</span></p>
       <button class="btn btn-primary" onclick="scrollToQuiz()">無料出張査定に申し込む</button>
-    </div>
-  </section>
 
-  <!-- 査定は選べます：出張 or LINE。
-       アセット30（ポスター風デザイン）に合わせ、白カード2枚ではなく
-       水色→LINEグリーンの一続きのポスターとして構成する。 -->
-  <section class="style-poster" id="sec-style">
-    <div class="wrap style-poster-head">
-      <h2 class="style-poster-title">査定は、好きなスタイルで</h2>
-    </div>
+      <div class="promise-card">
+        <p class="promise-title punch-anim">ティーバイティーガレージは<br><span class="promise-title-em">どんなバイクも</span>買取ります！</p>
 
-    <div class="style-poster-blue">
-      <div class="wrap style-poster-row">
-        <div class="style-poster-text">
-          <p class="style-poster-lead">スタッフが <span class="style-poster-osusume">★おススメ</span></p>
-          <p class="style-poster-big">自宅まで<br>出張査定</p>
-          <ul class="style-poster-list">
-            <li>その場で金額を提示</li>
-            <li>立ち会うだけでOK</li>
-            <li>搬出作業もお任せ</li>
-          </ul>
+        <div class="promise-tags">
+          <span class="promise-tag">改造バイク OK</span>
+          <span class="promise-tag">レアバイク OK</span>
         </div>
-        <span class="style-poster-letter">A</span>
-        <div class="style-poster-photo">
-          <span class="style-poster-bubble">査定させて<br>いただきます</span>
-          <img src="img/satei.png" width="640" height="596" alt="ご自宅まで出張査定に伺うティーバイティーガレージのスタッフ" loading="lazy">
-        </div>
-      </div>
-    </div>
 
-    <div class="style-poster-green">
-      <div class="wrap style-poster-row style-poster-row-rev">
-        <div class="style-poster-text">
-          <p class="style-poster-lead">自宅で</p>
-          <p class="style-poster-big style-poster-big-1line">LINE査定</p>
-          <ul class="style-poster-list">
-            <li>LINEで友だち追加</li>
-            <li>トーク画面で「バイクオンライン」<br>と送信</li>
-            <li>ビデオ通話でバイクを映すだけ</li>
-            <li>通話開始から10分程度で完了</li>
-          </ul>
-        </div>
-        <span class="style-poster-letter">B</span>
-        <div class="style-poster-photo">
-          <img src="img/line.png" width="493" height="715" alt="LINEのビデオ通話でオンライン査定を受けている様子" loading="lazy">
-        </div>
+        <ul class="promise-list">
+          <li><span class="promise-icon"><svg class="icon"><use href="#ic-check"/></svg></span>TELやメールで無料の出張査定を受付中</li>
+          <li><span class="promise-icon"><svg class="icon"><use href="#ic-check"/></svg></span>全国どこでも出張無料で査定に伺います</li>
+          <li><span class="promise-icon"><svg class="icon"><use href="#ic-check"/></svg></span>最短即日現金払い、廃車手続き代行も可能</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- REASON：どこでも無料出張／どんなバイクでもOK -->
-  <section class="section">
+  <!-- 査定は選べます：出張 or LINE。参考LP（プロが選ぶ方式）の見出し構成を踏襲。 -->
+  <section class="section tight style-select" id="sec-style">
     <div class="wrap">
-      <div class="eyebrow">REASON</div>
-      <h2 class="h-title">ティーバイティーが選ばれる理由</h2>
+      <div class="style-select-banner">
+        <h2 class="style-select-title">選べる査定スタイルで<br><span class="hl-orange">ムダなくスピード買取</span>！</h2>
 
-      <div class="reason-block">
-        <span class="reason-tag">REASON 1</span>
-        <h3>ご自宅の車庫まで<span class="hl-orange">&ldquo;スタッフが直接伺います&rdquo;</span></h3>
-        <div class="reason-photo placeholder-img"><img src="img/REASON2.jpg" width="720" height="480" alt="ご自宅までスタッフが直接お伺いする様子" loading="lazy" onerror="this.remove()">
-          <svg class="icon icon-lg"><use href="#ic-truck"/></svg>
-          [画像プレースホルダー]出張引き取り風景の写真
+        <p class="style-select-note">出張・LINEの2つをご用意。<br>もちろん<span class="hl-orange">どちらも持ち込み不要</span>。</p>
+
+        <div class="style-pill-row">
+          <span class="style-pill style-pill-blue">出張<em>査定</em></span>
+          <span class="style-pill style-pill-green">LINE<em>査定</em></span>
         </div>
-        <p><mark>「これは無理かも…」でも、まずは聞いてください。</mark><mark>車検切れ、書類なし、パーツ欠品でもOK！</mark>店舗に持ち込む手間はいりません。スタッフが直接お伺いします。</p>
+
+        <p class="style-select-desc">ご自宅までの出張、またはLINEのビデオ通話。<br>どちらも<span class="hl-orange">来店の必要はありません</span>。<br>お客様のご都合に合わせた方法をお選びいただけます。</p>
       </div>
 
-      <div class="reason-block">
-        <span class="reason-tag">REASON 2</span>
-        <h3><span class="hl-orange">&ldquo;10分スピード査定&rdquo;</span>お手間取らせません！</h3>
-        <div class="reason-photo placeholder-img"><img src="img/REASON1.jpg" width="720" height="480" alt="お客様からのご相談を電話で受けるスタッフ" loading="lazy" onerror="this.remove()">
-          <svg class="icon icon-lg"><use href="#ic-store"/></svg>
-          [画像プレースホルダー]相談受付の写真
+      <div class="style-row-list">
+        <div class="style-row style-row-blue">
+          <div class="style-row-head style-row-head-blue">出張査定</div>
+          <div class="style-row-body">
+            <div class="style-row-text">
+              <p class="style-row-lead">ご自宅まで<br>スタッフが伺います</p>
+              <p class="style-row-copy"><span class="hl-orange">出張費用は無料</span>！立ち会うだけで<span class="hl-orange">その場で金額を提示</span>！<br>搬出作業もお任せください。</p>
+            </div>
+            <div class="style-row-photo">
+              <img src="img/satei.png" width="640" height="596" alt="ご自宅まで出張査定に伺うティーバイティーガレージのスタッフ" loading="lazy">
+            </div>
+          </div>
         </div>
-        <p><mark>スピーディに査定を行い、</mark><mark>わずか10分ほどでバイクの査定結果をご案内！</mark>ティーバイティーは買取り最低保証付きなので、ゼロ査定はしません！</p>
-      </div>
 
-      <div class="reason-block">
-        <span class="reason-tag">REASON 3</span>
-        <h3>名義変更や抹消登録など<span class="hl-orange hl-orange-sm">&ldquo;手続きまるごと代行&rdquo;</span></h3>
-        <div class="reason-photo placeholder-img"><img src="img/REASON3.jpg" width="720" height="480" alt="名義変更や廃車手続きの書類対応" loading="lazy" onerror="this.remove()">
-          <svg class="icon icon-lg"><use href="#ic-doc"/></svg>
-          [画像プレースホルダー]手続き・書類対応の写真
+        <div class="style-row style-row-green">
+          <div class="style-row-head style-row-head-green">LINE査定</div>
+          <div class="style-row-body">
+            <div class="style-row-text">
+              <p class="style-row-lead">自宅で<br>ビデオ通話査定</p>
+              <p class="style-row-copy">LINEで友だち追加してビデオ通話でバイクを映すだけ。<br><span class="hl-green">通話開始から10分程度</span>で査定が完了します。</p>
+            </div>
+            <div class="style-row-photo">
+              <img src="img/line.png" width="493" height="715" alt="LINEのビデオ通話でオンライン査定を受けている様子" loading="lazy">
+            </div>
+          </div>
         </div>
-        <p>バイクの引き取りはもちろん、名義変更や抹消登録などの面倒な手続きも、<mark>ティーバイティーはすべて無料で代行</mark>いたします。</p>
       </div>
     </div>
   </section>
 
-  <section class="section gray" id="sec-voice">
+  <!-- スタッフ写真＋大見出しのCTAブロック（1箇所目：MAKERの直前）。
+       ボタンだけ「出張査定」「LINE査定」の2つ並び -->
+  <section class="staff-cta">
+    <div class="wrap staff-cta-inner">
+      <p class="staff-cta-kicker">ティーバイティーガレージがバイク買取ります！</p>
+      <div class="staff-cta-row">
+        <div class="staff-cta-photo">
+          <img src="img/shinjo04.png" alt="全国どこでも無料出張査定。ティーバイティーガレージのスタッフ" loading="lazy">
+        </div>
+        <div class="staff-cta-body">
+          <p class="staff-cta-headline">バイクを<br><span class="staff-cta-em">売る</span>のも</p>
+          <img class="staff-cta-logo" src="img/logo.svg" alt="ティーバイティーガレージ">
+        </div>
+      </div>
+      <div class="staff-cta-btns">
+        <button class="btn btn-primary" onclick="scrollToQuiz()">
+          <svg class="icon"><use href="#ic-search"/></svg><span>出張査定申込み</span>
+          <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
+        </button>
+        <button class="btn btn-line" onclick="openLineDummy('cta-maker')">
+          <svg class="icon"><use href="#ic-chat"/></svg><span>LINE査定申込み</span>
+          <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
+        </button>
+      </div>
+      <a class="staff-cta-tel" href="tel:0120999999">
+        <img class="staff-cta-tel-img" src="img/freedial.svg" alt="フリーダイヤル 0120-999-999">
+      </a>
+    </div>
+  </section>
+
+  <!-- 対象メーカー・排気量一覧 -->
+  <section class="section maker-section" id="sec-maker">
     <div class="wrap">
-      <div class="eyebrow">VOICE</div>
-      <h2 class="h-title">皆さんの大切なバイク<br>買取らせていただきました！</h2>
+      <h2 class="h-title maker-title">
+        <span class="maker-title-sub">ティーバイティーガレージの</span>
+        <span class="maker-title-main">バイク買取り対象メーカー</span>
+      </h2>
+      <p class="maker-lead">国内主要メーカーはもちろん、海外メーカーのバイクも幅広く買取り対象としております。排気量を問わず、原付から大型二輪まで対応いたしますので、まずはお気軽にご相談ください。</p>
+
+      <div class="maker-grid">
+        <div class="maker-card">
+          <span class="maker-badge">01</span>
+          <span class="maker-tag">原付<br><small>〜50cc</small></span>
+          <div class="maker-photo"><img src="img/50cc.png" alt="原付（〜50cc）" loading="lazy"></div>
+          <p class="maker-examples">例：ホンダ タクト</p>
+        </div>
+        <div class="maker-card">
+          <span class="maker-badge">02</span>
+          <span class="maker-tag">原付二種<br><small>51〜125cc</small></span>
+          <div class="maker-photo"><img src="img/125cc.png" alt="原付二種（51cc〜125cc）" loading="lazy"></div>
+          <p class="maker-examples">例：ホンダ スーパーカブ110<br>ホンダ PCX125</p>
+        </div>
+        <div class="maker-card">
+          <span class="maker-badge">03</span>
+          <span class="maker-tag">軽二輪<br><small>126〜250cc</small></span>
+          <div class="maker-photo"><img src="img/250cc.png" alt="軽二輪（126〜250cc）" loading="lazy"></div>
+          <p class="maker-examples">例：ホンダ レブル250<br>ホンダ CB250R</p>
+        </div>
+        <div class="maker-card">
+          <span class="maker-badge">04</span>
+          <span class="maker-tag">普通二輪<br><small>251〜400cc</small></span>
+          <div class="maker-photo"><img src="img/400cc.png" alt="普通二輪（251cc〜400cc）" loading="lazy"></div>
+          <p class="maker-examples">例：ホンダ CB400SF<br>ホンダ CBR400R</p>
+        </div>
+        <div class="maker-card maker-card-wide">
+          <span class="maker-badge">05</span>
+          <span class="maker-tag">大型二輪<br><small>401cc〜</small></span>
+          <div class="maker-photo"><img src="img/401cc.png" alt="大型二輪（401cc〜）" loading="lazy"></div>
+          <p class="maker-examples">例：ホンダ CB1300SF、CB650R<br>ホンダ ゴールドウイング</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reason-section" id="sec-reason">
+    <div class="wrap">
+      <h2 class="h-title">バイク買取りにティーバイティーガレージが<br><span class="reason-title-big">選ばれる理由は4つ！</span></h2>
+      <p class="reason-lead-text">ティーバイティーガレージは「買取り専門店」だから<br>買取ることに特化したサービスを提供できます！</p>
+
+      <div class="reason-grid">
+        <div class="reason-card">
+          <div class="reason-photo placeholder-img"><img src="img/point1.png" width="720" height="480" alt="事故車・車検切れ・長期放置バイクもすべて買取ります" loading="lazy" onerror="this.remove()">
+            <svg class="icon icon-lg"><use href="#ic-wrench"/></svg>
+          </div>
+          <div class="reason-card-body">
+            <h3><span class="reason-num">01</span><span class="hl-orange">「これはさすがに…」と思うバイクも</span>躊躇しないで！</h3>
+            <p>事故にあったバイク、車検切れのバイク、長年放置されたバイクなど、もう動かないバイクでも幅広く積極的に買取ります！まずは無料の出張査定をご利用ください。</p>
+          </div>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-photo placeholder-img"><img src="img/point2.png" width="720" height="480" alt="全国どこでもスタッフが引取りに伺います" loading="lazy" onerror="this.remove()">
+            <svg class="icon icon-lg"><use href="#ic-truck"/></svg>
+          </div>
+          <div class="reason-card-body">
+            <h3><span class="reason-num">02</span>お客さまは動かなくてOK！<br><span class="hl-orange">全国どこでも引取りに伺います</span></h3>
+            <p>店舗まで持込む時間が取れない方もご安心ください。ご自宅・職場・ご指定の場所まで、全国どこへでも無料で出張査定にお伺いします。</p>
+          </div>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-photo placeholder-img"><img src="img/point3.png" width="720" height="480" alt="名義変更や廃車手続きの書類対応" loading="lazy" onerror="this.remove()">
+            <svg class="icon icon-lg"><use href="#ic-doc"/></svg>
+          </div>
+          <div class="reason-card-body">
+            <h3><span class="reason-num">03</span>面倒な手続きは一切なし！<br><span class="hl-orange">その場で現金払い</span></h3>
+            <p>名義変更や抹消登録などの面倒な手続きはすべて代行。査定後はその場で現金にてお支払いし、手続きから入金までスピーディーに完了します。</p>
+          </div>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-photo placeholder-img"><img src="img/point4.png" width="720" height="480" alt="改造車・レアバイクも買取ります" loading="lazy" onerror="this.remove()">
+            <svg class="icon icon-lg"><use href="#ic-award"/></svg>
+          </div>
+          <div class="reason-card-body">
+            <h3><span class="reason-num">04</span><span class="hl-orange">改造車・レアバイクも大歓迎！</span><br>他社で断られたバイクもご相談を</h3>
+            <p>「改造しているから値段がつかないかも…」「珍しい車種だから…」そう思っていませんか？カスタム車・レア車両の買取り実績も豊富です。改造内容によってはプラス査定になることも！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why" id="sec-why">
+    <div class="wrap">
+      <div class="eyebrow">WHY T×T GARAGE</div>
+      <h2 class="why-title">なんで事故車・不動車・車検切れの<br>バイクでも買取りするの？</h2>
+      <p class="why-lead why-lead-tight">バイクは車両としての価値だけでなく、<br>エンジンやホイールなどパーツにも</p>
+      <p class="why-punch">価値が残っている<br>可能性があるんです！</p>
+
+      <div class="why-status-grid">
+        <div class="why-status-card"><span class="why-status-icon"><svg class="icon"><use href="#ic-clock"/></svg></span>長期間の不動</div>
+        <div class="why-status-card"><span class="why-status-icon"><svg class="icon"><use href="#ic-alert"/></svg></span>事故によるキズ・破損</div>
+        <div class="why-status-card"><span class="why-status-icon"><svg class="icon"><use href="#ic-wrench"/></svg></span>エンジン始動不良</div>
+        <div class="why-status-card"><span class="why-status-icon"><svg class="icon"><use href="#ic-close"/></svg></span>故障による走行不能</div>
+        <div class="why-status-card"><span class="why-status-icon"><svg class="icon"><use href="#ic-doc"/></svg></span>車検切れ</div>
+      </div>
+
+      <p class="why-lead">このようなバイクも、現在の状態のまま査定できます！実際に買取ったバイクは、<span class="hl-yellow">他店で断られた車両でも</span><span class="hl-yellow">部品取りや海外輸出</span>など、幅広い販路で活用できるため、状態に関わらず値段をつけられるケースがございます。</p>
+      <p class="why-close">経験豊富な査定士が<span class="hl-yellow">販路</span>と<span class="hl-yellow">知識</span>で<br>皆さんの<span class="hl-yellow">バイクに価値</span>を与えます。</p>
+    </div>
+  </section>
+
+  <section class="section sold-carousel" id="sec-voice">
+    <div class="wrap">
+      <h2 class="sold-title">＼バイク実績多数／</h2>
+      <p class="sold-sub">皆さんの大切なバイク<br>買取らせていただきました！</p>
 
       <div class="proof-card">
         <div class="proof-photo placeholder-img"><img src="img/1_GS1200SS.jpg" width="720" height="480" alt="買取させていただいたスズキ GS1200SS とお客様" loading="lazy" onerror="this.remove()">
@@ -348,7 +440,7 @@
           [画像プレースホルダー]お客様＋買取車両の写真
         </div>
         <div class="proof-body">
-          <div class="proof-type-row"><span class="lbl">種類</span><span>スズキ　GS1200SS</span></div>
+          <div class="proof-type-row"><svg class="icon"><use href="#ic-award"/></svg><span>スズキ　GS1200SS</span></div>
           <div class="proof-price-row">
             <span class="proof-price-lbl">買取価格</span>
             <span class="proof-price">950,000<span>円（参考）</span></span>
@@ -359,73 +451,315 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="mini-proof-grid">
-        <div class="mini-proof">
-          <div class="mini-proof-photo placeholder-img"><img src="img/4_XEAM.jpg" width="480" height="320" alt="M様からお預かりしたXEAMのスクーター NQiGT" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-photo"/></svg></div>
-          <div class="mini-proof-tags">
-            <div class="name"><span class="chip chip-loc">旭川市</span>M様</div>
-            <span class="chip chip-model">XEAM バイク スクーター NQiGT</span>
+    <div class="wrap sold-carousel-wrap">
+      <button class="sold-arrow sold-arrow-prev" onclick="soldScroll(-1)" aria-label="前へ">
+        <svg class="icon"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="sold-scroll" id="sold-scroll">
+        <div class="sold-card">
+          <div class="sold-photo">
+            <img src="img/bike/6072.jpg" alt="仙台パーツ店でお預かりしたホンダ CD250" loading="lazy">
+          </div>
+          <div class="sold-card-body">
+            <div class="sold-tags">
+              <span class="chip">O様</span>
+              <span class="chip chip-loc">ご利用店舗：仙台パーツ店</span>
+              <span class="chip chip-model">ホンダ バイク CD250</span>
+            </div>
           </div>
         </div>
-        <div class="mini-proof">
-          <div class="mini-proof-photo placeholder-img"><img src="img/CD250.jpg" width="480" height="320" alt="O様からお預かりしたホンダ CD250" loading="lazy" onerror="this.remove()"><svg class="icon"><use href="#ic-photo"/></svg></div>
-          <div class="mini-proof-tags">
-            <div class="name"><span class="chip chip-loc">仙台市</span>O様</div>
-            <span class="chip chip-model">ホンダ バイク CD250</span>
+
+        <div class="sold-card">
+          <div class="sold-photo">
+            <img src="img/bike/6480.jpg" alt="北見店でお預かりしたホンダ シャドウ400" loading="lazy">
+          </div>
+          <div class="sold-card-body">
+            <div class="sold-tags">
+              <span class="chip">M様</span>
+              <span class="chip chip-loc">北見店</span>
+              <span class="chip chip-model">ホンダ バイク シャドウ400</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sold-card">
+          <div class="sold-photo">
+            <img src="img/bike/6686.jpg" alt="北見店でお預かりしたカワサキ バリオス" loading="lazy">
+          </div>
+          <div class="sold-card-body">
+            <div class="sold-tags">
+              <span class="chip">W様</span>
+              <span class="chip chip-loc">北見店</span>
+              <span class="chip chip-model">カワサキ バイク バリオス</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sold-card">
+          <div class="sold-photo">
+            <img src="img/bike/5711.jpg" alt="新潟パーツ店でお預かりしたスズキ イントルーダーLC250" loading="lazy">
+          </div>
+          <div class="sold-card-body">
+            <div class="sold-tags">
+              <span class="chip">K様</span>
+              <span class="chip chip-loc">新潟パーツ店</span>
+              <span class="chip chip-model">スズキ バイク イントルーダーLC250</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sold-card">
+          <div class="sold-photo">
+            <img src="img/bike/4994.jpg" alt="帯広店でお預かりしたホンダ スティード400" loading="lazy">
+          </div>
+          <div class="sold-card-body">
+            <div class="sold-tags">
+              <span class="chip">H様</span>
+              <span class="chip chip-loc">帯広店</span>
+              <span class="chip chip-model">ホンダ バイク スティード400</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sold-card">
+          <div class="sold-photo">
+            <img src="img/bike/5148.jpg" alt="帯広店でお預かりしたホンダ CB400" loading="lazy">
+          </div>
+          <div class="sold-card-body">
+            <div class="sold-tags">
+              <span class="chip">K様</span>
+              <span class="chip chip-loc">帯広店</span>
+              <span class="chip chip-model">ホンダ バイク CB400</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sold-card">
+          <div class="sold-photo">
+            <img src="img/bike/5804.jpg" alt="帯広店でお預かりしたヤマハ ドラッグスター400" loading="lazy">
+          </div>
+          <div class="sold-card-body">
+            <div class="sold-tags">
+              <span class="chip">O様</span>
+              <span class="chip chip-loc">帯広店</span>
+              <span class="chip chip-model">ヤマハ バイク ドラッグスター400</span>
+            </div>
           </div>
         </div>
       </div>
 
+      <button class="sold-arrow sold-arrow-next" onclick="soldScroll(1)" aria-label="次へ">
+        <svg class="icon"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <div class="sold-dots"><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </section>
+
+  <!-- 口コミ -->
+  <section class="section review-section" id="sec-review">
+    <div class="wrap">
+      <div class="eyebrow">CUSTOMER REVIEWS</div>
+      <h2 class="h-title">バイクを売ってくれた方の口コミ</h2>
+
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-vehicle-icon"><svg class="icon"><use href="#ic-award"/></svg>スクーター</span>
+        </div>
+        <div class="review-meta">
+          <span class="chip">投稿者 ichi さま</span>
+          <span class="chip chip-loc">ご利用店舗：仙台パーツ店</span>
+          <span class="chip">宮城県</span>
+          <span class="chip">30代</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-scores">電話応対：5｜接客：5｜査定：5｜アフター：5</p>
+        <p class="review-comment">初めてでしたが玉川さんという方に担当していただき、終始ご丁寧に対応してくださり気持ちよくお取引ができました。</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-vehicle-icon"><svg class="icon"><use href="#ic-award"/></svg>バイク</span>
+        </div>
+        <div class="review-meta">
+          <span class="chip">投稿者 ユウ さま</span>
+          <span class="chip chip-loc">ご利用店舗：仙台パーツ店</span>
+          <span class="chip">宮城県</span>
+          <span class="chip">40代</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-scores">電話応対：5｜接客：5｜査定：5｜アフター：5</p>
+        <p class="review-comment">2004年式のKTMでしたので少しあきらめていました。でも、査定でこんなに頑張っていただきました。本当にありがとうございました。家族皆でニコニコになりました。</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-head">
+          <span class="review-vehicle-icon"><svg class="icon"><use href="#ic-award"/></svg>バイク</span>
+        </div>
+        <div class="review-meta">
+          <span class="chip">投稿者：X木さん</span>
+          <span class="chip chip-loc">ご利用店舗：福岡店</span>
+          <span class="chip">福岡県</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-scores">電話応対：5｜接客：5｜査定：5｜アフター：5</p>
+        <p class="review-comment">接客、電話、非常に良く対応して下さいました。見積約束の時間を少し早めに行きましたが、気持ち良く見積もり対応いただき買取して致しました。大満足しています。また、近隣の駅まで送迎頂きありがとうございます。次回また、相談する事があればティーバイティーへ相談いたします。</p>
+      </div>
+
+      <a class="btn btn-outline review-more" href="https://www.txt-garage.jp/review/" target="_blank" rel="noopener">バイク買取のクチコミ一覧を見る</a>
     </div>
   </section>
 
-  <section class="section why" id="sec-why">
+  <!-- 店舗一覧・LOCATIONS -->
+  <section class="section shop-section" id="sec-shop">
     <div class="wrap">
-      <div class="eyebrow">WHY T×T GARAGE</div>
-      <h2 class="why-title">ティーバイティーは、全部買取り</h2>
-      <p class="why-punch">０円査定<span class="why-punch-small">は</span>致しません！</p>
-      <p class="why-lead">事故車、過走行車、不動車<br>パーツだけでも買取るからくり<br>それなのに全国無料出張できるのは…</p>
-      <p class="why-close">経験豊富な査定士が<span class="hl-yellow">販路</span>と<span class="hl-yellow">知識</span>で<br>皆さんの<span class="hl-yellow">バイクに価値</span>を与えます。</p>
+      <div class="eyebrow shop-eyebrow">LOCATIONS</div>
+      <h2 class="h-title shop-title">全国各地あなたの近くに<br>ティーバイティーガレージ</h2>
+
+      <div class="shop-staff-block">
+        <img src="img/shinjo03.png" alt="全国無料出張査定を案内するティーバイティーガレージのスタッフ" loading="lazy">
+      </div>
+
+      <div class="shop-map">
+        <img src="img/japanmap.png" alt="全国のティーバイティーガレージ対応エリアマップ" loading="lazy">
+        <a class="map-pin map-pin-hokkaido" href="https://www.txt-garage.jp/shop/hokkaido/" target="_blank" rel="noopener">北海道エリア</a>
+        <a class="map-pin map-pin-tohoku" href="https://www.txt-garage.jp/shop/tohoku/" target="_blank" rel="noopener">東北エリア</a>
+        <a class="map-pin map-pin-hokuriku" href="https://www.txt-garage.jp/shop/hokuriku/" target="_blank" rel="noopener">北陸エリア</a>
+        <a class="map-pin map-pin-kanto" href="https://www.txt-garage.jp/shop/kanto/" target="_blank" rel="noopener">関東エリア</a>
+        <a class="map-pin map-pin-kansai" href="https://www.txt-garage.jp/shop/kansai/" target="_blank" rel="noopener">関西エリア</a>
+        <a class="map-pin map-pin-chushikoku" href="https://www.txt-garage.jp/shop/nishinihon/" target="_blank" rel="noopener">中国・四国エリア</a>
+        <a class="map-pin map-pin-kyushu" href="https://www.txt-garage.jp/shop/nishinihon/" target="_blank" rel="noopener">九州エリア</a>
+        <a class="map-pin map-pin-okinawa" href="https://www.txt-garage.jp/shop/okinawa/" target="_blank" rel="noopener">沖縄エリア</a>
+      </div>
+
+      <a class="btn btn-primary" href="https://www.txt-garage.jp/shop/" target="_blank" rel="noopener">店舗一覧はこちら</a>
     </div>
   </section>
 
-  <section class="comic-strip">
-    <img src="img/bikeLPcomic1.png" alt="" loading="lazy">
-    <img src="img/bikeLPcomic2.png" alt="" loading="lazy">
-    <img src="img/bikeLPcomic3.png" alt="" loading="lazy">
-    <img src="img/bikeLPcomic4.png" alt="" loading="lazy">
+  <!-- バイクを高く売るためのポイント -->
+  <section class="section tips-section" id="sec-tips">
+    <div class="wrap">
+      <div class="eyebrow">POINT</div>
+      <h2 class="h-title">バイクを高く売るための<br>ポイントとは？</h2>
+
+      <div class="tips-list">
+        <div class="tips-card">
+          <div class="tips-photo placeholder-img"><img src="img/point-1.png" width="720" height="480" alt="査定前にバイクを洗車しておく" loading="lazy" onerror="this.remove()">
+            <svg class="icon icon-lg"><use href="#ic-store"/></svg>
+          </div>
+          <div class="tips-card-body">
+            <span class="tips-bignum">01</span>
+            <h3>査定前に洗車して印象アップ！</h3>
+            <p>査定前にホコリや泥を落としておくと「大切にされていた」ということが伝わり、査定士の印象がアップ！査定もスムーズに進みます。</p>
+          </div>
+        </div>
+        <div class="tips-card tips-card-rev">
+          <div class="tips-photo placeholder-img"><img src="img/point-2.png" width="720" height="480" alt="メンテナンスを証明できる書類を準備しておく" loading="lazy" onerror="this.remove()">
+            <svg class="icon icon-lg"><use href="#ic-doc"/></svg>
+          </div>
+          <div class="tips-card-body">
+            <span class="tips-bignum">02</span>
+            <h3>整備記録を準備して<br>プラス査定！</h3>
+            <p>取扱説明書やメンテナンスノート（整備記録簿）などがあると、定期的な整備の証明となります！用意しておくと良い書類は気軽にご相談ください。</p>
+          </div>
+        </div>
+        <div class="tips-card">
+          <div class="tips-photo placeholder-img"><img src="img/point-3.png" width="720" height="480" alt="改造したバイクは純正パーツも用意しておく" loading="lazy" onerror="this.remove()">
+            <svg class="icon icon-lg"><use href="#ic-wrench"/></svg>
+          </div>
+          <div class="tips-card-body">
+            <span class="tips-bignum">03</span>
+            <h3>改造車は純正パーツも用意！</h3>
+            <p>改造した際に取外した純正パーツを保管している場合は、査定時に一緒にお出しください。買取り業者にとって選択肢が広がり、査定額アップにつながる可能性もあります。</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="section gray" id="sec-flow">
+  <!-- スタッフ写真＋大見出しのCTAブロック（2箇所目） -->
+  <section class="staff-cta">
+    <div class="wrap staff-cta-inner">
+      <p class="staff-cta-kicker">ティーバイティーガレージがバイク買取ります！</p>
+      <div class="staff-cta-row">
+        <div class="staff-cta-photo">
+          <img src="img/shinjo04.png" alt="全国どこでも無料出張査定。ティーバイティーガレージのスタッフ" loading="lazy">
+        </div>
+        <div class="staff-cta-body">
+          <p class="staff-cta-headline">バイクを<br><span class="staff-cta-em">売る</span>のも</p>
+          <img class="staff-cta-logo" src="img/logo.svg" alt="ティーバイティーガレージ">
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="scrollToQuiz()">無料出張査定はこちら <svg class="icon icon-fill"><use href="#ic-play"/></svg></button>
+      <a class="staff-cta-tel" href="tel:0120999999">
+        <img class="staff-cta-tel-img" src="img/freedial.svg" alt="フリーダイヤル 0120-999-999">
+      </a>
+    </div>
+  </section>
+
+  <!-- バイク買取り時に必要な書類 -->
+  <section class="section docs-section" id="sec-docs">
     <div class="wrap">
-      <div class="eyebrow">FLOW</div>
-      <h2 class="h-title">申し込みから買取りまで<br>迷わない3ステップ</h2>
+      <div class="eyebrow">DOCUMENTS</div>
+      <h2 class="h-title docs-title">バイク買取り時に必要な書類</h2>
+
+      <div class="docs-grid">
+        <div class="docs-card"><img src="img/tetuduki1.png" alt="身分証明書" loading="lazy"><span>身分証明書<br><small>運転免許証・マイナンバーカード・パスポートなど</small></span></div>
+        <div class="docs-card"><img src="img/tetuduki2.png" alt="印鑑" loading="lazy"><span>印鑑<br><small>認印（シャチハタ不可）</small></span></div>
+        <div class="docs-card"><img src="img/tetuduki3.png" alt="自賠責保険証明書" loading="lazy"><span>自賠責保険証明書</span></div>
+        <div class="docs-card"><img src="img/tetuduki4.png" alt="軽自動車税納税証明書" loading="lazy"><span>軽自動車税納税証明書</span></div>
+      </div>
+
+      <p class="docs-note">バイクの排気量によって追加で必要な書類が異なります。</p>
+      <ul class="docs-extra-list">
+        <li><strong>125cc以下：</strong>標識交付証明書（市区町村で発行されたもの）</li>
+        <li><strong>126cc超〜250cc以下：</strong>軽自動車届出済証</li>
+        <li><strong>251cc以上：</strong>自動車検査証（車検証）、印鑑登録証明書</li>
+      </ul>
+      <p class="docs-note">必要書類については、ティーバイティーガレージのスタッフがご説明します！</p>
+    </div>
+  </section>
+
+  <section class="section flow-section" id="sec-flow">
+    <div class="wrap">
+      <div class="eyebrow" style="color:#fff;">FLOW</div>
+      <h2 class="flow-title">申し込みから買取りまで<br>迷わない3ステップ</h2>
+
       <div class="flow-list">
 
-        <div class="flow-card">
-          <span class="flow-num">01</span>
-          <div class="flow-icon"><img src="img/flow_01_pc.svg" width="154" height="154" alt="" loading="lazy"></div>
-          <h3>査定のお申し込み</h3>
-          <p>無料出張査定のお申し込みは、お電話もしくは当サイトからお申し込みください。</p>
-          <button class="btn btn-primary flow-cta" onclick="scrollToQuiz()">今すぐ無料出張査定を申し込む</button>
+        <div class="flow-row">
+          <div class="flow-circle"><img src="img/flow_01_pc.svg" width="154" height="154" alt="" loading="lazy"></div>
+          <div class="flow-row-body">
+            <span class="flow-step">STEP 1</span>
+            <h3>査定のお申し込み</h3>
+            <p>無料出張査定のお申し込みは、お電話もしくは当サイトからお申し込みください。</p>
+          </div>
         </div>
 
-        <div class="flow-card">
-          <span class="flow-num">02</span>
-          <div class="flow-icon"><img src="img/flow_02_pc.svg" width="162" height="124" alt="" loading="lazy"></div>
-          <h3>全国無料出張査定</h3>
-          <p>無料出張にて査定にお伺いいたします。査定時間は1台約10分程度です。</p>
+        <div class="flow-row">
+          <div class="flow-circle"><img src="img/flow_02_pc.svg" width="162" height="124" alt="" loading="lazy"></div>
+          <div class="flow-row-body">
+            <span class="flow-step">STEP 2</span>
+            <h3>全国無料出張査定</h3>
+            <p>無料出張にて査定にお伺いいたします。査定時間は1台約10分程度です。</p>
+          </div>
         </div>
 
-        <div class="flow-card">
-          <span class="flow-num">03</span>
-          <div class="flow-icon"><img src="img/flow_03_pc.svg" width="148" height="110" alt="" loading="lazy"></div>
-          <h3>お支払い</h3>
-          <p>ご成約後、料金はその場でお支払いいたします。<br><span class="flow-note">※買取り点数が多い場合、お振込みになることもあります。</span></p>
+        <div class="flow-row">
+          <div class="flow-circle"><img src="img/flow_03_pc.svg" width="148" height="110" alt="" loading="lazy"></div>
+          <div class="flow-row-body">
+            <span class="flow-step">STEP 3</span>
+            <h3>お支払い</h3>
+            <p>ご成約後、料金はその場でお支払いいたします。<br><span class="flow-small-note">※買取り点数が多い場合、お振込みになることもあります。</span></p>
+          </div>
         </div>
 
       </div>
+
+      <button class="btn btn-primary flow-cta" onclick="scrollToQuiz()">今すぐ無料出張査定を申し込む</button>
     </div>
   </section>
 
@@ -435,40 +769,82 @@
       <div class="faq-title-bar">FAQ</div>
       <h2 class="h-title" style="text-align:left;margin-top:0;">バイク買取りのよくあるご質問</h2>
       <div id="faq-list">
-        <div class="faq-item faq-v2">
+        <div class="faq-item faq-v2 open">
           <button class="faq-q" onclick="toggleFaq(this)">
             <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 本当に動かないバイクでも査定してもらえますか？</span>
             <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
           </button>
-          <div class="faq-a"><p>はい。事故車・不動車・長期保管のバイクも査定実績多数です。まずはお気軽にご相談ください。</p></div>
+          <div class="faq-a"><span class="a-mark">A</span><p>はい。事故車・不動車・長期保管のバイクも査定実績多数です。まずはお気軽にご相談ください。</p></div>
         </div>
         <div class="faq-item faq-v2">
           <button class="faq-q" onclick="toggleFaq(this)">
             <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 出張査定に費用はかかりますか？</span>
             <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
           </button>
-          <div class="faq-a"><p>出張費・査定費は全国どこでも無料です（一部離島を除く）。</p></div>
+          <div class="faq-a"><span class="a-mark">A</span><p>出張費・査定費は全国どこでも無料です（一部離島を除く）。</p></div>
         </div>
         <div class="faq-item faq-v2">
           <button class="faq-q" onclick="toggleFaq(this)">
             <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 名義が自分ではないのですが大丈夫ですか？</span>
             <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
           </button>
-          <div class="faq-a"><p>事前にご相談いただければ対応可能な場合がございます。まずはお問い合わせください。</p></div>
+          <div class="faq-a"><span class="a-mark">A</span><p>事前にご相談いただければ対応可能な場合がございます。まずはお問い合わせください。</p></div>
         </div>
         <div class="faq-item faq-v2">
           <button class="faq-q" onclick="toggleFaq(this)">
             <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 査定後にキャンセルはできますか？</span>
             <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
           </button>
-          <div class="faq-a"><p>もちろん可能です。ご納得いただけない場合、無理な引き取りは致しません。</p></div>
+          <div class="faq-a"><span class="a-mark">A</span><p>もちろん可能です。ご納得いただけない場合、無理な引き取りは致しません。</p></div>
         </div>
         <div class="faq-item faq-v2">
           <button class="faq-q" onclick="toggleFaq(this)">
             <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> LINEのオンライン査定はどう進めますか？</span>
             <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
           </button>
-          <div class="faq-a"><p>LINEで友だち追加のうえ、トーク画面右上の通話ボタンからビデオ通話に切り替えてください。スタッフがバイクを映していただきながら査定します。通話開始から10分程度で完了します（受付 10:00〜19:00／水曜定休）。すぐに通話が難しい場合は、トークで車両情報をお送りいただく形でも承ります。</p></div>
+          <div class="faq-a"><span class="a-mark">A</span><p>LINEで友だち追加のうえ、トーク画面右上の通話ボタンからビデオ通話に切り替えてください。スタッフがバイクを映していただきながら査定します。通話開始から10分程度で完了します（受付 10:00〜19:00／水曜定休）。すぐに通話が難しい場合は、トークで車両情報をお送りいただく形でも承ります。</p></div>
+        </div>
+        <div class="faq-item faq-v2">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 事故歴のあるバイクでも買取りできますか？</span>
+            <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
+          </button>
+          <div class="faq-a"><span class="a-mark">A</span><p>買取りできます！事故歴があっても買取り可能です。修復箇所や損傷の程度を確認したうえで査定いたしますので、まずはお気軽にご相談ください。</p></div>
+        </div>
+        <div class="faq-item faq-v2">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> カスタムしてあるバイクでも査定できますか？</span>
+            <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
+          </button>
+          <div class="faq-a"><span class="a-mark">A</span><p>できます！年式や走行距離だけでなく、これまでの乗り方やカスタム内容も含めて査定します。</p></div>
+        </div>
+        <div class="faq-item faq-v2">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 走行距離が多いバイクでも査定してもらえますか？</span>
+            <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
+          </button>
+          <div class="faq-a"><span class="a-mark">A</span><p>はい、走行距離が多い場合でも査定は可能です！距離だけでなく、車種や年式、整備状況なども合わせて総合的に判断いたします。</p></div>
+        </div>
+        <div class="faq-item faq-v2">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 買取り代金は現金でもらえますか？</span>
+            <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
+          </button>
+          <div class="faq-a"><span class="a-mark">A</span><p>はい、現金でのお支払いに対応しております！お客様のご希望に応じて、振込みでのお支払いを選ぶこともできますよ。</p></div>
+        </div>
+        <div class="faq-item faq-v2">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 全国どこでも買取りに来てもらえますか？</span>
+            <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
+          </button>
+          <div class="faq-a"><span class="a-mark">A</span><p>はい、全国対応しております！お住まいの地域まで無料で出張査定に伺いますので、まずはお気軽にお問合せください。</p></div>
+        </div>
+        <div class="faq-item faq-v2">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span style="display:flex;align-items:center;gap:10px;"><span class="q-mark">Q</span> 必要書類が揃っていなくても査定してもらえますか？</span>
+            <svg class="icon faq-toggle-icon"><use href="#ic-plus"/></svg>
+          </button>
+          <div class="faq-a"><span class="a-mark">A</span><p>書類が一部揃っていない場合でもご相談いただけます！再発行の方法などもあわせてご案内いたしますので、まずはお気軽にご相談ください。</p></div>
         </div>
       </div>
     </div>
@@ -477,12 +853,27 @@
   <!-- アセット31準拠：黄色地＋吹き出し＋スタッフ写真の構成 -->
   <section class="section final-cta">
     <div class="wrap">
-      <div class="final-cta-bubble">
-        <h2>そのバイク、眠らせておくのは<br><span class="final-cta-emphasis punch-anim">もったいない。</span></h2>
+      <div class="final-cta-top">
+        <!-- 背景が透過のスタッフ写真。額縁は付けず、背景にそのまま乗せる -->
+        <img class="final-cta-photo" src="img/shinjo07.png" width="921" height="999" alt="ティーバイティーガレージのスタッフ" loading="lazy">
+        <div class="final-cta-right">
+          <div class="final-cta-bubble final-cta-bubble-side">
+            <h2>そのバイク、眠らせておくのは<br><span class="final-cta-emphasis punch-anim">もったいない。</span></h2>
+          </div>
+          <p class="final-cta-sub">他社で断られたバイクも大歓迎！<br>ティーバイティーガレージが買取ります</p>
+        </div>
       </div>
-      <!-- 背景が透過のスタッフ3名の写真。額縁は付けず、黄色地に直接乗せる -->
-      <img class="final-cta-photo" src="img/staff-3.png" width="760" height="519" alt="ティーバイティーガレージのスタッフ3名" loading="lazy">
-      <p>動かなくても、古くても、壊れていても。<br>ティーバイティーが無料で出張査定します。</p>
+
+      <div class="final-cta-card">
+        <ul class="final-cta-list">
+          <li><span class="final-cta-icon"><svg class="icon"><use href="#ic-check"/></svg></span>改造されたバイクも買取ります</li>
+          <li><span class="final-cta-icon"><svg class="icon"><use href="#ic-check"/></svg></span>全国どこでも無料出張査定を実施</li>
+          <li><span class="final-cta-icon"><svg class="icon"><use href="#ic-check"/></svg></span>最短即日現金払い・廃車手続き代行もお任せ</li>
+          <li><span class="final-cta-icon"><svg class="icon"><use href="#ic-check"/></svg></span>TEL・メール・LINEで査定受付中</li>
+        </ul>
+      </div>
+
+      <p class="final-cta-note">眠っているバイクはありませんか？</p>
       <div class="hero-cta-group" style="display:flex;flex-direction:column;gap:10px;">
         <button class="btn btn-primary" onclick="scrollToQuiz()">
           <svg class="icon"><use href="#ic-search"/></svg> 無料出張査定を申し込む
@@ -685,22 +1076,6 @@
 </div>
 </div><!-- /.lp-main -->
 
-<div class="pc-right">
-  <div class="pc-right-inner">
-    <nav class="pc-toc">
-      <a href="#sec-quiz">無料査定スタート</a>
-      <a href="#sec-style">査定スタイル</a>
-      <a href="#sec-why">選ばれる理由</a>
-      <a href="#sec-voice">お客様の声</a>
-      <a href="#sec-flow">お申し込みの流れ</a>
-      <a href="#sec-faq">よくあるご質問</a>
-    </nav>
-    <a class="pc-right-cta" href="tel:0120999999">
-      <img src="img/tel.svg" alt="フリーダイヤル 0120-999-999">
-    </a>
-  </div>
-</div>
-
 
 <!-- ============================================================ -->
 <!-- 離脱防止：LINE査定案内モーダル -->
@@ -715,12 +1090,13 @@
     </div>
     <div class="exit-modal-body">
       <button class="btn btn-line" onclick="openLineDummy('exit-modal')">LINE査定</button>
-      <a class="exit-modal-detail" onclick="openLineDetailDummy()">＞ 詳細はこちら</a>
+      <a class="exit-modal-detail" href="https://www.txt-garage.jp/online-lp/" target="_blank" rel="noopener">＞ 詳細はこちら</a>
     </div>
   </div>
 </div>
 
 
+<script src="js/bike-master.js"></script>
 <script>
 function el(id){ return document.getElementById(id); }
 
@@ -728,10 +1104,51 @@ function el(id){ return document.getElementById(id); }
 const heroMakerSelect = el('hero-maker');
 const heroDisplacementSelect = el('hero-displacement');
 const heroModelInput = el('hero-model');
+const heroModelList = el('hero-model-list');
 const heroNextBtn = el('hero-quiz-next');
+
+/* 車種名の入力補完：メーカー（＋排気量）で候補を絞る。
+   マスターにないメーカー（輸入車・わからない）は候補なしの自由入力のまま。 */
+function heroModelCandidates(){
+  const master = window.BIKE_MASTER || {};
+  const byCc = master[heroMakerSelect.value];
+  if(!byCc) return [];
+  const cc = heroDisplacementSelect.value;
+  if(byCc[cc]) return byCc[cc];
+  return Object.values(byCc).flat();
+}
+function heroRefreshModelList(){
+  heroModelList.innerHTML = '';
+  const frag = document.createDocumentFragment();
+  heroModelCandidates().forEach(name => {
+    const opt = document.createElement('option');
+    opt.value = name;
+    frag.appendChild(opt);
+  });
+  heroModelList.appendChild(frag);
+}
+/* 候補から車種を選んだら、その車種の排気量区分を自動で入れる */
+function heroSyncDisplacementFromModel(){
+  const byCc = (window.BIKE_MASTER || {})[heroMakerSelect.value];
+  if(!byCc) return;
+  const name = heroModelInput.value.trim();
+  for(const cc of Object.keys(byCc)){
+    if(byCc[cc].includes(name)){
+      if(heroDisplacementSelect.value !== cc){
+        heroDisplacementSelect.value = cc;
+        heroRefreshModelList();
+      }
+      return;
+    }
+  }
+}
 heroMakerSelect.addEventListener('change', () => {
   heroNextBtn.disabled = !heroMakerSelect.value;
+  heroRefreshModelList();
 });
+heroDisplacementSelect.addEventListener('change', heroRefreshModelList);
+heroModelInput.addEventListener('change', heroSyncDisplacementFromModel);
+heroModelInput.addEventListener('input', heroSyncDisplacementFromModel);
 function heroStartAssessment(){
   if(!heroMakerSelect.value) return;
   el('f-maker').value = heroMakerSelect.value;
@@ -805,9 +1222,6 @@ function goThanks(){
 /* ---------- LINE公式アカウントへの誘導 ---------- */
 const LINE_URL = 'https://page.line.me/936rygvj';
 function openLineDummy(source){
-  window.open(LINE_URL, '_blank', 'noopener');
-}
-function openLineDetailDummy(){
   window.open(LINE_URL, '_blank', 'noopener');
 }
 
@@ -888,18 +1302,40 @@ function revealOnScroll(selector, initClass, shownClass, opts){
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-  // 「査定OK」バッジ：ハンコを押すようにポンと出す
-  revealOnScroll('.check-ok', 'check-ok-anim', 'is-in', { stagger: 0.12, offset: 60 });
-  // 選ばれる理由の黄色マーカー：段落内で順番に線を引く
-  revealOnScroll('.reason-block mark', 'mark-anim', 'is-drawn',
-                 { offset: 100, stagger: 0.5, groupBy: '.reason-block' });
-  // 「０円査定致しません！」：大きい状態からバンと縮んで出る
+  // 「価値が残っている場合があるんです！」：大きい状態からバンと縮んで出る
   revealOnScroll('.why-punch', 'punch-anim', 'is-in', { offset: 60 });
   revealOnScroll('.final-cta-emphasis', 'punch-anim', 'is-in', { offset: 60 });
+  revealOnScroll('.promise-title', 'punch-anim', 'is-in', { offset: 80 });
   // 「たった3つの質問で査定スタート」：見出しがポップイン→バッジ/サブコピーがふわっと続く
-  revealOnScroll('.quiz-lead-3', 'punch-anim', 'is-in', { offset: 140 });
+  revealOnScroll('.quiz-lead-num', 'punch-anim', 'is-in', { offset: 140 });
   revealOnScroll('.quiz-sub-row', 'fade-anim', 'is-in', { offset: 40 });
+  // REASONカードの強調テキスト：マーカーを後から線引きするように表示
+  revealOnScroll('.reason-card-body .hl-orange', 'marker-anim', 'is-in', { offset: 180 });
 });
+
+/* ---------- 買取実績カルーセル：矢印クリックで1枚分スクロール ---------- */
+(function(){
+  const scroller = el('sold-scroll');
+  if(!scroller) return;
+  const dots = document.querySelectorAll('.sold-dots span');
+  window.soldScroll = function(dir){
+    const card = scroller.querySelector('.sold-card');
+    if(!card) return;
+    const step = card.getBoundingClientRect().width + 12;
+    scroller.scrollBy({ left: step * dir, behavior: 'smooth' });
+  };
+  function updateDots(){
+    const card = scroller.querySelector('.sold-card');
+    if(!card || !dots.length) return;
+    const step = card.getBoundingClientRect().width + 12;
+    const idx = Math.round(scroller.scrollLeft / step);
+    dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+  }
+  scroller.addEventListener('scroll', () => {
+    clearTimeout(scroller._dotTimer);
+    scroller._dotTimer = setTimeout(updateDots, 80);
+  }, { passive: true });
+})();
 
 /* ---------- FAQ ---------- */
 function toggleFaq(btn){

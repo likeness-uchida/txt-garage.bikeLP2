@@ -1,3 +1,18 @@
+  /* コーポレート・ロゴ（ライセンス済み・自社所有フォント）。
+     多用すると読みにくいので、インパクトを出したい大見出しにだけ使う。 */
+  @font-face{
+    font-family:"Corporate Logo";
+    src:url("../fonts/Corporate-Logo-Bold-ver3.otf") format("opentype");
+    font-weight:900;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:"Corporate Logo";
+    src:url("../fonts/Corporate-Logo-Medium-ver3.otf") format("opentype");
+    font-weight:500;
+    font-display:swap;
+  }
+
   :root{
     --blue:#38a1db;        /* メインカラー(指定) */
     --blue-dark:#2b84b8;
@@ -27,7 +42,7 @@
        0〜480pxの範囲で画面幅に比例させ、480pxで止める。
        個別に数値を書かず、ここを変えれば全体の余白感が一括で変わる。 */
     --gutter:clamp(18px, 5.7vw, 27px);   /* 左右の余白（390pxで約22px） */
-    --sect-y:clamp(44px, 14vw, 66px);    /* セクション上下（390pxで約55px） */
+    --sect-y:clamp(24px, 7.5vw, 36px);    /* セクション上下（390pxで約55px） */
     --gap-title:clamp(22px, 7.2vw, 34px);/* 見出し→本文 */
     --gap-card:clamp(14px, 4.4vw, 21px); /* カード同士 */
     --gap-block:clamp(26px, 8.2vw, 39px);/* ブロック同士 */
@@ -88,70 +103,99 @@
       linear-gradient(120deg, #eef3f6 0%, #e4ebef 60%, #dbe3e8 100%);
   }
 
-  /* PC（1100px〜）だけ：左＝大きいロゴの装飾パネル／中央＝LP本体／右＝目次パネル、の3カラム。
-     スマホでは.pc-left/.pc-rightを非表示にし、レイアウトはこれまで通り1カラムのまま。 */
-  .pc-left, .pc-right{display:none;}
+  /* PC（1100px〜）だけ：青地の全画面に、左＝白カード（ロゴ＋目次＋CTA）／右端＝LP本体、の2カラム。
+     （hanamaru870.net のソコカラLPのPC構成を踏襲）
+     スマホでは.pc-leftを非表示にし、レイアウトはこれまで通り1カラムのまま。 */
+  .pc-left{display:none;}
   @media (min-width:1100px){
-    /* ロゴを優先して左パネルを広めにするため、LPは画面の真ん中から
-       少し右にズレる。固定ボタン(.float-cta)はビューポート中央基準の
-       ままなので、この構成では両者が完全には揃わない点は承知の上。 */
-    body{display:flex;justify-content:center;align-items:flex-start;min-height:100vh;}
+    body{
+      display:flex;justify-content:flex-start;align-items:flex-start;min-height:100vh;
+      background:#63c3fb;
+    }
+    body::before{display:none;}
 
     .pc-left{
       display:flex;align-items:center;justify-content:center;
-      flex:1 1 auto;min-width:260px;
+      flex:1 1 auto;min-width:320px;
       position:sticky;top:0;height:100vh;box-sizing:border-box;
       overflow:hidden;
-      background-color:#f2f5f7;
-      /* うっすらした粒状のテクスチャだけ重ねる */
-      background-image:radial-gradient(rgba(0,0,0,.05) 1px, transparent 1.4px);
-      background-size:14px 14px;
+      padding:40px 32px;
     }
-    /* バイクのシルエット画像を右下に大きく薄く敷く。
-       img/bike-silhouette.png を置くと自動で表示される
-       （透過PNG推奨。ファイルが無ければ何も表示されないだけで崩れない）。 */
-    .pc-left::before{
-      content:"";position:absolute;inset:0;z-index:0;
-      background-image:url(../img/bike-silhouette.png);
-      background-size:90% auto;
-      background-position:right bottom;
-      background-repeat:no-repeat;
-      opacity:.3;
+    .pc-left-inner{
+      position:relative;z-index:1;
+      width:100%;max-width:620px;text-align:center;
     }
-    .pc-left-inner{position:relative;z-index:1;}
-    .pc-left-inner{width:100%;text-align:center;padding:20px;box-sizing:border-box;}
-    .pc-left-logo{display:block;width:min(34vw, 700px);height:auto;margin:0 auto 24px;}
-    .pc-left-tagline{font-size:17px;font-weight:800;color:var(--black);line-height:1.9;}
+    /* 白カード：角丸＋上辺に黄色のアクセントライン（サイト内の promise-card と同じ作法） */
+    .pc-left-card{
+      position:relative;
+      background:#fff;border-radius:22px;
+      border-top:8px solid var(--accent);
+      box-shadow:0 14px 44px rgba(0,0,0,.2);
+      padding:34px 46px 38px;
+    }
+    .pc-left-kicker{
+      display:inline-block;
+      font-size:14px;font-weight:900;color:#fff;letter-spacing:.14em;
+      background:var(--blue);border-radius:999px;padding:6px 18px;
+      margin:0 0 18px;
+    }
+    .pc-left-logo{display:block;width:min(24vw, 360px);height:auto;margin:0 auto 14px;}
+    .pc-left-lead{font-size:14px;font-weight:700;color:#444;line-height:1.8;margin:0 0 26px;}
+    .pc-left-lead strong{color:var(--blue-dark);}
+    .pc-left-tagline{display:none;}
 
-    .lp-main{flex:none;}
-
-    .pc-right{
-      display:block;flex:1 1 auto;min-width:260px;
-      position:sticky;top:0;height:100vh;box-sizing:border-box;
+    /* 目次：2列。左に青い番号、右に矢印 */
+    .pc-toc{
+      display:grid;grid-template-columns:1fr 1fr;column-gap:26px;row-gap:2px;
+      text-align:left;margin:0 0 28px;
+      counter-reset:toc;
     }
-    .pc-right-inner{
-      max-width:280px;margin:40px auto 0;
-      background:#fff;border-radius:var(--radius);
-      box-shadow:0 4px 20px rgba(0,0,0,.08);
-      padding:20px;
-    }
-    .pc-toc{display:flex;flex-direction:column;}
     .pc-toc a{
-      display:block;padding:12px 4px;font-weight:700;font-size:14px;
+      position:relative;display:block;
+      padding:11px 24px 11px 34px;font-weight:800;font-size:15px;
       color:var(--black);text-decoration:none;
-      border-bottom:1px solid var(--gray-300);
+      border-bottom:1px dashed var(--gray-300);
+      counter-increment:toc;
     }
-    .pc-toc a:hover{color:var(--blue);}
-    .pc-right-cta{display:block;margin-top:16px;}
-    .pc-right-cta img{display:block;width:100%;height:auto;}
+    .pc-toc a::before{
+      content:counter(toc, decimal-leading-zero);
+      position:absolute;left:0;top:50%;transform:translateY(-50%);
+      font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+      font-size:13px;font-weight:900;color:var(--blue);letter-spacing:.02em;
+    }
+    .pc-toc a::after{
+      content:"";position:absolute;right:8px;top:50%;
+      width:7px;height:7px;
+      border-right:2px solid var(--orange);border-bottom:2px solid var(--orange);
+      transform:translateY(-50%) rotate(-45deg);
+    }
+    .pc-toc a:hover{color:var(--blue);border-bottom-color:var(--blue);}
+    .pc-left-cta{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      min-width:320px;padding:16px 30px;border-radius:999px;
+      background:var(--orange);color:#fff;font-weight:900;font-size:17px;
+      text-decoration:none;border:none;cursor:pointer;font-family:inherit;
+      box-shadow:0 6px 0 var(--orange-dark), 0 10px 18px rgba(0,0,0,.18);
+    }
+    .pc-left-cta:active{transform:translateY(4px);box-shadow:0 2px 0 var(--orange-dark);}
+    .pc-left-tel{
+      display:flex;flex-direction:column;align-items:center;gap:4px;
+      margin-top:18px;text-decoration:none;
+    }
+    .pc-left-tel img{display:block;width:min(70%, 300px);height:auto;}
+    .pc-left-tel span{font-size:12px;font-weight:800;color:var(--black);letter-spacing:.04em;}
+    .pc-left-copy{margin:24px 0 0;font-size:12px;font-weight:700;color:#fff;letter-spacing:.02em;}
 
-    /* LPが画面中央からズレているため、ビューポート中央基準の固定ボタンとは
+    /* LPは右寄せ。右端にだけ少し余白を残す */
+    .lp-main{flex:none;margin-right:100px;}
+
+    /* LPが画面中央から外れているため、ビューポート中央基準の固定ボタンとは
        位置が合わない。固定ボタン自体のCSSは変えず、PC幅でだけ非表示にする。
        ※このメディアクエリはファイル前方にあり、後方の無条件の
          .float-cta 定義に上書きされてしまうため !important で確実に効かせる。 */
     .float-cta{display:none !important;}
   }
-  /* PCの広い画面で左右に見える斜めの光の帯（takaone.jp風の演出） */
+  /* スマホ〜タブレット幅で左右に見える斜めの光の帯（takaone.jp風の演出） */
   body::before{
     content:"";
     position:fixed;z-index:0;pointer-events:none;
@@ -328,6 +372,15 @@
     text-wrap:balance;
     word-break:auto-phrase;
   }
+  /* セクション大見出しは全部コーポレート・ロゴに統一 */
+  h2.h-title,
+  .style-select-title,
+  .why-title,
+  .flow-title,
+  .sold-title,
+  .quiz-lead-text{
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+  }
   .note{font-size:var(--fs-2xs);color:var(--gray-500);}
 
   /* ---------- ヘッダー ---------- */
@@ -356,7 +409,7 @@
   /* このLPがバイク買取であることを示す小さなラベル */
   .logo-sub{
     flex:none;
-    background:var(--navy);color:#fff;
+    background:var(--blue);color:#fff;
     font-size:clamp(8.5px, 2.44vw, 11.7px);font-weight:800;line-height:1.2;
     padding:3px 6px;border-radius:4px;
     letter-spacing:.02em;text-align:center;
@@ -380,21 +433,23 @@
      3項目ミニ査定は独立セクションへ切り出したので、
      以前ここにあった余白確保用の padding-bottom は不要になった。 */
   .hero{
-    background:var(--sky);color:#fff;
+    background:#fff;color:#fff;
   }
   /* キービジュアルは切り抜かず全体を見せる。
      文字が焼き込まれているため object-fit:cover でトリミングすると欠ける。
-     aspect-ratio で画像本来の比率(960:1219)を保持する。 */
+     aspect-ratio で画像本来の比率(960:1219)を保持する。
+     背景を白にしているのは、画像下端の矢印の切れ込み部分が透過になっており、
+     そこから下の白いセクションと自然につながって見えるようにするため。 */
   .hero-photo{
     position:relative;
-    aspect-ratio:960 / 1081;
-    background:var(--sky);   /* 読み込み前のちらつき防止 */
+    aspect-ratio:1180 / 1461;
+    background:#fff;
     overflow:hidden;
   }
   .hero-photo > .hero-key{
     display:block;
     width:100%;height:100%;
-    object-fit:contain;
+    object-fit:cover;
   }
   .hero-photo-note{
     position:absolute;top:50%;left:20px;right:20px;transform:translateY(-50%);z-index:2;
@@ -403,68 +458,23 @@
   }
   .hero-photo-note .icon{width:22px;height:22px;}
 
-  /* ---------- キービジュアル直下の訴求ブロック（アセット8を再現） ----------
-     色はアセット8から抽出した実測値:
-       地色 #191919 ／ 強調 #f4e100 ／ 本文 #ffffff              */
-  .hero-points{
-    background:#191919;color:#fff;
-    padding:calc(var(--sect-y) * .58) 0 calc(var(--sect-y) * .64);
-  }
-  /* 「ティーバイティーなら」の吹き出し。
-     下辺がV字に切れ込む形は罫線では作れないため、枠線だけSVGで描き、
-     文字はHTMLのまま重ねている（検索・読み上げ・文言修正に対応するため）。
-     viewBoxと同じ縦横比をCSSで固定しているので線幅もV字も歪まない。 */
-  .hp-label{
-    position:relative;
-    width:clamp(155px, 46.2vw, 222px);
-    aspect-ratio:180 / 42;
-    margin-bottom:calc(var(--gap-card) * .95);
-    max-height:52px;
-  }
-  .hp-label-frame{
-    position:absolute;inset:0;
-    width:100%;height:100%;
-  }
-  /* 枠(42)のうち上の28がコピー領域、下の14がV字の吹き出し部分 */
-  .hp-label span{
-    position:absolute;left:0;right:0;top:0;height:66.7%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:clamp(11.6px, 3.46vw, 16.6px);
-    font-weight:800;letter-spacing:.02em;white-space:nowrap;
-  }
-
-  .hp-list{list-style:none;margin:0 0 var(--gap-card);padding:0;}
-  .hp-list li{
-    display:flex;align-items:flex-start;gap:.55em;
-    font-size:clamp(13.2px, 4.23vw, 20.3px);
-    font-weight:800;line-height:1.5;
-    margin-bottom:.7em;
-  }
-  .hp-list li:last-child{margin-bottom:0;}
-  .hp-check{
-    flex:none;width:1.33em;height:1.33em;margin-top:.1em;
-    fill:none;stroke:#f4e100;stroke-width:3.2;
-    stroke-linecap:round;stroke-linejoin:round;
-  }
-  .hp-list em{color:#f4e100;font-style:normal;}
-
-  .hp-cta{margin-top:2px;}
-
 
   /* ---------- 3項目ミニ査定：白背景の独立セクション ---------- */
-  .quiz-section{background:#fff;}
+  .quiz-section{background:#fff;padding-top:calc(var(--sect-y) * .35);}
 
-  /* 見出しロゴ（画像2枚重ね）。question_2/question_3 は同じキャンバスサイズなので
-     position:absolute;inset:0 で重ねるだけでピクセル単位に揃う。 */
-  .quiz-lead-wrap{
-    position:relative;
-    max-width:420px;margin:0 auto 14px;
+  /* 見出しは文字組み。「3」だけスクロールで弾みながらポンと現れる */
+  .quiz-lead-text{
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    text-align:center;font-weight:900;color:var(--blue);
+    font-size:clamp(32px, 10.4vw, 44px);
+    line-height:1.35;margin:0 0 14px;
   }
-  .quiz-lead-wrap img{display:block;width:100%;height:auto;}
-  .quiz-lead-3{position:absolute;inset:0;}
-  /* 「3」だけスクロールで弾みながらポンと現れる */
-  .quiz-lead-3.punch-anim{opacity:0;transform:scale(.25) rotate(-20deg);}
-  .quiz-lead-3.punch-anim.is-in{
+  .quiz-lead-num{
+    display:inline-block;color:var(--orange);
+    font-size:1.3em;margin:0 .05em;
+  }
+  .quiz-lead-num.punch-anim{opacity:0;transform:scale(.25) rotate(-20deg);}
+  .quiz-lead-num.punch-anim.is-in{
     opacity:1;transform:scale(1) rotate(0deg);
     transition:opacity .25s ease-out, transform .6s cubic-bezier(.24,1.7,.4,1);
   }
@@ -486,9 +496,17 @@
 
   /* 枠内を色付ける水色パネル。STYLEセクションの出張カードと同系色で揃える */
   .quiz-panel{
+    position:relative;
     background:#f3faff;border:2px solid var(--blue);
-    border-radius:18px;padding:22px 18px;
+    border-radius:18px;padding:0 18px 22px;
     box-shadow:0 10px 24px rgba(45,176,255,.18);
+    overflow:hidden;
+  }
+  .quiz-panel-head{
+    background:var(--blue);color:#fff;text-align:center;
+    font-weight:900;line-height:1.4;
+    font-size:clamp(20px, 6.4vw, 26px);
+    margin:0 -18px 18px;padding:16px 10px;
   }
   /* ページ各所のCTAからスクロールで到着したときに、ここだと分かるよう一瞬光らせる */
   @keyframes quizPanelPulse{
@@ -511,230 +529,325 @@
     padding:10px 12px;font-size:12.5px;font-weight:700;
     box-shadow:0 2px 6px rgba(0,0,0,.06);
   }
-  .quiz-field-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-  .quiz-field-num{
-    flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;
-    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;
+  .quiz-field-row{
+    display:flex;align-items:center;gap:0;margin-bottom:12px;
+    background:#fff;border:1.5px solid var(--blue);border-radius:12px;
+    overflow:hidden;position:relative;
+  }
+  .quiz-field-label{
+    flex:none;width:78px;box-sizing:border-box;
+    background:#eaf6ff;color:var(--blue-dark);
+    font-weight:800;font-size:var(--fs-sm);
+    padding:13px 10px;white-space:nowrap;text-align:center;
+    border-right:1.5px solid var(--blue);
   }
   .quiz-panel select, .quiz-panel input[type="text"]{
-    flex:1;width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--gray-300);
-    font-size:16px;background:#fff;font-family:inherit;
+    flex:1;width:100%;min-width:0;padding:13px 14px;border:none;box-sizing:border-box;
+    font-size:15px;background:#fff;font-family:inherit;color:var(--black);
+    -webkit-appearance:none;appearance:none;border-radius:0;
   }
-
-  /* ---------- 悩みチェック ---------- */
-  .check-grid{display:flex;flex-direction:column;gap:var(--gap-card);}
-  .check-card{
-    display:flex;align-items:center;gap:12px;
-    background:#fff;border:1px solid var(--gray-300);
-    border-radius:var(--radius);
-    padding:14px;
+  .quiz-panel select{
+    padding-right:34px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338a1db' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 12px center;background-size:16px;
   }
-  .check-photo{
-    flex:none;border-radius:12px;
-    width:clamp(64px, 20vw, 92px);
-    height:clamp(64px, 20vw, 92px);
+  .quiz-panel select:focus, .quiz-panel input[type="text"]:focus{outline:none;}
+  /* ---------- 悩みチェック：色帯ボーダー＋シンプルなOKピル ---------- */
+  .check-section{background:#eaf5fd;}
+  .check-catch{
+    text-align:center;font-weight:900;color:var(--black);
+    line-height:1.6;
+    margin:0 0 var(--gap-card);
   }
-  .check-card > div:not([class]){min-width:0;}
-  .check-card h3{margin:0 0 5px;word-break:auto-phrase;font-size:var(--fs-lg);font-weight:800;display:flex;align-items:center;gap:6px;}
-  .check-card h3 .icon{color:var(--blue);width:16px;height:16px;}
-  .check-card p{margin:0;font-size:var(--fs-sm);color:#555;line-height:1.55;}
-  /* ハンコ風の丸バッジ。画面に入った瞬間にポンと押される動き。 */
-  .check-ok{
-    flex:none;margin-left:auto;
-    width:clamp(50px, 14.5vw, 66px);
-    height:clamp(50px, 14.5vw, 66px);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    background:var(--accent);color:var(--black);
-    font-size:clamp(11.5px, 3.3vw, 14.5px);font-weight:900;line-height:1.15;
-    border-radius:50%;border:2.5px solid var(--black);
-    text-align:center;
-    transform:rotate(-8deg);
+  .check-catch-big{
+    display:block;white-space:nowrap;
+    font-size:clamp(22px, 7.6vw, 30px);
   }
-  /* 初期状態の非表示はJSが .check-ok-anim を付けたときだけ効かせる。
-     JSが動かない環境ではバッジが消えないようにするため。 */
-  /* transition は「見せる側」にだけ付ける。
-     隠す側に付けると、JSがクラスを足した瞬間に
-     表示→非表示のアニメーションが走ってしまう。 */
-  .check-ok-anim{
-    opacity:0;
-    transform:rotate(-30deg) scale(.3);
+  .check-catch-sub{
+    display:block;
+    font-size:var(--fs-lg);
   }
-  .check-ok-anim.is-in{
-    opacity:1;
-    transform:rotate(-8deg) scale(1);
-    transition:opacity .25s ease, transform .5s cubic-bezier(.34,1.56,.64,1);
+  .check-question-block{
+    display:flex;flex-direction:column;gap:22px;
+    text-align:left;text-wrap:initial;
   }
-  /* 動きを減らす設定の端末では即表示 */
-  @media (prefers-reduced-motion:reduce){
-    .check-ok-anim{opacity:1;transform:rotate(-8deg);transition:none;}
+  .check-question-row{
+    display:flex;align-items:center;gap:10px;
   }
-  .check-lead{
-    text-align:center;font-weight:700;margin:26px 0 14px;
-    /* 21文字を1行に収めるため幅に比例させる */
-    font-size:clamp(13px, 4.0vw, 18px);
-    white-space:nowrap;
+  .check-question-row-left{justify-content:flex-start;}
+  .check-question-row-right{justify-content:flex-end;}
+  .check-question-text{text-align:left;}
+  .check-question-face{
+    flex:none;width:56px;height:auto;
   }
-
-  /* ---------- 査定スタイル：ポスター風（アセット30準拠） ----------
-     白カード2枚を並べる従来案をやめ、水色→LINEグリーンの
-     一続きのポスターに変更。見出しは黒帯＋白文字、
-     本文の強調は黄色、写真は各色ブロックに直接重ねる。 */
-  .style-poster{position:relative;overflow:hidden;background:var(--sky);}
-  .style-poster-head{padding:calc(var(--sect-y) * .9) 0 var(--gap-card);text-align:center;}
-  .style-poster-title{
-    display:inline-block;
-    background:var(--black);color:#fff;
-    font-size:var(--fs-xl);font-weight:900;
-    padding:10px 38px;border-radius:0;
-    margin:6px 0 0;line-height:1.4;
-  }
-
-  .style-poster-blue{background:var(--sky);padding:0 0 calc(var(--gap-block) * 1.4);}
-  .style-poster-green{
-    background:var(--line-green);
-    padding:calc(var(--gap-block) * 1.6) 0 calc(var(--sect-y) * .4);
+  .check-question-text{
     position:relative;
-    /* 左が大きく低く、右が高い、より急な斜めの継ぎ目。
-       固定pxだと画面幅が変わったときに写真の位置とズレるため、
-       画面幅に比例して480pxでキャップするmin()/max()にする。 */
-    clip-path:polygon(0 min(130px, 32vw), 100% 0, 100% 100%, 0 100%);
-    margin-top:max(-100px, -24.6vw);
+    background:var(--blue);border:2px solid var(--blue);border-radius:16px;
+    padding:14px 16px;
+    font-size:clamp(20px, 7vw, 28px);font-weight:900;
+    line-height:1.4;color:#fff;
+    box-shadow:0 4px 10px rgba(0,0,0,.12);
+  }
+  /* 吹き出しのしっぽ：顔写真がある側に向ける */
+  .check-question-row-left .check-question-text::before{
+    content:"";position:absolute;top:50%;left:-9px;transform:translateY(-50%);
+    width:0;height:0;
+    border-top:9px solid transparent;border-bottom:9px solid transparent;
+    border-right:10px solid var(--blue);
+  }
+  .check-question-row-right .check-question-text::before{
+    content:"";position:absolute;top:50%;right:-9px;transform:translateY(-50%);
+    width:0;height:0;
+    border-top:9px solid transparent;border-bottom:9px solid transparent;
+    border-left:10px solid var(--blue);
   }
 
-  .style-poster-row{position:relative;min-height:270px;padding-bottom:6px;}
-  .style-poster-row-rev{min-height:340px;}
-  .style-poster-text{
-    position:relative;z-index:2;max-width:60%;color:#fff;
-    box-sizing:border-box;
+  /* ---------- ティーバイティーの約束カード ---------- */
+  .promise-card{
+    background:#fff;border-top:5px solid var(--blue);border-radius:var(--radius);
+    box-shadow:0 8px 20px rgba(0,0,0,.07);
+    padding:26px 20px 22px;
+    margin:var(--gap-block) 0;
+    text-align:center;
   }
-  /* 出張査定側は写真を左・文字を右に入れ替え */
-  .style-poster-row:not(.style-poster-row-rev) .style-poster-text{
-    margin-left:calc(50% + 25px);max-width:48%;padding-top:15px;
+  .promise-title{
+    font-weight:900;color:var(--black);
+    font-size:clamp(21px, 7vw, 28px);line-height:1.45;
+    margin:0 0 18px;
   }
-  .style-poster-row-rev .style-poster-text{
-    margin-left:4%;max-width:72%;padding-top:88px;
+  .promise-title-em{color:var(--blue-dark);}
+  .promise-tags{
+    display:flex;justify-content:center;gap:8px;flex-wrap:wrap;
+    margin:0 0 18px;
   }
-  .style-poster-lead{
-    font-size:var(--fs-md);font-weight:800;margin:0 0 2px;color:var(--black);
+  .promise-tag{
+    background:var(--accent);color:#222;font-weight:900;
+    font-size:var(--fs-sm);padding:8px 16px;border-radius:999px;
+  }
+  .promise-list{
+    list-style:none;margin:0;padding:0;
+    text-align:left;
+    display:inline-flex;flex-direction:column;gap:10px;
+  }
+  .promise-list li{
+    display:flex;align-items:center;gap:10px;
+    font-weight:700;font-size:var(--fs-sm);color:#333;line-height:1.5;
+  }
+  .promise-icon{
+    flex:none;width:28px;height:28px;border-radius:50%;
+    background:#eaf5fd;color:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .promise-icon .icon{width:15px;height:15px;}
+  .check-lead{
+    text-align:center;font-weight:900;color:var(--blue);
+    margin:var(--gap-block) 0 var(--gap-card);
+    font-size:clamp(17px, 5.6vw, 21px);
+    line-height:1.6;
+  }
+  .check-lead-big{
+    display:inline-block;margin-top:4px;
+    font-size:clamp(30px, 10.5vw, 40px);
+  }
+  .check-photo-grid{display:flex;gap:8px;margin-bottom:var(--gap-card);}
+  .check-photo-card{
+    position:relative;flex:1;min-width:0;border-radius:10px;overflow:hidden;
+    aspect-ratio:3 / 5;
+    box-shadow:0 6px 14px rgba(0,0,0,.15);
+  }
+  .check-photo-card img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    filter:brightness(.7);
+  }
+  .check-photo-overlay{
+    position:absolute;inset:0;z-index:1;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;
+    padding:10px 8px;
+  }
+  .check-photo-overlay h3{
+    margin:0 0 6px;color:var(--accent);
+    font-size:clamp(13px, 4.6vw, 17px);font-weight:900;line-height:1.3;
+    text-shadow:0 2px 6px rgba(0,0,0,.6);
+  }
+  .check-photo-overlay p{
+    margin:0;color:#fff;font-weight:700;
+    font-size:var(--fs-2xs);line-height:1.6;
+    text-shadow:0 2px 6px rgba(0,0,0,.7);
+  }
+
+  /* ---------- MAKER：対象メーカー・排気量一覧 ---------- */
+  .maker-section{background:#fff;}
+  .maker-title{display:block;}
+  .maker-title-sub{
+    display:block;font-weight:800;color:var(--black);
+    font-size:var(--fs-lg);margin-bottom:2px;
+  }
+  .maker-title-main{
+    position:relative;display:inline-block;
+    font-size:calc(var(--fs-2xl) * 1.3);font-weight:900;color:var(--black);
+  }
+  .maker-lead{
+    text-align:center;color:#555;font-size:var(--fs-sm);line-height:1.85;
+    margin:0 0 var(--gap-block);
+  }
+  .maker-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+    margin-bottom:var(--gap-block);
+  }
+  .maker-card{
+    position:relative;
+    background:#eaf5fd;border-radius:20px;
+    padding:20px 12px 14px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .maker-card-wide{grid-column:1 / -1;}
+  .maker-badge{
+    position:absolute;top:0;left:14px;
+    display:flex;align-items:flex-start;justify-content:center;
+    width:42px;height:48px;padding-top:8px;
+    background:var(--accent);color:#222;
+    font-weight:900;font-size:19px;line-height:1;
+    clip-path:polygon(0 0, 100% 0, 100% 100%, 50% 88%, 0 100%);
+  }
+  .maker-tag{
+    display:block;text-align:right;
+    font-weight:900;color:var(--blue);
+    font-size:calc(var(--fs-lg) * 1.15);line-height:1.3;margin:0 8px 6px 0;
+  }
+  .maker-tag small{display:block;font-weight:800;font-size:.62em;color:var(--blue);margin-top:2px;}
+  .maker-photo{
+    aspect-ratio:4 / 3;border-radius:8px;overflow:hidden;
+    margin:0 0 10px;background:#eaf5fd;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .maker-photo img{width:100%;height:100%;object-fit:contain;display:block;}
+  .maker-examples{
+    margin:0;font-size:var(--fs-2xs);color:#888;line-height:1.6;font-weight:700;
+    background:#fff;border:1px solid #ccc;border-radius:6px;
+    padding:8px 6px;
+  }
+
+  /* ---------- 査定スタイル：参考LP準拠の見出しブロック＋白背景カード2枚 ---------- */
+  .style-select{background:#fff;text-align:center;padding-bottom:var(--gap-block);}
+  .style-select .hl-orange{color:var(--blue);}
+  .style-select-title{
+    font-size:clamp(30px, 9.6vw, 42px);font-weight:900;line-height:1.4;
+    margin:0 0 var(--gap-card);color:var(--black);
+  }
+  .style-select-note{
+    font-size:var(--fs-md);font-weight:700;color:#333;line-height:1.85;
+    margin:0 0 var(--gap-card);
+  }
+  .style-pill-row{
+    display:flex;justify-content:center;gap:10px;margin:var(--gap-card) 0;
+    flex-wrap:wrap;
+  }
+  .style-pill{
+    display:inline-flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:clamp(20px, 6.6vw, 28px);color:#fff;
+    padding:14px 20px;border-radius:10px;
+    box-shadow:0 4px 0 rgba(0,0,0,.15);
+    flex:1 1 0;min-width:0;
+  }
+  .style-pill em{font-style:normal;color:var(--accent);margin-left:.05em;}
+  .style-pill-blue{background:var(--blue);}
+  .style-pill-green{background:var(--line-green);}
+  .style-select-desc{
+    font-size:var(--fs-md);font-weight:700;color:var(--black);line-height:1.9;
+    margin:0 0 var(--gap-card);
+  }
+  /* 薄い青の帯。見出し〜案内文をまとめて内包し、下端だけ中央がとがったV字に切れ込む */
+  .style-select-banner{
+    position:relative;
+    background:#e8f4fc;color:var(--black);
+    padding:calc(var(--gap-block) * .15) var(--gutter) calc(var(--gap-block) * 1.6);
+    margin:0 calc(var(--gutter) * -1) var(--gap-block);
+    clip-path:polygon(0 0, 100% 0, 100% calc(100% - 28px), 50% 100%, 0 calc(100% - 28px));
+  }
+  /* 出張／LINE査定：白背景＋色枠のカード型に変更。出張査定はオレンジ系でCTAと揃える */
+  .style-row-list{display:flex;flex-direction:column;gap:var(--gap-card);text-align:left;}
+  .style-row{
+    background:#fff;border-radius:var(--radius);
+    border:2px solid var(--gray-300);
+    overflow:hidden;
+  }
+  .style-row-blue{border-color:var(--blue);}
+  .style-row-green{border-color:var(--line-green);}
+  .style-row-head{
+    font-size:var(--fs-md);font-weight:900;color:#fff;
+    padding:8px 16px;
+  }
+  .style-row-head-blue{background:var(--blue);}
+  .style-row-head-green{background:var(--line-green);}
+  .style-row-body{display:flex;align-items:flex-start;gap:12px;padding:18px 16px 20px;}
+  .style-row-text{flex:1.6;min-width:0;}
+  .style-row-lead{
+    font-weight:900;line-height:1.35;margin:0 0 12px;
+    font-size:clamp(19px, 5.8vw, 24px);
     white-space:nowrap;
   }
-  .style-poster-osusume{
-    display:inline-flex;align-items:center;
-    background:#fff;color:var(--sky);
-    font-size:var(--fs-2xs);font-weight:800;
-    padding:2px 7px;border-radius:999px;
-    border:none;white-space:nowrap;
-    margin-left:3px;vertical-align:2px;
+  .style-row-blue .style-row-lead{color:var(--blue-dark);}
+  .style-row-green .style-row-lead{color:#05a548;}
+  .style-row-copy{font-size:var(--fs-sm);color:var(--black);font-weight:700;line-height:1.85;margin:0;}
+  .style-row-photo{
+    position:relative;flex:1;max-width:36%;margin-top:44px;
   }
-  .style-poster-big{
-    color:#ffe14d;font-weight:900;
-    font-size:clamp(26px, 8.6vw, 38px);
-    line-height:1.15;margin:2px 0 12px;
-    text-shadow:1px 1px 0 rgba(0,0,0,.18);
-  }
-  .style-poster-big-1line{
-    font-size:clamp(26px, 8.6vw, 38px);white-space:nowrap;
-  }
-  .style-poster-list{
-    list-style:none;margin:0;padding:0;
-    color:#fff;font-weight:800;
-    font-size:clamp(11px, 3.8vw, 13.5px);
-    margin-left:-5px;
-  }
-  .style-poster-list li{
-    position:relative;padding-left:1.1em;margin-bottom:.55em;line-height:1.5;
-  }
-  .style-poster-list li::before{content:"・";position:absolute;left:0;}
+  .style-row-green .style-row-photo{margin-top:0;max-width:30%;}
+  .style-row-photo img{display:block;width:100%;height:auto;border-radius:12px;}
 
-  .style-poster-photo{
-    position:absolute;right:calc(var(--gutter) * -1);bottom:0;
-    z-index:1;pointer-events:none;user-select:none;
+  /* REASONセクション：青地。上端中央がとがったV字に切れ込み、直前セクションとの継ぎ目を演出 */
+  .reason-section{
+    position:relative;
+    background:#2cadfa;color:#fff;
+    padding-top:calc(var(--sect-y) * .6 + 26px);
+    padding-bottom:calc(var(--sect-y) * 1.5);
+    margin-top:26px;
+    clip-path:polygon(0 0, 50% 26px, 100% 0, 100% 100%, 0 100%);
   }
-  /* 斜めの継ぎ目に沿うよう、写真の下側を同じ角度で切り落とす */
-  .style-poster-blue .style-poster-photo{
-    width:54%;bottom:max(-78px, -19vw);left:calc(var(--gutter) * -0.3);right:auto;
-    clip-path:polygon(0 0, 100% 0, 100% 65%, 0 100%);
-    transform:rotate(0deg);
-  }
-  .style-poster-blue .style-poster-photo img{display:block;width:100%;height:auto;}
-  .style-poster-green .style-poster-photo{width:26%;bottom:25px;right:calc(var(--gutter) * 0.6);}
-  .style-poster-green .style-poster-photo img{display:block;width:100%;height:auto;}
-
-  /* 出張査定=A／LINE査定=B の大きな透かし文字。最背面(z-index:0)に敷いて
-     文字(.style-poster-text, z-index:2)の下に潜り込ませる */
-  .style-poster-letter{
-    position:absolute;z-index:0;
-    font-size:clamp(120px, 40vw, 200px);font-weight:900;
-    color:rgba(255,255,255,.35);
-    line-height:1;pointer-events:none;
-  }
-  .style-poster-blue .style-poster-letter{top:-10px;left:40px;right:auto;}
-  .style-poster-green .style-poster-letter{top:40px;left:auto;right:90px;}
-
-  /* 「査定させていただきます」の吹き出し。写真の右上に重ねる（枠内に収める） */
-  .style-poster-bubble{
-    /* 画像コンテナに対する%指定にして、画面幅が変わっても写真と重ならないようにする */
-    position:absolute;top:calc(2% + 15px);left:calc(50% + 15px);z-index:2;
-    max-width:100px;box-sizing:border-box;
-    background:#fff;color:var(--black);
-    font-size:var(--fs-2xs);font-weight:800;line-height:1.35;
-    padding:7px 8px;border-radius:14px;border-bottom-left-radius:2px;
-    box-shadow:0 4px 10px rgba(0,0,0,.15);
-    white-space:normal;text-align:center;word-break:keep-all;
+  .reason-section .h-title{color:#fff;margin-bottom:calc(var(--gap-title) * .5);}
+  .reason-title-big{display:inline-block;margin-top:4px;font-size:1.5em;color:#ffff00;}
+  .reason-lead-text{
+    text-align:center;color:#222;font-weight:700;font-size:var(--fs-sm);
+    line-height:1.8;margin:0 0 var(--gap-block);
   }
 
-  /* ---------- REASONブロック ---------- */
-  .reason-block{margin-bottom:var(--gap-block);}
-  .reason-block:last-child{margin-bottom:0;}
-  .reason-tag{
-    display:inline-flex;align-items:center;gap:6px;
-    background:var(--black);color:var(--accent);
-    font-weight:900;font-size:var(--fs-xs);
-    padding:5px 13px;border-radius:999px;margin-bottom:11px;
+  /* ---------- REASON：写真の角に大きな縁取り数字を重ねるカード ---------- */
+  .reason-grid{display:flex;flex-direction:column;gap:var(--gap-card);}
+  .reason-card{
+    position:relative;
+    background:#fff;border:1px solid var(--gray-300);border-radius:0;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
   }
-  .reason-block h3{
+  .reason-photo{aspect-ratio:3 / 2;border-radius:0;margin:0;position:relative;}
+  .reason-num{
+    color:var(--blue);font-weight:900;margin-right:6px;
+    font-size:1.3em;
+  }
+  .reason-card-body{padding:22px 18px 20px;}
+  .reason-card-body h3{
+    color:var(--black);
     font-size:calc(var(--fs-lg) + 1px);
-    font-weight:900;margin:0 0 8px;word-break:auto-phrase;
+    font-weight:900;margin:0 0 8px;word-break:auto-phrase;line-height:1.4;
+    padding-left:2em;text-indent:-2em;
   }
-  /* 見出し内の強調はコーポレートのオレンジ。改行して少し大きく見せる */
-  .hl-orange{color:var(--orange);display:block;font-size:1.4em;margin-top:2px;}
-  .hl-orange-sm{font-size:1.25em;}
-  .reason-photo{aspect-ratio:3 / 2;border-radius:var(--radius);margin-bottom:10px;}
-  .reason-block p{font-size:var(--fs-md);color:#555;margin:0;line-height:1.8;}
-  /* 蛍光ペンで線を引いたような黄色のベース。
-     背景を横幅0から100%へ伸ばすことで「引かれる」動きを作る。 */
-  .reason-block mark{
-    /* mark はブラウザ標準で background-color:yellow が付く。
-       消しておかないと、background-size で伸ばす演出が効かず
-       最初から塗られたままになる。 */
-    background-color:transparent;
+  /* 見出し内の強調はコーポレートのオレンジ＋黄色マーカー */
+  .hl-orange{color:var(--orange);}
+  .hl-green{color:var(--line-green);}
+  .reason-card-body .hl-orange{
     background-image:linear-gradient(#ffe680, #ffe680);
-    background-repeat:no-repeat;
-    background-position:0 100%;
-    background-size:100% 100%;      /* JSが動かない環境では最初から塗られた状態 */
-    color:inherit;
-    padding:1px 0;
-    font-weight:700;
-    border-radius:2px;
-    /* 複数行に折り返したとき、行ごとに背景を描く。
-       既定(slice)だと2行目以降に線が引かれない。 */
-    -webkit-box-decoration-break:clone;
-    box-decoration-break:clone;
+    background-repeat:no-repeat;background-position:0 88%;background-size:100% 45%;
+    color:var(--black);padding:0 1px;
+    -webkit-box-decoration-break:clone;box-decoration-break:clone;
   }
-  /* JSが付けたときだけ「引かれる前」の状態にする */
-  /* ベースの .reason-block mark（詳細度0-1-1）に負けないよう、
-     こちらも要素セレクタを含めて詳細度を揃える。
-     クラスだけだと後から書いても上書きできない。 */
-  .reason-block mark.mark-anim{
-    background-size:0 100%;
+  .reason-card-body .hl-orange.marker-anim{
+    background-size:0% 45%;
+    transition:background-size .7s ease-out;
   }
-  .reason-block mark.mark-anim.is-drawn{
-    background-size:100% 100%;
-    transition:background-size .85s cubic-bezier(.22,.61,.36,1);
-  }
-  @media (prefers-reduced-motion:reduce){
-    .reason-block mark.mark-anim{background-size:100% 100%;transition:none;}
-  }
+  .reason-card-body .hl-orange.marker-anim.is-in{background-size:100% 45%;}
+  .reason-card-body p{font-size:var(--fs-sm);color:#555;margin:0;line-height:1.8;}
 
   /* ---------- WHY：買取実績写真を敷いた訴求ブロック ---------- */
   .section.why{
@@ -754,30 +867,48 @@
   .section.why .eyebrow{color:#7fd4ff;}
 
   .why-title{
-    font-size:var(--fs-xl);font-weight:900;
-    margin:0 0 10px;line-height:1.4;
+    font-size:var(--fs-2xl);font-weight:900;
+    margin:0 0 26px;line-height:1.4;
     text-shadow:0 2px 8px rgba(0,0,0,.6);
   }
-  /* 「０円査定致しません！」＝この節の主役。画面に入るとバンと出る */
+  /* 「価値が残っている場合があるんです！」＝この節の主役。画面に入るとバンと出る */
   .why-punch{
-    font-size:clamp(25px, 7.9vw, 34px);
+    font-size:clamp(27px, 9vw, 43px);
     white-space:nowrap;
     font-weight:900;color:var(--accent);
-    margin:0 0 var(--gap-card);line-height:1.3;
+    margin:0 0 calc(var(--gap-card) + 14px);line-height:1.35;
     text-shadow:0 3px 0 rgba(0,0,0,.45), 0 6px 18px rgba(0,0,0,.5);
   }
-  .why-punch-small{font-size:0.55em;margin:0 0.18em 0 0.08em;display:inline-block;}
   .why-lead{
     font-size:var(--fs-md);font-weight:700;
     margin:0 0 var(--gap-card);line-height:1.9;
     text-shadow:0 2px 6px rgba(0,0,0,.6);
   }
+  .why-lead-tight{margin-bottom:0;text-decoration:underline;text-underline-offset:3px;}
   .why-close{
     font-size:var(--fs-lg);font-weight:900;
     margin:0;line-height:1.7;
     text-shadow:0 2px 6px rgba(0,0,0,.6);
   }
   .hl-yellow{color:var(--accent);}
+
+  /* WHY：状態別アイコン一覧（長期不動・事故キズ・エンジン不良・走行不能・車検切れ） */
+  .why-status-grid{
+    display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;
+    margin:0 0 var(--gap-card);text-align:left;
+  }
+  .why-status-card{
+    display:flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);
+    border-radius:10px;padding:10px 12px;
+    font-size:var(--fs-xs);font-weight:800;color:#fff;
+  }
+  .why-status-icon{
+    flex:none;width:30px;height:30px;border-radius:50%;
+    background:var(--accent);color:var(--black);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .why-status-icon .icon{width:16px;height:16px;}
 
   /* 出現前の状態。JSが付けるので、JS無効時は最初から表示される */
   .punch-anim{
@@ -794,55 +925,82 @@
     .punch-anim{opacity:1;transform:none;transition:none;}
   }
 
-  /* ---------- FLOW：3ステップ ---------- */
-  .flow-list{display:flex;flex-direction:column;}
-  .flow-card{
-    position:relative;
-    background:#fff;border-radius:14px;
-    padding:20px 18px 22px;
-    text-align:center;
+  /* ---------- スタッフ写真＋大見出しのCTAブロック ---------- */
+  .staff-cta{background:#2cadfa;padding:calc(var(--gap-block) * .6) 0 var(--gap-block);}
+  .staff-cta-inner{position:relative;}
+  .staff-cta-kicker{
+    background:#fff;color:#2cadfa;font-weight:900;
+    font-size:clamp(12px, 4vw, 19px);
+    text-align:center;line-height:1.5;white-space:nowrap;
+    margin:0 0 calc(var(--gap-block) * .8);
+    padding:20px 8px 14px;
+    box-shadow:0 3px 10px rgba(0,0,0,.12);
   }
-  /* カード間の下向き三角。最後のカードには付けない */
-  .flow-card:not(:last-child){margin-bottom:34px;}
-  .flow-card:not(:last-child)::after{
-    content:"";
-    position:absolute;left:50%;bottom:-26px;
-    transform:translateX(-50%);
-    border-left:15px solid transparent;
-    border-right:15px solid transparent;
-    border-top:18px solid var(--orange);
+  .staff-cta-row{display:flex;align-items:flex-end;gap:4px;margin-bottom:10px;}
+  .staff-cta-photo{flex:1.55;min-width:0;margin:0 -30px -18px 0;position:relative;z-index:1;transform:translate(-14px, -40px);}
+  .staff-cta-photo img{display:block;width:100%;height:auto;}
+  .staff-cta-body{flex:1;min-width:0;text-align:center;padding-bottom:20px;position:relative;z-index:2;transform:translateX(-10px);}
+  .staff-cta-headline{
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    color:#fff;font-weight:900;line-height:1.15;
+    font-size:clamp(40px, 14.5vw, 60px);
+    margin:0 0 10px;
+    text-shadow:0 2px 8px rgba(0,0,0,.45);
+    white-space:nowrap;
   }
-  /* 大きな連番。塗りを抜いて線だけにする */
-  .flow-num{
-    position:absolute;top:14px;left:16px;
-    font-size:clamp(36px, 10.5vw, 50px);
-    font-weight:900;line-height:1;
-    color:transparent;
-    -webkit-text-stroke:2px var(--orange);
-    letter-spacing:.02em;
-  }
-  .flow-icon{
+  .staff-cta-em{color:#ffff00;}
+  .staff-cta-logo{display:block;width:100%;max-width:195px;margin:0 auto;height:auto;}
+  .staff-cta-tel{
     display:flex;align-items:center;justify-content:center;
-    height:clamp(86px, 25vw, 118px);
-    margin-bottom:6px;
+    margin-top:20px;color:#fff;
   }
-  /* イラストは縦横比がそれぞれ違うので、高さを揃えて幅は成り行きにする */
-  .flow-icon img{
-    height:100%;
-    width:auto;
-    max-width:100%;
+  .staff-cta-tel-img{display:block;width:auto;height:64px;max-width:100%;}
+  .staff-cta .btn-primary{font-size:clamp(17px, 5.6vw, 22px);padding:18px 20px;margin-top:-20px;}
+  /* 出張査定／LINE査定の2ボタン並び（下部固定バーと同じ見た目） */
+  .staff-cta-btns{display:flex;gap:clamp(6px, 2vw, 8px);margin-top:-20px;position:relative;z-index:2;}
+  .staff-cta .staff-cta-btns .btn{
+    position:relative;flex:1;min-width:0;margin:0;
+    padding:15px clamp(26px, 8vw, 34px) 15px 8px;
+    gap:clamp(4px, 1.5vw, 6px);
+    font-size:clamp(12px, 3.8vw, 15.5px);font-weight:900;
+    white-space:nowrap;line-height:1.3;
   }
-  .flow-card h3{
-    color:var(--orange);
+  .staff-cta-btns .btn .icon{width:18px;height:18px;}
+
+  /* ---------- FLOW：参考LP準拠。青地に白丸アイコン＋STEPバッジの横並び ---------- */
+  .flow-section{background:var(--blue);color:#fff;}
+  .flow-title{
+    text-align:center;font-weight:900;color:#fff;
+    font-size:clamp(24px, 7.6vw, 32px);
+    line-height:1.4;margin:0 0 10px;
+  }
+  .flow-list{display:flex;flex-direction:column;gap:var(--gap-block);margin-top:var(--gap-title);}
+  .flow-row{display:flex;gap:16px;align-items:flex-start;}
+  .flow-circle{
+    flex:none;width:76px;height:76px;border-radius:50%;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+  }
+  .flow-circle img{width:70%;height:70%;object-fit:contain;}
+  .flow-row-body{flex:1;min-width:0;padding-top:4px;}
+  .flow-step{
+    display:inline-block;background:var(--accent);color:var(--black);
+    font-weight:900;font-size:var(--fs-2xs);letter-spacing:.04em;
+    padding:3px 12px;border-radius:999px;margin-bottom:6px;
+  }
+  .flow-row h3{
+    color:#fff;
     font-size:var(--fs-lg);font-weight:900;
-    margin:0 0 8px;
+    margin:0 0 6px;
   }
-  .flow-card p{
-    font-size:var(--fs-sm);color:#444;margin:0;
-    text-align:left;line-height:1.75;
+  .flow-row p{
+    font-size:var(--fs-sm);color:#fff;margin:0;
+    line-height:1.75;
   }
-  .flow-note{font-size:var(--fs-2xs);color:var(--gray-500);}
-  .flow-cta{margin-top:16px;}
+  .flow-small-note{font-size:var(--fs-2xs);opacity:.85;}
+  .flow-cta{margin-top:var(--gap-block);background:#fff;color:var(--blue);box-shadow:0 6px 0 rgba(0,0,0,.15);}
 
   /* ---------- 実績/声(写真タイプ) ---------- */
   .voice-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;}
@@ -869,7 +1027,7 @@
   .faq-item{border-bottom:1px solid var(--gray-300);}
   .faq-q{
     width:100%;text-align:left;background:none;border:none;
-    padding:16px 4px;font-weight:700;font-size:13.5px;
+    padding:16px 4px;font-weight:700;font-size:16px;
     display:flex;justify-content:space-between;align-items:center;gap:10px;
     /* iOS Safariは-webkit-appearanceが残っていると文字色までシステムの
        青を当ててしまうため、色を明示しつつネイティブ見た目をリセットする */
@@ -878,39 +1036,70 @@
   .faq-q .q-mark{color:var(--blue);font-weight:900;flex:none;}
   .faq-a{
     max-height:0;overflow:hidden;transition:max-height .25s ease;
-    font-size:var(--fs-sm);color:#555;padding:0 4px;
+    display:flex;align-items:flex-start;gap:10px;
+    font-size:var(--fs-xs);color:#555;padding:0 4px;
   }
+  .a-mark{flex:none;color:var(--gray-500);font-weight:900;}
+  .faq-a p{margin:0;}
   .faq-item.open .faq-a{max-height:200px;padding-bottom:16px;}
   .faq-toggle-icon{transition:transform .2s ease;flex:none;color:var(--blue);}
   .faq-item.open .faq-toggle-icon{transform:rotate(135deg);}
 
-  /* ---------- 最終CTA（アセット31準拠：黄色地＋吹き出し） ---------- */
+  /* ---------- 最終CTA（背景は青。スタッフの服がアクセントカラーと同化しないよう変更） ---------- */
   .final-cta{
-    background:var(--accent);
-    color:var(--black);text-align:center;
+    background:var(--blue);
+    color:#fff;text-align:center;
   }
-  /* 白い吹き出し。下辺中央から三角のしっぽを出す */
+  /* 吹き出し＋スタッフ写真を横並びに */
+  .final-cta-top{
+    display:flex;align-items:center;gap:10px;
+    margin:0 0 20px;text-align:left;
+  }
+  /* 白い吹き出し。右辺中央から三角のしっぽを出して隣の写真を指す */
   .final-cta-bubble{
     position:relative;
     background:#fff;
     border-radius:18px;
-    padding:18px 20px 22px;
-    margin:0 0 20px;
+    padding:16px 18px;
+    margin:0;
   }
-  .final-cta-bubble::after{
+  .final-cta-right{flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
+  .final-cta-bubble-side{flex:none;min-width:0;padding:12px 14px;}
+  .final-cta-bubble-side::after{
     content:"";
-    position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);
-    border-left:14px solid transparent;border-right:14px solid transparent;
-    border-top:16px solid #fff;
+    position:absolute;top:50%;left:-12px;transform:translateY(-50%);
+    border-top:11px solid transparent;border-bottom:11px solid transparent;
+    border-right:14px solid #fff;
   }
-  .final-cta h2{font-size:21px;font-weight:900;margin:0;color:var(--black);}
-  .final-cta-emphasis{font-size:1.5em;color:var(--orange);}
-  /* 透過PNGなので枠は付けず、黄色地にそのまま乗せる */
+  .final-cta h2{
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-size:16px;font-weight:900;margin:0;color:var(--blue);
+  }
+  .final-cta-emphasis{font-size:1.4em;color:var(--orange);}
+  /* 透過PNGなので枠は付けず、背景にそのまま乗せる */
   .final-cta-photo{
-    display:block;width:100%;height:auto;
-    margin:0 0 var(--gap-card);
+    flex:1;min-width:0;display:block;width:100%;max-width:220px;height:auto;
+    margin:0;
   }
-  .final-cta p{font-size:var(--fs-sm);color:#3c2f00;margin:0 0 22px;font-weight:700;}
+  .final-cta p{font-size:var(--fs-sm);color:#fff;margin:0 0 14px;font-weight:700;line-height:1.7;}
+  .final-cta-sub{font-size:var(--fs-lg);font-weight:900;margin:0;}
+  .final-cta-note{font-size:var(--fs-md);font-weight:900;margin-bottom:22px;}
+  .final-cta-card{
+    background:var(--accent);border-radius:14px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    padding:18px 18px 16px;margin:0 0 22px;text-align:left;
+  }
+  .final-cta-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+  .final-cta-list li{
+    display:flex;align-items:center;gap:10px;
+    font-size:var(--fs-sm);font-weight:700;color:#333;line-height:1.5;
+  }
+  .final-cta-icon{
+    flex:none;width:26px;height:26px;border-radius:50%;
+    background:#eaf5fd;color:var(--blue);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .final-cta-icon .icon{width:15px;height:15px;}
   /* ---------- フッター直前のブランドブロック（公式サイト下部に合わせた構成） ---------- */
   .footer-brand{
     background:#fff;color:var(--black);
@@ -1144,32 +1333,60 @@
        サインボード風実績カードのトーンを参考に追加）
   ========================================================== */
 
-  /* 「え!?こんなバイクまで!?」リアクション */
-  .reaction-strip{background:var(--accent);padding:calc(var(--sect-y) * .56) 0;}
-
-  /* バイク買取あるある漫画。余白なしで画面いっぱいに縦に並べる */
-  .comic-strip{display:block;}
-  .comic-strip img{display:block;width:100%;height:auto;}
-  .reaction-section-img{display:block;width:100%;height:auto;margin:0 0 var(--gap-card);}
-  .reaction-inner{display:flex;align-items:center;gap:14px;}
-  .reaction-inner h3{word-break:auto-phrase;}
-  .reaction-avatar{
-    flex:none;width:100px;height:100px;
+  /* バイク実績カルーセル：見出し＋実績カード＋スライダーをまとめた薄い青のセクション */
+  .sold-carousel{background:#eaf5fd;}
+  .sold-title{
+    text-align:center;font-weight:900;color:var(--blue);
+    font-size:clamp(29px, 9.2vw, 39px);
+    line-height:1.3;margin:0 0 8px;
+    white-space:nowrap;
   }
-  .reaction-avatar > img{object-position:top center;}
-  .reaction-bubble{
-    background:#fff;border:2px solid var(--black);border-radius:14px;border-bottom-left-radius:2px;
-    padding:6px 12px;font-weight:900;font-size:13px;display:inline-block;margin-bottom:6px;
+  .sold-sub{
+    text-align:center;font-weight:800;color:var(--black);font-size:var(--fs-lg);
+    line-height:1.5;
+    margin:0 0 var(--gap-block);
   }
-  .reaction-strip h3{font-size:22px;margin:0 0 4px;line-height:1.3;}
-  .reaction-strip p{font-size:12px;color:#4a4116;margin:0;font-weight:700;}
-  .reaction-lead{font-weight:900;margin:8px 0 0;}
-  .reaction-photorow{display:flex;gap:9px;margin-top:var(--gap-card);}
-  .reaction-photorow .placeholder-img{flex:1;aspect-ratio:3 / 2;}
+  .sold-carousel .proof-card{margin-bottom:0;}
+  .sold-carousel-wrap{display:flex;align-items:center;gap:2px;margin-top:var(--gap-block);}
+  .sold-arrow{
+    flex:none;width:20px;height:34px;
+    background:none;border:none;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--blue);
+    padding:0;
+  }
+  .sold-arrow .icon{width:20px;height:20px;stroke-width:3;}
 
-  /* お客様の声：実績カード（サインボード風） */
+  .sold-scroll{
+    display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:2px 2px 10px;margin:0;
+    scrollbar-width:none;flex:1;min-width:0;
+  }
+  .sold-scroll::-webkit-scrollbar{display:none;}
+  .sold-card{
+    flex:none;width:min(76vw, 300px);scroll-snap-align:center;
+    background:#fff;border-radius:var(--radius);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    overflow:hidden;
+  }
+  .sold-card-body{padding:12px 14px 14px;}
+  .sold-tags .chip{
+    display:inline-block;font-size:var(--fs-2xs);font-weight:700;padding:3px 8px;
+    background:var(--gray-100);color:#444;
+    border-radius:4px;margin:0 4px 4px 0;
+  }
+  .sold-tags .chip-loc, .sold-tags .chip-model{background:revert;color:revert;}
+  .sold-photo{position:relative;aspect-ratio:3 / 2;}
+  .sold-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  .sold-dots{display:flex;justify-content:center;gap:7px;margin-top:14px;}
+  .sold-dots span{width:7px;height:7px;border-radius:50%;background:var(--gray-300);}
+  .sold-dots span.on{background:var(--orange);}
+
+  /* お客様の声：実績カード */
   .proof-card{
-    background:#fff;border:2px solid var(--black);border-radius:14px;overflow:hidden;margin-bottom:16px;
+    background:#fff;border:1px solid var(--gray-300);border-radius:14px;overflow:hidden;margin-bottom:16px;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
   }
   .proof-photo{aspect-ratio:3 / 2;position:relative;}
   .proof-sign{
@@ -1180,19 +1397,21 @@
     line-height:1.2;
   }
   .proof-body{padding:14px;}
-  .proof-type-row{display:flex;gap:8px;align-items:center;font-size:12px;margin-bottom:8px;}
-  .proof-type-row .lbl{background:var(--black);color:#fff;font-weight:800;padding:3px 8px;border-radius:4px;font-size:11px;}
+  .proof-type-row{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:800;color:var(--black);margin-bottom:8px;}
+  .proof-type-row .icon{width:18px;height:18px;color:var(--blue);flex:none;}
+  .proof-type-row .lbl{background:var(--accent);color:#222;font-weight:800;padding:3px 8px;border-radius:4px;font-size:11px;}
   /* ラベルと金額を横一列に並べる */
   .proof-price-row{
     display:flex;align-items:baseline;flex-wrap:wrap;
     gap:4px 9px;margin-bottom:10px;
   }
   .proof-price-lbl{
-    background:var(--black);color:#fff;font-weight:800;font-size:11px;
-    padding:3px 10px;border-radius:4px;white-space:nowrap;
+    position:relative;top:-6px;
+    background:var(--blue);color:#fff;font-weight:800;font-size:13px;
+    padding:5px 13px;border-radius:5px;white-space:nowrap;
   }
   .proof-price{
-    font-size:clamp(24px, 7.4vw, 34px);font-weight:900;color:var(--blue-dark);
+    font-size:clamp(24px, 7.4vw, 34px);font-weight:900;color:var(--blue);
     line-height:1.1;white-space:nowrap;
   }
   .proof-price span{font-size:13px;font-weight:700;color:var(--gray-500);}
@@ -1203,7 +1422,7 @@
   .proof-comment .mini-avatar{flex:none;width:32px;height:32px;border-radius:50%;}
 
   .mini-proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:var(--gap-card);}
-  .mini-proof{background:#fff;border:2px solid var(--black);border-radius:10px;overflow:hidden;}
+  .mini-proof{background:#fff;border:1px solid var(--gray-300);border-radius:10px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.05);}
   .mini-proof-photo{aspect-ratio:3 / 2;}
   .mini-proof-tags{padding:8px;}
   /* 1行目＝地域チップ＋お名前、2行目＝車種 */
@@ -1219,21 +1438,117 @@
   .chip-loc{background:#e2defa;color:#4d3fa8;}
   .chip-model{background:var(--black);color:#fff;}
 
-  /* FAQ：黒枠ボックス型 */
-  .faq-title-bar{
-    display:inline-block;background:var(--black);color:#fff;font-weight:900;
-    font-size:13px;padding:6px 16px;margin-bottom:14px;
+  /* ---------- 口コミ（CUSTOMER REVIEWS） ---------- */
+  .review-section{background:#fff;}
+  .review-card{
+    background:#fff;border:1px solid var(--gray-300);border-radius:14px;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+    padding:16px;margin-bottom:var(--gap-card);
   }
-  .faq-v2{border:2px solid var(--black);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff;}
+  .review-vehicle-icon{
+    display:inline-flex;align-items:center;gap:6px;
+    color:var(--blue-dark);font-weight:800;font-size:var(--fs-sm);
+  }
+  .review-meta{margin:8px 0;}
+  .review-meta .chip{
+    display:inline-block;font-size:var(--fs-2xs);font-weight:700;color:#444;
+    background:var(--gray-100);padding:3px 8px;border-radius:4px;margin:0 4px 4px 0;
+  }
+  .review-meta .chip-loc{background:#e2defa;color:#4d3fa8;}
+  .review-stars{color:var(--accent-dark);font-size:var(--fs-lg);letter-spacing:.05em;margin-bottom:4px;}
+  .review-scores{font-size:var(--fs-2xs);color:#666;margin:0 0 10px;}
+  .review-comment{font-size:var(--fs-sm);color:#333;line-height:1.8;margin:0;}
+  .review-more{max-width:340px;margin:0 auto;display:flex;}
+
+  /* ---------- 店舗一覧・LOCATIONS：地図に直接エリアボタンを重ねる ---------- */
+  .shop-section{background:var(--accent);text-align:center;}
+  .shop-eyebrow{text-align:left;}
+  h2.shop-title{
+    text-align:left;font-weight:900;color:var(--black);
+    font-size:clamp(28px, 9vw, 38px);
+    line-height:1.3;margin:4px 0 6px;
+  }
+  .shop-section .btn{max-width:320px;margin:0 auto;}
+
+  .shop-staff-block{position:relative;z-index:0;max-width:260px;margin:40px 0 10px;}
+  .shop-staff-block img{display:block;width:100%;height:auto;}
+
+  .shop-map{position:relative;max-width:380px;margin:-220px auto var(--gap-block);transform:translateX(20px);}
+  .shop-map img{display:block;width:100%;height:auto;}
+  .map-pin{
+    position:absolute;transform:translate(-50%, -50%);
+    color:#fff;
+    font-weight:900;font-size:11px;white-space:nowrap;
+    padding:6px 11px;border-radius:6px;
+    box-shadow:0 2px 5px rgba(0,0,0,.25);
+  }
+  /* 各エリアの実座標は画像解析で算出した重心をベースに、左右の間隔を広げて調整 */
+  .map-pin-hokkaido{top:9%;  left:66%; background:#376ab2;}
+  .map-pin-tohoku{top:44%;  left:85%; background:#00aaea;}
+  .map-pin-hokuriku{top:52%; left:48%; background:#6cba5a;}
+  .map-pin-kanto{top:68%; left:79%; background:#00a283;}
+  .map-pin-chushikoku{top:63%; left:19%; background:#a28b6a;}
+  .map-pin-kansai{top:83%; left:50%; background:#f5ac3c;}
+  .map-pin-kyushu{top:93%; left:23%; background:#eb6d65;}
+  .map-pin-okinawa{top:90%; left:-5%; background:#ff8d4f;}
+
+  /* ---------- バイクを高く売るためのポイント ---------- */
+  .tips-section{background:#fff;}
+  .tips-section .h-title{font-size:calc(var(--fs-2xl) * 1.2);}
+  .tips-list{display:flex;flex-direction:column;gap:var(--gap-block);}
+  .tips-card{
+    display:flex;align-items:center;gap:16px;
+  }
+  .tips-card-rev{flex-direction:row-reverse;}
+  .tips-photo{
+    flex:0 0 40%;aspect-ratio:1 / 1;border-radius:14px;overflow:hidden;
+  }
+  .tips-card-body{position:relative;flex:1;min-width:0;}
+  .tips-bignum{
+    position:absolute;top:-14px;right:0;z-index:0;
+    font-size:92px;font-weight:900;line-height:1;
+    color:var(--blue);opacity:.14;
+    pointer-events:none;
+  }
+  .tips-card-rev .tips-bignum{right:auto;left:0;}
+  .tips-card-body h3{position:relative;z-index:1;margin:0 0 6px;font-size:var(--fs-md);font-weight:800;line-height:1.5;}
+  .tips-card-body p{position:relative;z-index:1;margin:0;font-size:var(--fs-sm);color:#555;line-height:1.8;}
+
+  /* ---------- バイク買取り時に必要な書類 ---------- */
+  .docs-section{background:#fff;}
+  .docs-title{white-space:nowrap;font-size:clamp(22px, 7.4vw, 34px);}
+  .docs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:var(--gap-card);}
+  .docs-card{
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    background:var(--gray-100);border-radius:10px;padding:16px 10px;
+    text-align:center;font-size:var(--fs-xs);font-weight:800;color:var(--black);
+  }
+  .docs-card img{width:64px;height:64px;object-fit:contain;}
+  .docs-card small{display:block;margin-top:4px;font-weight:400;color:#666;font-size:.9em;}
+  .docs-note{font-size:var(--fs-sm);color:#444;line-height:1.8;margin:0 0 10px;}
+  .docs-extra-list{margin:0 0 var(--gap-card);padding-left:1.2em;font-size:var(--fs-sm);color:#444;line-height:1.9;}
+  .docs-extra-list strong{color:var(--blue-dark);}
+
+  /* FAQ */
+  .faq-title-bar{
+    display:inline-block;background:var(--blue);color:#fff;font-weight:900;
+    font-size:13px;padding:6px 16px;margin-bottom:14px;border-radius:999px;
+  }
+  .faq-v2{border:1px solid var(--gray-300);border-radius:10px;margin-bottom:10px;overflow:hidden;background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.04);}
   .faq-v2 .faq-q{padding:14px;}
   .faq-v2 .q-mark{
-    flex:none;width:24px;height:24px;border:2px solid var(--black);border-radius:6px;
-    display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--black);
+    flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;line-height:1;font-size:12px;font-weight:900;
   }
   .faq-v2 .faq-toggle-icon{
     width:22px;height:22px;border-radius:50%;background:var(--gray-100);color:var(--black);padding:3px;
   }
   .faq-v2 .faq-a{padding:0 14px;}
+  .faq-v2 .a-mark{
+    flex:none;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#222;
+    display:flex;align-items:center;justify-content:center;line-height:1;font-size:12px;font-weight:900;
+    margin-top:1px;
+  }
   .faq-v2.open .faq-a{padding-bottom:14px;}
 
   /* =========================================================

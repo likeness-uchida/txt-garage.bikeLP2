@@ -758,7 +758,7 @@
   .style-pill-blue{background:var(--blue);}
   .style-pill-green{background:var(--line-green);}
   .style-select-desc{
-    font-size:var(--fs-md);font-weight:700;color:var(--black);line-height:1.9;
+    font-size:var(--fs-sm);font-weight:700;color:var(--black);line-height:1.9;
     margin:0 0 var(--gap-card);
   }
   /* 薄い青の帯。見出し〜案内文をまとめて内包し、下端だけ中央がとがったV字に切れ込む */
@@ -933,7 +933,7 @@
   .staff-cta-inner{position:relative;}
   .staff-cta-kicker{
     background:#fff;color:#2cadfa;font-weight:900;
-    font-size:clamp(14px, 4.7vw, 22px);
+    font-size:clamp(13px, 4.3vw, 20px);
     text-align:center;line-height:1.5;white-space:nowrap;
     margin:0 0 calc(var(--gap-block) * .8);
     padding:20px 8px 14px;

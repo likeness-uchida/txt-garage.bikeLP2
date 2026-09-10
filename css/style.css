@@ -933,7 +933,7 @@
   .staff-cta-inner{position:relative;}
   .staff-cta-kicker{
     background:#fff;color:#2cadfa;font-weight:900;
-    font-size:clamp(12px, 4vw, 19px);
+    font-size:clamp(14px, 4.7vw, 22px);
     text-align:center;line-height:1.5;white-space:nowrap;
     margin:0 0 calc(var(--gap-block) * .8);
     padding:20px 8px 14px;
@@ -1475,7 +1475,7 @@
   }
   .shop-section .btn{max-width:320px;margin:0 auto;}
 
-  .shop-staff-block{position:relative;z-index:0;max-width:260px;margin:40px 0 10px;}
+  .shop-staff-block{position:relative;z-index:0;max-width:260px;margin:40px 0 10px;transform:translateX(-12px);}
   .shop-staff-block img{display:block;width:100%;height:auto;}
 
   /* 右に20pxずらす分、幅を20px削っておき、狭い端末でも右にはみ出さないようにする */
@@ -1489,14 +1489,14 @@
     box-shadow:0 2px 5px rgba(0,0,0,.25);
   }
   /* 各エリアの実座標は画像解析で算出した重心をベースに、左右の間隔を広げて調整 */
-  .map-pin-hokkaido{top:9%;  left:66%; background:#376ab2;}
+  .map-pin-hokkaido{top:14%;  left:66%; background:#376ab2;}
   .map-pin-tohoku{top:44%;  left:85%; background:#00aaea;}
   .map-pin-hokuriku{top:52%; left:48%; background:#6cba5a;}
   .map-pin-kanto{top:68%; left:79%; background:#00a283;}
   .map-pin-chushikoku{top:63%; left:19%; background:#a28b6a;}
   .map-pin-kansai{top:83%; left:50%; background:#f5ac3c;}
-  .map-pin-kyushu{top:93%; left:23%; background:#eb6d65;}
-  .map-pin-okinawa{top:90%; left:4%; background:#ff8d4f;}
+  .map-pin-kyushu{top:80%; left:4%; background:#eb6d65;}
+  .map-pin-okinawa{top:100%; left:20%; background:#ff8d4f;}
 
   /* ---------- バイクを高く売るためのポイント ---------- */
   .tips-section{background:#fff;}
@@ -1517,7 +1517,7 @@
     pointer-events:none;
   }
   .tips-card-rev .tips-bignum{right:auto;left:0;}
-  .tips-card-body h3{position:relative;z-index:1;margin:0 0 6px;font-size:var(--fs-md);font-weight:800;line-height:1.5;}
+  .tips-card-body h3{position:relative;z-index:1;margin:0 0 6px;font-size:clamp(12px, 3.5vw, 16.5px);font-weight:800;line-height:1.5;white-space:nowrap;}
   .tips-card-body p{position:relative;z-index:1;margin:0;font-size:var(--fs-sm);color:#555;line-height:1.8;}
 
   /* ---------- バイク買取り時に必要な書類 ---------- */

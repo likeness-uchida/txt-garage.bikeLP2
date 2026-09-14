@@ -888,6 +888,12 @@
     text-shadow:0 2px 6px rgba(0,0,0,.6);
   }
   .why-lead-tight{margin-bottom:0;text-decoration:underline;text-underline-offset:3px;}
+  /* 背景透過の切り抜き写真なので、枠や影は付けずにそのまま乗せる */
+  .why-photo{
+    display:block;width:100%;height:auto;
+    margin:0 0 var(--gap-card);
+    filter:drop-shadow(0 10px 18px rgba(0,0,0,.45));
+  }
   .why-close{
     font-size:var(--fs-lg);font-weight:900;
     margin:0;line-height:1.7;
@@ -939,10 +945,11 @@
     padding:20px 8px 14px;
     box-shadow:0 3px 10px rgba(0,0,0,.12);
   }
-  .staff-cta-row{display:flex;align-items:flex-end;gap:4px;margin-bottom:10px;}
-  .staff-cta-photo{flex:1.55;min-width:0;margin:0 -30px -18px 0;position:relative;z-index:1;transform:translate(-14px, -40px);}
+  /* 左：見出し＋ロゴ／右：スタッフ写真 */
+  .staff-cta-row{display:flex;flex-direction:row-reverse;align-items:flex-end;gap:4px;margin-bottom:10px;}
+  .staff-cta-photo{flex:1.3;min-width:0;margin:0 0 -18px -30px;position:relative;z-index:1;transform:translate(14px, -40px);}
   .staff-cta-photo img{display:block;width:100%;height:auto;}
-  .staff-cta-body{flex:1;min-width:0;text-align:center;padding-bottom:20px;position:relative;z-index:2;transform:translateX(-10px);}
+  .staff-cta-body{flex:1;min-width:0;text-align:center;padding-bottom:20px;position:relative;z-index:2;transform:translateX(10px);}
   .staff-cta-headline{
     font-family:"Corporate Logo","Noto Sans JP",sans-serif;
     color:#fff;font-weight:900;line-height:1.15;
@@ -950,8 +957,8 @@
     margin:0 0 10px;
     text-shadow:0 2px 8px rgba(0,0,0,.45);
     white-space:nowrap;
-    /* 右カラムより文字が大きいので、はみ出しを右（画面外）ではなく左（写真の上）へ逃がす */
-    direction:rtl;
+    /* 左カラムより文字が大きい分は、右（写真の上）へはみ出させる（左端は画面外に出ない） */
+    direction:ltr;
   }
   .staff-cta-em{color:#ffff00;}
   .staff-cta-logo{display:block;width:100%;max-width:195px;margin:0 auto;height:auto;}
@@ -1070,8 +1077,10 @@
     padding:16px 18px;
     margin:0;
   }
+  /* 右カラムは幅を6割までに抑えて、左の写真に幅を回す */
+  /* 吹き出しは1行固定なので右カラムは吹き出しの幅に合わせ、残りを写真に回す */
   .final-cta-right{flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
-  .final-cta-bubble-side{flex:none;min-width:0;padding:12px 14px;}
+  .final-cta-bubble-side{flex:none;min-width:0;padding:10px 12px;}
   .final-cta-bubble-side::after{
     content:"";
     position:absolute;top:50%;left:-12px;transform:translateY(-50%);
@@ -1080,16 +1089,17 @@
   }
   .final-cta h2{
     font-family:"Corporate Logo","Noto Sans JP",sans-serif;
-    font-size:16px;font-weight:900;margin:0;color:var(--blue);
+    font-size:clamp(12.5px, 3.75vw, 15px);font-weight:900;margin:0;color:var(--blue);
+    white-space:nowrap;line-height:1.35;
   }
   .final-cta-emphasis{font-size:1.4em;color:var(--orange);}
   /* 透過PNGなので枠は付けず、背景にそのまま乗せる */
   .final-cta-photo{
-    flex:1;min-width:0;display:block;width:100%;max-width:220px;height:auto;
+    flex:1;min-width:0;display:block;width:100%;max-width:300px;height:auto;
     margin:0;
   }
   .final-cta p{font-size:var(--fs-sm);color:#fff;margin:0 0 14px;font-weight:700;line-height:1.7;}
-  .final-cta-sub{font-size:var(--fs-lg);font-weight:900;margin:0;}
+  .final-cta-sub{font-size:var(--fs-md);font-weight:900;margin:0;line-height:1.6;}
   .final-cta-note{font-size:var(--fs-md);font-weight:900;margin-bottom:22px;}
   .final-cta-card{
     background:var(--accent);border-radius:14px;

@@ -137,7 +137,7 @@
     <div class="wrap">
       <!-- 見出しは画像2枚重ねをやめ、文字組みに変更。
            「3」だけ punch-anim を付けてスクロール時にポンと弾ませる演出は維持。 -->
-      <h2 class="quiz-lead-text">たった<span class="quiz-lead-num punch-anim">3</span>つの質問で<br>査定スタート！</h2>
+      <h2 class="quiz-lead-text">たった<span class="quiz-lead-num punch-anim">3</span>つの質問で査定スタート！</h2>
       <div class="quiz-sub-row fade-anim">
         <p class="quiz-sub">無料でお試し査定！<br>ご所有のバイクについて教えてください</p>
       </div>
@@ -296,13 +296,14 @@
        ボタンだけ「出張査定」「LINE査定」の2つ並び -->
   <section class="staff-cta">
     <div class="wrap staff-cta-inner">
-      <p class="staff-cta-kicker">ティーバイティーガレージが買取ります！</p>
       <div class="staff-cta-row">
         <div class="staff-cta-photo">
-          <img src="img/shinjo04@.png" alt="全国どこでも無料出張査定。ティーバイティーガレージのスタッフ" loading="lazy">
+          <img src="img/shinjo08.png" alt="古くてもOK・動かなくてもOK。ティーバイティーガレージのスタッフ" loading="lazy">
         </div>
         <div class="staff-cta-body">
-          <p class="staff-cta-headline">バイクを<br><span class="staff-cta-em">売る</span>のも</p>
+          <p class="staff-cta-sub">＼全国どこでも無料出張査定／</p>
+          <p class="staff-cta-headline">バイク<span class="staff-cta-small">を</span>売るのも</p>
+          <p class="staff-cta-name"><span>ティーバイティーガレージ</span></p>
           <img class="staff-cta-logo" src="img/logo.svg" alt="ティーバイティーガレージ">
         </div>
       </div>
@@ -311,7 +312,7 @@
           <svg class="icon"><use href="#ic-search"/></svg><span>無料出張査定申込み</span>
           <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
         </button>
-        <button class="btn btn-line" onclick="openLineDummy('cta-maker')">
+        <button class="btn btn-line" onclick="openOnlineLp()">
           <svg class="icon"><use href="#ic-chat"/></svg><span>オンライン買取り申込み</span>
           <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
         </button>
@@ -690,13 +691,14 @@
   <!-- スタッフ写真＋大見出しのCTAブロック（2箇所目） -->
   <section class="staff-cta">
     <div class="wrap staff-cta-inner">
-      <p class="staff-cta-kicker">ティーバイティーガレージが買取ります！</p>
       <div class="staff-cta-row">
         <div class="staff-cta-photo">
-          <img src="img/shinjo04@.png" alt="全国どこでも無料出張査定。ティーバイティーガレージのスタッフ" loading="lazy">
+          <img src="img/shinjo08.png" alt="古くてもOK・動かなくてもOK。ティーバイティーガレージのスタッフ" loading="lazy">
         </div>
         <div class="staff-cta-body">
-          <p class="staff-cta-headline">バイクを<br><span class="staff-cta-em">売る</span>のも</p>
+          <p class="staff-cta-sub">＼全国どこでも無料出張査定／</p>
+          <p class="staff-cta-headline">バイク<span class="staff-cta-small">を</span>売るのも</p>
+          <p class="staff-cta-name"><span>ティーバイティーガレージ</span></p>
           <img class="staff-cta-logo" src="img/logo.svg" alt="ティーバイティーガレージ">
         </div>
       </div>
@@ -705,7 +707,7 @@
           <svg class="icon"><use href="#ic-search"/></svg><span>無料出張査定申込み</span>
           <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
         </button>
-        <button class="btn btn-line" onclick="openLineDummy('cta-tips')">
+        <button class="btn btn-line" onclick="openOnlineLp()">
           <svg class="icon"><use href="#ic-chat"/></svg><span>オンライン買取り申込み</span>
           <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
         </button>
@@ -864,7 +866,7 @@
     <div class="wrap">
       <div class="final-cta-top">
         <!-- 背景が透過のスタッフ写真。額縁は付けず、背景にそのまま乗せる -->
-        <img class="final-cta-photo" src="img/shinjo07@.png" width="899" height="1024" alt="ティーバイティーガレージのスタッフ" loading="lazy">
+        <img class="final-cta-photo" src="img/shinjo07@.png" width="558" height="676" alt="ティーバイティーガレージのスタッフ" loading="lazy">
         <div class="final-cta-right">
           <div class="final-cta-bubble final-cta-bubble-side">
             <h2>そのバイク、眠らせておくのは<br><span class="final-cta-emphasis punch-anim">もったいない。</span></h2>
@@ -1012,7 +1014,7 @@
 
   <!-- 末尾の丸アイコンは公式サイトの下部固定バーと同じ「白丸＋再生三角」の飾り -->
   <div class="float-cta">
-    <button class="btn btn-line" onclick="openLineDummy('float')">
+    <button class="btn btn-line" onclick="openOnlineLp()">
       <svg class="icon"><use href="#ic-chat"/></svg><span>オンライン買取り</span>
       <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
     </button>
@@ -1095,11 +1097,10 @@
     <div class="exit-modal-banner">
       <!-- 文言はline.jpg側に焼き込み済みで、以前は文字と画像が重なって
            見えていたため、テキストのオーバーレイは廃止して画像だけにする -->
-      <img class="exit-modal-img" src="img/line.jpg" alt="LINEオンライン査定でもっと簡単に。ビデオ通話でバイクを映すだけ、10分程度で査定できます。手順：01 LINEから査定スタート／02 通話ボタンをタップ／03 ビデオ通話でその場で査定" loading="lazy" onerror="this.parentElement.remove()">
+      <img class="exit-modal-img" src="img/LINEbanner.png" width="1024" height="1024" alt="LINEでオンライン買取り。友だち追加して必要情報と写真を送るだけで、LINEで金額をご提示します" loading="lazy" onerror="this.parentElement.remove()">
     </div>
     <div class="exit-modal-body">
-      <button class="btn btn-line" onclick="openLineDummy('exit-modal')">LINE査定</button>
-      <a class="exit-modal-detail" href="https://www.txt-garage.jp/online-lp/" target="_blank" rel="noopener">＞ 詳細はこちら</a>
+      <a class="btn btn-line" href="https://www.txt-garage.jp/online-lp/" target="_blank" rel="noopener">LINE査定</a>
     </div>
   </div>
 </div>
@@ -1257,9 +1258,10 @@ function goThanks(){
 }
 
 /* ---------- LINE公式アカウントへの誘導 ---------- */
-const LINE_URL = 'https://page.line.me/936rygvj';
-function openLineDummy(source){
-  window.open(LINE_URL, '_blank', 'noopener');
+/* オンライン買取り（写真送付）の案内ページ */
+const ONLINE_LP_URL = 'https://www.txt-garage.jp/online-lp/';
+function openOnlineLp(){
+  window.open(ONLINE_LP_URL, '_blank', 'noopener');
 }
 
 /* ---------- 「査定OK」バッジの出現演出 ----------

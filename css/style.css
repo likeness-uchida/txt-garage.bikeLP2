@@ -444,7 +444,7 @@
      そこから下の白いセクションと自然につながって見えるようにするため。 */
   .hero-photo{
     position:relative;
-    aspect-ratio:1180 / 1461;
+    aspect-ratio:1180 / 1353;
     background:#fff;
     overflow:hidden;
   }

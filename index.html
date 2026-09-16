@@ -1100,7 +1100,7 @@
       <img class="exit-modal-img" src="img/LINEbanner.png" width="1024" height="1024" alt="LINEでオンライン買取り。友だち追加して必要情報と写真を送るだけで、LINEで金額をご提示します" loading="lazy" onerror="this.parentElement.remove()">
     </div>
     <div class="exit-modal-body">
-      <a class="btn btn-line" href="https://www.txt-garage.jp/online-lp/" target="_blank" rel="noopener">LINE査定</a>
+      <a class="btn btn-line" href="online/">オンライン買取り</a>
     </div>
   </div>
 </div>
@@ -1258,10 +1258,9 @@ function goThanks(){
 }
 
 /* ---------- LINE公式アカウントへの誘導 ---------- */
-/* オンライン買取り（写真送付）の案内ページ */
-const ONLINE_LP_URL = 'https://www.txt-garage.jp/online-lp/';
+/* オンライン買取り（写真送付）の案内ページ：同一サイト内のサブページへ */
 function openOnlineLp(){
-  window.open(ONLINE_LP_URL, '_blank', 'noopener');
+  location.href = 'online/';
 }
 
 /* ---------- 「査定OK」バッジの出現演出 ----------

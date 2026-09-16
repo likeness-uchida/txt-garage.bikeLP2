@@ -1624,3 +1624,551 @@
 
   /* thanks側もトップと同じ footer-brand/footer-nav/footer をそのまま使うため、
      専用の上書きは不要（共通CSSがそのまま両ページに効く）。 */
+
+  /* =========================================================
+     オンライン買取りページ（online/index.html）専用
+  ========================================================= */
+  .online-hero{
+    background:var(--blue);color:#fff;text-align:center;
+    padding:calc(var(--sect-y) * .8) 0 var(--sect-y);
+  }
+  .online-hero-kicker{
+    font-weight:900;color:var(--accent);
+    font-size:clamp(15px, 4.6vw, 20px);letter-spacing:.06em;margin:0 0 6px;
+  }
+  .online-hero-title{
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-weight:900;line-height:1.2;color:#fff;
+    font-size:clamp(30px, 9.6vw, 44px);margin:0 0 12px;
+  }
+  .online-hero-em{color:var(--accent);}
+  .online-hero-sub{
+    font-size:var(--fs-sm);font-weight:700;line-height:1.8;
+    margin:0 0 var(--gap-card);
+  }
+  .online-hero-photo{width:min(58%, 250px);margin:0 auto var(--gap-card);}
+  .online-hero-photo img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 26px rgba(0,0,0,.28);}
+  .online-hero-note{font-size:clamp(9px, 2.6vw, 11px);font-weight:700;opacity:.85;margin:10px 0 0;line-height:1.6;}
+
+  /* LINEボタン（共通） */
+  .online-line-btn{
+    position:relative;
+    padding:17px clamp(40px, 10.5vw, 48px) 17px 12px;
+    font-size:clamp(13px, 3.9vw, 18px);font-weight:900;
+    white-space:nowrap;line-height:1.3;
+  }
+  .online-line-btn .btn-endcap{right:14px;}
+  .online-line-btn-lg{font-size:clamp(13px, 3.9vw, 18px);}
+
+  /* メリット */
+  .online-merit{background:#fff;}
+  .online-merit-grid{display:flex;flex-direction:column;gap:12px;}
+  .online-merit-card{
+    display:flex;align-items:flex-start;gap:14px;
+    background:#eaf5fd;border-radius:14px;padding:16px;
+  }
+  .online-merit-icon{
+    flex:none;width:48px;height:48px;border-radius:50%;
+    background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .online-merit-icon .icon{width:24px;height:24px;}
+  .online-merit-body{flex:1;min-width:0;}
+  .online-merit-card h3{margin:0 0 4px;font-size:var(--fs-lg);font-weight:900;color:var(--blue-dark);}
+  .online-merit-card p{margin:0;font-size:var(--fs-sm);color:#444;line-height:1.75;}
+
+  /* 3ステップ */
+  .online-steps{background:var(--line-green);color:#fff;}
+  .online-steps-title{
+    text-align:center;font-weight:900;color:#fff;
+    font-size:clamp(24px, 7.6vw, 32px);line-height:1.4;margin:0 0 var(--gap-title);
+  }
+  .online-steps-num{
+    display:inline-block;color:var(--accent);font-size:1.5em;margin:0 .05em;
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+  }
+  .online-step-list{display:flex;flex-direction:column;gap:14px;margin-bottom:var(--gap-block);}
+  .online-step{
+    display:flex;align-items:flex-start;gap:12px;
+    background:#fff;color:var(--black);border-radius:14px;padding:16px 14px;
+    box-shadow:0 6px 16px rgba(0,0,0,.12);
+  }
+  .online-step-badge{
+    flex:none;background:var(--line-green);color:#fff;
+    font-weight:900;font-size:12px;letter-spacing:.06em;
+    padding:6px 10px;border-radius:999px;margin-top:2px;white-space:nowrap;
+  }
+  .online-step-body h3{margin:0 0 4px;font-size:var(--fs-lg);font-weight:900;color:var(--black);}
+  .online-step-body p{margin:0;font-size:var(--fs-sm);color:#444;line-height:1.75;}
+  .online-steps .online-line-btn{box-shadow:0 6px 0 #d9ab00, 0 10px 18px rgba(0,0,0,.2);}
+  .online-steps .online-line-btn:active{box-shadow:0 2px 0 #d9ab00;}
+
+  /* 送っていただく情報 */
+  .online-send{background:#fff;}
+  .online-send-card{
+    background:#fff;border:2px solid var(--blue);border-radius:14px;
+    padding:18px 16px 14px;margin-bottom:14px;
+  }
+  .online-send-list{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .online-send-list li{
+    display:flex;align-items:flex-start;gap:10px;
+    font-size:var(--fs-sm);font-weight:700;color:#333;line-height:1.55;
+  }
+  .online-send-icon{
+    flex:none;width:24px;height:24px;border-radius:50%;margin-top:1px;
+    background:var(--accent);color:#222;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .online-send-icon .icon{width:14px;height:14px;}
+  .online-send-note{margin:0;font-size:var(--fs-xs);color:#666;line-height:1.7;}
+  .online-hours{
+    display:flex;align-items:flex-start;gap:10px;
+    background:#fff7d6;border-radius:12px;padding:14px;
+  }
+  .online-hours > .icon{flex:none;width:22px;height:22px;color:#b58a00;margin-top:2px;}
+  .online-hours-main{margin:0 0 2px;font-weight:900;font-size:var(--fs-md);color:var(--black);}
+  .online-hours-sub{margin:0;font-size:var(--fs-xs);color:#555;line-height:1.7;}
+
+  /* 写真の撮り方 */
+  .online-photo{background:#eaf5fd;}
+  .online-photo-lead{text-align:center;font-size:var(--fs-sm);font-weight:700;color:#444;line-height:1.8;margin:0 0 var(--gap-card);}
+  .online-photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .online-photo-item{margin:0;}
+  .online-photo-frame{
+    aspect-ratio:4 / 3;border-radius:12px;background:#fff;
+    border:2px dashed #b9d6ea;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .online-photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+  .online-photo-frame .icon{width:28px;height:28px;color:#9cc0da;}
+  .online-photo-item figcaption{
+    display:flex;align-items:center;gap:6px;margin-top:6px;
+    font-size:var(--fs-xs);font-weight:800;color:var(--black);
+  }
+  .online-photo-item figcaption span{
+    flex:none;width:20px;height:20px;border-radius:50%;
+    background:var(--blue);color:#fff;font-size:11px;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  /* LINE CTA */
+  .online-cta{background:var(--accent);text-align:center;padding:var(--sect-y) 0;}
+  .online-cta-lead{margin:0 0 8px;font-size:var(--fs-sm);font-weight:800;color:#5a4a00;}
+  .online-cta-title{
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    margin:0 0 var(--gap-card);font-weight:900;color:var(--black);
+    font-size:clamp(22px, 7vw, 30px);line-height:1.4;
+  }
+  .online-cta-id{margin:12px 0 0;font-size:var(--fs-sm);font-weight:700;color:var(--black);}
+  .online-cta-alt{margin:10px 0 0;font-size:var(--fs-xs);color:#5a4a00;}
+  .online-cta-alt a{text-decoration:underline;font-weight:800;}
+
+  /* 下のSNSアイコンがボタンの影に重ならないよう、下余白を確保 */
+  .fb-cta.btn-line{max-width:320px;margin:14px auto 28px;}
+
+  /* 3ステップ直下のCTAは黄色（緑のLINE色は隣のSTEPバッジと同化するため） */
+  .btn-yellow{
+    background:var(--accent);
+    color:#222;
+    box-shadow:0 6px 0 #d9ab00, 0 10px 18px rgba(0,0,0,.18);
+  }
+  .btn-yellow:active{transform:translateY(4px);box-shadow:0 2px 0 #d9ab00;}
+  .btn-yellow .btn-endcap .icon{color:#c79c00;}
+
+  /* メリット見出しは1行固定 */
+  .online-merit-title{white-space:nowrap;font-size:clamp(18px, 5.6vw, 32px);}
+
+  /* PC左カードのLINEボタン */
+  .pc-left-cta-line{background:var(--line-green);box-shadow:0 6px 0 #05a548, 0 10px 18px rgba(0,0,0,.18);}
+  .pc-left-cta-line:active{box-shadow:0 2px 0 #05a548;}
+
+
+  /* ---------- online：スタッフ写真・SP追加分 ---------- */
+  /* 写真はヒーローの下辺にぴったり付ける（下の余白ぶんマイナス） */
+  .online-hero-photo{width:min(90%, 400px);margin:var(--gap-card) auto calc(var(--sect-y) * -1);}
+  .online-hero-photo img{border-radius:0;box-shadow:none;filter:drop-shadow(0 10px 18px rgba(0,0,0,.28));}
+  .online-send-staff{
+    display:flex;align-items:center;gap:12px;margin:0 0 14px;
+  }
+  .online-send-staff img{flex:none;width:84px;height:84px;border-radius:50%;object-fit:cover;background:#eaf5fd;}
+  .online-send-bubble{
+    position:relative;flex:1;margin:0;
+    background:#eaf5fd;border-radius:14px;padding:10px 14px;
+    font-size:var(--fs-xs);font-weight:800;color:var(--blue-dark);line-height:1.6;
+  }
+  .online-send-bubble::before{
+    content:"";position:absolute;left:-8px;top:50%;transform:translateY(-50%);
+    border-top:8px solid transparent;border-bottom:8px solid transparent;border-right:9px solid #eaf5fd;
+  }
+  .online-cta-staff{width:min(66%, 290px);margin:0 auto var(--gap-card);}
+  .online-cta-staff img{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.2));}
+
+  /* ---------- online：レスポンシブ（タブレット〜PCは1カラムの幅広レイアウト） ---------- */
+  body.online-page .pc-left{display:none !important;}
+  @media (min-width:768px){
+    body.online-page{display:block;background:#f2f5f7;}
+    body.online-page .lp-main{margin:0;width:100%;}
+    body.online-page #view-lp{max-width:none;box-shadow:none;background:var(--white);}
+    body.online-page .wrap{max-width:1040px;padding:0 32px;}
+    body.online-page .header-inner{max-width:1040px;padding:12px 32px;}
+    body.online-page .logo-img{height:44px;}
+    body.online-page .logo-sub{font-size:12px;}
+    body.online-page .tel-btn .tel-img{width:220px;}
+    body.online-page .section{padding:64px 0;}
+    body.online-page h2.h-title{font-size:32px;margin-bottom:32px;}
+    /* PCの追従バーは画面いっぱいの白帯にし、ボタンだけ中央にまとめる */
+    body.online-page .float-cta{
+      max-width:none;left:0;transform:none;
+      justify-content:center;gap:16px;
+      padding:14px 32px calc(14px + env(safe-area-inset-bottom));
+    }
+    body.online-page .float-cta .btn{flex:none;width:360px;padding:16px 40px 16px 12px;}
+    body.online-page .float-cta .btn-line{font-size:16px;}
+    body.online-page .float-cta .btn-primary{width:400px;font-size:18px;}
+    body.online-page .float-cta .btn .btn-endcap{right:12px;width:24px;height:24px;}
+
+    .online-hero{padding:56px 0 64px;}
+    /* 写真は左・文言は右（スタッフが文言側を指す向き） */
+    .online-hero-inner{display:flex;flex-direction:row-reverse;align-items:flex-end;gap:40px;text-align:left;}
+    .online-hero-text{padding-bottom:24px;}
+    .online-hero-text{flex:1;min-width:0;}
+    .online-hero-kicker{font-size:22px;}
+    .online-hero-title{font-size:56px;margin-bottom:16px;}
+    .online-hero-sub{font-size:17px;margin-bottom:24px;}
+    .online-hero-photo{flex:none;width:50%;max-width:560px;margin:0 0 -64px;}
+    .online-hero .online-line-btn{max-width:440px;font-size:18px;}
+    .online-hero-note{font-size:12px;}
+
+    .online-merit-grid{flex-direction:row;gap:20px;}
+    .online-merit-card{flex:1;flex-direction:column;align-items:center;text-align:center;padding:28px 22px;}
+    .online-merit-icon{width:64px;height:64px;}
+    .online-merit-icon .icon{width:30px;height:30px;}
+    .online-merit-card h3{font-size:20px;margin-bottom:8px;}
+    .online-merit-card p{font-size:15px;}
+
+    .online-steps-title{font-size:34px;margin-bottom:36px;}
+    .online-step-list{flex-direction:row;gap:20px;margin-bottom:36px;}
+    .online-step{flex:1;flex-direction:column;align-items:flex-start;padding:24px 22px;}
+    .online-step-body h3{font-size:19px;}
+    .online-step-body p{font-size:15px;}
+    .online-steps .online-line-btn{max-width:440px;margin:0 auto;}
+
+    .online-send-staff{max-width:520px;margin:0 auto 20px;}
+    .online-send-staff img{width:104px;height:104px;}
+    .online-send-bubble{font-size:15px;}
+    .online-send-inner{display:flex;align-items:stretch;gap:24px;}
+    .online-send-card{flex:1.5;margin:0;padding:24px;}
+    .online-send-list li{font-size:15px;}
+    .online-hours{flex:1;flex-direction:column;justify-content:center;padding:24px;}
+    .online-hours-main{font-size:18px;}
+    .online-hours-sub{font-size:14px;}
+
+    .online-photo-lead{font-size:16px;margin-bottom:28px;}
+    .online-photo-grid{grid-template-columns:repeat(3, 1fr);gap:20px;}
+    .online-photo-item figcaption{font-size:15px;margin-top:10px;}
+
+    .online-cta{padding:64px 0;}
+    .online-cta-inner{display:flex;align-items:center;gap:40px;text-align:left;}
+    .online-cta-staff{flex:none;width:38%;max-width:380px;margin:0;}
+    .online-cta-text{flex:1;min-width:0;}
+    .online-cta-lead{font-size:16px;}
+    .online-cta-title{font-size:36px;margin-bottom:24px;}
+    .online-cta .online-line-btn{max-width:460px;font-size:19px;}
+    .online-cta-id,.online-cta-alt{font-size:15px;}
+
+    body.online-page .sold-card{width:300px;}
+    body.online-page .faq-q{font-size:17px;}
+    body.online-page .faq-a{font-size:15px;}
+    body.online-page .footer-brand .wrap,body.online-page footer .wrap{max-width:640px;}
+  }
+  @media (min-width:1100px){
+    body.online-page .lp-main{margin-right:0;}
+    body.online-page .float-cta{display:flex !important;}
+  }
+
+  /* ---------- online：実際のLINEのやり取り（トーク画面の再現） ---------- */
+  .online-chat{background:#fff;}
+  .online-chat-title-sub{font-size:.6em;font-weight:800;color:#666;margin-left:2px;}
+  .online-chat-lead{text-align:center;font-size:var(--fs-sm);font-weight:700;color:#444;line-height:1.8;margin:0 0 var(--gap-card);}
+  .online-chat-inner{display:flex;flex-direction:column;gap:20px;}
+  .online-phone{
+    max-width:360px;margin:0 auto;width:100%;
+    border-radius:26px;border:6px solid #1c1c1e;background:#8aa9d6;
+    overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.22);
+  }
+  .online-phone-head{
+    display:flex;align-items:center;justify-content:space-between;
+    background:#fff;padding:10px 12px;font-weight:900;font-size:14px;color:var(--black);
+    border-bottom:1px solid #e3e3e3;
+  }
+  .online-phone-back{font-size:22px;line-height:1;color:#333;}
+  .online-phone-dots{font-size:18px;color:#333;letter-spacing:.05em;}
+  .online-phone-body{padding:14px 10px 10px;display:flex;flex-direction:column;gap:12px;}
+  .online-chat-sys{
+    align-self:center;background:rgba(0,0,0,.28);color:#fff;
+    font-size:10.5px;font-weight:700;padding:5px 12px;border-radius:999px;
+  }
+  .online-msg{display:flex;align-items:flex-end;gap:6px;max-width:88%;}
+  .online-msg-shop{align-self:flex-start;}
+  .online-msg-me{align-self:flex-end;flex-direction:row-reverse;}
+  .online-msg-avatar{
+    flex:none;width:30px;height:30px;border-radius:50%;overflow:hidden;background:#fff;
+    box-shadow:0 1px 3px rgba(0,0,0,.2);align-self:flex-start;
+  }
+  .online-msg-avatar img{display:block;width:100%;height:100%;object-fit:cover;}
+  .online-msg-col{display:flex;flex-direction:column;gap:4px;min-width:0;}
+  .online-msg-me .online-msg-col{align-items:flex-end;}
+  .online-msg-tag{font-size:10px;color:#e8f0ff;font-weight:700;opacity:.9;}
+  .online-bubble{
+    position:relative;
+    background:#fff;color:#222;border-radius:16px;
+    padding:9px 11px;font-size:12.5px;line-height:1.6;font-weight:600;
+    box-shadow:0 1px 2px rgba(0,0,0,.08);
+    text-align:left;word-break:break-word;
+  }
+  .online-msg-shop .online-bubble{border-top-left-radius:4px;}
+  .online-msg-me .online-bubble{background:#8de27e;border-top-right-radius:4px;}
+  .online-bubble-offer{border:2px solid var(--blue);}
+  .online-bubble-offer strong{color:var(--blue-dark);font-weight:900;}
+  .online-bubble-photos{
+    display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;
+    background:#8de27e;width:180px;
+  }
+  .online-bubble-photos img{display:block;width:100%;aspect-ratio:1 / 1;object-fit:cover;border-radius:8px;}
+  .online-bubble-doc{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    aspect-ratio:1 / 1;border-radius:8px;background:#fff;color:#555;font-size:11px;font-weight:800;
+  }
+  .online-bubble-doc .icon{width:22px;height:22px;color:var(--blue);}
+  .online-msg-time{font-size:10px;color:#fff;font-weight:700;opacity:.9;}
+  .online-phone-foot{
+    display:flex;align-items:center;gap:8px;background:#fff;padding:8px 10px;
+    border-top:1px solid #e3e3e3;color:#666;font-size:16px;
+  }
+  .online-phone-input{
+    flex:1;border:1px solid #ddd;border-radius:999px;padding:7px 12px;
+    font-size:12px;color:#aaa;font-weight:600;
+  }
+  .online-chat-points{
+    list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;
+    counter-reset:none;
+  }
+  .online-chat-points li{
+    display:flex;align-items:flex-start;gap:10px;
+    background:#eaf5fd;border-radius:12px;padding:12px 14px;
+    font-size:var(--fs-xs);color:#444;line-height:1.6;
+  }
+  .online-chat-points li > span{
+    flex:none;width:26px;height:26px;border-radius:50%;
+    background:var(--line-green);color:#fff;font-weight:900;font-size:13px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .online-chat-points strong{display:block;color:var(--black);font-size:var(--fs-sm);font-weight:900;margin-bottom:2px;}
+  .online-chat-note{margin:14px 0 0;font-size:var(--fs-2xs);color:#777;text-align:center;line-height:1.6;}
+  @media (min-width:768px){
+    .online-chat-lead{font-size:16px;margin-bottom:32px;}
+    .online-chat-inner{flex-direction:row;align-items:flex-start;gap:40px;}
+    .online-phone{flex:none;max-width:400px;margin:0;}
+    .online-chat-points{flex:1;gap:14px;padding-top:8px;}
+    .online-chat-points li{padding:16px 18px;font-size:14px;}
+    .online-chat-points strong{font-size:17px;}
+    .online-chat-points li > span{width:32px;height:32px;font-size:15px;}
+    .online-chat-note{font-size:12px;text-align:left;}
+  }
+
+  /* ---------- online：トーク画面の見た目を調整（実機LINEに寄せる） ---------- */
+  .online-chat{background:#f3f6f9;}
+  .online-phone{
+    max-width:340px;
+    border:8px solid #111;border-radius:34px;background:#8fb0dc;
+    box-shadow:0 18px 40px rgba(0,0,0,.22), inset 0 0 0 2px #2a2a2a;
+  }
+  .online-phone-status{
+    display:flex;justify-content:space-between;align-items:center;
+    background:#fff;padding:8px 18px 0;font-size:11px;font-weight:800;color:#111;
+  }
+  .online-phone-status i{font-style:normal;letter-spacing:.04em;}
+  .online-phone-head{padding:6px 14px 10px;font-size:15px;}
+  .online-phone-body{padding:16px 10px 12px;gap:14px;}
+  .online-chat-sys{background:rgba(0,0,0,.22);font-size:10px;}
+  .online-msg{max-width:86%;}
+  .online-bubble{border-radius:18px;padding:10px 12px;font-size:12.5px;line-height:1.65;}
+  .online-msg-shop .online-bubble{border-top-left-radius:6px;}
+  .online-msg-me .online-bubble{background:#95e37f;border-top-right-radius:6px;}
+  .online-msg-tag{color:#fff;opacity:.85;}
+  .online-msg-time{color:#fff;opacity:.85;font-size:10px;}
+  .online-bubble-photos{
+    grid-template-columns:repeat(3, 1fr);gap:3px;padding:3px;
+    width:210px;background:#95e37f;border-radius:14px;
+  }
+  .online-bubble-photos img{aspect-ratio:1 / 1;border-radius:6px;}
+  .online-bubble-offer{border:2px solid var(--line-green);box-shadow:0 4px 12px rgba(0,0,0,.12);}
+  .online-bubble-offer strong{color:#0a8a3c;}
+  .online-phone-foot{padding:8px 12px 10px;}
+  .online-chat-points li{background:#fff;box-shadow:0 3px 10px rgba(0,0,0,.05);}
+  @media (min-width:768px){
+    .online-phone{max-width:380px;}
+    .online-chat-points li{background:#fff;}
+  }
+  /* 撮り方：実写真が入った枠は点線を外す */
+  .online-photo-frame:has(> img){border:none;box-shadow:0 4px 12px rgba(0,0,0,.08);}
+  .online-photo-frame:has(> img) .icon{display:none;}
+  /* PC：トーク画面が長いぶん、右の要点リストは追従させて空白を作らない */
+  @media (min-width:768px){
+    .online-chat-points{position:sticky;top:96px;}
+  }
+
+  /* ---------- online：流れの要点5つ（アイコン＋大きな薄い番号のカード） ---------- */
+  .online-chat-points li{
+    position:relative;overflow:hidden;
+    align-items:center;gap:14px;
+    background:#fff;border-radius:14px;padding:16px 60px 16px 16px;
+    box-shadow:0 4px 14px rgba(0,0,0,.06);
+  }
+  .online-chat-points li > span.pt-icon{
+    flex:none;width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--line-green);color:#fff;font-size:0;
+  }
+  .online-chat-points li:nth-child(even) > span.pt-icon{background:var(--blue);}
+  .online-chat-points .pt-icon .icon{width:22px;height:22px;}
+  .online-chat-points .pt-body{flex:1;min-width:0;}
+  .online-chat-points .pt-body strong{font-size:var(--fs-md);}
+  .online-chat-points .pt-body p{margin:0;font-size:var(--fs-xs);color:#555;line-height:1.6;}
+  .online-chat-points li > span.pt-num{
+    position:absolute;right:10px;top:50%;transform:translateY(-50%);
+    width:auto;height:auto;border-radius:0;background:none;
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-size:44px;font-weight:900;line-height:1;color:var(--blue);opacity:.14;
+    pointer-events:none;
+  }
+  @media (min-width:768px){
+    .online-chat-points li{padding:18px 70px 18px 18px;}
+    .online-chat-points li > span.pt-icon{width:52px;height:52px;}
+    .online-chat-points .pt-icon .icon{width:26px;height:26px;}
+    .online-chat-points .pt-body strong{font-size:18px;}
+    .online-chat-points .pt-body p{font-size:14px;}
+    .online-chat-points li > span.pt-num{font-size:56px;right:14px;}
+  }
+
+  /* ---------- online：送っていただく情報（アイコンタイル＋コピー用テンプレ） ---------- */
+  .online-send-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px;}
+  .online-send-tile{
+    display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+    background:#eaf5fd;border-radius:14px;padding:16px 10px 14px;
+  }
+  .online-send-tile .tile-icon{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .online-send-tile .tile-icon .icon{width:22px;height:22px;}
+  .online-send-tile strong{font-size:var(--fs-sm);font-weight:900;color:var(--black);line-height:1.3;}
+  .online-send-tile small{font-size:var(--fs-2xs);color:#666;line-height:1.5;}
+  .online-send-tile.tile-accent{background:#fff3c4;}
+  .online-send-tile.tile-accent .tile-icon{background:var(--orange);}
+  .online-send-tpl{
+    background:#fff;border:2px solid var(--line-green);border-radius:16px;
+    padding:14px 14px 16px;margin:0 0 14px;
+  }
+  .online-send-tpl-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .online-send-tpl-badge{
+    flex:none;background:var(--line-green);color:#fff;font-weight:900;font-size:11px;
+    padding:4px 10px;border-radius:999px;letter-spacing:.04em;
+  }
+  .online-send-tpl-head p{margin:0;font-size:var(--fs-xs);font-weight:800;color:var(--black);}
+  .online-send-tpl-body{
+    margin:0 0 12px;padding:12px 14px;
+    background:#eef3f8;border-radius:12px;
+    font-family:inherit;font-size:var(--fs-sm);font-weight:700;color:#333;line-height:1.9;
+    white-space:pre-wrap;
+  }
+  .online-send-copy{padding:13px 16px;font-size:var(--fs-sm);font-weight:900;}
+  .online-send-copy .icon{width:16px;height:16px;}
+  .online-send-tpl .online-send-note{margin-top:10px;}
+  @media (min-width:768px){
+    .online-send-grid{grid-template-columns:repeat(3, 1fr);gap:16px;margin-bottom:24px;}
+    .online-send-tile{padding:22px 14px 18px;gap:8px;}
+    .online-send-tile .tile-icon{width:56px;height:56px;}
+    .online-send-tile .tile-icon .icon{width:28px;height:28px;}
+    .online-send-tile strong{font-size:17px;}
+    .online-send-tile small{font-size:13px;}
+    .online-send-inner{display:flex;align-items:stretch;gap:24px;}
+    .online-send-tpl{flex:1.4;margin:0;padding:20px 22px;}
+    .online-send-tpl-body{font-size:15px;}
+    .online-send-copy{max-width:320px;}
+    .online-hours{flex:1;flex-direction:column;justify-content:center;padding:24px;}
+  }
+
+  /* ---------- online：カードだらけを避ける（メリット＝アイコン行／ステップ＝タイムライン） ---------- */
+  /* メリット：カード背景をやめ、3つ横並びのアイコン＋テキスト */
+  .online-merit-grid{flex-direction:row;gap:6px;align-items:flex-start;}
+  .online-merit-card{
+    flex:1;min-width:0;flex-direction:column;align-items:center;text-align:center;
+    background:none;border-radius:0;padding:0 4px;gap:10px;
+    position:relative;
+  }
+  .online-merit-card + .online-merit-card::before{
+    content:"";position:absolute;left:-3px;top:10px;bottom:10px;width:1px;background:#d9e6f0;
+  }
+  .online-merit-icon{width:56px;height:56px;box-shadow:0 6px 14px rgba(56,161,219,.3);}
+  .online-merit-icon .icon{width:28px;height:28px;}
+  .online-merit-card h3{font-size:clamp(13px, 3.8vw, 16px);margin:0 0 2px;}
+  .online-merit-card p{font-size:clamp(10.5px, 3vw, 12px);line-height:1.6;}
+
+  /* ステップ：白カードをやめ、番号の丸を線でつないだタイムライン */
+  .online-step-list{gap:0;margin-bottom:var(--gap-block);position:relative;}
+  .online-step{
+    background:none;box-shadow:none;border-radius:0;color:#fff;
+    padding:0 0 26px 0;gap:14px;align-items:flex-start;position:relative;
+  }
+  .online-step::before{
+    content:"";position:absolute;left:27px;top:56px;bottom:0;width:3px;
+    background:rgba(255,255,255,.45);border-radius:3px;
+  }
+  .online-step:last-child{padding-bottom:0;}
+  .online-step:last-child::before{display:none;}
+  .online-step-badge{
+    flex:none;width:56px;height:56px;border-radius:50%;
+    background:#fff;color:var(--line-green);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-size:24px;line-height:1;padding:0;margin:0;letter-spacing:0;
+    box-shadow:0 6px 16px rgba(0,0,0,.18);
+  }
+  .online-step-badge small{font-size:9px;font-weight:900;letter-spacing:.08em;margin-bottom:2px;font-family:"Noto Sans JP",sans-serif;}
+  .online-step-body{padding-top:6px;}
+  .online-step-body h3{color:#fff;font-size:clamp(17px, 5vw, 20px);margin-bottom:6px;}
+  .online-step-body p{color:rgba(255,255,255,.92);}
+  @media (min-width:768px){
+    .online-merit-grid{gap:24px;}
+    .online-merit-card{padding:0 16px;}
+    .online-merit-card + .online-merit-card::before{left:-12px;}
+    .online-merit-icon{width:72px;height:72px;}
+    .online-merit-icon .icon{width:34px;height:34px;}
+    .online-merit-card h3{font-size:20px;}
+    .online-merit-card p{font-size:15px;}
+
+    .online-step-list{flex-direction:row;gap:28px;}
+    .online-step{flex:1;flex-direction:column;align-items:center;text-align:center;padding:0;}
+    .online-step::before{
+      left:calc(50% + 36px);right:calc(-50% + 36px);top:34px;bottom:auto;height:3px;width:auto;
+    }
+    .online-step-badge{width:72px;height:72px;font-size:30px;}
+    .online-step-badge small{font-size:10px;}
+    .online-step-body{padding-top:14px;}
+    .online-step-body h3{font-size:21px;}
+    .online-step-body p{font-size:15px;}
+  }
+  /* メリットの見出しはスマホの3列でも途中で折れないように */
+  .online-merit-card h3{white-space:nowrap;font-size:clamp(11.5px, 3.2vw, 16px);letter-spacing:0;}
+  @media (min-width:768px){ .online-merit-card h3{font-size:20px;} }
+  /* STEPの丸：ラベルと数字が丸に収まるようサイズと行送りを調整 */
+  .online-step-badge{width:64px;height:64px;font-size:22px;line-height:1;gap:3px;padding-top:2px;box-sizing:border-box;}
+  .online-step-badge small{display:block;line-height:1;margin:0;font-size:9px;}
+  .online-step::before{left:31px;top:64px;}
+  @media (min-width:768px){
+    .online-step-badge{width:80px;height:80px;font-size:28px;gap:4px;}
+    .online-step-badge small{font-size:10px;}
+    .online-step::before{left:calc(50% + 40px);right:calc(-50% + 40px);top:38px;}
+  }

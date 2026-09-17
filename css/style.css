@@ -2780,3 +2780,30 @@
   @media (min-width:768px){
     body.online-page .float-cta.float-cta-hidden{transform:translateY(28px);}
   }
+
+  /* ---------- online SP：撮り方・やり取りのリード文を指定位置で改行、要点カードの文字調整 ---------- */
+  body.online-page .sp-only{display:none;}
+  @media (max-width:767px){
+    body.online-page .sp-only{display:inline;}
+    .online-photo-lead{font-size:calc(var(--fs-sm) - 1px);padding:0 6px;white-space:nowrap;}
+    .online-chat-lead{white-space:nowrap;}
+    /* 要点1〜5：見出しを1px小さく、説明は右の番号に寄りすぎないよう早めに折り返す */
+    .online-chat-points .pt-body strong{font-size:calc(var(--fs-md) - 1px);}
+    .online-chat-points .pt-body p{padding-right:14px;}
+    .online-chat-points li{padding-right:66px;}
+  }
+  @media (max-width:360px){
+    .online-chat-points .pt-body strong{font-size:14px;}
+  }
+  /* SP：テンプレ見出し横の説明文を1px小さく */
+  @media (max-width:767px){
+    .online-send-tpl-head p{font-size:calc(var(--fs-xs) - 1px);}
+  }
+  /* SP：テンプレ下の注記を少し小さく、左右に余白 */
+  @media (max-width:767px){
+    .online-send-tpl .online-send-note{font-size:calc(var(--fs-xs) - 1px);padding:0 8px;text-align:left;}
+  }
+  /* SP：撮り方のリード文は左揃え */
+  @media (max-width:767px){
+    .online-photo-lead{text-align:center;}
+  }

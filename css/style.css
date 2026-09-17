@@ -2807,3 +2807,11 @@
   @media (max-width:767px){
     .online-photo-lead{text-align:center;}
   }
+
+  /* ---------- 横スクロール対策：overflow-x:clip 非対応（iOS 15以前のSafariなど）向けのフォールバック ---------- */
+  @supports not (overflow-x: clip){
+    html, body{overflow-x:hidden;}
+    #view-lp, #view-form, .online-hero, .online-cta{overflow-x:hidden;}
+  }
+  /* はみ出しの元になりやすい要素は念のためセクション側で確実に切る */
+  .online-hero, .online-cta, .online-steps, .online-send, .online-photo, .online-chat{overflow-x:clip;}

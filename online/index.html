@@ -39,6 +39,8 @@
     <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></symbol>
     <symbol id="ic-moto" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="2.8"/><circle cx="18.5" cy="17.5" r="2.8"/><path d="M5.5 17.5 9 10h4l2 3h4.5"/><path d="M9 10 7.5 6.5h-2"/><path d="M13 10l2.2 4.5"/></symbol>
     <symbol id="ic-truck" viewBox="0 0 24 24"><rect x="1" y="6" width="14" height="11" rx="1"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.6" fill="currentColor" stroke="none"/><circle cx="17.5" cy="19" r="1.6" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="ic-chev-down" viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></symbol>
+    <symbol id="ic-send" viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></symbol>
   </defs>
 </svg>
 
@@ -88,12 +90,49 @@
   <!-- ヒーロー -->
   <section class="online-hero">
     <div class="wrap online-hero-inner">
+    <!-- 背景：LINEのやり取りイメージを大きく薄く敷く -->
+    <div class="online-hero-bg" aria-hidden="true">
+      <div class="online-phone online-hero-phone">
+        <div class="online-phone-status"><i>14:16</i><i>4G ▮▮▮ ▭</i></div>
+        <div class="online-phone-head">
+          <span class="online-phone-back">‹</span>
+          <span class="online-phone-name"><img class="online-phone-head-icon" src="../img/lineIcon.png" alt="">ティーバイティーガレージ</span>
+          <span class="online-phone-dots">…</span>
+        </div>
+        <div class="online-phone-body">
+          <div class="online-chat-sys">友だち追加されました。</div>
+          <div class="online-msg online-msg-shop">
+            <span class="online-msg-avatar"><img src="../img/lineIcon.png" alt="" loading="lazy"></span>
+            <div class="online-msg-col">
+              <div class="online-bubble">はじめまして！ティーバイティーガレージです。<br>バイクの写真と情報を送ってください✨</div>
+            </div>
+          </div>
+          <div class="online-msg online-msg-me">
+            <div class="online-msg-col">
+              <div class="online-bubble online-bubble-photos"><img src="../img/linebike_1.png" alt="" loading="lazy"><img src="../img/linebike_2.png" alt="" loading="lazy"><img src="../img/linebike_3.png" alt="" loading="lazy"></div>
+              <div class="online-bubble">写真を送ります📷<br>ヤマハ MT-03（2019年式）</div>
+            </div>
+          </div>
+          <div class="online-msg online-msg-shop">
+            <span class="online-msg-avatar"><img src="../img/lineIcon.png" alt="" loading="lazy"></span>
+            <div class="online-msg-col">
+              <div class="online-bubble online-bubble-offer">【査定金額のご案内】<br>買取り金額：<strong>TxT,xxx円</strong></div>
+            </div>
+          </div>
+          <div class="online-msg online-msg-me">
+            <div class="online-msg-col">
+              <div class="online-bubble">お願いします！</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
       <div class="online-hero-text">
-        <p class="online-hero-kicker">＼撮って送るだけ／</p>
-        <h1 class="online-hero-title">LINEで<br><span class="online-hero-em">オンライン買取り</span></h1>
+        <p class="online-hero-kicker online-hero-kicker-line"><svg class="icon online-hero-cam"><use href="#ic-camera"/></svg>撮って送るだけ<svg class="icon online-hero-send"><use href="#ic-send"/></svg></p>
+        <h1 class="online-hero-title"><span class="online-hero-l1"><span class="online-hero-line">LINE</span><span class="online-hero-de">で</span></span><br><span class="online-hero-em">オンライン買取り</span></h1>
         <p class="online-hero-sub">来店不要。スマホでバイクの写真を送るだけで、<br>LINEで買取り金額をご提示します。</p>
-        <a class="btn btn-line online-line-btn" href="https://line.me/R/ti/p/@688wfkiu" target="_blank" rel="noopener">
-          <svg class="icon"><use href="#ic-chat"/></svg><span>LINEで友だち追加して査定スタート</span>
+        <a class="btn btn-line online-line-btn online-hero-btn" href="https://line.me/R/ti/p/@688wfkiu" target="_blank" rel="noopener">
+          <span>LINEで友だち追加して査定スタート</span>
           <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
         </a>
         <p class="online-hero-note">受付時間 10:00〜19:00（水曜定休）<br>19:00以降のお申し込みは翌営業日にご連絡します</p>
@@ -252,18 +291,19 @@
       <p class="online-chat-lead">友だち追加から金額のご提示まで、難しい操作はなく写真と必要情報を送るだけ。</p>
 
       <div class="online-chat-inner">
-        <div class="online-phone">
+        <div class="online-phone is-collapsed" id="chat-phone">
           <div class="online-phone-status"><i>14:16</i><i>4G ▮▮▮ ▭</i></div>
           <div class="online-phone-head">
             <span class="online-phone-back">‹</span>
-            <span class="online-phone-name">ティーバイティーガレージ</span>
+            <span class="online-phone-name"><img class="online-phone-head-icon" src="../img/lineIcon.png" alt="">ティーバイティーガレージ</span>
             <span class="online-phone-dots">…</span>
           </div>
-          <div class="online-phone-body">
+          <div class="online-phone-screen">
+          <div class="online-phone-body" id="chat-body">
             <div class="online-chat-sys">友だち追加されました。</div>
 
             <div class="online-msg online-msg-shop">
-              <span class="online-msg-avatar"><img src="../img/Icon.png" alt="" loading="lazy"></span>
+              <span class="online-msg-avatar"><img src="../img/lineIcon.png" alt="" loading="lazy"></span>
               <div class="online-msg-col">
                 <span class="online-msg-tag">自動返信</span>
                 <div class="online-bubble">はじめまして！ティーバイティーガレージです。<br>友だち追加ありがとうございます✨<br><br>バイクオンライン買取り✨<br>型式や車検証など、モデルがわかるものや可能な限りバイクの状態がわかるような写真を複数枚送ってください。<br><br>その他✨<br>小さな疑問はトークにて気軽にご相談くださいませ！<br><br>お客様の情報を教えてください✨<br>■氏名：<br>■電話番号：<br>■お住まいの地域：（都道府県）</div>
@@ -281,7 +321,7 @@
             </div>
 
             <div class="online-msg online-msg-shop">
-              <span class="online-msg-avatar"><img src="../img/Icon.png" alt="" loading="lazy"></span>
+              <span class="online-msg-avatar"><img src="../img/lineIcon.png" alt="" loading="lazy"></span>
               <div class="online-msg-col">
                 <div class="online-bubble">山田様、ご連絡ありがとうございます。<br>下記もご回答をお願いいたします。<br>・走行に問題がないか<br>・事故／修復歴の有無<br>・キズやへこみの有無<br>・お手放しのタイミング</div>
                 <span class="online-msg-time">10:27</span>
@@ -296,7 +336,7 @@
             </div>
 
             <div class="online-msg online-msg-shop">
-              <span class="online-msg-avatar"><img src="../img/Icon.png" alt="" loading="lazy"></span>
+              <span class="online-msg-avatar"><img src="../img/lineIcon.png" alt="" loading="lazy"></span>
               <div class="online-msg-col">
                 <div class="online-bubble">かしこまりました。<br>最寄りの仙台パーツ店に金額の確認を行います。少々お待ちくださいませ。</div>
                 <span class="online-msg-time">10:45</span>
@@ -304,7 +344,7 @@
             </div>
 
             <div class="online-msg online-msg-shop">
-              <span class="online-msg-avatar"><img src="../img/Icon.png" alt="" loading="lazy"></span>
+              <span class="online-msg-avatar"><img src="../img/lineIcon.png" alt="" loading="lazy"></span>
               <div class="online-msg-col">
                 <div class="online-bubble online-bubble-offer">お待たせいたしました。<br><strong>【査定金額のご案内】</strong><br>買取り金額：<strong>TxT,xxx円</strong><br>有効期限：9/29<br>引渡方法：ご自宅へ直接お伺い・お引取り<br><br>いかがでしょうか？</div>
                 <span class="online-msg-time">14:17</span>
@@ -319,12 +359,18 @@
             </div>
 
             <div class="online-msg online-msg-shop">
-              <span class="online-msg-avatar"><img src="../img/Icon.png" alt="" loading="lazy"></span>
+              <span class="online-msg-avatar"><img src="../img/lineIcon.png" alt="" loading="lazy"></span>
               <div class="online-msg-col">
                 <div class="online-bubble">ありがとうございます。<br>担当店舗より、お引取りの日程についてご連絡いたします。<br>オンライン買取りのご利用ありがとうございました。</div>
                 <span class="online-msg-time">14:26</span>
               </div>
             </div>
+          </div>
+          <div class="online-chat-more">
+            <button type="button" class="online-chat-more-btn" onclick="toggleChat(this)" aria-expanded="false" aria-controls="chat-body">
+              <span>やり取りを最後まで見る</span><svg class="icon"><use href="#ic-chev-down"/></svg>
+            </button>
+          </div>
           </div>
           <div class="online-phone-foot"><span>＋</span><span class="online-phone-input">メッセージを入力</span><span>➤</span></div>
         </div>
@@ -348,7 +394,8 @@
         <img src="../img/shinjo07@.png" width="558" height="676" alt="ティーバイティーガレージのスタッフ" loading="lazy">
       </div>
       <div class="online-cta-text">
-        <p class="online-cta-lead">眠っているバイク、まずはLINEで聞いてみませんか？</p>
+        <p class="online-cta-lead">眠っているバイク<br>LINEで聞いてみませんか？</p>
+        <img class="online-cta-bike" src="../img/%E3%83%90%E3%82%A4%E3%82%AF2.png" width="1448" height="1086" alt="" loading="lazy">
         <p class="online-cta-title">スマホで撮って送るだけ<br>LINEで金額をご提示！</p>
         <a class="btn btn-line online-line-btn online-line-btn-lg" href="https://line.me/R/ti/p/@688wfkiu" target="_blank" rel="noopener">
           <svg class="icon"><use href="#ic-chat"/></svg><span>LINEで友だち追加して査定スタート</span>
@@ -562,6 +609,29 @@ function copyTemplate(btn){
 
 function toggleFaq(btn){
   btn.closest('.faq-item').classList.toggle('open');
+}
+
+/* トーク画面：最初は途中まで表示し、ボタンで最後まで開く */
+function toggleChat(btn){
+  var phone = el('chat-phone');
+  var body  = el('chat-body');
+  var label = btn.querySelector('span');
+  if (phone.classList.contains('is-collapsed')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    phone.classList.remove('is-collapsed');
+    phone.classList.add('is-open');
+    body.addEventListener('transitionend', function(){ body.style.maxHeight = ''; }, {once:true});
+    label.textContent = '閉じる';
+    btn.setAttribute('aria-expanded', 'true');
+  } else {
+    phone.classList.remove('is-open');
+    phone.classList.add('is-collapsed');
+    body.style.maxHeight = '';
+    label.textContent = 'やり取りを最後まで見る';
+    btn.setAttribute('aria-expanded', 'false');
+    var top = phone.getBoundingClientRect().top + window.pageYOffset - 90;
+    window.scrollTo({top: top, behavior: 'smooth'});
+  }
 }
 </script>
 </body>

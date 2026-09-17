@@ -2172,3 +2172,594 @@
     .online-step-badge small{font-size:10px;}
     .online-step::before{left:calc(50% + 40px);right:calc(-50% + 40px);top:38px;}
   }
+
+  /* ---------- online：トーク画面を途中で畳み「最後まで見る」ボタンで展開 ---------- */
+  .online-phone-screen{position:relative;}
+  .online-phone-body{transition:max-height .7s ease;}
+  .online-phone.is-collapsed .online-phone-body{max-height:700px;overflow:hidden;}
+  .online-chat-more{
+    display:flex;justify-content:center;
+    padding:90px 12px 16px;
+    background:linear-gradient(to bottom, rgba(143,176,220,0) 0%, rgba(143,176,220,.92) 45%, #8fb0dc 70%);
+  }
+  .online-phone.is-collapsed .online-chat-more{position:absolute;left:0;right:0;bottom:0;}
+  .online-phone.is-open .online-chat-more{padding-top:6px;background:none;}
+  .online-chat-more-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;max-width:260px;
+    background:#fff;color:#0a8a3c;
+    font-family:inherit;font-weight:900;font-size:14px;letter-spacing:.02em;
+    padding:13px 18px;border-radius:999px;border:2px solid var(--line-green);
+    box-shadow:0 4px 0 #05a548, 0 8px 18px rgba(0,0,0,.2);
+    cursor:pointer;
+  }
+  .online-chat-more-btn:active{transform:translateY(3px);box-shadow:0 1px 0 #05a548;}
+  .online-chat-more-btn .icon{width:16px;height:16px;flex:none;animation:chatChevBounce 1.4s ease-in-out infinite;}
+  .online-phone.is-open .online-chat-more-btn .icon{transform:rotate(180deg);animation:none;}
+  @keyframes chatChevBounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(3px);}
+  }
+  @media (min-width:768px){
+    .online-phone.is-collapsed .online-phone-body{max-height:760px;}
+    .online-chat-more-btn{font-size:15px;max-width:280px;}
+  }
+
+  /* ---------- online：TOPのベースを青→黄色に（文字は黒、強調は青） ---------- */
+  .online-hero{background:var(--accent);color:var(--black);}
+  .online-hero-kicker{color:var(--black);}
+  .online-hero-title{color:var(--black);}
+  .online-hero-em{color:var(--black);}
+  .online-hero-sub{color:#222;}
+  .online-hero-note{color:#333;opacity:1;}
+
+  /* ---------- online：ページ全体を青ベース→黄色ベースに（文字は黒系） ---------- */
+  /* メリット */
+  .online-merit-icon{background:var(--accent);color:var(--black);box-shadow:0 6px 14px rgba(217,171,0,.35);}
+  .online-merit-card h3{color:var(--black);}
+  /* 送っていただく情報 */
+  .online-send-staff img{background:#fff3c4;}
+  .online-send-bubble{background:#fff3c4;color:var(--black);}
+  .online-send-bubble::before{border-right-color:#fff3c4;}
+  .online-send-tile{background:#fff8dc;}
+  .online-send-tile .tile-icon{background:var(--accent);color:var(--black);}
+  .online-send-tile.tile-accent{background:#ffe680;}
+  .online-send-tile.tile-accent .tile-icon{background:var(--orange);color:#fff;}
+  .online-send-tpl-body{background:#fff8dc;}
+  .online-send-copy.btn-blue{
+    background:var(--accent);color:#222;
+    box-shadow:0 6px 0 #d9ab00, 0 10px 18px rgba(0,0,0,.18);
+  }
+  .online-send-copy.btn-blue:active{box-shadow:0 2px 0 #d9ab00;}
+  /* 写真の撮り方 */
+  .online-photo{background:#fff8dc;}
+  .online-photo-frame{border-color:#e6cc66;}
+  .online-photo-frame .icon{color:#d9ab00;}
+  .online-photo-item figcaption span{background:var(--accent);color:var(--black);}
+  /* LINEやり取り */
+  .online-chat{background:#fff;}
+  .online-chat-points li:nth-child(even) > span.pt-icon{background:var(--accent);color:var(--black);}
+  .online-chat-points li > span.pt-num{color:#d9ab00;opacity:.32;}
+  .online-bubble-doc .icon{color:#d9ab00;}
+  /* 実績・FAQ */
+  body.online-page .sold-carousel{background:#fff8dc;}
+  body.online-page .sold-title{color:var(--black);}
+  body.online-page .faq-title-bar{background:var(--accent);color:var(--black);}
+  body.online-page .faq-v2 .q-mark{background:var(--accent);color:var(--black);}
+  body.online-page .faq-v2 .a-mark{background:var(--orange);color:#fff;}
+  @media (min-width:768px){
+    body.online-page{background:#f6f2e4;}
+  }
+
+  /* ---------- online：TOPにLINEらしさ（緑の吹き出しキッカー＋LINEの文字を緑に） ---------- */
+  .online-hero-kicker-line{
+    position:relative;display:inline-flex;align-items:center;gap:6px;
+    background:var(--line-green);color:#fff;
+    font-size:clamp(13px, 4vw, 17px);font-weight:900;letter-spacing:.04em;
+    padding:8px 16px;border-radius:999px;margin:0 0 12px;
+    box-shadow:0 4px 10px rgba(0,0,0,.12);
+  }
+  .online-hero-kicker-line .icon{width:1.1em;height:1.1em;flex:none;}
+  /* 吹き出しのしっぽ（左下） */
+  .online-hero-kicker-line::after{
+    content:"";position:absolute;left:18px;bottom:-7px;
+    border-left:6px solid transparent;border-right:6px solid transparent;
+    border-top:8px solid var(--line-green);
+  }
+  .online-hero-line{color:var(--line-green);}
+  @media (min-width:768px){
+    .online-hero-kicker-line{font-size:19px;padding:9px 20px;margin-bottom:14px;}
+  }
+
+  /* ---------- online：TOP背景にLINEのやり取りイメージを大きく薄く敷く ---------- */
+  .online-hero{position:relative;overflow:hidden;}
+  .online-hero-inner{position:relative;z-index:1;}
+  .online-hero-bg{position:absolute;inset:0;pointer-events:none;opacity:.5;}
+  .online-hero-bg .hb{
+    position:absolute;
+    background:#fff;color:#222;border-radius:22px;
+    padding:12px 16px;font-size:clamp(12px, 3.4vw, 15px);font-weight:800;line-height:1.5;
+    box-shadow:0 8px 20px rgba(0,0,0,.10);white-space:nowrap;
+  }
+  .online-hero-bg .hb-shop{border-top-left-radius:6px;}
+  .online-hero-bg .hb-me{background:#95e37f;border-top-right-radius:6px;}
+  .online-hero-bg .hb-offer{border:2px solid var(--line-green);}
+  .online-hero-bg .hb-offer strong{color:#0a8a3c;font-weight:900;}
+  /* SP：文字ブロックの下〜写真の周りに配置 */
+  .online-hero-bg .hb-1{left:2%;top:46%;transform:rotate(-3deg);}
+  .online-hero-bg .hb-2{right:2%;top:58%;transform:rotate(2deg);}
+  .online-hero-bg .hb-3{right:2%;top:73%;transform:rotate(-2deg);}
+  .online-hero-bg .hb-4{left:4%;top:88%;transform:rotate(3deg);}
+  @media (min-width:768px){
+    .online-hero-text{padding-bottom:100px;}
+    .online-hero-bg{opacity:.42;}
+    .online-hero-bg .hb{font-size:20px;padding:16px 22px;border-radius:28px;}
+    .online-hero-bg .hb-1{left:46%;top:1%;transform:rotate(-2deg);}
+    .online-hero-bg .hb-2{right:3%;top:17%;transform:rotate(2deg);}
+    .online-hero-bg .hb-3{left:44%;right:auto;top:auto;bottom:4%;transform:rotate(-1deg);}
+    .online-hero-bg .hb-4{left:auto;right:5%;top:auto;bottom:14%;transform:rotate(2deg);}
+  }
+
+  /* ---------- online：TOP背景を「スマホ画面のトーク」に差し替え（吹き出し単体は廃止） ---------- */
+  .online-hero-bg .hb{display:none;}
+  .online-hero-bg{opacity:.42;}
+  .online-hero-bg .online-hero-phone{
+    position:absolute;width:280px;max-width:none;margin:0;
+    left:56%;top:50%;transform:translateX(-50%) rotate(-6deg) scale(1.15);transform-origin:top center;
+    box-shadow:0 20px 50px rgba(0,0,0,.18);
+  }
+  .online-hero-bg .online-hero-phone .online-phone-body{padding:16px 10px 40px;gap:14px;}
+  .online-hero-bg .online-hero-phone .online-bubble-photos{width:190px;}
+  @media (min-width:768px){
+    .online-hero-text{padding-bottom:24px;}
+    .online-hero-bg{opacity:.34;}
+    .online-hero-bg .online-hero-phone{
+      width:340px;left:auto;right:-80px;top:30px;
+      transform:rotate(8deg) scale(1.25);transform-origin:top right;
+    }
+  }
+  @media (min-width:1100px){
+    .online-hero-bg .online-hero-phone{right:-90px;top:20px;transform:rotate(8deg) scale(1.3);}
+  }
+
+  /* ---------- online：TOPのスマホ画面は文字ブロック基準で配置（画面幅が変わっても位置が崩れない） ---------- */
+  .online-hero-inner{position:relative;}
+  .online-hero-text,.online-hero-photo{position:relative;z-index:1;}
+  .online-hero-bg{position:absolute;inset:0;z-index:0;opacity:.5;}
+  .online-hero-bg .online-hero-phone{
+    left:auto;right:-60px;top:52%;
+    transform:rotate(-8deg) scale(1.1);transform-origin:top right;
+  }
+  @media (min-width:768px){
+    .online-hero-bg{opacity:.45;}
+    .online-hero-bg .online-hero-phone{
+      width:330px;right:-120px;top:-24px;
+      transform:rotate(9deg) scale(1.15);transform-origin:top right;
+    }
+  }
+  @media (min-width:1100px){
+    .online-hero-bg .online-hero-phone{right:-150px;top:-30px;transform:rotate(9deg) scale(1.2);}
+  }
+
+  /* ---------- online：トーク画面ヘッダーにアカウントアイコン ---------- */
+  .online-phone-name{display:inline-flex;align-items:center;gap:6px;}
+  .online-phone-head-icon{width:24px;height:24px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+
+  /* ---------- online：TOPレイアウト（PC：写真｜文字｜スマホ の3列／SP：スマホは上部の文字の後ろ） ---------- */
+  /* SP：スマホは右上、文字の後ろに薄く */
+  .online-hero-bg{opacity:.35;}
+  .online-hero-bg .online-hero-phone{
+    width:250px;left:auto;right:-70px;top:-30px;
+    transform:rotate(-10deg);transform-origin:top right;
+  }
+  @media (min-width:768px){
+    /* 3列：DOMは スマホ→文字→写真、row-reverse で 写真｜文字｜スマホ */
+    .online-hero-inner{align-items:flex-end;gap:24px;}
+    .online-hero-bg{
+      position:static;inset:auto;opacity:1;pointer-events:auto;
+      flex:none;width:250px;margin-right:-90px;margin-bottom:-90px;
+      align-self:flex-end;
+    }
+    .online-hero-bg .online-hero-phone{
+      position:relative;left:auto;right:auto;top:auto;width:100%;
+      transform:rotate(6deg);transform-origin:bottom left;
+      box-shadow:0 22px 50px rgba(0,0,0,.25);
+    }
+    .online-hero-photo{width:340px;max-width:none;margin-left:-40px;}
+    .online-hero-text{flex:1;min-width:0;padding-bottom:36px;}
+    .online-hero-title{font-size:44px;}
+    .online-hero-sub{font-size:15px;}
+    .online-hero .online-line-btn{font-size:16px;max-width:420px;}
+    .online-hero-kicker-line{font-size:17px;}
+  }
+  @media (min-width:1100px){
+    .online-hero-bg{width:280px;margin-right:-120px;}
+    .online-hero-photo{width:380px;}
+    .online-hero-title{font-size:48px;}
+  }
+  /* TOPのスマホ：ヘッダー名が幅に収まるよう少し小さく、右端は画面内に */
+  .online-hero-phone .online-phone-head{font-size:12.5px;padding:6px 10px 9px;}
+  .online-hero-phone .online-phone-name{white-space:nowrap;}
+  @media (min-width:768px){
+    .online-hero-bg{margin-right:-40px;}
+  }
+  @media (min-width:1100px){
+    .online-hero-bg{margin-right:-60px;}
+  }
+
+  /* ---------- online：TOPキッカーは緑の枠をやめて黒文字＋白の下線に（下のLINEボタンと色がかぶるため） ---------- */
+  .online-hero-kicker-line{
+    background:none;color:var(--black);box-shadow:none;
+    padding:0 2px 4px;border-radius:0;margin:0 0 12px;
+    border-bottom:4px solid #fff;
+    font-size:clamp(15px, 4.6vw, 20px);letter-spacing:.06em;
+  }
+  .online-hero-kicker-line::after{display:none;}
+  .online-hero-kicker-line .icon{color:var(--black);}
+  @media (min-width:768px){
+    .online-hero-kicker-line{font-size:20px;padding:0 2px 5px;margin-bottom:14px;}
+  }
+  /* PC：左の写真をさらに大きく（左に少しはみ出させて文字の幅は確保） */
+  @media (min-width:768px){
+    .online-hero-photo{width:400px;margin-left:-70px;}
+  }
+  @media (min-width:1100px){
+    .online-hero-photo{width:480px;margin-left:-130px;}
+    .online-hero-text{min-width:360px;}
+    .online-hero-title{font-size:44px;}
+  }
+
+  /* ---------- online：キッカーの下線を手書き風の波線（白）に装飾 ---------- */
+  .online-hero-kicker-line{
+    position:relative;border-bottom:none;padding-bottom:12px;
+  }
+  .online-hero-kicker-line::after{
+    content:"";display:block;position:absolute;left:-4px;right:-4px;bottom:0;height:10px;
+    border:none;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'><path d='M2 6 C 12 1, 22 1, 32 6 S 52 11, 62 6 S 82 1, 92 6 S 112 11, 118 6' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round'/></svg>") no-repeat center / 100% 100%;
+    transform:none;
+  }
+  @media (min-width:768px){
+    .online-hero-kicker-line{padding-bottom:14px;}
+    .online-hero-kicker-line::after{height:12px;}
+  }
+  /* PC：中央の文字を全体的に大きく（両脇のはみ出し量を増やして幅を確保） */
+  @media (min-width:1100px){
+    .online-hero-inner{gap:16px;}
+    .online-hero-photo{margin-left:-150px;}
+    .online-hero-bg{margin-right:-90px;}
+    .online-hero-text{min-width:420px;}
+    .online-hero-kicker-line{font-size:22px;}
+    .online-hero-title{font-size:50px;}
+    .online-hero-sub{font-size:17px;}
+    .online-hero .online-line-btn{font-size:17.5px;max-width:440px;}
+    .online-hero-note{font-size:13px;}
+  }
+  /* キッカー「撮って送るだけ」を大きく */
+  .online-hero-kicker-line{font-size:clamp(19px, 5.8vw, 26px);letter-spacing:.08em;}
+  @media (min-width:768px){ .online-hero-kicker-line{font-size:26px;} }
+  @media (min-width:1100px){ .online-hero-kicker-line{font-size:29px;} }
+  /* キッカーは元のサイズに戻し、見出し「LINEでオンライン買取り」を大きく */
+  .online-hero-kicker-line{font-size:clamp(15px, 4.6vw, 20px);letter-spacing:.06em;}
+  .online-hero-title{font-size:clamp(32px, 10.6vw, 48px);letter-spacing:-.01em;}
+  @media (min-width:768px){
+    .online-hero-kicker-line{font-size:20px;}
+    .online-hero-title{font-size:50px;}
+  }
+  @media (min-width:1100px){
+    .online-hero-kicker-line{font-size:22px;}
+    .online-hero-title{font-size:60px;line-height:1.15;}
+    .online-hero-text{min-width:490px;}
+    .online-hero-photo{width:450px;}
+    .online-hero-bg{width:270px;}
+  }
+
+  /* ---------- online：TOPボタンはアイコンなし・幅少し狭め／下部CTAの写真をセクション下辺に合わせて大きく ---------- */
+  .online-hero-btn{max-width:92%;margin-left:auto;margin-right:auto;}
+  @media (min-width:768px){
+    .online-hero-btn{margin-left:0;}
+    .online-hero .online-hero-btn{max-width:400px;}
+  }
+  /* SP：写真は下辺にぴったり（下パディング分マイナス）で大きめ */
+  .online-cta{overflow:hidden;}
+  .online-cta-staff{width:min(80%, 340px);margin:0 auto calc(var(--sect-y) * -1);}
+  .online-cta-staff img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.2));}
+  .online-cta-inner{display:flex;flex-direction:column;}
+  .online-cta-text{order:-1;margin-bottom:var(--gap-card);}
+  @media (min-width:768px){
+    .online-cta-inner{flex-direction:row;align-items:flex-end;}
+    .online-cta-text{order:0;margin-bottom:24px;}
+    .online-cta-staff{width:44%;max-width:460px;margin:0 0 -64px;}
+  }
+  /* SPの下部CTAは元の並び（写真→文字）に戻す。写真は少しだけ大きめ */
+  @media (max-width:767px){
+    .online-cta-text{order:0;margin-bottom:0;}
+    .online-cta-staff{width:min(74%, 320px);margin:0 auto var(--gap-card);}
+  }
+
+  /* ---------- online：TOP 見出し「LINEで」を2行目と同じ幅まで拡大／下線は直線に戻す／SPは写真とスマホを横並び ---------- */
+  .online-hero-title{font-size:clamp(32px, 11.2vw, 50px);line-height:1.1;}
+  .online-hero-l1{display:block;font-size:1.75em;line-height:1;letter-spacing:.02em;}
+  .online-hero-kicker-line::after{
+    background:#fff;border-radius:3px;height:4px;left:0;right:0;bottom:2px;
+  }
+  .online-hero-kicker-line{padding-bottom:10px;}
+  @media (min-width:768px){
+    .online-hero-kicker-line{padding-bottom:12px;}
+    .online-hero-kicker-line::after{height:5px;}
+  }
+  @media (min-width:1100px){
+    .online-hero-title{font-size:60px;}
+  }
+  @media (max-width:767px){
+    .online-hero-inner{display:flex;flex-wrap:wrap;align-items:flex-end;}
+    .online-hero-text{order:-1;width:100%;}
+    .online-hero-photo{order:1;width:58%;max-width:none;margin:var(--gap-card) 0 calc(var(--sect-y) * -1) -6%;}
+    .online-hero-bg{
+      order:2;position:relative;inset:auto;opacity:1;
+      width:48%;height:360px;margin:0 -6% 0 0;align-self:flex-end;
+    }
+    .online-hero-bg .online-hero-phone{
+      position:absolute;left:0;bottom:-70px;top:auto;right:auto;width:250px;
+      transform:rotate(6deg) scale(.66);transform-origin:bottom left;
+      box-shadow:0 16px 36px rgba(0,0,0,.22);
+    }
+  }
+  /* 「LINEで」の行：余分な行間をなくし、2行目とほぼ同じ幅に */
+  .online-hero-title{line-height:1.05;}
+  .online-hero-l1{display:inline-block;font-size:2.05em;line-height:.95;letter-spacing:0;margin-bottom:6px;vertical-align:bottom;}
+  @media (max-width:767px){
+    .online-hero-photo{width:62%;margin-left:-8%;}
+    .online-hero-bg{width:46%;height:300px;margin-right:-8%;}
+    .online-hero-bg .online-hero-phone{transform:rotate(6deg) scale(.56);bottom:-60px;}
+  }
+  /* 「LINEで」をさらに大きく（2行目より広い幅）。キッカーは「」付き */
+  .online-hero-l1{font-size:2.35em;margin-bottom:8px;}
+  .online-hero-kicker-line{padding-left:0;padding-right:0;}
+  .online-hero-kicker-line::after{left:.5em;right:.5em;}
+  /* 「LINEで」少し小さく・「で」はさらに小さく。キッカーの下線はなし */
+  .online-hero-l1{font-size:2.05em;margin-bottom:6px;}
+  .online-hero-de{font-size:.62em;}
+  .online-hero-kicker-line::after{display:none;}
+  .online-hero-kicker-line{padding-bottom:0;margin-bottom:8px;}
+
+  /* ---------- online：タブレット幅（768〜1099px）はSPと同じ縦積み（3列は1100px〜のみ） ---------- */
+  @media (min-width:768px) and (max-width:1099px){
+    .online-hero{padding-bottom:64px;}
+    .online-hero-inner{display:flex;flex-direction:row;flex-wrap:wrap;align-items:flex-end;gap:0;text-align:center;}
+    .online-hero-text{order:-1;flex:none;width:100%;min-width:0;padding-bottom:0;text-align:center;}
+    .online-hero-title{font-size:52px;}
+    .online-hero-sub{font-size:17px;}
+    .online-hero .online-hero-btn{margin:0 auto;max-width:460px;}
+    .online-hero-photo{order:1;flex:none;width:50%;max-width:none;margin:28px 0 -64px 0;}
+    .online-hero-bg{order:2;flex:none;position:relative;inset:auto;width:50%;height:420px;margin:0;opacity:1;}
+    .online-hero-bg .online-hero-phone{
+      position:absolute;left:8%;bottom:-90px;top:auto;right:auto;width:300px;
+      transform:rotate(6deg) scale(.9);transform-origin:bottom left;
+    }
+  }
+  /* SP：スマホ画面は少し短く（下をもう少し切る） */
+  @media (max-width:767px){
+    .online-hero-bg{height:250px;}
+    .online-hero-bg .online-hero-phone{bottom:-100px;}
+  }
+
+  /* ---------- online：SPの下部CTAは文字を上に、写真は右下でセクション下辺に付ける（左隣に出張査定の案内） ---------- */
+  @media (max-width:767px){
+    .online-cta-inner{display:grid;grid-template-columns:1fr 46%;column-gap:8px;align-items:end;}
+    .online-cta-text{display:contents;}
+    .online-cta-lead,.online-cta-title,.online-cta .online-line-btn,.online-cta-id{grid-column:1 / -1;}
+    .online-cta-id{margin-bottom:10px;}
+    .online-cta-alt{grid-column:1;grid-row:5;align-self:end;text-align:left;margin:0 0 18px;line-height:1.8;}
+    .online-cta-staff{
+      grid-column:2;grid-row:5;align-self:end;justify-self:end;
+      width:100%;max-width:220px;margin:0 -6px calc(var(--sect-y) * -1) 0;
+    }
+  }
+  @media (max-width:767px){
+    .online-cta-inner{grid-template-columns:1fr 44%;}
+    .online-cta-alt{font-size:11.5px;white-space:nowrap;}
+  }
+
+  /* ---------- online：SP TOPのスマホを少し大きく／SP下部CTAは 写真左＋吹き出し右 → ボタン の並び ---------- */
+  @media (max-width:767px){
+    .online-hero-photo{width:56%;margin-left:-8%;}
+    .online-hero-bg{width:52%;height:270px;margin-right:-10%;}
+    .online-hero-bg .online-hero-phone{transform:rotate(6deg) scale(.66);bottom:-115px;}
+
+    .online-cta-inner{
+      grid-template-columns:42% 1fr;column-gap:10px;row-gap:0;
+      align-items:end;
+    }
+    .online-cta-staff{
+      grid-column:1;grid-row:1 / 3;align-self:end;justify-self:start;
+      width:100%;max-width:none;margin:0 0 0 -8px;
+    }
+    .online-cta-lead{
+      grid-column:2;grid-row:1;align-self:end;
+      position:relative;background:#fff;color:var(--black);
+      border-radius:14px;padding:10px 12px;margin:0 0 10px;
+      font-size:12.5px;font-weight:800;line-height:1.6;text-align:left;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+    .online-cta-lead::before{
+      content:"";position:absolute;left:-9px;bottom:16px;
+      border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:10px solid #fff;
+    }
+    .online-cta-title{
+      grid-column:2;grid-row:2;align-self:end;
+      text-align:left;font-size:clamp(17px, 5.2vw, 22px);line-height:1.35;margin:0 0 6px;
+    }
+    .online-cta .online-line-btn{grid-column:1 / -1;grid-row:3;margin-top:16px;}
+    .online-cta-id{grid-column:1 / -1;grid-row:4;margin:12px 0 0;}
+    .online-cta-alt{grid-column:1 / -1;grid-row:5;text-align:center;white-space:normal;font-size:var(--fs-xs);margin:10px 0 0;}
+  }
+  @media (max-width:767px){
+    /* スマホ画面が受付時間の文字に重ならない高さに */
+    .online-hero-bg{height:305px;margin-top:10px;}
+    .online-hero-bg .online-hero-phone{bottom:-105px;}
+    /* 下部CTAの見出しが折り返さないサイズに */
+    .online-cta-title{font-size:clamp(15px, 4.5vw, 19px);letter-spacing:0;white-space:nowrap;}
+  }
+  /* SP下部CTA：見出しを一番上に大きく → 写真＋吹き出し → ボタン */
+  @media (max-width:767px){
+    .online-cta-title{
+      grid-column:1 / -1;grid-row:1;align-self:start;
+      text-align:center;font-size:clamp(22px, 7vw, 30px);line-height:1.4;letter-spacing:.01em;
+      white-space:nowrap;margin:0 0 14px;
+    }
+    .online-cta-staff{grid-row:2;}
+    .online-cta-lead{grid-row:2;align-self:center;margin:0;font-size:13px;}
+    .online-cta-lead::before{bottom:auto;top:50%;transform:translateY(-50%);}
+    .online-cta .online-line-btn{grid-row:3;margin-top:14px;}
+  }
+
+  /* ---------- online：「撮って送るだけ」は各文字の下に白丸（傍点）／SP下部CTAの吹き出し下にバイク写真 ---------- */
+  .online-hero-kicker-line{
+    -webkit-text-emphasis:filled circle #fff;text-emphasis:filled circle #fff;
+    -webkit-text-emphasis-position:under left;text-emphasis-position:under left;
+    letter-spacing:.14em;padding-bottom:0;margin-bottom:10px;
+  }
+  .online-cta-bike{display:none;}
+  @media (max-width:767px){
+    .online-cta-bike{
+      display:block;grid-column:2;grid-row:3;justify-self:center;align-self:end;
+      width:78%;height:auto;margin:6px 0 0;
+      filter:drop-shadow(0 8px 14px rgba(0,0,0,.18));
+    }
+    .online-cta-staff{grid-row:2 / 4;}
+    .online-cta-lead{align-self:end;}
+    .online-cta-lead::before{top:auto;bottom:14px;transform:none;}
+    .online-cta .online-line-btn{grid-row:4;}
+    .online-cta-id{grid-row:5;}
+    .online-cta-alt{grid-row:6;}
+  }
+  /* SP下部CTA：バイクを少し下げる */
+  @media (max-width:767px){
+    .online-cta-bike{margin:14px 0 -10px;}
+  }
+  @media (min-width:768px){
+    .online-cta-lead br{display:none;}
+  }
+  /* SP下部CTA：吹き出しは文字幅ぴったりに、バイクは大きく・さらに下へ */
+  @media (max-width:767px){
+    .online-cta-lead{width:max-content;max-width:100%;justify-self:start;padding:9px 11px;font-size:12.5px;letter-spacing:0;}
+    .online-cta-bike{width:96%;margin:12px 0 -22px;}
+    .online-cta-staff{grid-row:2 / 4;align-self:end;}
+  }
+  /* SP下部CTA：左のスタッフ写真を大きく・少し右へ・上に余白 */
+  @media (max-width:767px){
+    .online-cta-inner{grid-template-columns:46% 1fr;column-gap:6px;}
+    .online-cta-staff{width:118%;max-width:none;margin:14px 0 0 4px;}
+  }
+  @media (max-width:767px){
+    .online-cta-bike{margin:4px 0 -6px;}
+  }
+  @media (max-width:767px){
+    .online-cta-staff{margin:28px 0 -14px 4px;}
+  }
+  /* キッカーは傍点をやめて「」に戻す */
+  .online-hero-kicker-line{
+    -webkit-text-emphasis:none;text-emphasis:none;letter-spacing:.06em;margin-bottom:8px;
+  }
+  /* キッカーの引用符 ❝❞：少し大きめ・白で装飾 */
+  .online-hero-q{
+    display:inline-block;font-size:1.35em;line-height:1;color:#fff;
+    font-family:"Noto Sans JP","Segoe UI Symbol",sans-serif;
+    margin:0 .12em;transform:translateY(.08em);
+  }
+  /* キッカー頭のカメラアイコン */
+  .online-hero-kicker-line{display:inline-flex;align-items:center;gap:4px;}
+  .online-hero-cam{width:1.25em;height:1.25em;color:var(--black);flex:none;margin-right:2px;}
+  /* キッカー末尾の紙飛行機アイコン */
+  .online-hero-send{width:1.2em;height:1.2em;color:var(--black);flex:none;margin-left:2px;transform:translateY(-.05em);}
+  /* キッカー：引用符なし、白文字＋白アイコン */
+  .online-hero-kicker-line{color:#fff;gap:6px;}
+  .online-hero-cam,.online-hero-send{color:#fff;}
+  /* SP：TOPのスタッフ写真を大きく */
+  @media (max-width:767px){
+    .online-hero-photo{width:66%;margin-left:-14%;}
+    .online-hero-bg{width:48%;margin-right:-12%;}
+  }
+  /* キッカーは黒文字・黒アイコンに戻す */
+  .online-hero-kicker-line{color:var(--black);}
+  .online-hero-cam,.online-hero-send{color:var(--black);}
+  /* SP：TOPのスタッフ写真を少し右へ */
+  @media (max-width:767px){
+    .online-hero-photo{margin-left:-6%;}
+    .online-hero-bg{width:44%;margin-right:-12%;}
+  }
+  /* SP：スマホ画面が右端で切れないように収める */
+  @media (max-width:767px){
+    .online-hero-photo{width:64%;margin-left:-6%;}
+    .online-hero-bg{width:42%;margin-right:0;}
+    .online-hero-bg .online-hero-phone{left:-10px;transform:rotate(6deg) scale(.62);}
+  }
+  /* キッカー：緑文字＋緑の角枠（四角） */
+  .online-hero-kicker-line{
+    color:var(--line-green);
+    border:2px solid var(--line-green);border-radius:4px;
+    padding:6px 12px;margin-bottom:12px;
+  }
+  .online-hero-cam,.online-hero-send{color:var(--line-green);}
+  /* SP：写真はスマホと重なってOKなので少し大きく戻す */
+  @media (max-width:767px){
+    .online-hero-photo{width:68%;margin-left:-6%;}
+    .online-hero-bg{width:46%;margin-right:-8%;}
+    .online-hero-bg .online-hero-phone{left:-6px;transform:rotate(6deg) scale(.64);}
+  }
+  /* キッカー枠の中を白に */
+  .online-hero-kicker-line{background:#fff;}
+  /* アイコンも緑（以前の .online-hero-kicker-line .icon{黒} を上書き） */
+  .online-hero-kicker-line .icon{color:var(--line-green);}
+  /* SP：スマホ画面を少し左へ・少し大きく（写真と重なってOK） */
+  @media (max-width:767px){
+    .online-hero-photo{width:62%;margin-left:-8%;}
+    .online-hero-bg{width:52%;margin-right:-6%;margin-left:-6%;height:320px;}
+    .online-hero-bg .online-hero-phone{left:-14px;bottom:-120px;transform:rotate(6deg) scale(.72);}
+  }
+  @media (max-width:767px){
+    .online-hero-bg{height:290px;}
+    .online-hero-bg .online-hero-phone{bottom:-150px;}
+  }
+  @media (max-width:767px){
+    .online-hero-bg{height:250px;}
+    .online-hero-bg .online-hero-phone{bottom:-200px;}
+  }
+  /* キッカー：緑の枠線なし（白地に緑文字のみ） */
+  .online-hero-kicker-line{border:none;border-radius:6px;padding:7px 14px;}
+  /* キッカー：白地に対して読みやすいよう、LINE緑より一段濃い緑に */
+  .online-hero-kicker-line{color:#0a8f40;}
+  .online-hero-kicker-line .icon{color:#0a8f40;}
+  /* TOPのLINEボタン：右端の矢印を内側に */
+  .online-hero-btn .btn-endcap{right:22px;}
+  @media (min-width:768px){
+    .online-hero-btn .btn-endcap{right:26px;}
+  }
+  /* TOPのLINEボタン：横幅を少し狭く */
+  .online-hero-btn{max-width:86%;}
+  @media (min-width:768px){
+    .online-hero .online-hero-btn{max-width:370px;}
+  }
+  /* SP：狭めた分、文字が矢印に重ならないよう文字を少し小さく・右余白を確保 */
+  @media (max-width:767px){
+    .online-hero-btn{max-width:90%;font-size:clamp(12px, 3.7vw, 16px);padding-right:46px;padding-left:14px;}
+    .online-hero-btn .btn-endcap{right:16px;}
+  }
+
+  /* ---------- online：実績スライドの矢印を緑・大きめに ---------- */
+  body.online-page .sold-arrow{width:28px;height:40px;color:var(--line-green);}
+  body.online-page .sold-arrow .icon{width:28px;height:28px;stroke-width:3.2;}
+  body.online-page .sold-arrow{width:36px;height:48px;}
+  body.online-page .sold-arrow .icon{width:36px;height:36px;stroke-width:3.4;}
+  /* 矢印を大きくした分、SPではカード幅を狭めて枠内に収める */
+  body.online-page .sold-arrow{width:30px;}
+  body.online-page .sold-arrow .icon{width:34px;height:34px;}
+  @media (max-width:767px){
+    body.online-page .sold-card{width:min(68vw, 300px);}
+  }
+  /* PC：矢印の内側にカード3枚がぴったり収まる幅にする（右端が切れない） */
+  @media (min-width:768px){
+    body.online-page .sold-scroll{gap:12px;padding:2px 0 10px;}
+    body.online-page .sold-card{width:calc((100% - 24px) / 3);scroll-snap-align:start;}
+  }

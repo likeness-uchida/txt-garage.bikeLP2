@@ -128,14 +128,13 @@
       </div>
     </div>
       <div class="online-hero-text">
-        <p class="online-hero-kicker online-hero-kicker-line"><svg class="icon online-hero-cam"><use href="#ic-camera"/></svg>撮って送るだけ<svg class="icon online-hero-send"><use href="#ic-send"/></svg></p>
+        <p class="online-hero-kicker online-hero-kicker-line">バイク写真を撮って送るだけ<svg class="icon online-hero-send"><use href="#ic-send"/></svg></p>
         <h1 class="online-hero-title"><span class="online-hero-l1"><span class="online-hero-line">LINE</span><span class="online-hero-de">で</span></span><br><span class="online-hero-em">オンライン買取り</span></h1>
         <p class="online-hero-sub">来店不要。スマホでバイクの写真を送るだけで、<br>LINEで買取り金額をご提示します。</p>
         <a class="btn btn-line online-line-btn online-hero-btn" href="https://line.me/R/ti/p/@688wfkiu" target="_blank" rel="noopener">
           <span>LINEで友だち追加して査定スタート</span>
           <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
         </a>
-        <p class="online-hero-note">受付時間 10:00〜19:00（水曜定休）<br>19:00以降のお申し込みは翌営業日にご連絡します</p>
       </div>
       <div class="online-hero-photo">
         <img src="../img/shinjo09.png" width="780" height="878" alt="全国無料出張査定を案内するティーバイティーガレージのスタッフ">
@@ -572,7 +571,7 @@
   </footer>
 
   <!-- 下部固定バー：左はLINE、右は出張査定（LPのクイズへ） -->
-  <div class="float-cta">
+  <div class="float-cta float-cta-hidden" id="float-cta">
     <a class="btn btn-line" href="https://line.me/R/ti/p/@688wfkiu" target="_blank" rel="noopener">
       <svg class="icon"><use href="#ic-chat"/></svg><span>LINEで友だち追加</span>
       <span class="btn-endcap"><svg class="icon icon-fill"><use href="#ic-play"/></svg></span>
@@ -610,6 +609,20 @@ function copyTemplate(btn){
 function toggleFaq(btn){
   btn.closest('.faq-item').classList.toggle('open');
 }
+
+/* 追従バー：TOPを過ぎたら表示 */
+(function(){
+  var bar = el("float-cta");
+  var hero = document.querySelector(".online-hero");
+  if (!bar || !hero) return;
+  function update(){
+    var limit = hero.offsetTop + hero.offsetHeight - 120;
+    bar.classList.toggle("float-cta-hidden", window.pageYOffset < limit);
+  }
+  window.addEventListener("scroll", update, {passive:true});
+  window.addEventListener("resize", update);
+  update();
+})();
 
 /* トーク画面：最初は途中まで表示し、ボタンで最後まで開く */
 function toggleChat(btn){

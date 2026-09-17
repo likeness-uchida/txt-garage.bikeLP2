@@ -2763,3 +2763,20 @@
     body.online-page .sold-scroll{gap:12px;padding:2px 0 10px;}
     body.online-page .sold-card{width:calc((100% - 24px) / 3);scroll-snap-align:start;}
   }
+
+  /* ---------- online：追従バーはTOPを過ぎてから下からスライドイン ---------- */
+  body.online-page .float-cta{
+    transition:transform .35s ease, opacity .35s ease;
+  }
+  body.online-page .float-cta.float-cta-hidden{
+    transform:translate(-50%, 110%);opacity:0;pointer-events:none;
+  }
+  @media (min-width:768px){
+    body.online-page .float-cta.float-cta-hidden{transform:translateY(110%);}
+  }
+  /* 出現の動き：下から上へふわっとフェードイン（大きなスライドではなく少し浮き上がる） */
+  body.online-page .float-cta{transition:transform .5s cubic-bezier(.22,.61,.36,1), opacity .5s ease;}
+  body.online-page .float-cta.float-cta-hidden{transform:translate(-50%, 28px);}
+  @media (min-width:768px){
+    body.online-page .float-cta.float-cta-hidden{transform:translateY(28px);}
+  }

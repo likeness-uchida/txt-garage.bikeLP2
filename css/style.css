@@ -3129,3 +3129,14 @@
   .reason-section{padding-bottom:calc(var(--sect-y) + 28px);}
   .comic-head-icons{margin-right:3px;}
   .comic-head-icons{margin-right:12px;}
+
+  /* ---------- マンガ帯：背景に集中線（「マンガ」の文字あたりを中心に放射状） ---------- */
+  .comic-head-row{position:relative;isolation:isolate;}
+  .comic-head-row::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:repeating-conic-gradient(from 0deg at 68% 38%, rgba(230,150,0,.22) 0deg 1.6deg, transparent 1.6deg 7.5deg);
+    -webkit-mask:radial-gradient(circle at 68% 38%, transparent 0 34px, #000 120px);
+    mask:radial-gradient(circle at 68% 38%, transparent 0 34px, #000 120px);
+  }
+  .comic-head-staff,.comic-head-text{position:relative;z-index:1;}
+  .comic-head-row::after{z-index:1;}

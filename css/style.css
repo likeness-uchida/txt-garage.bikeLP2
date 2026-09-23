@@ -3222,3 +3222,11 @@
     -webkit-mask:radial-gradient(circle at 57% 67%, transparent 0 8px, #000 40px);
     mask:radial-gradient(circle at 57% 67%, transparent 0 8px, #000 40px);
   }
+  /* 集中線は表紙の下の帯（写真＋文字）だけに。中心は「マンガ」の文字 */
+  .comic-head::before{display:none;}
+  .comic-head-row::before{
+    display:block;content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:repeating-conic-gradient(from 0deg at 57% 35%, rgba(230,150,0,.22) 0deg 1.6deg, transparent 1.6deg 7.5deg);
+    -webkit-mask:radial-gradient(circle at 57% 35%, transparent 0 8px, #000 40px);
+    mask:radial-gradient(circle at 57% 35%, transparent 0 8px, #000 40px);
+  }

@@ -3140,3 +3140,36 @@
   }
   .comic-head-staff,.comic-head-text{position:relative;z-index:1;}
   .comic-head-row::after{z-index:1;}
+
+  /* ---------- マンガ帯：帯の下に表紙を黄色の中に置く ---------- */
+  .comic-head{background:var(--accent);padding-bottom:18px;}
+  .comic-head-row{padding-bottom:0;}
+  .comic-head-row::after{bottom:0;}
+  .comic-head-staff{margin-bottom:0;}
+  .comic-head .comic-cover{
+    display:block;width:calc(100% - var(--gutter) * 2);height:auto;
+    margin:16px auto 0;border-radius:0;box-shadow:0 8px 20px rgba(0,0,0,.18);
+  }
+  /* 道路の下に黄色の余白を戻し、その下に表紙 */
+  .comic-head-row{padding-bottom:26px;}
+  .comic-head-row::after{bottom:24px;}
+  .comic-head-staff{margin-bottom:-26px;}
+  .comic-head .comic-cover{margin-top:0;}
+  .comic-head{padding-bottom:22px;}
+  /* 写真は道路の上で止め、表紙との間に黄色の余白を作る */
+  .comic-head-staff{margin-bottom:0;}
+  .comic-head .comic-cover{margin-top:10px;}
+  /* 戻す：写真は帯の下端（表紙の直前）まで伸ばす */
+  .comic-head-staff{margin-bottom:-26px;}
+  .comic-head .comic-cover{margin-top:0;}
+  /* 表紙は横幅いっぱい */
+  .comic-head{padding-bottom:0;}
+  .comic-head .comic-cover{width:100%;margin:0;box-shadow:none;}
+  /* 表紙の左右と下に少しだけ黄色を残す */
+  .comic-head{padding-bottom:10px;}
+  .comic-head .comic-cover{width:calc(100% - 20px);margin:0 auto;}
+  /* 表紙をもう少し小さく（左右の黄色を広めに） */
+  .comic-head{padding-bottom:16px;}
+  .comic-head .comic-cover{width:calc(100% - 36px);}
+  .comic-head{padding-bottom:20px;}
+  .comic-head .comic-cover{width:calc(100% - 52px);}

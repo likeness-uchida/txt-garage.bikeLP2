@@ -3115,3 +3115,17 @@
   .comic-title-em{font-size:1.85em;}
   .comic-title-line2{margin-top:6px;}
   .comic-head-text{padding-top:42px;}
+  /* shinjo10 を少し大きく（左へはみ出させて文字は動かさない） */
+  .comic-head-staff{width:52%;margin-left:-10%;margin-right:-2%;}
+  .comic-head-row::after{left:42%;}
+  /* 写真は上へ伸ばして大きく（帯の上端まで）。文字位置はそのまま */
+  .comic-head-row{align-items:flex-end;}
+  .comic-head-staff{width:56%;margin:-10px -4% -30px -10%;align-self:flex-start;}
+  .comic-head-row::after{left:44%;}
+  /* 写真の裾を帯の下端にぴったり合わせる（上寄せをやめて下基準に） */
+  .comic-head-staff{align-self:flex-end;margin-top:0;margin-bottom:-30px;}
+  /* REASON（青）の下に少し余白を足す */
+  .reason-section{padding-bottom:calc(var(--sect-y) + 14px);}
+  .reason-section{padding-bottom:calc(var(--sect-y) + 28px);}
+  .comic-head-icons{margin-right:3px;}
+  .comic-head-icons{margin-right:12px;}

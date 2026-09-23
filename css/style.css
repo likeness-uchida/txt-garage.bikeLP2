@@ -3173,3 +3173,52 @@
   .comic-head .comic-cover{width:calc(100% - 36px);}
   .comic-head{padding-bottom:20px;}
   .comic-head .comic-cover{width:calc(100% - 52px);}
+  /* 試し：表紙を上、スタッフ帯を下に入れ替え */
+  .comic-head{display:flex;flex-direction:column;padding:20px 0 0;}
+  .comic-head .comic-cover{order:-1;margin:0 auto 6px;}
+  .comic-head-row{padding-top:0;}
+  /* 入れ替え版：表紙は横幅いっぱい、帯との間と帯の下の余白を整える */
+  .comic-head{padding-top:0;}
+  .comic-head .comic-cover{width:100%;margin:0 0 4px;}
+  .comic-head-row{padding-top:6px;padding-bottom:26px;}
+  .comic-head-row::after{bottom:24px;}
+  .comic-head-staff{margin-bottom:-26px;}
+  /* 表紙は全幅にせず、左右に黄色を残す（上の並び） */
+  .comic-head{padding-top:18px;}
+  .comic-head .comic-cover{width:calc(100% - 52px);margin:0 auto 4px;}
+  /* 帯の箱を画面幅ぴったりに（左右パディングを0にして負マージンだけ残す） */
+  .comic-head{padding-left:0;padding-right:0;margin-left:calc(var(--gutter) * -1);margin-right:calc(var(--gutter) * -1);}
+  /* 帯の箱：wrap のパディングと行の負マージンを打ち消し、画面幅ぴったりに */
+  .comic-head{
+    box-sizing:border-box;width:calc(100% + var(--gutter) * 2);
+    margin:0 calc(var(--gutter) * -1) 22px;padding:18px 0 0;
+  }
+  .comic-head-row{margin-left:0;margin-right:0;margin-top:0;}
+  .comic-head .comic-cover{width:calc(100% - 52px);margin:0 auto 4px;}
+  /* 帯の箱は負マージンをやめて画面幅ぴったりに（これまで左右22pxずつ外にはみ出していた） */
+  .comic-head{width:auto;max-width:none;margin:0 0 22px;padding:18px 0 0;}
+  .comic-head-row{margin:0;}
+  .comic-head .comic-cover{width:calc(100% - 60px);margin:0 auto 4px;}
+  .comic-head-text{padding-right:var(--gutter);}
+  /* 上の余白を広げ、集中線は帯全体（表紙の裏まで）に伸ばす */
+  .comic-head{position:relative;isolation:isolate;padding-top:30px;}
+  .comic-head-row::before{display:none;}
+  .comic-head::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:repeating-conic-gradient(from 0deg at 68% 66%, rgba(230,150,0,.22) 0deg 1.6deg, transparent 1.6deg 7.5deg);
+    -webkit-mask:radial-gradient(circle at 68% 66%, transparent 0 34px, #000 130px);
+    mask:radial-gradient(circle at 68% 66%, transparent 0 34px, #000 130px);
+  }
+  .comic-head .comic-cover,.comic-head-row{position:relative;z-index:1;}
+  .comic-head-row{background:transparent;}
+  /* 集中線の中心を「マンガ」の文字位置に */
+  .comic-head::before{
+    background:repeating-conic-gradient(from 0deg at 57% 67%, rgba(230,150,0,.22) 0deg 1.6deg, transparent 1.6deg 7.5deg);
+    -webkit-mask:radial-gradient(circle at 57% 67%, transparent 0 40px, #000 130px);
+    mask:radial-gradient(circle at 57% 67%, transparent 0 40px, #000 130px);
+  }
+  /* 中心の空白を小さくして、線が「マンガ」の文字の上まで届くように */
+  .comic-head::before{
+    -webkit-mask:radial-gradient(circle at 57% 67%, transparent 0 8px, #000 40px);
+    mask:radial-gradient(circle at 57% 67%, transparent 0 8px, #000 40px);
+  }

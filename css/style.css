@@ -3230,3 +3230,10 @@
     -webkit-mask:radial-gradient(circle at 57% 35%, transparent 0 8px, #000 40px);
     mask:radial-gradient(circle at 57% 35%, transparent 0 8px, #000 40px);
   }
+
+  /* ---------- マンガ帯：見出しが文字ボックス内に必ず収まるよう安全側に（Mac/Safariなどフォント描画差への保険） ---------- */
+  .comic-head-staff{margin-right:-7%;}
+  .comic-head-text{padding-right:10px;}
+  .comic-title{font-size:clamp(19px, 6.1vw, 29px);}
+  .comic-title-em{font-size:1.7em;}
+  .comic-title-line2{font-size:1.06em;}

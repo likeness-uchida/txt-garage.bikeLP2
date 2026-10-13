@@ -3237,3 +3237,226 @@
   .comic-title{font-size:clamp(19px, 6.1vw, 29px);}
   .comic-title-em{font-size:1.7em;}
   .comic-title-line2{font-size:1.06em;}
+
+  /* ---------- PC：左右を入れ替え（LPを左、メニューカードを右） ---------- */
+  @media (min-width:1100px){
+    body:not(.online-page){flex-direction:row-reverse;}
+    body:not(.online-page) .lp-main{margin-right:0;margin-left:160px;}
+  }
+  @media (min-width:1100px){
+    body:not(.online-page) .lp-main{margin-left:clamp(160px, 18vw, 320px);}
+  }
+
+  /* ---------- MAKER：メーカー別（国内4社＋海外メーカー表）に再構成 ---------- */
+  .maker-grid-makers{grid-template-columns:1fr;gap:14px;}
+  .maker-card-maker{padding:18px 14px 14px;text-align:left;}
+  .maker-card-maker .maker-tag{margin:0 4px 10px 0;text-align:right;}
+  .maker-card-maker .maker-tag small{font-size:.5em;letter-spacing:.12em;}
+  .maker-card-maker .maker-photo{
+    aspect-ratio:16 / 9;background:#dbeaf6;position:relative;margin-bottom:12px;
+  }
+  .maker-photo-ph{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:clamp(22px, 7vw, 32px);letter-spacing:.08em;color:rgba(43,132,184,.35);
+  }
+  .maker-photo:has(> img) .maker-photo-ph{display:none;}
+  .maker-card-h{
+    margin:0 0 8px;font-size:var(--fs-md);font-weight:900;color:var(--black);
+    padding-left:10px;border-left:4px solid var(--accent);line-height:1.3;
+  }
+  .maker-list{margin:0;display:flex;flex-direction:column;gap:6px;}
+  .maker-list > div{
+    display:flex;align-items:flex-start;gap:8px;
+    background:#fff;border-radius:8px;padding:8px 10px;
+  }
+  .maker-list dt{
+    flex:none;width:84px;font-size:var(--fs-2xs);font-weight:900;color:#fff;
+    background:var(--blue);border-radius:4px;padding:3px 0;text-align:center;line-height:1.3;
+  }
+  .maker-list dd{margin:0;font-size:var(--fs-xs);font-weight:700;color:#333;line-height:1.5;min-width:0;}
+  .maker-etc{margin:6px 0 0;text-align:right;font-size:var(--fs-2xs);color:#777;font-weight:700;}
+
+  .maker-overseas{margin-top:var(--gap-block);}
+  .maker-overseas-h{
+    display:flex;align-items:center;gap:10px;
+    margin:0 0 12px;font-size:var(--fs-lg);font-weight:900;color:var(--black);
+  }
+  .maker-badge-inline{
+    position:static;clip-path:none;width:auto;height:auto;padding:4px 10px;border-radius:6px;
+    font-size:15px;display:inline-block;
+  }
+  .maker-table{width:100%;border-collapse:collapse;font-size:var(--fs-xs);}
+  .maker-table th,.maker-table td{padding:9px 10px;text-align:left;border-bottom:1px solid #e3e9ee;vertical-align:top;}
+  .maker-table thead th{background:var(--blue);color:#fff;font-weight:900;font-size:var(--fs-2xs);}
+  .maker-table tbody th{width:46%;font-weight:900;color:var(--black);background:#eaf5fd;}
+  .maker-table tbody td{color:#333;font-weight:700;}
+  .maker-note{margin:10px 0 0;font-size:var(--fs-2xs);color:#777;font-weight:700;}
+  /* MAKER見出し：2行固定（1行目を小さめ、2行目を大きく） */
+  .maker-title{line-height:1.35;}
+  .maker-title-l1{display:block;font-size:clamp(15px, 4.6vw, 20px);font-weight:900;color:var(--black);white-space:nowrap;}
+  .maker-title-l2{display:block;font-size:clamp(22px, 7vw, 32px);font-weight:900;color:var(--black);white-space:nowrap;}
+  /* 代表バイク写真は4:3で、カード内いっぱいに */
+  .maker-card-maker .maker-photo{aspect-ratio:4 / 3;background:#fff;}
+  .maker-card-maker .maker-photo img{object-fit:cover;}
+  .maker-title br{display:none;}
+  .maker-title-l1{margin-bottom:2px;}
+  /* ロゴの縦横比がバラバラ（ホンダは縦長、カワサキは極端に横長）なので、枠の高さで揃えて幅は中身に合わせる */
+  .maker-logo{height:34px;max-width:50%;padding:4px 10px;}
+  .maker-logo[src*="kawasaki"]{height:16px;padding:9px 10px;}
+  .maker-logo[src*="honda"]{height:40px;padding:3px 8px;}
+  /* メーカーロゴ本体（左上・白枠）。ロゴがある時は番号バッジを隠す */
+  .maker-logo{
+    position:absolute;top:12px;left:12px;width:auto;
+    object-fit:contain;background:#fff;border-radius:8px;box-sizing:content-box;
+    box-shadow:0 2px 6px rgba(0,0,0,.08);z-index:2;
+  }
+  .maker-card:has(> .maker-logo) .maker-badge{display:none;}
+
+  /* ---------- PC メニューカード：上部の背景にバイク写真、ロゴは小さく左寄せ ---------- */
+  @media (min-width:1100px){
+    .pc-left-card{overflow:hidden;}
+    .pc-left-head{
+      position:relative;min-height:230px;text-align:left;
+      margin:-34px -46px 18px;padding:30px 46px 0;
+      background:linear-gradient(180deg, #eaf5fd 0%, #fff 100%);
+    }
+    .pc-left-head::before{
+      content:"";position:absolute;right:-30px;bottom:-26px;width:62%;max-width:400px;aspect-ratio:1400 / 1360;
+      background:url("../img/bike-menu.png") no-repeat center bottom / contain;
+      pointer-events:none;z-index:0;
+    }
+    .pc-left-head > *{position:relative;z-index:1;}
+    .pc-left-kicker{margin-bottom:12px;}
+    .pc-left-logo{width:min(14vw, 210px);margin:0 0 12px;}
+    .pc-left-lead{max-width:52%;margin:0 0 10px;font-size:13.5px;text-shadow:0 0 6px #fff, 0 0 10px #fff;}
+  }
+  @media (min-width:1100px){
+    /* バイクを少し小さく右下へ。文言と重ならないよう文言幅を確保 */
+    .pc-left-head::before{right:-56px;bottom:-30px;width:56%;max-width:360px;}
+    .pc-left-head{min-height:236px;}
+    .pc-left-lead{max-width:50%;font-size:13px;line-height:1.75;}
+    .pc-left-lead br{display:block;}
+  }
+  @media (min-width:1100px){
+    .pc-left-lead{max-width:56%;}
+    .pc-left-head::before{right:-64px;}
+  }
+
+  /* ---------- PC メニューカード：「バイク買取り」ピルを外す／幅に応じたレスポンシブ強化 ---------- */
+  @media (min-width:1100px){
+    .pc-left-head .pc-left-kicker{display:none;}
+    .pc-left-head{padding-top:34px;}
+    /* 文字は折り返さない前提でサイズを可変に */
+    .pc-toc a{white-space:nowrap;font-size:clamp(13px, 1.05vw, 15px);padding:10px 22px 10px 32px;}
+    .pc-left-cta{min-width:0;width:100%;max-width:360px;font-size:clamp(15px, 1.2vw, 17px);padding:15px 24px;}
+    .pc-left-tel img{width:min(80%, 300px);}
+  }
+  /* 1100〜1299px：カードが狭いので余白を詰め、目次は1列に */
+  @media (min-width:1100px) and (max-width:1299px){
+    body:not(.online-page) .lp-main{margin-left:clamp(60px, 7vw, 110px);}
+    .pc-left{padding:32px 20px;min-width:300px;}
+    .pc-left-inner{max-width:520px;}
+    .pc-left-card{padding:28px 30px 30px;}
+    .pc-left-head{margin:-28px -30px 14px;padding:28px 30px 0;min-height:200px;}
+    .pc-left-head::before{width:54%;max-width:300px;right:-44px;bottom:-24px;}
+    .pc-left-logo{width:min(15vw, 190px);}
+    .pc-left-lead{max-width:58%;font-size:12.5px;}
+    .pc-toc{grid-template-columns:1fr;column-gap:0;margin-bottom:22px;}
+    .pc-toc a{padding:8px 22px 8px 32px;font-size:14px;}
+  }
+  /* 1300〜1499px：2列のまま、余白を少し詰める */
+  @media (min-width:1300px) and (max-width:1499px){
+    .pc-left-card{padding:32px 38px 34px;}
+    .pc-left-head{margin:-32px -38px 16px;padding:32px 38px 0;}
+    .pc-toc{column-gap:20px;}
+  }
+  /* 1100〜1299px：カードが画面より高い場合は上を切らずに上揃え＋スクロール可。文言の折り返しも抑える */
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left{align-items:flex-start;overflow-y:auto;padding-top:28px;padding-bottom:28px;}
+    .pc-left-lead{max-width:60%;font-size:12px;line-height:1.7;}
+    .pc-toc a{padding:7px 22px 7px 32px;}
+  }
+  /* メニューカードのバイク：小さくしてカード内に収める（右で切らない） */
+  @media (min-width:1100px){
+    .pc-left-head::before{right:14px;bottom:-6px;width:44%;max-width:270px;}
+    .pc-left-head{min-height:215px;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-head::before{right:8px;bottom:-4px;width:42%;max-width:230px;}
+    .pc-left-head{min-height:190px;}
+  }
+  /* バイクは上下ともヘッダー枠の内側に収める（上で切れない） */
+  @media (min-width:1100px){
+    .pc-left-head::before{
+      top:14px;bottom:10px;height:auto;aspect-ratio:auto;
+      right:12px;width:46%;max-width:280px;
+      background-position:right bottom;
+    }
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-head::before{top:12px;bottom:8px;right:6px;width:44%;max-width:240px;}
+  }
+
+  /* ---------- online TOP：shinjo10 を大きく ---------- */
+  @media (max-width:767px){
+    .online-hero-photo{width:72%;margin-left:-12%;}
+    .online-hero-bg{width:44%;margin-left:-10%;}
+  }
+  @media (min-width:1100px){
+    .online-hero-photo{width:540px;margin-left:-190px;}
+    .online-hero-text{min-width:460px;}
+  }
+  @media (max-width:767px){
+    .online-hero-photo{width:80%;margin-left:-16%;}
+    .online-hero-bg{width:40%;margin-left:-14%;}
+  }
+
+  /* ---------- PC：全体バランス調整（左右の余白を揃え、カード上部の空きを詰め、バイクを枠内で大きく） ---------- */
+  @media (min-width:1100px){
+    body:not(.online-page) .lp-main{margin-left:clamp(80px, 9vw, 170px);}
+    .pc-left{padding:40px clamp(60px, 8vw, 150px) 40px 40px;}
+    .pc-left-inner{max-width:600px;}
+    .pc-left-head{min-height:200px;padding-top:30px;}
+    .pc-left-head::before{top:8px;bottom:0;right:0;width:54%;max-width:330px;}
+    .pc-left-logo{width:min(13vw, 200px);margin-bottom:10px;}
+    .pc-left-lead{max-width:48%;margin-bottom:6px;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    body:not(.online-page) .lp-main{margin-left:clamp(50px, 6vw, 90px);}
+    .pc-left{padding:28px 36px 28px 24px;}
+    .pc-left-head{min-height:180px;}
+    .pc-left-head::before{top:8px;bottom:0;right:-6px;width:50%;max-width:270px;}
+    .pc-left-lead{max-width:52%;}
+  }
+  /* 説明文は折り返さず2行に収める（バイクの左側に） */
+  @media (min-width:1100px){
+    .pc-left-lead{max-width:none;width:52%;white-space:nowrap;font-size:clamp(11.5px, .95vw, 13.5px);}
+    .pc-left-head::before{width:50%;max-width:320px;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-lead{width:56%;font-size:12px;}
+    .pc-left-head::before{width:46%;max-width:260px;}
+  }
+  /* カード上部：ロゴと文字を下げ、バイクを左下へ */
+  @media (min-width:1100px){
+    .pc-left-head{padding-top:48px;min-height:210px;}
+    .pc-left-head::before{top:22px;bottom:-4px;right:18px;width:50%;max-width:320px;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-head{padding-top:40px;min-height:190px;}
+    .pc-left-head::before{top:18px;bottom:-2px;right:10px;width:46%;max-width:260px;}
+  }
+  @media (min-width:1100px){
+    .pc-left-head{padding-top:64px;min-height:222px;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-head{padding-top:54px;min-height:200px;}
+  }
+  /* ロゴを説明文と同じ幅まで拡大 */
+  @media (min-width:1100px){
+    .pc-left-logo{width:52%;max-width:290px;margin-bottom:12px;}
+    .pc-left-head{padding-top:56px;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-logo{width:56%;max-width:250px;}
+  }

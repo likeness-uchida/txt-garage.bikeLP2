@@ -3460,3 +3460,5 @@
   @media (min-width:1100px) and (max-width:1299px){
     .pc-left-logo{width:56%;max-width:250px;}
   }
+  /* メーカーカード：車種リストの下に少し余白 */
+  .maker-card-maker{padding-bottom:22px;}

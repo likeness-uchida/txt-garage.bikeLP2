@@ -3559,3 +3559,6 @@
   .comic-head-staff{width:50%;margin-left:-6%;margin-right:-4%;}
   .comic-head-text{padding-left:16px;}
   .comic-head-row::after{left:calc(40% + 16px);}
+  /* 文字をほんの少し左へ（道路起点も連動） */
+  .comic-head-text{padding-left:10px;padding-right:6px;}
+  .comic-head-row::after{left:calc(40% + 10px);}

@@ -3545,3 +3545,6 @@
   /* マンガ帯：LP列は常に480px以下なので、幅に関係なく写真を細く・文字を右へ（手との重なり回避） */
   .comic-head-staff{width:46%;margin-left:-10%;margin-right:-1%;}
   .comic-head-text{padding-left:14px;}
+  /* マンガ帯：写真を大きく（左へ逃がす）、文字はさらに右へ */
+  .comic-head-staff{width:52%;margin-left:-14%;margin-right:-2%;}
+  .comic-head-text{padding-left:22px;}

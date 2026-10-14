@@ -3550,3 +3550,8 @@
   .comic-head-text{padding-left:22px;}
   /* 道路線の左端を「マンガ」の文字の左端に揃える（写真36%＋文字ブロックの左余白22px） */
   .comic-head-row::after{left:calc(36% + 22px);}
+  /* 文字を道路線の範囲（左端〜帯の右端）に対して中央配置。右端に余裕を持たせるため文字を一回り小さく */
+  .comic-head-text{padding-right:0;text-align:center;}
+  .comic-title{text-align:center;font-size:clamp(18px, 5.7vw, 27px);}
+  .comic-title-line2{display:block;}
+  .comic-head-icons{align-self:center;margin-left:0;margin-right:0;}

@@ -3548,3 +3548,5 @@
   /* マンガ帯：写真を大きく（左へ逃がす）、文字はさらに右へ */
   .comic-head-staff{width:52%;margin-left:-14%;margin-right:-2%;}
   .comic-head-text{padding-left:22px;}
+  /* 道路線の左端を「マンガ」の文字の左端に揃える（写真36%＋文字ブロックの左余白22px） */
+  .comic-head-row::after{left:calc(36% + 22px);}

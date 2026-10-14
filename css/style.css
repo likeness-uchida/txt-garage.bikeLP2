@@ -3534,3 +3534,6 @@
   @media (max-width:767px){
     .comic-head-text{padding-left:4px;}
   }
+  @media (max-width:767px){
+    .comic-head-text{padding-left:8px;}
+  }

@@ -3562,3 +3562,5 @@
   /* 文字をほんの少し左へ（道路起点も連動） */
   .comic-head-text{padding-left:10px;padding-right:6px;}
   .comic-head-row::after{left:calc(40% + 10px);}
+  .comic-head-text{padding-left:7px;padding-right:9px;}
+  .comic-head-row::after{left:calc(40% + 7px);}

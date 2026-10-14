@@ -3530,3 +3530,7 @@
   @media (min-width:1300px){
     body:not(.online-page) .pc-left{padding-left:clamp(40px, 4vw, 70px);margin-left:clamp(30px, 3vw, 60px);}
   }
+  /* マンガ帯：SPで文字が写真に少しかぶるため、文字ブロックを数px右へ */
+  @media (max-width:767px){
+    .comic-head-text{padding-left:4px;}
+  }

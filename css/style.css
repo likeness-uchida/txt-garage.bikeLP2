@@ -3537,3 +3537,8 @@
   @media (max-width:767px){
     .comic-head-text{padding-left:8px;}
   }
+  /* マンガ帯（SP）：写真を少し細く・左へ寄せ、文字はさらに右へ（手にかぶらないように） */
+  @media (max-width:767px){
+    .comic-head-staff{width:46%;margin-left:-10%;margin-right:-1%;}
+    .comic-head-text{padding-left:14px;}
+  }

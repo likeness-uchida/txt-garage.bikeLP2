@@ -3555,3 +3555,7 @@
   .comic-title{text-align:center;font-size:clamp(18px, 5.7vw, 27px);}
   .comic-title-line2{display:block;}
   .comic-head-icons{align-self:center;margin-left:0;margin-right:0;}
+  /* 写真を右へ（左の隠れを減らす）。文字ブロックと道路の起点も連動 */
+  .comic-head-staff{width:50%;margin-left:-6%;margin-right:-4%;}
+  .comic-head-text{padding-left:16px;}
+  .comic-head-row::after{left:calc(40% + 16px);}

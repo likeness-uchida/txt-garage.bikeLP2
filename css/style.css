@@ -3566,3 +3566,14 @@
   .comic-head-row::after{left:calc(40% + 7px);}
   /* カワサキのロゴ（リバーマーク版 PNG、6.2:1 の横長）：高さを揃える */
   .maker-logo[src*="kawasaki_logo"]{height:18px;padding:8px 10px;}
+
+  /* ---------- PC メニューカード：CTAを2つ横並び（無料出張査定／LINEオンライン査定） ---------- */
+  @media (min-width:1100px){
+    .pc-left-btns{display:flex;gap:12px;justify-content:center;margin:0 0 4px;}
+    .pc-left-btns .pc-left-cta{flex:1 1 0;min-width:0;max-width:none;white-space:nowrap;padding:15px 14px;font-size:clamp(13.5px, 1.05vw, 16px);}
+    .pc-left-btns .pc-left-cta-line{background:var(--line-green);box-shadow:0 6px 0 #05a548, 0 10px 18px rgba(0,0,0,.18);}
+    .pc-left-btns .pc-left-cta-line:active{box-shadow:0 2px 0 #05a548;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-btns{flex-direction:column;gap:10px;}
+  }

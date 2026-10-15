@@ -3577,3 +3577,8 @@
   @media (min-width:1100px) and (max-width:1299px){
     .pc-left-btns{flex-direction:column;gap:10px;}
   }
+  /* メニューカードのボタン：文字と矢印の間隔を詰め、左右の余白を増やす */
+  @media (min-width:1100px){
+    .pc-left-btns .pc-left-cta{gap:4px;padding:15px 22px;}
+    .pc-left-btns .pc-left-cta .icon{width:14px;height:14px;}
+  }

@@ -3582,3 +3582,7 @@
     .pc-left-btns .pc-left-cta{gap:4px;padding:15px 22px;}
     .pc-left-btns .pc-left-cta .icon{width:14px;height:14px;}
   }
+  /* 文言が長くなった分、文字を少し小さく・余白を調整して1行に収める */
+  @media (min-width:1100px){
+    .pc-left-btns .pc-left-cta{font-size:clamp(12.5px, .95vw, 15px);padding:15px 16px;}
+  }

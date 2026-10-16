@@ -5,24 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>バイク買取もティーバイティーガレージ｜不動車・事故車も無料出張査定</title>
 <meta name="description" content="乗らなくなったバイクの買取もティーバイティーガレージへ。動かないバイクや事故車、他社で断られたカスタム車も全国無料で出張査定いたします！最短即日現金払い、面倒な廃車手続きも代行します！">
-<!-- 広告経由のLPのため、現時点では検索結果には出さない運用 -->
+
 <meta name="robots" content="noindex, nofollow">
 
 <link rel="shortcut icon" href="img/favicon.ico">
 
-<!-- 端末ごとに入っている日本語フォントが違うと太さがバラつくため、
-     Noto Sans JP を直接配信して全端末で同じ見た目にする -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800;900&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=20261015120253">
+<link rel="stylesheet" href="css/style.css?v=20261016193313">
 </head>
 <body>
 
-<!-- =========================================================
-     アイコン定義（シルエットSVG／絵文字不使用）
-========================================================= -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <symbol id="ic-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -49,15 +44,6 @@
   </defs>
 </svg>
 
-<!-- ============================================================ -->
-<!-- 共通ヘッダー：LP／フォームどちらの画面でも同じものを常時表示する。
-     以前は #view-form 側に別デザインの .form-header を持たせていたため、
-     フォームに進むとヘッダーが差し替わって見えていた。
-     view-lp / view-form の外に置き、どちらの表示状態でも隠さない。 -->
-<!-- ============================================================ -->
-<!-- PCの広い画面（1100px〜）だけ、参考サイト（hanamaru870.net ソコカラLP）風に
-     青地の全画面に「左：白カード（ロゴ＋目次＋CTA）／右端：LP本体」の2カラムにする。
-     スマホでは.pc-leftは非表示になり、レイアウトへの影響はない。 -->
 <div class="pc-left">
   <div class="pc-left-inner">
     <div class="pc-left-card">
@@ -106,43 +92,33 @@
   </div>
 </header>
 
-<!-- ============================================================ -->
-<!-- 0. メインLPビュー -->
-<!-- ============================================================ -->
 <div id="view-lp">
 
-  <!-- ヒーロー：ファーストビューは1枚の写真に集約 -->
   <section class="hero">
-    <!-- ファーストビューはキービジュアル1枚に集約。
-         キャッチコピー・バイクの状態・CTAの誘導帯まで画像に含まれているため、
-         HTML側で文字を重ねると二重になる。
-         ただし h1 は SEO とスクリーンリーダー用に .sr-only で残す。 -->
-    <p class="sr-only">壊れたバイク・動かないバイク・眠ってるバイク、買取ります｜ティーバイティーガレージの全国無料出張査定</p>
     <div class="hero-photo">
-      <!-- ★キービジュアル：img/TxT_TOP5.png（1180×1252） -->
-      <img class="hero-key" src="img/TxT_TOP5.png" width="1180" height="1252"
-           fetchpriority="high" decoding="async"
-           alt="バイクを売るのもティーバイティーガレージ。事故で壊れた・動かなくなった・もう乗ってないバイクも買取ります。無料出張査定後、最短即日現金払い"
-           onerror="this.remove()"
-           onload="var n=this.parentNode.querySelector('.hero-photo-note'); if(n) n.remove();">
-      <div class="hero-photo-note">
-        <svg class="icon"><use href="#ic-photo"/></svg>
-        <span>img/TxT_TOP5.png</span>
-        <span style="opacity:.7;">を置くとここに表示されます</span>
+      <img class="hero-key" src="img/shinjo07.png" width="921" height="999" fetchpriority="high" decoding="async" alt="ティーバイティーガレージのスタッフ">
+      <div class="hero-copy">
+        <h1 class="hero-h1">
+          <span class="hero-h1-main">バイク<small>を</small>売るのも</span>
+          <span class="hero-h1-brand">ティーバイティーガレージ</span>
+          <span class="hero-h1-ul" aria-hidden="true"></span>
+        </h1>
+        <ul class="hero-checks">
+          <li>動かなくても</li><li>古くても</li><li>壊れていても</li>
+        </ul>
+        <p class="hero-catch"><span class="hero-catch-slash">＼</span>全国どこでも無料出張査定<span class="hero-catch-slash">／</span></p>
       </div>
+      <p class="hero-bubble">あなたのバイク<br>買取ります。</p>
     </div>
-
+    <div class="hero-card">
+      <span class="hero-card-sub">ティーバイティーガレージは</span>
+      <strong class="hero-card-main">無料出張査定後、最短即日現金払い</strong>
+    </div>
   </section>
 
-
-  <!-- ============================================================ -->
-  <!-- 3項目ミニ査定：ヒーローから切り離し、白背景の独立セクションに。
-       枠内は水色パネルで色を持たせ、見出しはスクロールでポップイン。 -->
-  <!-- ============================================================ -->
   <section class="section quiz-section" id="sec-quiz">
     <div class="wrap">
-      <!-- 見出しは画像2枚重ねをやめ、文字組みに変更。
-           「3」だけ punch-anim を付けてスクロール時にポンと弾ませる演出は維持。 -->
+
       <h2 class="quiz-lead-text">たった<span class="quiz-lead-num punch-anim">3</span>つの質問で査定スタート！</h2>
       <div class="quiz-sub-row fade-anim">
         <p class="quiz-sub">「動かなくなった」「事故で壊れた」「もう乗っていない」<br>そんなバイク、お持ちではないですか？<br>無料でお試し査定！ご所有のバイクについて教えてください</p>
@@ -178,7 +154,7 @@
             <option value="わからない">わからない</option>
           </select>
         </div>
-        <!-- 車種名：国内4メーカーはプルダウン選択、その他のメーカーは自由入力 -->
+
         <div class="quiz-field-row hidden" id="hero-model-row">
           <span class="quiz-field-label">車種名</span>
           <select id="hero-model">
@@ -197,7 +173,7 @@
 
   <section class="section check-section">
     <div class="wrap">
-      <h1 class="check-catch"><span class="check-catch-big">バイク買取りのことなら</span><span class="check-catch-sub">ティーバイティーガレージにお任せください！</span></h1>
+      <h2 class="check-catch"><span class="check-catch-big">バイク買取りのことなら</span><span class="check-catch-sub">ティーバイティーガレージにお任せください！</span></h2>
       <h2 class="h-title check-question-block">
         <span class="check-question-row check-question-row-left">
           <img class="check-question-face" src="img/shinjo05.png" alt="" aria-hidden="true">
@@ -252,7 +228,6 @@
     </div>
   </section>
 
-  <!-- 査定は選べます：出張 or LINE。参考LP（プロが選ぶ方式）の見出し構成を踏襲。 -->
   <section class="section tight style-select" id="sec-style">
     <div class="wrap">
       <div class="style-select-banner">
@@ -298,8 +273,6 @@
     </div>
   </section>
 
-  <!-- スタッフ写真＋大見出しのCTAブロック（1箇所目：MAKERの直前）。
-       ボタンだけ「出張査定」「LINE査定」の2つ並び -->
   <section class="staff-cta">
     <div class="wrap staff-cta-inner">
       <div class="staff-cta-row">
@@ -329,7 +302,6 @@
     </div>
   </section>
 
-  <!-- 対象メーカー・排気量一覧 -->
   <section class="section maker-section" id="sec-maker">
     <div class="wrap">
       <h2 class="h-title maker-title"><span class="maker-title-l1">ティーバイティーガレージのバイク</span><br><span class="maker-title-l2">買取り対象メーカーの一覧</span></h2>
@@ -462,7 +434,6 @@
     </div>
   </section>
 
-  <!-- マンガ：動かないバイクも買取ります（4話を縦に読む） -->
   <section class="section comic-section" id="sec-comic">
     <div class="wrap comic-head">
       <div class="comic-head-row">
@@ -505,7 +476,7 @@
 
   <section class="section sold-carousel" id="sec-voice">
     <div class="wrap">
-      <h2 class="sold-title">＼バイク実績多数／</h2>
+      <h2 class="sold-title">＼バイク買取り実績多数／</h2>
       <p class="sold-sub">皆さんの大切なバイク<br>買取らせていただきました！</p>
 
       <div class="proof-card">
@@ -633,7 +604,6 @@
     <div class="sold-dots"><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   </section>
 
-  <!-- 口コミ -->
   <section class="section review-section" id="sec-review">
     <div class="wrap">
       <div class="eyebrow">CUSTOMER REVIEWS</div>
@@ -687,7 +657,6 @@
     </div>
   </section>
 
-  <!-- 店舗一覧・LOCATIONS -->
   <section class="section shop-section" id="sec-shop">
     <div class="wrap">
       <div class="eyebrow shop-eyebrow">LOCATIONS</div>
@@ -713,7 +682,6 @@
     </div>
   </section>
 
-  <!-- バイクを高く売るためのポイント -->
   <section class="section tips-section" id="sec-tips">
     <div class="wrap">
       <div class="eyebrow">POINT</div>
@@ -754,7 +722,6 @@
     </div>
   </section>
 
-  <!-- スタッフ写真＋大見出しのCTAブロック（2箇所目） -->
   <section class="staff-cta">
     <div class="wrap staff-cta-inner">
       <div class="staff-cta-row">
@@ -784,7 +751,6 @@
     </div>
   </section>
 
-  <!-- バイク買取り時に必要な書類 -->
   <section class="section docs-section" id="sec-docs">
     <div class="wrap">
       <div class="eyebrow">DOCUMENTS</div>
@@ -810,7 +776,8 @@
   <section class="section flow-section" id="sec-flow">
     <div class="wrap">
       <div class="eyebrow" style="color:#fff;">FLOW</div>
-      <h2 class="flow-title">申し込みから買取りまで<br>迷わない3ステップ</h2>
+      <h2 class="flow-title">バイク買取り<br>無料査定の流れ</h2>
+      <p class="flow-lead">申し込みから買取りまで迷わない3ステップ</p>
 
       <div class="flow-list">
 
@@ -846,7 +813,6 @@
       <button class="btn btn-primary flow-cta" onclick="scrollToQuiz()">今すぐ無料出張査定を申し込む</button>
     </div>
   </section>
-
 
   <section class="section" id="sec-faq">
     <div class="wrap">
@@ -927,11 +893,10 @@
     </div>
   </section>
 
-  <!-- アセット31準拠：黄色地＋吹き出し＋スタッフ写真の構成 -->
   <section class="section final-cta">
     <div class="wrap">
       <div class="final-cta-top">
-        <!-- 背景が透過のスタッフ写真。額縁は付けず、背景にそのまま乗せる -->
+
         <img class="final-cta-photo" src="img/shinjo07@.png" width="558" height="676" alt="ティーバイティーガレージのスタッフ" loading="lazy">
         <div class="final-cta-right">
           <div class="final-cta-bubble final-cta-bubble-side">
@@ -959,9 +924,6 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- フッター直前のブランドブロック（公式サイト下部に合わせた構成） -->
-  <!-- ============================================================ -->
   <section class="footer-brand">
     <div class="wrap">
       <img class="fb-logo" src="img/logo.svg" alt="ティーバイティーガレージ" width="274" height="82">
@@ -972,7 +934,6 @@
       <p class="fb-tel-hours">【受付時間】8：00〜20：00</p>
       <button class="btn btn-primary fb-cta" onclick="scrollToQuiz()">無料出張査定に申し込む</button>
 
-      <!-- 公式SNSアカウント（txt-garage.jp 記載の実アカウント。アイコンは公式配布の色付きSVG） -->
       <div class="fb-sns">
         <a href="https://www.facebook.com/txtgarage/" target="_blank" rel="noopener" aria-label="Facebook"><img src="img/icon_facebook.svg" width="32" height="32" alt=""></a>
         <a href="https://x.com/txtgarage" target="_blank" rel="noopener" aria-label="X（旧Twitter）"><img src="img/icon_x.svg" width="32" height="32" alt=""></a>
@@ -981,13 +942,6 @@
     </div>
   </section>
 
-  <!-- ============================================================ -->
-  <!-- サイトメニュー（公式サイト txt-garage.jp の下部アコーディオンに合わせる）
-       各カテゴリはネイティブの <details> で開閉。
-       リンク先はすべて公式サイト(txt-garage.jp)の実ページ。
-       当LPはバイク買取専用の1ページ構成のため、他事業のページは
-       すべて外部リンク（別タブ）として扱う。 -->
-  <!-- ============================================================ -->
   <nav class="footer-nav">
     <a class="footer-nav-top" href="https://www.txt-garage.jp/" target="_blank" rel="noopener">TOP</a>
 
@@ -1050,13 +1004,7 @@
 
   <footer>
     <div class="wrap">
-      <!-- ロゴ＋会社情報ブロックは公式フッターに存在しないため削除。
-           運営会社名・電話・LINE・対応エリアの情報自体は、
-           上の footer-brand セクションと LP冒頭のヘッダーに既に出ている。 -->
 
-      <!-- 2列リンクは公式サイト(txt-garage.jp)の並び順・罫線つき表組みに合わせる。
-           企業情報・採用情報・商標利用規約は親会社(txt-holdings.com)の実ページ、
-           個人情報保護方針・利用規約・サイトマップは txt-garage.jp の実ページ。 -->
       <div class="foot-links">
         <a href="https://txt-holdings.com/" target="_blank" rel="noopener">企業情報</a>
         <a href="https://txt-holdings.com/recruit/" target="_blank" rel="noopener">採用情報</a>
@@ -1066,8 +1014,6 @@
         <a href="https://www.txt-garage.jp/sitemap/" target="_blank" rel="noopener">サイトマップ</a>
       </div>
 
-      <!-- バナーは公式サイトと同じ並び：YouTube・TikTokを2列、
-           ギネス世界記録はその下に1列ぶん幅で中央寄せ -->
       <div class="footer-banners">
         <a href="https://www.youtube.com/@txt_garage" target="_blank" rel="noopener"><img src="img/bnr_youtube.png" width="328" height="112" alt="T×T公式チャンネル CM公開中"></a>
         <a href="https://www.tiktok.com/@txt_garage" target="_blank" rel="noopener"><img src="img/bnr_tiktok.jpg" width="328" height="112" alt="TikTok CMでおなじみのあの方も！お得情報発信！"></a>
@@ -1078,7 +1024,6 @@
     </div>
   </footer>
 
-  <!-- 末尾の丸アイコンは公式サイトの下部固定バーと同じ「白丸＋再生三角」の飾り -->
   <div class="float-cta">
     <button class="btn btn-line" onclick="openOnlineLp()">
       <svg class="icon"><use href="#ic-chat"/></svg><span>オンライン買取り</span>
@@ -1091,10 +1036,6 @@
   </div>
 </div>
 
-
-<!-- ============================================================ -->
-<!-- 1. 無料おためし査定フォーム ビュー -->
-<!-- ============================================================ -->
 <div id="view-form" class="hidden">
 
   <div class="form-body">
@@ -1107,9 +1048,6 @@
         </div>
       </div>
 
-      <!-- ファーストビューのミニ査定(メーカー・排気量・車種名)で得た回答は
-           画面には出さず、送信データとして持ち回すだけの非表示項目にする。
-           heroStartAssessment() がここへ値をセットする。 -->
       <input type="hidden" id="f-maker">
       <input type="hidden" id="f-displacement">
       <input type="hidden" id="f-model">
@@ -1151,18 +1089,13 @@
     </div>
   </div>
 </div>
-</div><!-- /.lp-main -->
+</div>
 
-
-<!-- ============================================================ -->
-<!-- 離脱防止：LINE査定案内モーダル -->
-<!-- ============================================================ -->
 <div id="exit-modal-overlay" class="hidden">
   <div class="exit-modal">
     <button class="exit-modal-close" onclick="closeExitModal()"><svg class="icon" style="width:13px;height:13px;"><use href="#ic-close"/></svg></button>
     <div class="exit-modal-banner">
-      <!-- 文言はline.jpg側に焼き込み済みで、以前は文字と画像が重なって
-           見えていたため、テキストのオーバーレイは廃止して画像だけにする -->
+
       <img class="exit-modal-img" src="img/LINEbanner.png" width="1024" height="1024" alt="LINEでオンライン買取り。友だち追加して必要情報と写真を送るだけで、LINEで金額をご提示します" loading="lazy" onerror="this.parentElement.remove()">
     </div>
     <div class="exit-modal-body">
@@ -1171,12 +1104,10 @@
   </div>
 </div>
 
-
 <script src="js/bike-master.js"></script>
 <script>
 function el(id){ return document.getElementById(id); }
 
-/* ---------- ヒーロー埋め込みミニ査定（3項目を最初から表示） ---------- */
 const heroMakerSelect = el('hero-maker');
 const heroDisplacementSelect = el('hero-displacement');
 const heroModelSelect = el('hero-model');
@@ -1186,8 +1117,6 @@ const heroModelOtherRow = el('hero-model-other-row');
 const heroNextBtn = el('hero-quiz-next');
 const HERO_MODEL_OTHER = '__other__';
 
-/* 車種名：国内4メーカーはメーカー（＋排気量）で絞ったプルダウン。
-   マスターにないメーカー（輸入車・わからない）は自由入力欄に切り替える。 */
 function heroModelCandidates(){
   const master = window.BIKE_MASTER || {};
   const byCc = master[heroMakerSelect.value];
@@ -1222,7 +1151,7 @@ function heroRefreshModelList(){
   heroModelRow.classList.remove('hidden');
   heroModelOtherRow.classList.toggle('hidden', heroModelSelect.value !== HERO_MODEL_OTHER);
 }
-/* プルダウンで車種を選んだら、その車種の排気量区分を自動で入れる */
+
 function heroOnModelChange(){
   const val = heroModelSelect.value;
   heroModelOtherRow.classList.toggle('hidden', val !== HERO_MODEL_OTHER);
@@ -1247,7 +1176,7 @@ function heroModelValue(){
 }
 heroMakerSelect.addEventListener('change', () => {
   heroNextBtn.disabled = !heroMakerSelect.value;
-  heroModelSelect.value = '';   // メーカーを変えたら車種の選択はリセット
+  heroModelSelect.value = '';
   heroRefreshModelList();
 });
 heroDisplacementSelect.addEventListener('change', heroRefreshModelList);
@@ -1261,10 +1190,6 @@ function heroStartAssessment(){
   openForm();
 }
 
-/* ---------- ロゴクリックでトップへ ----------
-   LP表示中はページ先頭までスクロール、
-   フォーム表示中はLPに戻す（1URL構成のため遷移ではなく表示切替）。
-   href="./" を残してあるのでJSが無効でもトップには戻れる。 */
 function goTop(){
   const form = el('view-form');
   if(form && !form.classList.contains('hidden')){
@@ -1275,12 +1200,6 @@ function goTop(){
   return false;
 }
 
-/* ---------- ページ内CTA：フォームへ直行せず、まず3問クイズへ誘導 ----------
-   クイズに答えないまま申し込み画面に行けてしまうのは不自然なので、
-   ページ各所の「無料出張査定を申し込む」系ボタンは、いきなり
-   openForm() を呼ばず、まず質問セクションまでスクロールさせる。
-   実際にフォームへ進むのは、3問に答えて heroStartAssessment() を
-   通ったときだけ。 */
 function scrollToQuiz(){
   const panel = document.querySelector('.quiz-panel');
   const target = panel || el('hero-maker');
@@ -1288,13 +1207,12 @@ function scrollToQuiz(){
   target.scrollIntoView({ behavior: 'smooth', block: 'center' });
   if(panel){
     panel.classList.remove('quiz-panel-pulse');
-    void panel.offsetWidth; // 再生済みのアニメーションを頭から流し直すための強制リフロー
+    void panel.offsetWidth;
     panel.classList.add('quiz-panel-pulse');
     setTimeout(() => panel.classList.remove('quiz-panel-pulse'), 1600);
   }
 }
 
-/* ---------- ビュー切り替え ---------- */
 function scrollTopHard(){
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
@@ -1314,50 +1232,29 @@ function backToLp(){
   scrollTopHard();
   disarmExitGuard();
 }
-/* サンクスページは /thanks/ に分離済み。
-   広告のコンバージョン計測は「/thanks/ への到達」で行うため、
-   ここでは画面の差し替えではなく実際にページ遷移させる。 */
+
 function goThanks(){
   disarmExitGuard();
   window.onbeforeunload = null;
   window.location.href = 'thanks/';
 }
 
-/* ---------- LINE公式アカウントへの誘導 ---------- */
-/* オンライン買取り（写真送付）の案内ページ：同一サイト内のサブページへ */
 function openOnlineLp(){
   location.href = 'online/';
 }
 
-/* ---------- 「査定OK」バッジの出現演出 ----------
-   画面に入ったタイミングでハンコを押すようにポンと出す。
-   非表示にするクラスはJS側から付ける。こうしておけば
-   JSが動かない環境ではバッジが最初から見えたままになる。 */
-/* ---------- スクロールで要素を出現させる ----------
-   選んだ要素に initClass を付けて隠し、画面に入ったら shownClass を付ける。
-
-   IntersectionObserver ではなく scroll イベントで判定している。
-   理由は、対象が数個しかなく負荷が問題にならないこと、
-   そして全ブラウザで確実に動き、テストで検証できること。
-
-   「隠す」クラスはJSが付けるので、JSが動かない環境では
-   最初から表示されたままになる（消えっぱなしにならない）。 */
 function revealOnScroll(selector, initClass, shownClass, opts){
   const els = Array.prototype.slice.call(document.querySelectorAll(selector));
   if(!els.length) return;
 
   const o = opts || {};
-  // 要素の上端が画面下端からこれだけ入ったら表示する
+
   const offset = o.offset || 80;
   const step = o.stagger || 0;
 
-  // ずらし表示の待ち時間を各要素に持たせておく。
-  // CSSの transition-delay ではなく setTimeout で制御する。
-  // delay を付けた要素は「隠す指定」まで遅れて適用され、
-  // 一瞬引かれた状態が見えてしまうため。
   if(step){
     if(o.groupBy){
-      // 同じ親ブロックの中での並び順で振る（例：段落ごとのマーカー）
+
       const counter = [];
       els.forEach(function(el){
         const g = el.closest(o.groupBy);
@@ -1379,17 +1276,13 @@ function revealOnScroll(selector, initClass, shownClass, opts){
     else { el.classList.add(shownClass); }
   }
 
-  // 表示済みのものは pending から外れていくので、
-  // 処理量は勝手に減り、全部出たらリスナー自体を捨てる。
   let pending = [].concat(els);
 
   function check(){
     const vh = window.innerHeight || document.documentElement.clientHeight;
     pending = pending.filter(function(el){
       const r = el.getBoundingClientRect();
-      // 判定は「上端が発火ラインまで上がってきたか」だけ。
-      // 下端も条件に入れると、素早くスクロールして画面より上へ
-      // 通り過ぎた要素が出現しないまま取り残される。
+
       const reached = r.top < vh - offset;
       if(reached) show(el);
       return !reached;
@@ -1402,22 +1295,21 @@ function revealOnScroll(selector, initClass, shownClass, opts){
 
   window.addEventListener('scroll', check, { passive: true });
   window.addEventListener('resize', check, { passive: true });
-  check();   // 初期表示ですでに見えている分を処理
+  check();
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-  // 「価値が残っている場合があるんです！」：大きい状態からバンと縮んで出る
+
   revealOnScroll('.why-punch', 'punch-anim', 'is-in', { offset: 60 });
   revealOnScroll('.final-cta-emphasis', 'punch-anim', 'is-in', { offset: 60 });
   revealOnScroll('.promise-title', 'punch-anim', 'is-in', { offset: 80 });
-  // 「たった3つの質問で査定スタート」：見出しがポップイン→バッジ/サブコピーがふわっと続く
+
   revealOnScroll('.quiz-lead-num', 'punch-anim', 'is-in', { offset: 60 });
   revealOnScroll('.quiz-sub-row', 'fade-anim', 'is-in', { offset: 40 });
-  // REASONカードの強調テキスト：マーカーを後から線引きするように表示
+
   revealOnScroll('.reason-card-body .hl-orange', 'marker-anim', 'is-in', { offset: 180 });
 });
 
-/* ---------- 買取実績カルーセル：矢印クリックで1枚分スクロール ---------- */
 (function(){
   const scroller = el('sold-scroll');
   if(!scroller) return;
@@ -1441,13 +1333,11 @@ document.addEventListener('DOMContentLoaded', function(){
   }, { passive: true });
 })();
 
-/* ---------- FAQ ---------- */
 function toggleFaq(btn){
   const item = btn.closest('.faq-item');
   item.classList.toggle('open');
 }
 
-/* ---------- 郵便番号 → 住所の自動表示（zipcloud API） ---------- */
 const postalInput = el('f-postal');
 const addressInput = el('f-address');
 postalInput.addEventListener('input', () => {
@@ -1463,11 +1353,6 @@ postalInput.addEventListener('input', () => {
     .catch(() => { addressInput.value = ''; });
 });
 
-/* =========================================================
-   査定フォーム：単一ステップ（お名前・電話番号・郵便番号・希望日時）
-   ヒーローのミニ査定（メーカー・排気量・車種）の回答は
-   非表示フィールドに保持したまま、そのまま送信データに含める。
-========================================================= */
 function submitLead(){
   if(!el('f-name').value || !el('f-tel').value || !el('f-postal').value){
     alert('お名前・電話番号・郵便番号をご入力ください。');
@@ -1477,26 +1362,13 @@ function submitLead(){
 }
 
 function submitForm(){
-  /*
-    TODO(バックエンド連携):
-    ここで査定申し込み内容をサーバーAPIへPOSTし、
-    1) 査定担当者宛への申し込み内容メール転送
-    2) お客様宛の自動返信メール送信
-    3) 必要であればLINE公式アカウントとの顧客連携
-    を行う処理を実装してください（本モックアップでは未実装）。
-  */
+
   el('btn-next').textContent = '送信中...';
   setTimeout(() => {
     goThanks();
   }, 500);
 }
 
-/* =========================================================
-   離脱防止：入力中に離脱しようとしたらLINE査定モーダルを強制表示
-   - 上方向へのマウス移動（PC：exit intent）
-   - 閉じる(×)ボタン
-   - ブラウザの戻る操作（popstate）
-========================================================= */
 let exitGuardArmed = false;
 let exitIntentShown = false;
 
@@ -1521,7 +1393,7 @@ function onMouseOutExitIntent(e){
 function onPopStateExitIntent(){
   if(!exitGuardArmed) return;
   showExitModal();
-  // ユーザーがまだフォーム上にいる想定で履歴を積み戻す
+
   history.pushState({txtGarageForm:true}, '');
 }
 function showExitModal(){
@@ -1535,3 +1407,4 @@ function closeExitModal(){
 
 </body>
 </html>
+

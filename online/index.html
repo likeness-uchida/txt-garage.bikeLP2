@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LINEでオンライン買取り｜撮って送るだけ｜バイク買取り ティーバイティーガレージ</title>
 <meta name="description" content="来店不要。LINEで友だち追加して、必要情報とバイクの写真を送るだけ。ティーバイティーガレージがLINEで買取り金額をご提示します。">
-<!-- 広告経由のLPのため、現時点では検索結果には出さない運用 -->
+
 <meta name="robots" content="noindex, nofollow">
 
 <link rel="shortcut icon" href="../img/favicon.ico">
@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800;900&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../css/style.css?v=20261015120253">
+<link rel="stylesheet" href="../css/style.css?v=20261016193313">
 </head>
 <body class="online-page">
 
@@ -44,7 +44,6 @@
   </defs>
 </svg>
 
-<!-- PC（1100px〜）用の左カード。スマホでは非表示 -->
 <div class="pc-left">
   <div class="pc-left-inner">
     <div class="pc-left-card">
@@ -87,10 +86,9 @@
 
 <div id="view-lp">
 
-  <!-- ヒーロー -->
   <section class="online-hero">
     <div class="wrap online-hero-inner">
-    <!-- 背景：LINEのやり取りイメージを大きく薄く敷く -->
+
     <div class="online-hero-bg" aria-hidden="true">
       <div class="online-phone online-hero-phone">
         <div class="online-phone-status"><i>14:16</i><i>4G ▮▮▮ ▭</i></div>
@@ -142,7 +140,6 @@
     </div>
   </section>
 
-  <!-- メリット -->
   <section class="section online-merit" id="sec-merit">
     <div class="wrap">
       <h2 class="h-title online-merit-title">オンライン買取りの<span class="hl-orange">3つのメリット</span></h2>
@@ -172,7 +169,6 @@
     </div>
   </section>
 
-  <!-- 3ステップ -->
   <section class="section online-steps" id="sec-steps">
     <div class="wrap">
       <h2 class="online-steps-title">お申し込みは<br>かんたん<span class="online-steps-num">3</span>ステップ</h2>
@@ -206,7 +202,6 @@
     </div>
   </section>
 
-  <!-- 送っていただく情報 -->
   <section class="section online-send" id="sec-send">
     <div class="wrap">
       <h2 class="h-title">トークで送っていただく情報</h2>
@@ -249,7 +244,6 @@
     </div>
   </section>
 
-  <!-- 写真の撮り方 -->
   <section class="section online-photo" id="sec-photo">
     <div class="wrap">
       <h2 class="h-title">写真の撮り方</h2>
@@ -283,7 +277,6 @@
     </div>
   </section>
 
-  <!-- 実際のLINEのやり取りイメージ -->
   <section class="section online-chat" id="sec-chat">
     <div class="wrap">
       <h2 class="h-title">実際のLINEのやり取りイメージ</h2>
@@ -386,7 +379,6 @@
     </div>
   </section>
 
-  <!-- LINE CTA -->
   <section class="online-cta">
     <div class="wrap online-cta-inner">
       <div class="online-cta-staff">
@@ -406,7 +398,6 @@
     </div>
   </section>
 
-  <!-- 買取り実績 -->
   <section class="section sold-carousel" id="sec-voice">
     <div class="wrap">
       <h2 class="sold-title">＼バイク実績多数／</h2>
@@ -440,7 +431,6 @@
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="section" id="sec-faq">
     <div class="wrap">
       <div class="faq-title-bar">FAQ</div>
@@ -478,7 +468,6 @@
     </div>
   </section>
 
-  <!-- フッター直前のブランドブロック -->
   <section class="footer-brand">
     <div class="wrap">
       <img class="fb-logo" src="../img/logo.svg" alt="ティーバイティーガレージ" width="274" height="82">
@@ -570,7 +559,6 @@
     </div>
   </footer>
 
-  <!-- 下部固定バー：左はLINE、右は出張査定（LPのクイズへ） -->
   <div class="float-cta float-cta-hidden" id="float-cta">
     <a class="btn btn-line" href="https://line.me/R/ti/p/@688wfkiu" target="_blank" rel="noopener">
       <svg class="icon"><use href="#ic-chat"/></svg><span>LINEで友だち追加</span>
@@ -582,12 +570,11 @@
     </a>
   </div>
 </div>
-</div><!-- /.lp-main -->
+</div>
 
 <script>
 function el(id){ return document.getElementById(id); }
 
-/* 買取り実績カルーセル：矢印クリックで1枚分スクロール */
 (function(){
   const scroller = el('sold-scroll');
   if(!scroller) return;
@@ -610,7 +597,6 @@ function toggleFaq(btn){
   btn.closest('.faq-item').classList.toggle('open');
 }
 
-/* 追従バー：TOPを過ぎたら表示 */
 (function(){
   var bar = el("float-cta");
   var hero = document.querySelector(".online-hero");
@@ -624,7 +610,6 @@ function toggleFaq(btn){
   update();
 })();
 
-/* トーク画面：最初は途中まで表示し、ボタンで最後まで開く */
 function toggleChat(btn){
   var phone = el('chat-phone');
   var body  = el('chat-body');
@@ -649,3 +634,4 @@ function toggleChat(btn){
 </script>
 </body>
 </html>
+

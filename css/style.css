@@ -1,5 +1,3 @@
-  /* コーポレート・ロゴ（ライセンス済み・自社所有フォント）。
-     多用すると読みにくいので、インパクトを出したい大見出しにだけ使う。 */
   @font-face{
     font-family:"Corporate Logo";
     src:url("../fonts/Corporate-Logo-Bold-ver3.otf") format("opentype");
@@ -14,7 +12,7 @@
   }
 
   :root{
-    --blue:#38a1db;        /* メインカラー(指定) */
+    --blue:#38a1db;
     --blue-dark:#2b84b8;
     --blue-deep:#1c5a80;
     --black:#141414;
@@ -23,58 +21,46 @@
     --gray-100:#f5f5f5;
     --gray-300:#dcdde0;
     --gray-500:#8a8d93;
-    --accent:#ffcc00;      /* 差し色イエロー(指定) */
+    --accent:#ffcc00;
     --accent-dark:#e6b800;
     --danger:#ff5a3c;
-    --line-green:#06c755;  /* LINE公式ブランドカラー */
-    /* 公式ロゴ(logo.svg)から抽出したコーポレートカラー */
+    --line-green:#06c755;
+
     --navy:#003b86;
     --navy-dark:#002c66;
     --brand-yellow:#ffd900;
     --brand-red:#e50012;
-    --orange:#ff5900;        /* 公式CTAのオレンジ（foam_btn.svg / tel.svg より） */
-    --sky:#2db0ff;           /* キービジュアルの地色。ヒーロー全体の背景に使用 */
+    --orange:#ff5900;
+    --sky:#2db0ff;
     --orange-dark:#e94500;
     --radius:14px;
     --maxw:480px;
 
-    /* ---------- 余白スケール ----------
-       0〜480pxの範囲で画面幅に比例させ、480pxで止める。
-       個別に数値を書かず、ここを変えれば全体の余白感が一括で変わる。 */
-    --gutter:clamp(18px, 5.7vw, 27px);   /* 左右の余白（390pxで約22px） */
-    --sect-y:clamp(24px, 7.5vw, 36px);    /* セクション上下（390pxで約55px） */
-    --gap-title:clamp(22px, 7.2vw, 34px);/* 見出し→本文 */
-    --gap-card:clamp(14px, 4.4vw, 21px); /* カード同士 */
-    --gap-block:clamp(26px, 8.2vw, 39px);/* ブロック同士 */
+    --gutter:clamp(18px, 5.7vw, 27px);
+    --sect-y:clamp(24px, 7.5vw, 36px);
+    --gap-title:clamp(22px, 7.2vw, 34px);
+    --gap-card:clamp(14px, 4.4vw, 21px);
+    --gap-block:clamp(26px, 8.2vw, 39px);
 
-    /* ---------- 文字サイズのスケール ----------
-       余白と同じく 0〜480px で画面幅に比例させ、480pxで止める。
-       個別に px や clamp() を書かず、ここの7段階から選ぶ。
-       全体の文字を大きく／小さくしたいときは、この7行だけ触れば済む。 */
-    --fs-2xs:clamp( 9.5px, 2.7vw, 11.5px); /* 注釈・チップ */
-    --fs-xs :clamp(11px,   3.2vw, 13.5px); /* 補足・ラベル */
-    --fs-sm :clamp(12px,   3.5vw, 15px);   /* 副次テキスト */
-    --fs-md :clamp(13.5px, 3.9vw, 16.5px); /* 本文 */
-    --fs-lg :clamp(15px,   4.4vw, 19px);   /* 小見出し */
-    --fs-xl :clamp(17px,   5.2vw, 23px);   /* 中見出し */
-    --fs-2xl:clamp(19px,   5.9vw, 28px);   /* セクション見出し */
+    --fs-2xs:clamp( 9.5px, 2.7vw, 11.5px);
+    --fs-xs :clamp(11px,   3.2vw, 13.5px);
+    --fs-sm :clamp(12px,   3.5vw, 15px);
+    --fs-md :clamp(13.5px, 3.9vw, 16.5px);
+    --fs-lg :clamp(15px,   4.4vw, 19px);
+    --fs-xl :clamp(17px,   5.2vw, 23px);
+    --fs-2xl:clamp(19px,   5.9vw, 28px);
     font-size:16px;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    /* 実機に入っている日本語フォントは端末ごとにバラつく
-       （iPhoneはHiragino Sans、Windowsは大抵Yu Gothic、
-       　このPCのようにHiragino/Noto Sans JPが個別インストールされている場合も）。
-       太さの見え方を全端末で揃えるため、Google Fontsで配信するNoto Sans JPを
-       先頭に置き、実際にはこちらが優先的に使われるようにする。
-       （<link>の読み込みは各HTMLファイルの<head>で行っている） */
+
     font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans",-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;
     color:var(--black);
     background:var(--white);
     line-height:1.7;
     -webkit-font-smoothing:antialiased;
-    /* 以下、タグ単位の基準サイズ。個別指定が無い要素はここに従う */
+
     font-size:var(--fs-md);
   }
   h1{font-size:var(--fs-2xl);}
@@ -83,19 +69,12 @@
   h4{font-size:var(--fs-md);}
   p,li,dd,dt,label,td,th{font-size:inherit;}
   small{font-size:var(--fs-xs);}
-  /* height:auto が無いと、HTMLの height 属性が presentational hint として効き、
-     CSSで width だけ指定した画像の高さが元画像のままになる（縦に伸びる）。 */
+
   img{max-width:100%;display:block;height:auto;}
   a{color:inherit;text-decoration:none;}
   button{font-family:inherit;cursor:pointer;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
 
-  /* ---------- スマホ専用LPとしての土台 ----------
-     スマホでの閲覧が大半だが、PC・タブレットで開かれたときに
-     キービジュアルが画面幅いっぱいに引き伸ばされて崩れるのを防ぐため、
-     ページ全体を480pxで止めて中央に寄せる。
-     これで「480pxより広い場合」を考える必要がなくなり、
-     レイアウトの検討範囲が 0〜480px の一次元に収まる。 */
   body{
     position:relative;overflow-x:clip;
     background:
@@ -103,9 +82,6 @@
       linear-gradient(120deg, #eef3f6 0%, #e4ebef 60%, #dbe3e8 100%);
   }
 
-  /* PC（1100px〜）だけ：青地の全画面に、左＝白カード（ロゴ＋目次＋CTA）／右端＝LP本体、の2カラム。
-     （hanamaru870.net のソコカラLPのPC構成を踏襲）
-     スマホでは.pc-leftを非表示にし、レイアウトはこれまで通り1カラムのまま。 */
   .pc-left{display:none;}
   @media (min-width:1100px){
     body{
@@ -125,7 +101,7 @@
       position:relative;z-index:1;
       width:100%;max-width:620px;text-align:center;
     }
-    /* 白カード：角丸＋上辺に黄色のアクセントライン（サイト内の promise-card と同じ作法） */
+
     .pc-left-card{
       position:relative;
       background:#fff;border-radius:22px;
@@ -144,7 +120,6 @@
     .pc-left-lead strong{color:var(--blue-dark);}
     .pc-left-tagline{display:none;}
 
-    /* 目次：2列。左に青い番号、右に矢印 */
     .pc-toc{
       display:grid;grid-template-columns:1fr 1fr;column-gap:26px;row-gap:2px;
       text-align:left;margin:0 0 28px;
@@ -186,16 +161,11 @@
     .pc-left-tel span{font-size:12px;font-weight:800;color:var(--black);letter-spacing:.04em;}
     .pc-left-copy{margin:24px 0 0;font-size:12px;font-weight:700;color:#fff;letter-spacing:.02em;}
 
-    /* LPは右寄せ。右端にだけ少し余白を残す */
     .lp-main{flex:none;margin-right:160px;}
 
-    /* LPが画面中央から外れているため、ビューポート中央基準の固定ボタンとは
-       位置が合わない。固定ボタン自体のCSSは変えず、PC幅でだけ非表示にする。
-       ※このメディアクエリはファイル前方にあり、後方の無条件の
-         .float-cta 定義に上書きされてしまうため !important で確実に効かせる。 */
     .float-cta{display:none !important;}
   }
-  /* スマホ〜タブレット幅で左右に見える斜めの光の帯（takaone.jp風の演出） */
+
   body::before{
     content:"";
     position:fixed;z-index:0;pointer-events:none;
@@ -207,24 +177,22 @@
     position:relative;z-index:1;
     max-width:var(--maxw);
     margin:0 auto;
-    /* 大きい見出しやずらした画像がはみ出しても横スクロールを起こさない */
+
     overflow-x:clip;
     background:var(--white);
     box-shadow:0 0 30px rgba(0,0,0,.13);
   }
   .hidden{display:none !important;}
-  /* 目には見せないが、検索エンジンと読み上げには残すテキスト */
+
   .sr-only{
     position:absolute;width:1px;height:1px;padding:0;margin:-1px;
     overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
   }
 
-  /* ---------- アイコン(シルエットSVG／絵文字は使用しない) ---------- */
   .icon{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
   .icon-fill{fill:currentColor;stroke:none;}
   .icon-lg{width:28px;height:28px;}
 
-  /* ---------- 共通パーツ／画像プレースホルダー ---------- */
   .placeholder-img{
     position:relative;
     overflow:hidden;
@@ -237,18 +205,7 @@
     padding:8px;
     gap:4px;
   }
-  /* ---------- 画像スロットの縦横比 ----------
-     横長の写真枠はすべて 3:2、丸アイコンは 1:1 に統一している。
-     高さを px で固定すると枠と写真の比率がズレて上下が切れるため、
-     必ず aspect-ratio で指定すること（object-fit:cover で切り抜かれる）。
-     → 素材は「3:2の横長」か「正方形」で用意すれば、どこにも切れずに収まる。 */
 
-  /* ---------- 画像スロット ----------
-     使い方: 枠(.placeholder-img)の中に <img> を1枚置くだけ。
-       <div class="placeholder-img"><img src="img/xxx.jpg" alt="..." onerror="this.remove()"></div>
-     img/ にファイルを置けば枠いっぱいに表示され、
-     まだファイルが無い場合は onerror で img が消え、
-     従来どおりストライプのプレースホルダー表示に自動で戻る。 */
   .placeholder-img > img{
     position:absolute;
     inset:0;
@@ -257,8 +214,7 @@
     object-fit:cover;
     border-radius:inherit;
   }
-  /* 未設置を示す点線。本体の border ではなく擬似要素で描くことで、
-     各パーツが独自に持つ枠線（例：.reaction-avatar の黒フチ）を壊さない。 */
+
   .placeholder-img::before{
     content:"";
     position:absolute;inset:0;
@@ -268,13 +224,9 @@
   }
   .placeholder-dark::before{border-color:#4a6273;}
 
-  /* 写真が入ったら点線とストライプを消す。
-     :has() なので写真を置くだけで自動的に切り替わり、
-     読み込み失敗時は onerror で img が消えてプレースホルダーに戻る。 */
   .placeholder-img:has(> img){background:none;}
   .placeholder-img:has(> img)::before{display:none;}
 
-  /* 保存すべきファイル名を枠内に表示（画像が入ると隠れる） */
   .ph-name{
     font-size:10px;
     letter-spacing:.02em;
@@ -307,9 +259,7 @@
     border:none;
     text-align:center;
   }
-  /* ページ内のメインCTA。
-     公式サイトの同名ボタン(foam_btn.svg)に合わせてオレンジ地＋白文字。
-     黄色地＋黒文字より黒ブロック上での視認性が高い。 */
+
   .btn-primary{
     background:var(--orange);
     color:#fff;
@@ -318,8 +268,6 @@
   .btn-primary:active{transform:translateY(4px);box-shadow:0 2px 0 var(--orange-dark);}
   .btn-primary:disabled{background:#e6e6e6;color:#aaa;box-shadow:none;border-color:transparent;}
 
-  /* 追従バーは「電話・LINE・無料査定」の3つが並ぶ。
-     本命の無料査定が一番弱く見えないよう、ページ内CTAと同じオレンジで統一する。 */
   .float-cta .btn-primary{
     box-shadow:0 4px 0 var(--orange-dark), 0 8px 14px rgba(0,0,0,.15);
   }
@@ -362,19 +310,17 @@
   }
   .section.dark .eyebrow{color:var(--blue);}
   h2.h-title{
-    /* 幅に比例させることで、狭い端末でも短い見出しが1行に収まる */
+
     font-size:var(--fs-2xl);
     font-weight:800;
     text-align:center;
     margin:0 0 var(--gap-title);
     line-height:1.5;
-    /* 万一1行に収まらない場合の保険。
-       balance=2行を均等に割る／auto-phrase=日本語の文節で折る
-       （どちらも未対応ブラウザでは通常の折り返しに戻るだけ） */
+
     text-wrap:balance;
     word-break:auto-phrase;
   }
-  /* セクション大見出しは全部コーポレート・ロゴに統一 */
+
   h2.h-title,
   .style-select-title,
   .why-title,
@@ -385,9 +331,6 @@
   }
   .note{font-size:var(--fs-2xs);color:var(--gray-500);}
 
-  /* ---------- ヘッダー ---------- */
-  /* ヘッダーは公式サイト(txt-garage.jp)に合わせて白地。
-     ロゴの主色がネイビーのため、水色地だと沈んで読めないため。 */
   header.site-header{
     position:sticky;top:0;z-index:50;
     background:#fff;
@@ -398,17 +341,14 @@
   .header-inner{
     max-width:var(--maxw);margin:0 auto;
     display:flex;align-items:center;justify-content:space-between;
-    /* ヘッダーはロゴと電話が並ぶため本文よりわずかに詰める */
+
     padding:10px calc(var(--gutter) - 5px);
     gap:10px;
   }
   .logo-mark{display:flex;align-items:center;gap:7px;min-width:0;}
-  /* 公式ロゴ。縦横比 274:82 を維持したまま高さで揃える */
-  /* 幅に比例して縮む。480pxで上限、狭い端末でも下限を割らない。
-     段階的に切り替えるメディアクエリより、常に画像と同じ比率で
-     スケールするほうがデザインの見え方が安定する。 */
+
   .logo-img{height:clamp(27px, 8.7vw, 42px);width:auto;flex:none;}
-  /* このLPがバイク買取であることを示す小さなラベル */
+
   .logo-sub{
     flex:none;
     background:var(--blue);color:#fff;
@@ -417,8 +357,7 @@
     letter-spacing:.02em;text-align:center;
   }
   .header-cta{display:flex;gap:8px;}
-  /* 電話まわりは公式サイト(txt-garage.jp)のヘッダーと同じ
-     フリーダイヤル画像(tel.svg)＋受付時間テキストの組み合わせ */
+
   .tel-btn{
     display:flex;flex-direction:column;align-items:flex-end;gap:3px;
     flex:none;
@@ -430,18 +369,10 @@
   }
   .tel-btn .icon{width:14px;height:14px;}
 
-  /* ---------- ヒーロー：ファーストビューは1枚の写真に集約 ---------- */
-  /* 背景はキービジュアルの地色と同じ水色にして、画像とヒーローを地続きに見せる。
-     3項目ミニ査定は独立セクションへ切り出したので、
-     以前ここにあった余白確保用の padding-bottom は不要になった。 */
   .hero{
     background:#fff;color:#fff;
   }
-  /* キービジュアルは切り抜かず全体を見せる。
-     文字が焼き込まれているため object-fit:cover でトリミングすると欠ける。
-     aspect-ratio で画像本来の比率(960:1219)を保持する。
-     背景を白にしているのは、画像下端の矢印の切れ込み部分が透過になっており、
-     そこから下の白いセクションと自然につながって見えるようにするため。 */
+
   .hero-photo{
     position:relative;
     aspect-ratio:1180 / 1252;
@@ -460,11 +391,8 @@
   }
   .hero-photo-note .icon{width:22px;height:22px;}
 
-
-  /* ---------- 3項目ミニ査定：白背景の独立セクション ---------- */
   .quiz-section{background:#fff;padding-top:calc(var(--sect-y) * .35);}
 
-  /* 見出しは文字組み。「3」だけスクロールで弾みながらポンと現れる */
   .quiz-lead-text{
     font-family:"Corporate Logo","Noto Sans JP",sans-serif;
     text-align:center;font-weight:900;color:var(--blue);
@@ -490,14 +418,13 @@
     text-align:center;font-weight:700;color:#3c3c3c;
     font-size:var(--fs-xs);margin:0;line-height:1.6;
   }
-  /* バッジ・サブコピーも見出しに続いて、少し遅れてふわっと現れる */
+
   .quiz-sub-row.fade-anim{opacity:0;transform:translateY(10px);}
   .quiz-sub-row.fade-anim.is-in{
     opacity:1;transform:translateY(0);
     transition:opacity .4s ease-out .15s, transform .4s ease-out .15s;
   }
 
-  /* 枠内を色付ける水色パネル。STYLEセクションの出張カードと同系色で揃える */
   .quiz-panel{
     position:relative;
     background:#f3faff;border:2px solid var(--blue);
@@ -511,7 +438,7 @@
     font-size:clamp(20px, 6.4vw, 26px);
     margin:0 -18px 18px;padding:16px 10px;
   }
-  /* ページ各所のCTAからスクロールで到着したときに、ここだと分かるよう一瞬光らせる */
+
   @keyframes quizPanelPulse{
     0%  { box-shadow:0 10px 24px rgba(45,176,255,.18), 0 0 0 0   rgba(56,161,219,.45); }
     35% { box-shadow:0 10px 24px rgba(45,176,255,.18), 0 0 0 8px rgba(56,161,219,.35); }
@@ -555,7 +482,7 @@
     background-repeat:no-repeat;background-position:right 12px center;background-size:16px;
   }
   .quiz-panel select:focus, .quiz-panel input[type="text"]:focus{outline:none;}
-  /* ---------- 悩みチェック：色帯ボーダー＋シンプルなOKピル ---------- */
+
   .check-section{background:#eaf5fd;}
   .check-catch{
     text-align:center;font-weight:900;color:var(--black);
@@ -591,7 +518,7 @@
     line-height:1.4;color:#fff;
     box-shadow:0 4px 10px rgba(0,0,0,.12);
   }
-  /* 吹き出しのしっぽ：顔写真がある側に向ける */
+
   .check-question-row-left .check-question-text::before{
     content:"";position:absolute;top:50%;left:-9px;transform:translateY(-50%);
     width:0;height:0;
@@ -605,7 +532,6 @@
     border-left:10px solid var(--blue);
   }
 
-  /* ---------- ティーバイティーの約束カード ---------- */
   .promise-card{
     background:#fff;border-top:5px solid var(--blue);border-radius:var(--radius);
     box-shadow:0 8px 20px rgba(0,0,0,.07);
@@ -680,7 +606,6 @@
     text-shadow:0 2px 6px rgba(0,0,0,.7);
   }
 
-  /* ---------- MAKER：対象メーカー・排気量一覧 ---------- */
   .maker-section{background:#fff;}
   .maker-title{display:block;}
   .maker-title-sub{
@@ -733,7 +658,6 @@
     padding:8px 6px;
   }
 
-  /* ---------- 査定スタイル：参考LP準拠の見出しブロック＋白背景カード2枚 ---------- */
   .style-select{background:#fff;text-align:center;padding-bottom:var(--gap-block);}
   .style-select .hl-orange{color:var(--blue);}
   .style-select-title{
@@ -762,7 +686,7 @@
     font-size:var(--fs-sm);font-weight:700;color:var(--black);line-height:1.9;
     margin:0 0 var(--gap-card);
   }
-  /* 薄い青の帯。見出し〜案内文をまとめて内包し、下端だけ中央がとがったV字に切れ込む */
+
   .style-select-banner{
     position:relative;
     background:#e8f4fc;color:var(--black);
@@ -770,7 +694,7 @@
     margin:0 calc(var(--gutter) * -1) var(--gap-block);
     clip-path:polygon(0 0, 100% 0, 100% calc(100% - 28px), 50% 100%, 0 calc(100% - 28px));
   }
-  /* 出張／LINE査定：白背景＋色枠のカード型に変更。出張査定はオレンジ系でCTAと揃える */
+
   .style-row-list{display:flex;flex-direction:column;gap:var(--gap-card);text-align:left;}
   .style-row{
     background:#fff;border-radius:var(--radius);
@@ -801,7 +725,6 @@
   .style-row-green .style-row-photo{margin-top:0;max-width:30%;}
   .style-row-photo img{display:block;width:100%;height:auto;border-radius:12px;}
 
-  /* REASONセクション：青地。上端中央がとがったV字に切れ込み、直前セクションとの継ぎ目を演出 */
   .reason-section{
     position:relative;
     background:#2cadfa;color:#fff;
@@ -817,7 +740,6 @@
     line-height:1.8;margin:0 0 var(--gap-block);
   }
 
-  /* ---------- REASON：写真の角に大きな縁取り数字を重ねるカード ---------- */
   .reason-grid{display:flex;flex-direction:column;gap:var(--gap-card);}
   .reason-card{
     position:relative;
@@ -837,7 +759,7 @@
     font-weight:900;margin:0 0 8px;word-break:auto-phrase;line-height:1.4;
     padding-left:2em;text-indent:-2em;
   }
-  /* 見出し内の強調はコーポレートのオレンジ＋黄色マーカー */
+
   .hl-orange{color:var(--orange);}
   .hl-green{color:var(--line-green);}
   .reason-card-body .hl-orange{
@@ -853,7 +775,6 @@
   .reason-card-body .hl-orange.marker-anim.is-in{background-size:100% 45%;}
   .reason-card-body p{font-size:var(--fs-sm);color:#555;margin:0;line-height:1.8;}
 
-  /* ---------- WHY：買取実績写真を敷いた訴求ブロック ---------- */
   .section.why{
     position:relative;
     overflow:hidden;
@@ -861,7 +782,7 @@
     text-align:center;
     background:#12181d url("../img/rush2.jpg") center / cover no-repeat;
   }
-  /* 写真の上に暗幕を敷いて文字を読ませる */
+
   .section.why::before{
     content:"";
     position:absolute;inset:0;
@@ -875,7 +796,7 @@
     margin:0 0 26px;line-height:1.4;
     text-shadow:0 2px 8px rgba(0,0,0,.6);
   }
-  /* 「価値が残っている場合があるんです！」＝この節の主役。画面に入るとバンと出る */
+
   .why-punch{
     font-size:clamp(27px, 9vw, 43px);
     white-space:nowrap;
@@ -889,7 +810,7 @@
     text-shadow:0 2px 6px rgba(0,0,0,.6);
   }
   .why-lead-tight{margin-bottom:0;text-decoration:underline;text-underline-offset:3px;}
-  /* 背景透過の切り抜き写真なので、枠や影は付けずにそのまま乗せる */
+
   .why-photo{
     display:block;width:100%;height:auto;
     margin:0 0 var(--gap-card);
@@ -902,7 +823,6 @@
   }
   .hl-yellow{color:var(--accent);}
 
-  /* WHY：状態別アイコン一覧（長期不動・事故キズ・エンジン不良・走行不能・車検切れ） */
   .why-status-grid{
     display:grid;grid-template-columns:repeat(2, 1fr);gap:10px;
     margin:0 0 var(--gap-card);text-align:left;
@@ -920,7 +840,6 @@
   }
   .why-status-icon .icon{width:16px;height:16px;}
 
-  /* 出現前の状態。JSが付けるので、JS無効時は最初から表示される */
   .punch-anim{
     opacity:0;
     transform:scale(2.3);
@@ -935,7 +854,6 @@
     .punch-anim{opacity:1;transform:none;transition:none;}
   }
 
-  /* ---------- スタッフ写真＋大見出しのCTAブロック ---------- */
   .staff-cta{background:#2cadfa;padding:var(--gap-block) 0;}
   .staff-cta-inner{position:relative;}
   .staff-cta-kicker{
@@ -946,11 +864,11 @@
     padding:20px 8px 14px;
     box-shadow:0 3px 10px rgba(0,0,0,.12);
   }
-  /* 左：スタッフ写真（吹き出し入り）／右：小見出し＋大見出し＋店名＋ロゴ（参考デザイン準拠） */
+
   .staff-cta-row{display:flex;align-items:center;gap:6px;margin-bottom:12px;}
   .staff-cta-photo{flex:1.5;min-width:0;margin:0 -24px -16px -10px;position:relative;z-index:1;transform:translate(-6px, 0);}
   .staff-cta-photo img{display:block;width:100%;height:auto;}
-  /* 文字ブロックは写真側へ少し寄せ、各行は列幅より広くとって同じ中心に揃える */
+
   .staff-cta-body{flex:1.2;min-width:0;text-align:center;position:relative;z-index:2;transform:translate(-24px, 0);}
   .staff-cta-sub{
     color:#ffff00;font-weight:900;white-space:nowrap;
@@ -971,7 +889,7 @@
     font-size:clamp(12px, 3.6vw, 16px);line-height:1.3;
     margin:0 -30% 16px;letter-spacing:.06em;
   }
-  /* 二重下線：上に細い白1px、少し空けて下に太い黄色4px */
+
   .staff-cta-name span{position:relative;display:inline-block;padding-bottom:1px;border-bottom:1px solid #fff;}
   .staff-cta-name span::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:4px;background:#ffff00;}
   .staff-cta-logo{display:block;width:100%;max-width:135px;margin:0 auto;height:auto;}
@@ -981,8 +899,7 @@
   }
   .staff-cta-tel-img{display:block;width:auto;height:64px;max-width:100%;}
   .staff-cta .btn-primary{font-size:clamp(17px, 5.6vw, 22px);padding:18px 20px;margin-top:-20px;}
-  /* 出張査定／LINE査定の2ボタン並び（下部固定バーと同じ見た目） */
-  /* 文言が長いので横並びではなく縦に2段。どちらも1行で収まる */
+
   .staff-cta-btns{display:flex;flex-direction:column;gap:18px;margin-top:4px;position:relative;z-index:2;}
   .staff-cta .staff-cta-btns .btn{
     position:relative;width:100%;margin:0;
@@ -994,7 +911,6 @@
   .staff-cta-btns .btn .icon{width:20px;height:20px;}
   .staff-cta-btns .btn .btn-endcap{right:16px;}
 
-  /* ---------- FLOW：参考LP準拠。青地に白丸アイコン＋STEPバッジの横並び ---------- */
   .flow-section{background:var(--blue);color:#fff;}
   .flow-title{
     text-align:center;font-weight:900;color:#fff;
@@ -1029,7 +945,6 @@
   .flow-small-note{font-size:var(--fs-2xs);opacity:.85;}
   .flow-cta{margin-top:var(--gap-block);background:#fff;color:var(--blue);box-shadow:0 6px 0 rgba(0,0,0,.15);}
 
-  /* ---------- 実績/声(写真タイプ) ---------- */
   .voice-scroll{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;}
   .voice-scroll::-webkit-scrollbar{display:none;}
   .voice-card-v2{
@@ -1050,14 +965,12 @@
   .voice-model{font-size:11px;color:var(--gray-500);margin-bottom:4px;}
   .voice-body p{font-size:12px;color:#444;margin:0;}
 
-  /* ---------- FAQ ---------- */
   .faq-item{border-bottom:1px solid var(--gray-300);}
   .faq-q{
     width:100%;text-align:left;background:none;border:none;
     padding:16px 4px;font-weight:700;font-size:16px;
     display:flex;justify-content:space-between;align-items:center;gap:10px;
-    /* iOS Safariは-webkit-appearanceが残っていると文字色までシステムの
-       青を当ててしまうため、色を明示しつつネイティブ見た目をリセットする */
+
     -webkit-appearance:none;appearance:none;color:var(--black);font-family:inherit;
   }
   .faq-q .q-mark{color:var(--blue);font-weight:900;flex:none;}
@@ -1072,17 +985,16 @@
   .faq-toggle-icon{transition:transform .2s ease;flex:none;color:var(--blue);}
   .faq-item.open .faq-toggle-icon{transform:rotate(135deg);}
 
-  /* ---------- 最終CTA（背景は青。スタッフの服がアクセントカラーと同化しないよう変更） ---------- */
   .final-cta{
     background:var(--blue);
     color:#fff;text-align:center;
   }
-  /* 吹き出し＋スタッフ写真を横並びに */
+
   .final-cta-top{
     display:flex;align-items:center;gap:10px;
     margin:0 0 20px;text-align:left;
   }
-  /* 白い吹き出し。右辺中央から三角のしっぽを出して隣の写真を指す */
+
   .final-cta-bubble{
     position:relative;
     background:#fff;
@@ -1090,8 +1002,7 @@
     padding:16px 18px;
     margin:0;
   }
-  /* 右カラムは幅を6割までに抑えて、左の写真に幅を回す */
-  /* 吹き出しは1行固定なので右カラムは吹き出しの幅に合わせ、残りを写真に回す */
+
   .final-cta-right{flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
   .final-cta-bubble-side{flex:none;min-width:0;padding:10px 12px;}
   .final-cta-bubble-side::after{
@@ -1106,10 +1017,10 @@
     white-space:nowrap;line-height:1.35;
   }
   .final-cta-emphasis{font-size:1.4em;color:var(--orange);}
-  /* 透過PNGなので枠は付けず、背景にそのまま乗せる */
+
   .final-cta-photo{
     flex:1;min-width:0;display:block;width:100%;max-width:340px;height:auto;
-    /* 左端ギリギリ（枠の余白ぶん）まで広げ、少し下げる */
+
     margin:0 0 0 calc(var(--gutter) * -1);
     transform:translateY(20px);
   }
@@ -1132,7 +1043,7 @@
     display:flex;align-items:center;justify-content:center;
   }
   .final-cta-icon .icon{width:15px;height:15px;}
-  /* ---------- フッター直前のブランドブロック（公式サイト下部に合わせた構成） ---------- */
+
   .footer-brand{
     background:#fff;color:var(--black);
     text-align:center;
@@ -1145,14 +1056,10 @@
   .fb-tel img{width:clamp(220px, 62vw, 300px);height:auto;margin:0 auto;}
   .fb-tel-hours{font-size:var(--fs-xs);font-weight:800;color:#3c3c3c;margin:6px 0 var(--gap-card);}
   .fb-cta{max-width:340px;margin:0 auto var(--gap-block);}
-  /* SNSアイコンは公式配布の色付きSVGをそのまま使うため、
-     枠は付けずアイコン本来の色を活かす */
+
   .fb-sns{display:flex;justify-content:center;align-items:center;gap:18px;}
   .fb-sns img{width:32px;height:32px;display:block;}
 
-  /* ---------- サイトメニュー（公式フッターのアコーディオン） ----------
-     ネイティブ <details>/<summary> を使い、開閉のJSを持たずに実装する。
-     公式サイトは各行が薄いグレーの角丸カードで、行間にわずかな隙間がある。 */
   .footer-nav{
     background:#fff;
     padding:0 0 2px;
@@ -1177,7 +1084,7 @@
   }
   .footer-nav-top::-webkit-details-marker,
   .footer-nav-item summary::-webkit-details-marker{display:none;}
-  /* 「＋」を自前で描き、開いたら「−」に切り替える */
+
   .footer-nav-item summary::after{
     content:"+";
     flex:none;width:22px;height:22px;margin-left:10px;
@@ -1202,7 +1109,7 @@
     background:#fff;color:#555;
     padding:calc(var(--sect-y) * .5) 0 100px;font-size:12px;
   }
-  /* 罫線つきの表組み。公式フッターの2列リンクに合わせる（実機確認の結果、文字はオレンジ） */
+
   footer .foot-links{
     display:grid;grid-template-columns:1fr 1fr;
     border-top:1px solid var(--gray-300);
@@ -1215,7 +1122,6 @@
   footer .foot-links a:nth-child(odd){border-right:1px solid var(--gray-300);padding-right:10px;}
   footer .foot-links a:nth-child(even){padding-left:10px;}
 
-  /* バナー：公式と同じくYouTube・TikTokを2列、ギネスはその下に1列ぶんの幅で中央寄せ */
   .footer-banners{
     display:grid;grid-template-columns:1fr 1fr;gap:10px;
     margin-top:18px;
@@ -1223,30 +1129,25 @@
   .footer-banners img{display:block;width:100%;height:auto;}
   .footer-banner-wide{grid-column:1 / -1;max-width:calc(50% - 5px);margin:0 auto;width:100%;}
 
-  /* ---------- フローティングCTA(下部固定) ---------- */
   .float-cta{
     position:fixed;left:50%;transform:translateX(-50%);bottom:0;z-index:60;
     width:100%;max-width:var(--maxw);
     background:#fff;border-top:1px solid var(--gray-300);
-    /* 左右余白・ボタン間隔は狭い端末でも詰められるよう可変にする */
+
     padding:10px clamp(10px, 3vw, 16px) calc(10px + env(safe-area-inset-bottom));
     display:flex;gap:clamp(6px, 2vw, 8px);
     box-shadow:0 -6px 16px rgba(0,0,0,.08);
   }
-  /* 電話は削除（ヘッダーにフリーダイヤルが常時あるため重複）。
-     主役は出張査定の申し込み。LINEは幅と文字を抑えて主従をつける。 */
-  /* 2つとも1行に揃える。片方だけ2行だと、もう片方の中身が
-     間延びして落ち着かないため。主従は幅と文字サイズで付ける。 */
+
   .float-cta .btn{
     position:relative;
-    /* 丸アイコン分の右余白も可変にする。固定34pxだと305px幅の端末で
-       ボタンの最小幅を超えてはみ出す。 */
+
     padding:14px clamp(26px, 8vw, 34px) 14px 8px;
     line-height:1.3;
     gap:clamp(4px, 1.5vw, 6px);
     white-space:nowrap;
   }
-  /* 公式サイトの下部固定バーに合わせた「白丸＋再生三角」の飾り */
+
   .btn-endcap{
     position:absolute;right:clamp(4px, 1.5vw, 8px);top:50%;transform:translateY(-50%);
     width:clamp(16px, 5vw, 22px);height:clamp(16px, 5vw, 22px);border-radius:50%;
@@ -1256,7 +1157,7 @@
   .btn-endcap .icon{width:52%;height:52%;color:inherit;}
   .btn-line .btn-endcap .icon{color:var(--line-green);}
   .btn-primary .btn-endcap .icon{color:var(--orange);}
-  /* 「オンライン買取り」が長くなった分、幅の比率と文字サイズを再調整（320px幅でも両方1行） */
+
   .float-cta .btn-line{
     flex:1;
     font-size:clamp(10.5px, 3.2vw, 14px);
@@ -1269,18 +1170,17 @@
   }
   .float-cta .btn-primary .icon{width:16px;height:16px;}
 
-  /* ================= 査定フォーム ビュー ================= */
   #view-form{
     min-height:100vh;
     background:var(--gray-100);
     padding-bottom:40px;
   }
-  /* フォーム画面専用のヘッダーは廃止（共通の site-header をそのまま使う） */
+
   .form-body{max-width:var(--maxw);margin:0 auto;padding:22px 20px 100px;}
   .form-step{display:none;}
   .form-step.active{
     display:block;animation:fadeIn .25s ease;
-    /* 前のセクションからの続き感を出すため、カード状に枠で囲む */
+
     background:#fff;border:1px solid var(--gray-300);border-radius:var(--radius);
     padding:20px 18px;box-shadow:0 2px 10px rgba(0,0,0,.05);
   }
@@ -1288,7 +1188,6 @@
   .form-step h2{font-size:18px;font-weight:800;margin:0 0 6px;}
   .form-step .step-desc{font-size:13px;color:#666;margin:0 0 22px;}
 
-  /* 市場相場は変動する旨の注記。フォーム冒頭に、質問セクションと同じマスコット+吹き出し形式で表示 */
   .price-notice{
     display:flex;gap:10px;align-items:flex-start;
     margin:0 0 22px;
@@ -1310,7 +1209,7 @@
   .field .field-note{color:var(--gray-500);font-size:12px;font-weight:400;margin-left:2px;}
   .field select, .field input[type="text"], .field input[type="tel"], .field input[type="email"], .field textarea{
     width:100%;padding:13px 14px;border-radius:10px;border:1px solid var(--gray-300);
-    /* iOSはinputのfont-sizeが16px未満だとフォーカス時に自動ズームするため16px以上に固定 */
+
     font-size:16px;background:#fff;font-family:inherit;
   }
   .field select:focus, .field input:focus, .field textarea:focus{outline:2px solid var(--blue);outline-offset:1px;}
@@ -1324,9 +1223,6 @@
   }
   .form-nav-inner{display:flex;gap:10px;width:100%;max-width:var(--maxw);margin:0 auto;}
 
-  /* サンクス関連のCSSは thanks/index.html 側に移動しました */
-
-  /* ---------- 離脱防止モーダル（バイク王の実際の挙動を参考に再現） ---------- */
   #exit-modal-overlay{
     position:fixed;inset:0;z-index:200;
     background:rgba(0,0,0,.6);
@@ -1349,8 +1245,7 @@
     background:rgba(255,255,255,.9);border:none;color:#333;
     display:flex;align-items:center;justify-content:center;
   }
-  /* 文字と画像が重なって見えていたため、テキストの重ね表示は廃止。
-     line.jpg には文言が焼き込み済みなので、画像だけをそのまま見せる。 */
+
   .exit-modal-banner{padding:0;}
   .exit-modal-img{display:block;width:100%;height:auto;}
   .exit-modal-body{padding:14px 18px 20px;}
@@ -1360,13 +1255,6 @@
     text-decoration:underline;
   }
 
-  /* ==========================================================
-     ティーバイティー「らしさ」パーツ
-     （公式サイトのコミック調・実写スポークスパーソン・
-       サインボード風実績カードのトーンを参考に追加）
-  ========================================================== */
-
-  /* バイク実績カルーセル：見出し＋実績カード＋スライダーをまとめた薄い青のセクション */
   .sold-carousel{background:#eaf5fd;}
   .sold-title{
     text-align:center;font-weight:900;color:var(--blue);
@@ -1416,7 +1304,6 @@
   .sold-dots span{width:7px;height:7px;border-radius:50%;background:var(--gray-300);}
   .sold-dots span.on{background:var(--orange);}
 
-  /* お客様の声：実績カード */
   .proof-card{
     background:#fff;border:1px solid var(--gray-300);border-radius:14px;overflow:hidden;margin-bottom:16px;
     box-shadow:0 6px 18px rgba(0,0,0,.06);
@@ -1433,7 +1320,7 @@
   .proof-type-row{display:flex;gap:8px;align-items:center;font-size:14px;font-weight:800;color:var(--black);margin-bottom:8px;}
   .proof-type-row .icon{width:18px;height:18px;color:var(--blue);flex:none;}
   .proof-type-row .lbl{background:var(--accent);color:#222;font-weight:800;padding:3px 8px;border-radius:4px;font-size:11px;}
-  /* ラベルと金額を横一列に並べる */
+
   .proof-price-row{
     display:flex;align-items:baseline;flex-wrap:wrap;
     gap:4px 9px;margin-bottom:10px;
@@ -1458,7 +1345,7 @@
   .mini-proof{background:#fff;border:1px solid var(--gray-300);border-radius:10px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.05);}
   .mini-proof-photo{aspect-ratio:3 / 2;}
   .mini-proof-tags{padding:8px;}
-  /* 1行目＝地域チップ＋お名前、2行目＝車種 */
+
   .mini-proof-tags .name{
     display:flex;align-items:center;gap:6px;flex-wrap:wrap;
     font-weight:800;font-size:var(--fs-xs);margin-bottom:5px;
@@ -1471,7 +1358,6 @@
   .chip-loc{background:#e2defa;color:#4d3fa8;}
   .chip-model{background:var(--black);color:#fff;}
 
-  /* ---------- 口コミ（CUSTOMER REVIEWS） ---------- */
   .review-section{background:#fff;}
   .review-card{
     background:#fff;border:1px solid var(--gray-300);border-radius:14px;
@@ -1493,7 +1379,6 @@
   .review-comment{font-size:var(--fs-sm);color:#333;line-height:1.8;margin:0;}
   .review-more{max-width:340px;margin:0 auto;display:flex;}
 
-  /* ---------- 店舗一覧・LOCATIONS：地図に直接エリアボタンを重ねる ---------- */
   .shop-section{background:var(--accent);text-align:center;}
   .shop-eyebrow{text-align:left;}
   h2.shop-title{
@@ -1506,7 +1391,6 @@
   .shop-staff-block{position:relative;z-index:0;max-width:260px;margin:40px 0 10px;transform:translateX(-12px);}
   .shop-staff-block img{display:block;width:100%;height:auto;}
 
-  /* 右に20pxずらす分、幅を20px削っておき、狭い端末でも右にはみ出さないようにする */
   .shop-map{position:relative;width:calc(100% - 20px);max-width:340px;margin:-220px auto var(--gap-block);transform:translateX(20px);}
   .shop-map img{display:block;width:100%;height:auto;}
   .map-pin{
@@ -1516,7 +1400,7 @@
     padding:6px 11px;border-radius:6px;
     box-shadow:0 2px 5px rgba(0,0,0,.25);
   }
-  /* 各エリアの実座標は画像解析で算出した重心をベースに、左右の間隔を広げて調整 */
+
   .map-pin-hokkaido{top:14%;  left:66%; background:#376ab2;}
   .map-pin-tohoku{top:44%;  left:85%; background:#00aaea;}
   .map-pin-hokuriku{top:52%; left:48%; background:#6cba5a;}
@@ -1526,7 +1410,6 @@
   .map-pin-kyushu{top:80%; left:4%; background:#eb6d65;}
   .map-pin-okinawa{top:100%; left:20%; background:#ff8d4f;}
 
-  /* ---------- バイクを高く売るためのポイント ---------- */
   .tips-section{background:#fff;}
   .tips-section .h-title{font-size:calc(var(--fs-2xl) * 1.2 - 1px);}
   .tips-list{display:flex;flex-direction:column;gap:var(--gap-block);}
@@ -1548,7 +1431,6 @@
   .tips-card-body h3{position:relative;z-index:1;margin:0 0 6px;font-size:clamp(12px, 3.5vw, 16.5px);font-weight:800;line-height:1.5;white-space:nowrap;}
   .tips-card-body p{position:relative;z-index:1;margin:0;font-size:var(--fs-sm);color:#555;line-height:1.8;}
 
-  /* ---------- バイク買取り時に必要な書類 ---------- */
   .docs-section{background:#fff;}
   .docs-title{white-space:nowrap;font-size:clamp(20px, 6.6vw, 34px);}
   .docs-extra-list small{font-size:.82em;font-weight:400;color:#666;}
@@ -1564,7 +1446,6 @@
   .docs-extra-list{margin:0 0 var(--gap-card);padding-left:1.2em;font-size:var(--fs-sm);color:#444;line-height:1.9;}
   .docs-extra-list strong{color:var(--blue-dark);}
 
-  /* FAQ */
   .faq-title-bar{
     display:inline-block;background:var(--blue);color:#fff;font-weight:900;
     font-size:13px;padding:6px 16px;margin-bottom:14px;border-radius:999px;
@@ -1586,13 +1467,6 @@
   }
   .faq-v2.open .faq-a{padding-bottom:14px;}
 
-  /* =========================================================
-     サンクスページ（thanks/index.html）専用
-     ※共通部分（変数・ボタン・ヘッダー・ロゴ・電話・フッター）は
-       上の定義をそのまま使います。二重管理を避けるため、
-       ここにはサンクス固有のものだけを置いてください。
-  ========================================================= */
-  /* LPの #view-lp と同じ枠。480pxで止めて中央に寄せる */
   .page{
     position:relative;z-index:1;
     max-width:var(--maxw);
@@ -1600,7 +1474,7 @@
     background:var(--white);
     box-shadow:0 0 30px rgba(0,0,0,.13);
   }
-  /* ---------- 本文 ---------- */
+
   .thanks-wrap{max-width:var(--maxw);margin:0 auto;padding:56px 20px;text-align:center;}
   .thanks-icon{
     width:70px;height:70px;border-radius:50%;background:var(--blue);
@@ -1609,7 +1483,7 @@
   .thanks-icon .icon{width:32px;height:32px;stroke:#fff;stroke-width:2.5;}
   .thanks-wrap h1{font-size:20px;font-weight:900;margin:0 0 12px;}
   .thanks-wrap p{font-size:14px;color:#555;margin:0 0 26px;}
-  /* 裸の .note{} も同じ理由でメインLP側に漏れるため .page でスコープする */
+
   .page .note{font-size:11px;color:var(--gray-500);line-height:1.6;}
 
   .next-box{
@@ -1622,12 +1496,6 @@
 
   .thanks-cta{display:flex;flex-direction:column;gap:18px;max-width:320px;margin:0 auto;}
 
-  /* thanks側もトップと同じ footer-brand/footer-nav/footer をそのまま使うため、
-     専用の上書きは不要（共通CSSがそのまま両ページに効く）。 */
-
-  /* =========================================================
-     オンライン買取りページ（online/index.html）専用
-  ========================================================= */
   .online-hero{
     background:var(--blue);color:#fff;text-align:center;
     padding:calc(var(--sect-y) * .8) 0 var(--sect-y);
@@ -1650,7 +1518,6 @@
   .online-hero-photo img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 10px 26px rgba(0,0,0,.28);}
   .online-hero-note{font-size:clamp(9px, 2.6vw, 11px);font-weight:700;opacity:.85;margin:10px 0 0;line-height:1.6;}
 
-  /* LINEボタン（共通） */
   .online-line-btn{
     position:relative;
     padding:17px clamp(40px, 10.5vw, 48px) 17px 12px;
@@ -1660,7 +1527,6 @@
   .online-line-btn .btn-endcap{right:14px;}
   .online-line-btn-lg{font-size:clamp(13px, 3.9vw, 18px);}
 
-  /* メリット */
   .online-merit{background:#fff;}
   .online-merit-grid{display:flex;flex-direction:column;gap:12px;}
   .online-merit-card{
@@ -1677,7 +1543,6 @@
   .online-merit-card h3{margin:0 0 4px;font-size:var(--fs-lg);font-weight:900;color:var(--blue-dark);}
   .online-merit-card p{margin:0;font-size:var(--fs-sm);color:#444;line-height:1.75;}
 
-  /* 3ステップ */
   .online-steps{background:var(--line-green);color:#fff;}
   .online-steps-title{
     text-align:center;font-weight:900;color:#fff;
@@ -1703,7 +1568,6 @@
   .online-steps .online-line-btn{box-shadow:0 6px 0 #d9ab00, 0 10px 18px rgba(0,0,0,.2);}
   .online-steps .online-line-btn:active{box-shadow:0 2px 0 #d9ab00;}
 
-  /* 送っていただく情報 */
   .online-send{background:#fff;}
   .online-send-card{
     background:#fff;border:2px solid var(--blue);border-radius:14px;
@@ -1729,7 +1593,6 @@
   .online-hours-main{margin:0 0 2px;font-weight:900;font-size:var(--fs-md);color:var(--black);}
   .online-hours-sub{margin:0;font-size:var(--fs-xs);color:#555;line-height:1.7;}
 
-  /* 写真の撮り方 */
   .online-photo{background:#eaf5fd;}
   .online-photo-lead{text-align:center;font-size:var(--fs-sm);font-weight:700;color:#444;line-height:1.8;margin:0 0 var(--gap-card);}
   .online-photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -1751,7 +1614,6 @@
     display:flex;align-items:center;justify-content:center;
   }
 
-  /* LINE CTA */
   .online-cta{background:var(--accent);text-align:center;padding:var(--sect-y) 0;}
   .online-cta-lead{margin:0 0 8px;font-size:var(--fs-sm);font-weight:800;color:#5a4a00;}
   .online-cta-title{
@@ -1763,10 +1625,8 @@
   .online-cta-alt{margin:10px 0 0;font-size:var(--fs-xs);color:#5a4a00;}
   .online-cta-alt a{text-decoration:underline;font-weight:800;}
 
-  /* 下のSNSアイコンがボタンの影に重ならないよう、下余白を確保 */
   .fb-cta.btn-line{max-width:320px;margin:14px auto 28px;}
 
-  /* 3ステップ直下のCTAは黄色（緑のLINE色は隣のSTEPバッジと同化するため） */
   .btn-yellow{
     background:var(--accent);
     color:#222;
@@ -1775,16 +1635,11 @@
   .btn-yellow:active{transform:translateY(4px);box-shadow:0 2px 0 #d9ab00;}
   .btn-yellow .btn-endcap .icon{color:#c79c00;}
 
-  /* メリット見出しは1行固定 */
   .online-merit-title{white-space:nowrap;font-size:clamp(18px, 5.6vw, 32px);}
 
-  /* PC左カードのLINEボタン */
   .pc-left-cta-line{background:var(--line-green);box-shadow:0 6px 0 #05a548, 0 10px 18px rgba(0,0,0,.18);}
   .pc-left-cta-line:active{box-shadow:0 2px 0 #05a548;}
 
-
-  /* ---------- online：スタッフ写真・SP追加分 ---------- */
-  /* 写真はヒーローの下辺にぴったり付ける（下の余白ぶんマイナス） */
   .online-hero-photo{width:min(90%, 400px);margin:var(--gap-card) auto calc(var(--sect-y) * -1);}
   .online-hero-photo img{border-radius:0;box-shadow:none;filter:drop-shadow(0 10px 18px rgba(0,0,0,.28));}
   .online-send-staff{
@@ -1803,7 +1658,6 @@
   .online-cta-staff{width:min(66%, 290px);margin:0 auto var(--gap-card);}
   .online-cta-staff img{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.2));}
 
-  /* ---------- online：レスポンシブ（タブレット〜PCは1カラムの幅広レイアウト） ---------- */
   body.online-page .pc-left{display:none !important;}
   @media (min-width:768px){
     body.online-page{display:block;background:#f2f5f7;}
@@ -1816,7 +1670,7 @@
     body.online-page .tel-btn .tel-img{width:220px;}
     body.online-page .section{padding:64px 0;}
     body.online-page h2.h-title{font-size:32px;margin-bottom:32px;}
-    /* PCの追従バーは画面いっぱいの白帯にし、ボタンだけ中央にまとめる */
+
     body.online-page .float-cta{
       max-width:none;left:0;transform:none;
       justify-content:center;gap:16px;
@@ -1828,7 +1682,7 @@
     body.online-page .float-cta .btn .btn-endcap{right:12px;width:24px;height:24px;}
 
     .online-hero{padding:56px 0 64px;}
-    /* 写真は左・文言は右（スタッフが文言側を指す向き） */
+
     .online-hero-inner{display:flex;flex-direction:row-reverse;align-items:flex-end;gap:40px;text-align:left;}
     .online-hero-text{padding-bottom:24px;}
     .online-hero-text{flex:1;min-width:0;}
@@ -1886,7 +1740,6 @@
     body.online-page .float-cta{display:flex !important;}
   }
 
-  /* ---------- online：実際のLINEのやり取り（トーク画面の再現） ---------- */
   .online-chat{background:#fff;}
   .online-chat-title-sub{font-size:.6em;font-weight:800;color:#666;margin-left:2px;}
   .online-chat-lead{text-align:center;font-size:var(--fs-sm);font-weight:700;color:#444;line-height:1.8;margin:0 0 var(--gap-card);}
@@ -1976,7 +1829,6 @@
     .online-chat-note{font-size:12px;text-align:left;}
   }
 
-  /* ---------- online：トーク画面の見た目を調整（実機LINEに寄せる） ---------- */
   .online-chat{background:#f3f6f9;}
   .online-phone{
     max-width:340px;
@@ -2010,15 +1862,14 @@
     .online-phone{max-width:380px;}
     .online-chat-points li{background:#fff;}
   }
-  /* 撮り方：実写真が入った枠は点線を外す */
+
   .online-photo-frame:has(> img){border:none;box-shadow:0 4px 12px rgba(0,0,0,.08);}
   .online-photo-frame:has(> img) .icon{display:none;}
-  /* PC：トーク画面が長いぶん、右の要点リストは追従させて空白を作らない */
+
   @media (min-width:768px){
     .online-chat-points{position:sticky;top:96px;}
   }
 
-  /* ---------- online：流れの要点5つ（アイコン＋大きな薄い番号のカード） ---------- */
   .online-chat-points li{
     position:relative;overflow:hidden;
     align-items:center;gap:14px;
@@ -2051,7 +1902,6 @@
     .online-chat-points li > span.pt-num{font-size:56px;right:14px;}
   }
 
-  /* ---------- online：送っていただく情報（アイコンタイル＋コピー用テンプレ） ---------- */
   .online-send-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px;}
   .online-send-tile{
     display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
@@ -2100,8 +1950,6 @@
     .online-hours{flex:1;flex-direction:column;justify-content:center;padding:24px;}
   }
 
-  /* ---------- online：カードだらけを避ける（メリット＝アイコン行／ステップ＝タイムライン） ---------- */
-  /* メリット：カード背景をやめ、3つ横並びのアイコン＋テキスト */
   .online-merit-grid{flex-direction:row;gap:6px;align-items:flex-start;}
   .online-merit-card{
     flex:1;min-width:0;flex-direction:column;align-items:center;text-align:center;
@@ -2116,7 +1964,6 @@
   .online-merit-card h3{font-size:clamp(13px, 3.8vw, 16px);margin:0 0 2px;}
   .online-merit-card p{font-size:clamp(10.5px, 3vw, 12px);line-height:1.6;}
 
-  /* ステップ：白カードをやめ、番号の丸を線でつないだタイムライン */
   .online-step-list{gap:0;margin-bottom:var(--gap-block);position:relative;}
   .online-step{
     background:none;box-shadow:none;border-radius:0;color:#fff;
@@ -2160,10 +2007,10 @@
     .online-step-body h3{font-size:21px;}
     .online-step-body p{font-size:15px;}
   }
-  /* メリットの見出しはスマホの3列でも途中で折れないように */
+
   .online-merit-card h3{white-space:nowrap;font-size:clamp(11.5px, 3.2vw, 16px);letter-spacing:0;}
   @media (min-width:768px){ .online-merit-card h3{font-size:20px;} }
-  /* STEPの丸：ラベルと数字が丸に収まるようサイズと行送りを調整 */
+
   .online-step-badge{width:64px;height:64px;font-size:22px;line-height:1;gap:3px;padding-top:2px;box-sizing:border-box;}
   .online-step-badge small{display:block;line-height:1;margin:0;font-size:9px;}
   .online-step::before{left:31px;top:64px;}
@@ -2173,7 +2020,6 @@
     .online-step::before{left:calc(50% + 40px);right:calc(-50% + 40px);top:38px;}
   }
 
-  /* ---------- online：トーク画面を途中で畳み「最後まで見る」ボタンで展開 ---------- */
   .online-phone-screen{position:relative;}
   .online-phone-body{transition:max-height .7s ease;}
   .online-phone.is-collapsed .online-phone-body{max-height:700px;overflow:hidden;}
@@ -2205,7 +2051,6 @@
     .online-chat-more-btn{font-size:15px;max-width:280px;}
   }
 
-  /* ---------- online：TOPのベースを青→黄色に（文字は黒、強調は青） ---------- */
   .online-hero{background:var(--accent);color:var(--black);}
   .online-hero-kicker{color:var(--black);}
   .online-hero-title{color:var(--black);}
@@ -2213,11 +2058,9 @@
   .online-hero-sub{color:#222;}
   .online-hero-note{color:#333;opacity:1;}
 
-  /* ---------- online：ページ全体を青ベース→黄色ベースに（文字は黒系） ---------- */
-  /* メリット */
   .online-merit-icon{background:var(--accent);color:var(--black);box-shadow:0 6px 14px rgba(217,171,0,.35);}
   .online-merit-card h3{color:var(--black);}
-  /* 送っていただく情報 */
+
   .online-send-staff img{background:#fff3c4;}
   .online-send-bubble{background:#fff3c4;color:var(--black);}
   .online-send-bubble::before{border-right-color:#fff3c4;}
@@ -2231,17 +2074,17 @@
     box-shadow:0 6px 0 #d9ab00, 0 10px 18px rgba(0,0,0,.18);
   }
   .online-send-copy.btn-blue:active{box-shadow:0 2px 0 #d9ab00;}
-  /* 写真の撮り方 */
+
   .online-photo{background:#fff8dc;}
   .online-photo-frame{border-color:#e6cc66;}
   .online-photo-frame .icon{color:#d9ab00;}
   .online-photo-item figcaption span{background:var(--accent);color:var(--black);}
-  /* LINEやり取り */
+
   .online-chat{background:#fff;}
   .online-chat-points li:nth-child(even) > span.pt-icon{background:var(--accent);color:var(--black);}
   .online-chat-points li > span.pt-num{color:#d9ab00;opacity:.32;}
   .online-bubble-doc .icon{color:#d9ab00;}
-  /* 実績・FAQ */
+
   body.online-page .sold-carousel{background:#fff8dc;}
   body.online-page .sold-title{color:var(--black);}
   body.online-page .faq-title-bar{background:var(--accent);color:var(--black);}
@@ -2251,7 +2094,6 @@
     body.online-page{background:#f6f2e4;}
   }
 
-  /* ---------- online：TOPにLINEらしさ（緑の吹き出しキッカー＋LINEの文字を緑に） ---------- */
   .online-hero-kicker-line{
     position:relative;display:inline-flex;align-items:center;gap:6px;
     background:var(--line-green);color:#fff;
@@ -2260,7 +2102,7 @@
     box-shadow:0 4px 10px rgba(0,0,0,.12);
   }
   .online-hero-kicker-line .icon{width:1.1em;height:1.1em;flex:none;}
-  /* 吹き出しのしっぽ（左下） */
+
   .online-hero-kicker-line::after{
     content:"";position:absolute;left:18px;bottom:-7px;
     border-left:6px solid transparent;border-right:6px solid transparent;
@@ -2271,7 +2113,6 @@
     .online-hero-kicker-line{font-size:19px;padding:9px 20px;margin-bottom:14px;}
   }
 
-  /* ---------- online：TOP背景にLINEのやり取りイメージを大きく薄く敷く ---------- */
   .online-hero{position:relative;overflow:hidden;}
   .online-hero-inner{position:relative;z-index:1;}
   .online-hero-bg{position:absolute;inset:0;pointer-events:none;opacity:.5;}
@@ -2285,7 +2126,7 @@
   .online-hero-bg .hb-me{background:#95e37f;border-top-right-radius:6px;}
   .online-hero-bg .hb-offer{border:2px solid var(--line-green);}
   .online-hero-bg .hb-offer strong{color:#0a8a3c;font-weight:900;}
-  /* SP：文字ブロックの下〜写真の周りに配置 */
+
   .online-hero-bg .hb-1{left:2%;top:46%;transform:rotate(-3deg);}
   .online-hero-bg .hb-2{right:2%;top:58%;transform:rotate(2deg);}
   .online-hero-bg .hb-3{right:2%;top:73%;transform:rotate(-2deg);}
@@ -2300,7 +2141,6 @@
     .online-hero-bg .hb-4{left:auto;right:5%;top:auto;bottom:14%;transform:rotate(2deg);}
   }
 
-  /* ---------- online：TOP背景を「スマホ画面のトーク」に差し替え（吹き出し単体は廃止） ---------- */
   .online-hero-bg .hb{display:none;}
   .online-hero-bg{opacity:.42;}
   .online-hero-bg .online-hero-phone{
@@ -2322,7 +2162,6 @@
     .online-hero-bg .online-hero-phone{right:-90px;top:20px;transform:rotate(8deg) scale(1.3);}
   }
 
-  /* ---------- online：TOPのスマホ画面は文字ブロック基準で配置（画面幅が変わっても位置が崩れない） ---------- */
   .online-hero-inner{position:relative;}
   .online-hero-text,.online-hero-photo{position:relative;z-index:1;}
   .online-hero-bg{position:absolute;inset:0;z-index:0;opacity:.5;}
@@ -2341,19 +2180,16 @@
     .online-hero-bg .online-hero-phone{right:-150px;top:-30px;transform:rotate(9deg) scale(1.2);}
   }
 
-  /* ---------- online：トーク画面ヘッダーにアカウントアイコン ---------- */
   .online-phone-name{display:inline-flex;align-items:center;gap:6px;}
   .online-phone-head-icon{width:24px;height:24px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.2);}
 
-  /* ---------- online：TOPレイアウト（PC：写真｜文字｜スマホ の3列／SP：スマホは上部の文字の後ろ） ---------- */
-  /* SP：スマホは右上、文字の後ろに薄く */
   .online-hero-bg{opacity:.35;}
   .online-hero-bg .online-hero-phone{
     width:250px;left:auto;right:-70px;top:-30px;
     transform:rotate(-10deg);transform-origin:top right;
   }
   @media (min-width:768px){
-    /* 3列：DOMは スマホ→文字→写真、row-reverse で 写真｜文字｜スマホ */
+
     .online-hero-inner{align-items:flex-end;gap:24px;}
     .online-hero-bg{
       position:static;inset:auto;opacity:1;pointer-events:auto;
@@ -2377,7 +2213,7 @@
     .online-hero-photo{width:380px;}
     .online-hero-title{font-size:48px;}
   }
-  /* TOPのスマホ：ヘッダー名が幅に収まるよう少し小さく、右端は画面内に */
+
   .online-hero-phone .online-phone-head{font-size:12.5px;padding:6px 10px 9px;}
   .online-hero-phone .online-phone-name{white-space:nowrap;}
   @media (min-width:768px){
@@ -2387,7 +2223,6 @@
     .online-hero-bg{margin-right:-60px;}
   }
 
-  /* ---------- online：TOPキッカーは緑の枠をやめて黒文字＋白の下線に（下のLINEボタンと色がかぶるため） ---------- */
   .online-hero-kicker-line{
     background:none;color:var(--black);box-shadow:none;
     padding:0 2px 4px;border-radius:0;margin:0 0 12px;
@@ -2399,7 +2234,7 @@
   @media (min-width:768px){
     .online-hero-kicker-line{font-size:20px;padding:0 2px 5px;margin-bottom:14px;}
   }
-  /* PC：左の写真をさらに大きく（左に少しはみ出させて文字の幅は確保） */
+
   @media (min-width:768px){
     .online-hero-photo{width:400px;margin-left:-70px;}
   }
@@ -2409,7 +2244,6 @@
     .online-hero-title{font-size:44px;}
   }
 
-  /* ---------- online：キッカーの下線を手書き風の波線（白）に装飾 ---------- */
   .online-hero-kicker-line{
     position:relative;border-bottom:none;padding-bottom:12px;
   }
@@ -2423,7 +2257,7 @@
     .online-hero-kicker-line{padding-bottom:14px;}
     .online-hero-kicker-line::after{height:12px;}
   }
-  /* PC：中央の文字を全体的に大きく（両脇のはみ出し量を増やして幅を確保） */
+
   @media (min-width:1100px){
     .online-hero-inner{gap:16px;}
     .online-hero-photo{margin-left:-150px;}
@@ -2435,11 +2269,11 @@
     .online-hero .online-line-btn{font-size:17.5px;max-width:440px;}
     .online-hero-note{font-size:13px;}
   }
-  /* キッカー「撮って送るだけ」を大きく */
+
   .online-hero-kicker-line{font-size:clamp(19px, 5.8vw, 26px);letter-spacing:.08em;}
   @media (min-width:768px){ .online-hero-kicker-line{font-size:26px;} }
   @media (min-width:1100px){ .online-hero-kicker-line{font-size:29px;} }
-  /* キッカーは元のサイズに戻し、見出し「LINEでオンライン買取り」を大きく */
+
   .online-hero-kicker-line{font-size:clamp(15px, 4.6vw, 20px);letter-spacing:.06em;}
   .online-hero-title{font-size:clamp(32px, 10.6vw, 48px);letter-spacing:-.01em;}
   @media (min-width:768px){
@@ -2454,13 +2288,12 @@
     .online-hero-bg{width:270px;}
   }
 
-  /* ---------- online：TOPボタンはアイコンなし・幅少し狭め／下部CTAの写真をセクション下辺に合わせて大きく ---------- */
   .online-hero-btn{max-width:92%;margin-left:auto;margin-right:auto;}
   @media (min-width:768px){
     .online-hero-btn{margin-left:0;}
     .online-hero .online-hero-btn{max-width:400px;}
   }
-  /* SP：写真は下辺にぴったり（下パディング分マイナス）で大きめ */
+
   .online-cta{overflow:hidden;}
   .online-cta-staff{width:min(80%, 340px);margin:0 auto calc(var(--sect-y) * -1);}
   .online-cta-staff img{filter:drop-shadow(0 10px 18px rgba(0,0,0,.2));}
@@ -2471,13 +2304,12 @@
     .online-cta-text{order:0;margin-bottom:24px;}
     .online-cta-staff{width:44%;max-width:460px;margin:0 0 -64px;}
   }
-  /* SPの下部CTAは元の並び（写真→文字）に戻す。写真は少しだけ大きめ */
+
   @media (max-width:767px){
     .online-cta-text{order:0;margin-bottom:0;}
     .online-cta-staff{width:min(74%, 320px);margin:0 auto var(--gap-card);}
   }
 
-  /* ---------- online：TOP 見出し「LINEで」を2行目と同じ幅まで拡大／下線は直線に戻す／SPは写真とスマホを横並び ---------- */
   .online-hero-title{font-size:clamp(32px, 11.2vw, 50px);line-height:1.1;}
   .online-hero-l1{display:block;font-size:1.75em;line-height:1;letter-spacing:.02em;}
   .online-hero-kicker-line::after{
@@ -2505,7 +2337,7 @@
       box-shadow:0 16px 36px rgba(0,0,0,.22);
     }
   }
-  /* 「LINEで」の行：余分な行間をなくし、2行目とほぼ同じ幅に */
+
   .online-hero-title{line-height:1.05;}
   .online-hero-l1{display:inline-block;font-size:2.05em;line-height:.95;letter-spacing:0;margin-bottom:6px;vertical-align:bottom;}
   @media (max-width:767px){
@@ -2513,17 +2345,16 @@
     .online-hero-bg{width:46%;height:300px;margin-right:-8%;}
     .online-hero-bg .online-hero-phone{transform:rotate(6deg) scale(.56);bottom:-60px;}
   }
-  /* 「LINEで」をさらに大きく（2行目より広い幅）。キッカーは「」付き */
+
   .online-hero-l1{font-size:2.35em;margin-bottom:8px;}
   .online-hero-kicker-line{padding-left:0;padding-right:0;}
   .online-hero-kicker-line::after{left:.5em;right:.5em;}
-  /* 「LINEで」少し小さく・「で」はさらに小さく。キッカーの下線はなし */
+
   .online-hero-l1{font-size:2.05em;margin-bottom:6px;}
   .online-hero-de{font-size:.62em;}
   .online-hero-kicker-line::after{display:none;}
   .online-hero-kicker-line{padding-bottom:0;margin-bottom:8px;}
 
-  /* ---------- online：タブレット幅（768〜1099px）はSPと同じ縦積み（3列は1100px〜のみ） ---------- */
   @media (min-width:768px) and (max-width:1099px){
     .online-hero{padding-bottom:64px;}
     .online-hero-inner{display:flex;flex-direction:row;flex-wrap:wrap;align-items:flex-end;gap:0;text-align:center;}
@@ -2538,13 +2369,12 @@
       transform:rotate(6deg) scale(.9);transform-origin:bottom left;
     }
   }
-  /* SP：スマホ画面は少し短く（下をもう少し切る） */
+
   @media (max-width:767px){
     .online-hero-bg{height:250px;}
     .online-hero-bg .online-hero-phone{bottom:-100px;}
   }
 
-  /* ---------- online：SPの下部CTAは文字を上に、写真は右下でセクション下辺に付ける（左隣に出張査定の案内） ---------- */
   @media (max-width:767px){
     .online-cta-inner{display:grid;grid-template-columns:1fr 46%;column-gap:8px;align-items:end;}
     .online-cta-text{display:contents;}
@@ -2561,7 +2391,6 @@
     .online-cta-alt{font-size:11.5px;white-space:nowrap;}
   }
 
-  /* ---------- online：SP TOPのスマホを少し大きく／SP下部CTAは 写真左＋吹き出し右 → ボタン の並び ---------- */
   @media (max-width:767px){
     .online-hero-photo{width:56%;margin-left:-8%;}
     .online-hero-bg{width:52%;height:270px;margin-right:-10%;}
@@ -2595,13 +2424,13 @@
     .online-cta-alt{grid-column:1 / -1;grid-row:5;text-align:center;white-space:normal;font-size:var(--fs-xs);margin:10px 0 0;}
   }
   @media (max-width:767px){
-    /* スマホ画面が受付時間の文字に重ならない高さに */
+
     .online-hero-bg{height:305px;margin-top:10px;}
     .online-hero-bg .online-hero-phone{bottom:-105px;}
-    /* 下部CTAの見出しが折り返さないサイズに */
+
     .online-cta-title{font-size:clamp(15px, 4.5vw, 19px);letter-spacing:0;white-space:nowrap;}
   }
-  /* SP下部CTA：見出しを一番上に大きく → 写真＋吹き出し → ボタン */
+
   @media (max-width:767px){
     .online-cta-title{
       grid-column:1 / -1;grid-row:1;align-self:start;
@@ -2614,7 +2443,6 @@
     .online-cta .online-line-btn{grid-row:3;margin-top:14px;}
   }
 
-  /* ---------- online：「撮って送るだけ」は各文字の下に白丸（傍点）／SP下部CTAの吹き出し下にバイク写真 ---------- */
   .online-hero-kicker-line{
     -webkit-text-emphasis:filled circle #fff;text-emphasis:filled circle #fff;
     -webkit-text-emphasis-position:under left;text-emphasis-position:under left;
@@ -2634,20 +2462,20 @@
     .online-cta-id{grid-row:5;}
     .online-cta-alt{grid-row:6;}
   }
-  /* SP下部CTA：バイクを少し下げる */
+
   @media (max-width:767px){
     .online-cta-bike{margin:14px 0 -10px;}
   }
   @media (min-width:768px){
     .online-cta-lead br{display:none;}
   }
-  /* SP下部CTA：吹き出しは文字幅ぴったりに、バイクは大きく・さらに下へ */
+
   @media (max-width:767px){
     .online-cta-lead{width:max-content;max-width:100%;justify-self:start;padding:9px 11px;font-size:12.5px;letter-spacing:0;}
     .online-cta-bike{width:96%;margin:12px 0 -22px;}
     .online-cta-staff{grid-row:2 / 4;align-self:end;}
   }
-  /* SP下部CTA：左のスタッフ写真を大きく・少し右へ・上に余白 */
+
   @media (max-width:767px){
     .online-cta-inner{grid-template-columns:46% 1fr;column-gap:6px;}
     .online-cta-staff{width:118%;max-width:none;margin:14px 0 0 4px;}
@@ -2658,61 +2486,61 @@
   @media (max-width:767px){
     .online-cta-staff{margin:28px 0 -14px 4px;}
   }
-  /* キッカーは傍点をやめて「」に戻す */
+
   .online-hero-kicker-line{
     -webkit-text-emphasis:none;text-emphasis:none;letter-spacing:.06em;margin-bottom:8px;
   }
-  /* キッカーの引用符 ❝❞：少し大きめ・白で装飾 */
+
   .online-hero-q{
     display:inline-block;font-size:1.35em;line-height:1;color:#fff;
     font-family:"Noto Sans JP","Segoe UI Symbol",sans-serif;
     margin:0 .12em;transform:translateY(.08em);
   }
-  /* キッカー頭のカメラアイコン */
+
   .online-hero-kicker-line{display:inline-flex;align-items:center;gap:4px;}
   .online-hero-cam{width:1.25em;height:1.25em;color:var(--black);flex:none;margin-right:2px;}
-  /* キッカー末尾の紙飛行機アイコン */
+
   .online-hero-send{width:1.2em;height:1.2em;color:var(--black);flex:none;margin-left:2px;transform:translateY(-.05em);}
-  /* キッカー：引用符なし、白文字＋白アイコン */
+
   .online-hero-kicker-line{color:#fff;gap:6px;}
   .online-hero-cam,.online-hero-send{color:#fff;}
-  /* SP：TOPのスタッフ写真を大きく */
+
   @media (max-width:767px){
     .online-hero-photo{width:66%;margin-left:-14%;}
     .online-hero-bg{width:48%;margin-right:-12%;}
   }
-  /* キッカーは黒文字・黒アイコンに戻す */
+
   .online-hero-kicker-line{color:var(--black);}
   .online-hero-cam,.online-hero-send{color:var(--black);}
-  /* SP：TOPのスタッフ写真を少し右へ */
+
   @media (max-width:767px){
     .online-hero-photo{margin-left:-6%;}
     .online-hero-bg{width:44%;margin-right:-12%;}
   }
-  /* SP：スマホ画面が右端で切れないように収める */
+
   @media (max-width:767px){
     .online-hero-photo{width:64%;margin-left:-6%;}
     .online-hero-bg{width:42%;margin-right:0;}
     .online-hero-bg .online-hero-phone{left:-10px;transform:rotate(6deg) scale(.62);}
   }
-  /* キッカー：緑文字＋緑の角枠（四角） */
+
   .online-hero-kicker-line{
     color:var(--line-green);
     border:2px solid var(--line-green);border-radius:4px;
     padding:6px 12px;margin-bottom:12px;
   }
   .online-hero-cam,.online-hero-send{color:var(--line-green);}
-  /* SP：写真はスマホと重なってOKなので少し大きく戻す */
+
   @media (max-width:767px){
     .online-hero-photo{width:68%;margin-left:-6%;}
     .online-hero-bg{width:46%;margin-right:-8%;}
     .online-hero-bg .online-hero-phone{left:-6px;transform:rotate(6deg) scale(.64);}
   }
-  /* キッカー枠の中を白に */
+
   .online-hero-kicker-line{background:#fff;}
-  /* アイコンも緑（以前の .online-hero-kicker-line .icon{黒} を上書き） */
+
   .online-hero-kicker-line .icon{color:var(--line-green);}
-  /* SP：スマホ画面を少し左へ・少し大きく（写真と重なってOK） */
+
   @media (max-width:767px){
     .online-hero-photo{width:62%;margin-left:-8%;}
     .online-hero-bg{width:52%;margin-right:-6%;margin-left:-6%;height:320px;}
@@ -2726,45 +2554,43 @@
     .online-hero-bg{height:250px;}
     .online-hero-bg .online-hero-phone{bottom:-200px;}
   }
-  /* キッカー：緑の枠線なし（白地に緑文字のみ） */
+
   .online-hero-kicker-line{border:none;border-radius:6px;padding:7px 14px;}
-  /* キッカー：白地に対して読みやすいよう、LINE緑より一段濃い緑に */
+
   .online-hero-kicker-line{color:#0a8f40;}
   .online-hero-kicker-line .icon{color:#0a8f40;}
-  /* TOPのLINEボタン：右端の矢印を内側に */
+
   .online-hero-btn .btn-endcap{right:22px;}
   @media (min-width:768px){
     .online-hero-btn .btn-endcap{right:26px;}
   }
-  /* TOPのLINEボタン：横幅を少し狭く */
+
   .online-hero-btn{max-width:86%;}
   @media (min-width:768px){
     .online-hero .online-hero-btn{max-width:370px;}
   }
-  /* SP：狭めた分、文字が矢印に重ならないよう文字を少し小さく・右余白を確保 */
+
   @media (max-width:767px){
     .online-hero-btn{max-width:90%;font-size:clamp(12px, 3.7vw, 16px);padding-right:46px;padding-left:14px;}
     .online-hero-btn .btn-endcap{right:16px;}
   }
 
-  /* ---------- online：実績スライドの矢印を緑・大きめに ---------- */
   body.online-page .sold-arrow{width:28px;height:40px;color:var(--line-green);}
   body.online-page .sold-arrow .icon{width:28px;height:28px;stroke-width:3.2;}
   body.online-page .sold-arrow{width:36px;height:48px;}
   body.online-page .sold-arrow .icon{width:36px;height:36px;stroke-width:3.4;}
-  /* 矢印を大きくした分、SPではカード幅を狭めて枠内に収める */
+
   body.online-page .sold-arrow{width:30px;}
   body.online-page .sold-arrow .icon{width:34px;height:34px;}
   @media (max-width:767px){
     body.online-page .sold-card{width:min(68vw, 300px);}
   }
-  /* PC：矢印の内側にカード3枚がぴったり収まる幅にする（右端が切れない） */
+
   @media (min-width:768px){
     body.online-page .sold-scroll{gap:12px;padding:2px 0 10px;}
     body.online-page .sold-card{width:calc((100% - 24px) / 3);scroll-snap-align:start;}
   }
 
-  /* ---------- online：追従バーはTOPを過ぎてから下からスライドイン ---------- */
   body.online-page .float-cta{
     transition:transform .35s ease, opacity .35s ease;
   }
@@ -2774,20 +2600,19 @@
   @media (min-width:768px){
     body.online-page .float-cta.float-cta-hidden{transform:translateY(110%);}
   }
-  /* 出現の動き：下から上へふわっとフェードイン（大きなスライドではなく少し浮き上がる） */
+
   body.online-page .float-cta{transition:transform .5s cubic-bezier(.22,.61,.36,1), opacity .5s ease;}
   body.online-page .float-cta.float-cta-hidden{transform:translate(-50%, 28px);}
   @media (min-width:768px){
     body.online-page .float-cta.float-cta-hidden{transform:translateY(28px);}
   }
 
-  /* ---------- online SP：撮り方・やり取りのリード文を指定位置で改行、要点カードの文字調整 ---------- */
   body.online-page .sp-only{display:none;}
   @media (max-width:767px){
     body.online-page .sp-only{display:inline;}
     .online-photo-lead{font-size:calc(var(--fs-sm) - 1px);padding:0 6px;white-space:nowrap;}
     .online-chat-lead{white-space:nowrap;}
-    /* 要点1〜5：見出しを1px小さく、説明は右の番号に寄りすぎないよう早めに折り返す */
+
     .online-chat-points .pt-body strong{font-size:calc(var(--fs-md) - 1px);}
     .online-chat-points .pt-body p{padding-right:14px;}
     .online-chat-points li{padding-right:66px;}
@@ -2795,28 +2620,26 @@
   @media (max-width:360px){
     .online-chat-points .pt-body strong{font-size:14px;}
   }
-  /* SP：テンプレ見出し横の説明文を1px小さく */
+
   @media (max-width:767px){
     .online-send-tpl-head p{font-size:calc(var(--fs-xs) - 1px);}
   }
-  /* SP：テンプレ下の注記を少し小さく、左右に余白 */
+
   @media (max-width:767px){
     .online-send-tpl .online-send-note{font-size:calc(var(--fs-xs) - 1px);padding:0 8px;text-align:left;}
   }
-  /* SP：撮り方のリード文は左揃え */
+
   @media (max-width:767px){
     .online-photo-lead{text-align:center;}
   }
 
-  /* ---------- 横スクロール対策：overflow-x:clip 非対応（iOS 15以前のSafariなど）向けのフォールバック ---------- */
   @supports not (overflow-x: clip){
     html, body{overflow-x:hidden;}
     #view-lp, #view-form, .online-hero, .online-cta{overflow-x:hidden;}
   }
-  /* はみ出しの元になりやすい要素は念のためセクション側で確実に切る */
+
   .online-hero, .online-cta, .online-steps, .online-send, .online-photo, .online-chat{overflow-x:clip;}
 
-  /* ---------- マンガ：表紙＋4話の横スワイプ（REASONとWHYの間） ---------- */
   .comic-section{background:#fff;padding-top:0;}
   .comic-cover{display:block;width:100%;height:auto;margin:0 0 12px;}
   .comic-lead{
@@ -2843,34 +2666,34 @@
     font-size:var(--fs-md);letter-spacing:.04em;
   }
   .comic-counter small{display:block;margin-top:2px;font-size:var(--fs-2xs);font-weight:700;color:#777;letter-spacing:0;}
-  /* マンガ：表紙は上の青セクションに直付け＆全幅、本編は薄い背景で区切る */
+
   .comic-section{background:#f3f6f9;padding-top:0;}
   .comic-cover{width:100%;margin:0 0 18px;border-radius:0;}
   .comic-lead{margin-bottom:14px;}
   .comic-pages img{box-shadow:0 8px 20px rgba(0,0,0,.12);}
-  /* マンガ：背景はREASONと同じ青で続ける。表紙は少し小さく（枠内・角丸） */
+
   .comic-section{background:#2cadfa;padding-top:0;}
   .comic-cover{width:calc(100% - var(--gutter) * 2);max-width:none;margin:0 auto 16px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.15);}
   .comic-lead{color:#fff;}
   .comic-cover{border-radius:0;}
   .comic-pages img{border-radius:0;}
-  /* 見出しを表紙の上に */
+
   .comic-section{padding-top:calc(var(--sect-y) * .6);}
   .comic-lead{margin:0 0 12px;}
   .comic-cover{margin:0 auto 14px;}
-  /* マンガ：表紙なし・白背景・黒見出し */
+
   .comic-section{background:#fff;padding-top:var(--sect-y);}
   .comic-lead{color:var(--black);margin:0 0 14px;}
   .comic-pages img{box-shadow:0 6px 16px rgba(0,0,0,.10);}
-  /* マンガ：表紙はREASON末尾（青の中）、見出しは大きく、4話は両端ギリギリまで */
+
   .reason-section .comic-cover{display:block;width:100%;height:auto;margin:18px 0 0;border-radius:0;box-shadow:0 8px 20px rgba(0,0,0,.18);}
   .comic-lead{font-size:clamp(19px, 6vw, 26px);margin:0 0 16px;}
   .comic-pages{padding:0 8px;gap:12px;}
   .comic-pages img{box-shadow:0 6px 16px rgba(0,0,0,.10);}
-  /* 見出しは画面幅に収まる上限に */
+
   .comic-lead{font-size:clamp(17px, 5.1vw, 23px);letter-spacing:-.01em;}
   .comic-lead{font-size:clamp(16px, 4.9vw, 22px);}
-  /* ---------- マンガ：見出しをデザイン（COMICラベル＋ロゴ書体＋「マンガ」強調）→ 表紙 → 4話 ---------- */
+
   .comic-section{background:#fff;padding-top:var(--sect-y);}
   .comic-head{text-align:center;margin-bottom:16px;}
   .comic-eyebrow{
@@ -2896,7 +2719,6 @@
   }
   .comic-lead{display:none;}
 
-  /* ---------- マンガ見出し：スタッフ写真（左）＋「マンガでわかっちゃう／バイク買取りの流れ」＋バイクアイコン（右） ---------- */
   .comic-eyebrow{display:none;}
   .comic-head-row{
     display:flex;align-items:flex-end;gap:0;
@@ -2922,14 +2744,14 @@
   .comic-title-sub{font-size:.9em;}
   .comic-head-icons{display:block;width:88%;max-width:280px;height:auto;margin:0;}
   .comic-head .comic-cover{margin-top:0;}
-  /* 見出し：写真と文字の重なりを解消し、少し大きく */
+
   .comic-head-row{align-items:flex-end;margin-bottom:16px;}
   .comic-head-staff{width:42%;margin:0 0 -4px -6%;}
   .comic-head-text{padding:0 4px 12px 4px;}
   .comic-title{font-size:clamp(16px, 5vw, 23px);margin-bottom:10px;}
   .comic-title-em{font-size:1.6em;}
   .comic-head-icons{width:92%;}
-  /* 見出し：写真と文字を大きく。写真は上の青セクションにかぶせる */
+
   .comic-section{padding-top:0;}
   .comic-head-row{
     align-items:flex-end;margin:-52px calc(var(--gutter) * -1) 16px;
@@ -2943,17 +2765,16 @@
   @media (max-width:360px){
     .comic-title{font-size:clamp(16px, 5.4vw, 20px);}
   }
-  /* shinjo10 をさらに大きく（青セクションに深くかぶせる）。文字は写真の前面に */
+
   .comic-head-row{margin-top:-90px;}
   .comic-head-staff{width:56%;margin:0 -8% -4px -12%;}
   .comic-head-text{position:relative;z-index:1;padding:96px 0 12px 0;}
   .comic-title{font-size:clamp(18px, 5.8vw, 27px);}
-  /* 右端のアイコンが切れないように、文字列の右に余白／写真は少し細く */
+
   .comic-head-staff{width:53%;margin:0 -6% -4px -12%;}
   .comic-head-text{padding-right:var(--gutter);}
   .comic-head-icons{width:100%;max-width:none;}
 
-  /* ---------- マンガ見出し：添付バナーを1枚の帯として再現（青に食い込ませない・表紙なし） ---------- */
   .comic-section{padding-top:0;}
   .comic-head{margin:0 calc(var(--gutter) * -1) 14px;text-align:left;}
   .comic-head-row{
@@ -2977,7 +2798,6 @@
   .comic-head-staff{width:44%;margin:0 -1% 0 -3%;}
   .comic-head-row{padding-top:22px;}
 
-  /* ---------- マンガ見出し帯：黄色背景、文字を大きく、アイコンは小さく区切り線に沿わせる ---------- */
   .comic-head-row{
     background:var(--accent);border-bottom:4px solid var(--black);
     padding-top:26px;align-items:flex-end;
@@ -2998,7 +2818,6 @@
     .comic-title{font-size:clamp(17px, 5.6vw, 22px);}
   }
 
-  /* ---------- マンガ見出し帯：整えなおし（白フチなし、写真と文字を同じ高さ基準で揃える） ---------- */
   .comic-head-row{
     background:#fff7cc;border-bottom:none;
     padding:0;align-items:flex-end;gap:0;
@@ -3016,7 +2835,6 @@
   }
   .comic-head-icons{width:74%;max-width:230px;margin:0;align-self:flex-start;}
 
-  /* ---------- マンガ見出し帯：黄色地・白文字・下線（黄色の帯線）、右余白なし、上余白多め ---------- */
   .comic-head-row{background:var(--accent);padding:34px 0 0;align-items:flex-end;}
   .comic-head-staff{width:44%;margin:0 -1% 0 -3%;}
   .comic-head-text{padding:0 var(--gutter) 24px 0;align-self:flex-end;justify-content:flex-end;}
@@ -3031,12 +2849,11 @@
   @media (max-width:360px){
     .comic-title{font-size:clamp(17px, 5.6vw, 22px);}
   }
-  /* 「マンガ」はオレンジ（フチなし）＋白の下線。右の余白を詰める */
+
   .comic-title-em{color:var(--orange);border-bottom:6px solid #fff;}
   .comic-head-text{padding-right:8px;}
   .comic-head-row{padding-top:40px;}
 
-  /* ---------- マンガ見出し帯：右端まで広げる（.wrapのmax-width解除）、黒文字、写真大きく、アイコン小さく下線の上に ---------- */
   .comic-head{max-width:none;margin:0 calc(var(--gutter) * -1) 22px;}
   .comic-head-row{
     background:var(--accent);border-bottom:4px solid var(--black);
@@ -3048,10 +2865,10 @@
   .comic-title-sub{color:var(--black);}
   .comic-title-em{color:var(--orange);border-bottom:6px solid #fff;}
   .comic-head-icons{width:62%;max-width:190px;margin:0 0 -2px 0;align-self:flex-start;}
-  /* 写真は大きいまま、文字と重ならない位置に */
+
   .comic-head-staff{width:48%;margin:0 -2% 0 -6%;}
   .comic-head-text{padding-right:12px;}
-  /* 帯：中身を上げて下にも黄色の余白、アイコンを右へ、「マンガ」の下線を太く文字に重ねる */
+
   .comic-head-row{padding:30px 0 0;}
   .comic-head-staff{margin-bottom:0;}
   .comic-head-text{padding-bottom:26px;}
@@ -3063,7 +2880,7 @@
     content:"";position:absolute;left:0;right:0;bottom:.02em;height:.28em;
     background:#fff;z-index:-1;
   }
-  /* 帯：黒線の下にも黄色を残す（線はborderではなく帯の中に引く）。中身は上寄せ */
+
   .comic-head-row{border-bottom:none;padding:26px 0 0;position:relative;}
   .comic-head-row::after{
     content:"";display:block;position:absolute;left:0;right:0;bottom:22px;height:4px;background:var(--black);
@@ -3072,7 +2889,7 @@
   .comic-head-staff{margin-bottom:0;}
   .comic-head-text{padding-bottom:6px;}
   .comic-head-icons{margin:0 0 -2px 14%;}
-  /* 帯：上の余白を詰め、文字を上に配置して大きく。2行目は文字列の横幅いっぱいに */
+
   .comic-head-row{padding-top:10px;align-items:flex-end;}
   .comic-head-text{
     align-self:stretch;justify-content:space-between;
@@ -3084,53 +2901,52 @@
   .comic-title-em{font-size:1.65em;}
   .comic-title-sub{font-size:.92em;}
   .comic-head-icons{margin:8px 0 -2px 14%;}
-  /* 「バイク買取りの流れ」を文字列の横幅いっぱいに */
+
   .comic-title{line-height:1.15;}
   .comic-title-line2{display:block;font-size:1.12em;letter-spacing:.01em;}
   .comic-head-text{padding-top:36px;}
   .comic-head-text{padding-top:58px;}
   .comic-head-icons{margin-left:auto;margin-right:0;align-self:flex-end;}
-  /* 4台版のアイコン：少し大きく、右寄せ */
+
   .comic-head-icons{width:84%;max-width:250px;}
-  /* 黒線を道路風に（太めの黒＋中央に白の破線）。上の余白を2px詰める */
+
   .comic-head-row{padding-top:8px;}
   .comic-head-row::after{
     height:10px;bottom:20px;background:var(--black);
     background-image:repeating-linear-gradient(90deg, #fff 0 14px, transparent 14px 26px);
     background-size:100% 2px;background-repeat:no-repeat;background-position:0 4px;
   }
-  /* 上を詰めて、道路の下の黄色余白を増やす */
+
   .comic-head-row{padding-top:0;padding-bottom:30px;}
   .comic-head-row::after{bottom:28px;}
   .comic-head-text{padding-top:50px;}
-  /* 道路の破線を短く（白8px／間隔10px） */
+
   .comic-head-row::after{
     background-image:repeating-linear-gradient(90deg, #fff 0 8px, transparent 8px 18px);
   }
-  /* 道路は写真の右から始める。写真は帯の下端まで伸ばす */
+
   .comic-head-row::after{left:44%;right:0;}
   .comic-head-staff{margin-bottom:-30px;position:relative;z-index:1;}
-  /* 「マンガ」をさらに大きく、1行目と2行目の間を少し空ける */
+
   .comic-title{line-height:1.2;}
   .comic-title-em{font-size:1.85em;}
   .comic-title-line2{margin-top:6px;}
   .comic-head-text{padding-top:42px;}
-  /* shinjo10 を少し大きく（左へはみ出させて文字は動かさない） */
+
   .comic-head-staff{width:52%;margin-left:-10%;margin-right:-2%;}
   .comic-head-row::after{left:42%;}
-  /* 写真は上へ伸ばして大きく（帯の上端まで）。文字位置はそのまま */
+
   .comic-head-row{align-items:flex-end;}
   .comic-head-staff{width:56%;margin:-10px -4% -30px -10%;align-self:flex-start;}
   .comic-head-row::after{left:44%;}
-  /* 写真の裾を帯の下端にぴったり合わせる（上寄せをやめて下基準に） */
+
   .comic-head-staff{align-self:flex-end;margin-top:0;margin-bottom:-30px;}
-  /* REASON（青）の下に少し余白を足す */
+
   .reason-section{padding-bottom:calc(var(--sect-y) + 14px);}
   .reason-section{padding-bottom:calc(var(--sect-y) + 28px);}
   .comic-head-icons{margin-right:3px;}
   .comic-head-icons{margin-right:12px;}
 
-  /* ---------- マンガ帯：背景に集中線（「マンガ」の文字あたりを中心に放射状） ---------- */
   .comic-head-row{position:relative;isolation:isolate;}
   .comic-head-row::before{
     content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -3141,7 +2957,6 @@
   .comic-head-staff,.comic-head-text{position:relative;z-index:1;}
   .comic-head-row::after{z-index:1;}
 
-  /* ---------- マンガ帯：帯の下に表紙を黄色の中に置く ---------- */
   .comic-head{background:var(--accent);padding-bottom:18px;}
   .comic-head-row{padding-bottom:0;}
   .comic-head-row::after{bottom:0;}
@@ -3150,57 +2965,57 @@
     display:block;width:calc(100% - var(--gutter) * 2);height:auto;
     margin:16px auto 0;border-radius:0;box-shadow:0 8px 20px rgba(0,0,0,.18);
   }
-  /* 道路の下に黄色の余白を戻し、その下に表紙 */
+
   .comic-head-row{padding-bottom:26px;}
   .comic-head-row::after{bottom:24px;}
   .comic-head-staff{margin-bottom:-26px;}
   .comic-head .comic-cover{margin-top:0;}
   .comic-head{padding-bottom:22px;}
-  /* 写真は道路の上で止め、表紙との間に黄色の余白を作る */
+
   .comic-head-staff{margin-bottom:0;}
   .comic-head .comic-cover{margin-top:10px;}
-  /* 戻す：写真は帯の下端（表紙の直前）まで伸ばす */
+
   .comic-head-staff{margin-bottom:-26px;}
   .comic-head .comic-cover{margin-top:0;}
-  /* 表紙は横幅いっぱい */
+
   .comic-head{padding-bottom:0;}
   .comic-head .comic-cover{width:100%;margin:0;box-shadow:none;}
-  /* 表紙の左右と下に少しだけ黄色を残す */
+
   .comic-head{padding-bottom:10px;}
   .comic-head .comic-cover{width:calc(100% - 20px);margin:0 auto;}
-  /* 表紙をもう少し小さく（左右の黄色を広めに） */
+
   .comic-head{padding-bottom:16px;}
   .comic-head .comic-cover{width:calc(100% - 36px);}
   .comic-head{padding-bottom:20px;}
   .comic-head .comic-cover{width:calc(100% - 52px);}
-  /* 試し：表紙を上、スタッフ帯を下に入れ替え */
+
   .comic-head{display:flex;flex-direction:column;padding:20px 0 0;}
   .comic-head .comic-cover{order:-1;margin:0 auto 6px;}
   .comic-head-row{padding-top:0;}
-  /* 入れ替え版：表紙は横幅いっぱい、帯との間と帯の下の余白を整える */
+
   .comic-head{padding-top:0;}
   .comic-head .comic-cover{width:100%;margin:0 0 4px;}
   .comic-head-row{padding-top:6px;padding-bottom:26px;}
   .comic-head-row::after{bottom:24px;}
   .comic-head-staff{margin-bottom:-26px;}
-  /* 表紙は全幅にせず、左右に黄色を残す（上の並び） */
+
   .comic-head{padding-top:18px;}
   .comic-head .comic-cover{width:calc(100% - 52px);margin:0 auto 4px;}
-  /* 帯の箱を画面幅ぴったりに（左右パディングを0にして負マージンだけ残す） */
+
   .comic-head{padding-left:0;padding-right:0;margin-left:calc(var(--gutter) * -1);margin-right:calc(var(--gutter) * -1);}
-  /* 帯の箱：wrap のパディングと行の負マージンを打ち消し、画面幅ぴったりに */
+
   .comic-head{
     box-sizing:border-box;width:calc(100% + var(--gutter) * 2);
     margin:0 calc(var(--gutter) * -1) 22px;padding:18px 0 0;
   }
   .comic-head-row{margin-left:0;margin-right:0;margin-top:0;}
   .comic-head .comic-cover{width:calc(100% - 52px);margin:0 auto 4px;}
-  /* 帯の箱は負マージンをやめて画面幅ぴったりに（これまで左右22pxずつ外にはみ出していた） */
+
   .comic-head{width:auto;max-width:none;margin:0 0 22px;padding:18px 0 0;}
   .comic-head-row{margin:0;}
   .comic-head .comic-cover{width:calc(100% - 60px);margin:0 auto 4px;}
   .comic-head-text{padding-right:var(--gutter);}
-  /* 上の余白を広げ、集中線は帯全体（表紙の裏まで）に伸ばす */
+
   .comic-head{position:relative;isolation:isolate;padding-top:30px;}
   .comic-head-row::before{display:none;}
   .comic-head::before{
@@ -3211,18 +3026,18 @@
   }
   .comic-head .comic-cover,.comic-head-row{position:relative;z-index:1;}
   .comic-head-row{background:transparent;}
-  /* 集中線の中心を「マンガ」の文字位置に */
+
   .comic-head::before{
     background:repeating-conic-gradient(from 0deg at 57% 67%, rgba(230,150,0,.22) 0deg 1.6deg, transparent 1.6deg 7.5deg);
     -webkit-mask:radial-gradient(circle at 57% 67%, transparent 0 40px, #000 130px);
     mask:radial-gradient(circle at 57% 67%, transparent 0 40px, #000 130px);
   }
-  /* 中心の空白を小さくして、線が「マンガ」の文字の上まで届くように */
+
   .comic-head::before{
     -webkit-mask:radial-gradient(circle at 57% 67%, transparent 0 8px, #000 40px);
     mask:radial-gradient(circle at 57% 67%, transparent 0 8px, #000 40px);
   }
-  /* 集中線は表紙の下の帯（写真＋文字）だけに。中心は「マンガ」の文字 */
+
   .comic-head::before{display:none;}
   .comic-head-row::before{
     display:block;content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -3231,14 +3046,12 @@
     mask:radial-gradient(circle at 57% 35%, transparent 0 8px, #000 40px);
   }
 
-  /* ---------- マンガ帯：見出しが文字ボックス内に必ず収まるよう安全側に（Mac/Safariなどフォント描画差への保険） ---------- */
   .comic-head-staff{margin-right:-7%;}
   .comic-head-text{padding-right:10px;}
   .comic-title{font-size:clamp(19px, 6.1vw, 29px);}
   .comic-title-em{font-size:1.7em;}
   .comic-title-line2{font-size:1.06em;}
 
-  /* ---------- PC：左右を入れ替え（LPを左、メニューカードを右） ---------- */
   @media (min-width:1100px){
     body:not(.online-page){flex-direction:row-reverse;}
     body:not(.online-page) .lp-main{margin-right:0;margin-left:160px;}
@@ -3247,7 +3060,6 @@
     body:not(.online-page) .lp-main{margin-left:clamp(160px, 18vw, 320px);}
   }
 
-  /* ---------- MAKER：メーカー別（国内4社＋海外メーカー表）に再構成 ---------- */
   .maker-grid-makers{grid-template-columns:1fr;gap:14px;}
   .maker-card-maker{padding:18px 14px 14px;text-align:left;}
   .maker-card-maker .maker-tag{margin:0 4px 10px 0;text-align:right;}
@@ -3291,20 +3103,20 @@
   .maker-table tbody th{width:46%;font-weight:900;color:var(--black);background:#eaf5fd;}
   .maker-table tbody td{color:#333;font-weight:700;}
   .maker-note{margin:10px 0 0;font-size:var(--fs-2xs);color:#777;font-weight:700;}
-  /* MAKER見出し：2行固定（1行目を小さめ、2行目を大きく） */
+
   .maker-title{line-height:1.35;}
   .maker-title-l1{display:block;font-size:clamp(15px, 4.6vw, 20px);font-weight:900;color:var(--black);white-space:nowrap;}
   .maker-title-l2{display:block;font-size:clamp(22px, 7vw, 32px);font-weight:900;color:var(--black);white-space:nowrap;}
-  /* 代表バイク写真は4:3で、カード内いっぱいに */
+
   .maker-card-maker .maker-photo{aspect-ratio:4 / 3;background:#fff;}
   .maker-card-maker .maker-photo img{object-fit:cover;}
   .maker-title br{display:none;}
   .maker-title-l1{margin-bottom:2px;}
-  /* ロゴの縦横比がバラバラ（ホンダは縦長、カワサキは極端に横長）なので、枠の高さで揃えて幅は中身に合わせる */
+
   .maker-logo{height:34px;max-width:50%;padding:4px 10px;}
   .maker-logo[src*="kawasaki"]{height:16px;padding:9px 10px;}
   .maker-logo[src*="honda"]{height:40px;padding:3px 8px;}
-  /* メーカーロゴ本体（左上・白枠）。ロゴがある時は番号バッジを隠す */
+
   .maker-logo{
     position:absolute;top:12px;left:12px;width:auto;
     object-fit:contain;background:#fff;border-radius:8px;box-sizing:content-box;
@@ -3312,7 +3124,6 @@
   }
   .maker-card:has(> .maker-logo) .maker-badge{display:none;}
 
-  /* ---------- PC メニューカード：上部の背景にバイク写真、ロゴは小さく左寄せ ---------- */
   @media (min-width:1100px){
     .pc-left-card{overflow:hidden;}
     .pc-left-head{
@@ -3331,7 +3142,7 @@
     .pc-left-lead{max-width:52%;margin:0 0 10px;font-size:13.5px;text-shadow:0 0 6px #fff, 0 0 10px #fff;}
   }
   @media (min-width:1100px){
-    /* バイクを少し小さく右下へ。文言と重ならないよう文言幅を確保 */
+
     .pc-left-head::before{right:-56px;bottom:-30px;width:56%;max-width:360px;}
     .pc-left-head{min-height:236px;}
     .pc-left-lead{max-width:50%;font-size:13px;line-height:1.75;}
@@ -3342,16 +3153,15 @@
     .pc-left-head::before{right:-64px;}
   }
 
-  /* ---------- PC メニューカード：「バイク買取り」ピルを外す／幅に応じたレスポンシブ強化 ---------- */
   @media (min-width:1100px){
     .pc-left-head .pc-left-kicker{display:none;}
     .pc-left-head{padding-top:34px;}
-    /* 文字は折り返さない前提でサイズを可変に */
+
     .pc-toc a{white-space:nowrap;font-size:clamp(13px, 1.05vw, 15px);padding:10px 22px 10px 32px;}
     .pc-left-cta{min-width:0;width:100%;max-width:360px;font-size:clamp(15px, 1.2vw, 17px);padding:15px 24px;}
     .pc-left-tel img{width:min(80%, 300px);}
   }
-  /* 1100〜1299px：カードが狭いので余白を詰め、目次は1列に */
+
   @media (min-width:1100px) and (max-width:1299px){
     body:not(.online-page) .lp-main{margin-left:clamp(60px, 7vw, 110px);}
     .pc-left{padding:32px 20px;min-width:300px;}
@@ -3364,19 +3174,19 @@
     .pc-toc{grid-template-columns:1fr;column-gap:0;margin-bottom:22px;}
     .pc-toc a{padding:8px 22px 8px 32px;font-size:14px;}
   }
-  /* 1300〜1499px：2列のまま、余白を少し詰める */
+
   @media (min-width:1300px) and (max-width:1499px){
     .pc-left-card{padding:32px 38px 34px;}
     .pc-left-head{margin:-32px -38px 16px;padding:32px 38px 0;}
     .pc-toc{column-gap:20px;}
   }
-  /* 1100〜1299px：カードが画面より高い場合は上を切らずに上揃え＋スクロール可。文言の折り返しも抑える */
+
   @media (min-width:1100px) and (max-width:1299px){
     .pc-left{align-items:flex-start;overflow-y:auto;padding-top:28px;padding-bottom:28px;}
     .pc-left-lead{max-width:60%;font-size:12px;line-height:1.7;}
     .pc-toc a{padding:7px 22px 7px 32px;}
   }
-  /* メニューカードのバイク：小さくしてカード内に収める（右で切らない） */
+
   @media (min-width:1100px){
     .pc-left-head::before{right:14px;bottom:-6px;width:44%;max-width:270px;}
     .pc-left-head{min-height:215px;}
@@ -3385,7 +3195,7 @@
     .pc-left-head::before{right:8px;bottom:-4px;width:42%;max-width:230px;}
     .pc-left-head{min-height:190px;}
   }
-  /* バイクは上下ともヘッダー枠の内側に収める（上で切れない） */
+
   @media (min-width:1100px){
     .pc-left-head::before{
       top:14px;bottom:10px;height:auto;aspect-ratio:auto;
@@ -3397,7 +3207,6 @@
     .pc-left-head::before{top:12px;bottom:8px;right:6px;width:44%;max-width:240px;}
   }
 
-  /* ---------- online TOP：shinjo10 を大きく ---------- */
   @media (max-width:767px){
     .online-hero-photo{width:72%;margin-left:-12%;}
     .online-hero-bg{width:44%;margin-left:-10%;}
@@ -3411,7 +3220,6 @@
     .online-hero-bg{width:40%;margin-left:-14%;}
   }
 
-  /* ---------- PC：全体バランス調整（左右の余白を揃え、カード上部の空きを詰め、バイクを枠内で大きく） ---------- */
   @media (min-width:1100px){
     body:not(.online-page) .lp-main{margin-left:clamp(80px, 9vw, 170px);}
     .pc-left{padding:40px clamp(60px, 8vw, 150px) 40px 40px;}
@@ -3428,7 +3236,7 @@
     .pc-left-head::before{top:8px;bottom:0;right:-6px;width:50%;max-width:270px;}
     .pc-left-lead{max-width:52%;}
   }
-  /* 説明文は折り返さず2行に収める（バイクの左側に） */
+
   @media (min-width:1100px){
     .pc-left-lead{max-width:none;width:52%;white-space:nowrap;font-size:clamp(11.5px, .95vw, 13.5px);}
     .pc-left-head::before{width:50%;max-width:320px;}
@@ -3437,7 +3245,7 @@
     .pc-left-lead{width:56%;font-size:12px;}
     .pc-left-head::before{width:46%;max-width:260px;}
   }
-  /* カード上部：ロゴと文字を下げ、バイクを左下へ */
+
   @media (min-width:1100px){
     .pc-left-head{padding-top:48px;min-height:210px;}
     .pc-left-head::before{top:22px;bottom:-4px;right:18px;width:50%;max-width:320px;}
@@ -3452,7 +3260,7 @@
   @media (min-width:1100px) and (max-width:1299px){
     .pc-left-head{padding-top:54px;min-height:200px;}
   }
-  /* ロゴを説明文と同じ幅まで拡大 */
+
   @media (min-width:1100px){
     .pc-left-logo{width:52%;max-width:290px;margin-bottom:12px;}
     .pc-left-head{padding-top:56px;}
@@ -3460,10 +3268,9 @@
   @media (min-width:1100px) and (max-width:1299px){
     .pc-left-logo{width:56%;max-width:250px;}
   }
-  /* メーカーカード：車種リストの下に少し余白 */
+
   .maker-card-maker{padding-bottom:22px;}
 
-  /* ---------- TOP直下：「動かなくなった」「事故で壊れた」「もう乗っていない」そんなバイク、お持ちではないですか？ ---------- */
   .hero-lead{background:#fff;padding:18px 0 4px;text-align:center;}
   .hero-lead-tags{
     list-style:none;margin:0 0 10px;padding:0;
@@ -3482,24 +3289,24 @@
     margin:0;font-weight:900;color:var(--black);
     font-size:clamp(16px, 4.9vw, 20px);line-height:1.4;white-space:nowrap;
   }
-  /* 吹き出しをやめて文字だけ（青文字・1行） */
+
   .hero-lead{padding:20px 0 2px;}
   .hero-lead-tags{gap:0 4px;margin-bottom:6px;}
   .hero-lead-tags li{background:none;color:var(--blue-dark);padding:0;border-radius:0;font-size:clamp(14px, 4.2vw, 17px);}
   .hero-lead-tags li::after{display:none;}
-  /* TOP直下の文言は控えめサイズに */
+
   .hero-lead{padding:16px 0 0;}
   .hero-lead-tags li{font-size:clamp(12px, 3.5vw, 14px);font-weight:800;}
   .hero-lead-tags{margin-bottom:4px;}
   .hero-lead-text{font-size:clamp(13.5px, 4vw, 16px);font-weight:800;}
-  /* 説明文として：見出し風ではなく本文のトーン（黒系・通常サイズ・1行目も同じ扱い） */
+
   .hero-lead-tags li{color:#333;font-weight:700;font-size:var(--fs-sm);}
   .hero-lead-text{color:#333;font-weight:700;font-size:var(--fs-sm);line-height:1.8;}
   .hero-lead-tags{margin-bottom:0;}
-  /* クイズ見出し下の説明文：3行（1行目は端末幅に収まるサイズ） */
+
   .hero-lead{display:none;}
   .quiz-sub{white-space:nowrap;font-size:clamp(10.5px, 3.1vw, 12.5px);line-height:1.8;}
-  /* PC：LPを気持ち右へ */
+
   @media (min-width:1300px){
     body:not(.online-page) .lp-main{margin-left:clamp(110px, 11vw, 210px);}
   }
@@ -3507,7 +3314,6 @@
     body:not(.online-page) .lp-main{margin-left:clamp(150px, 14vw, 260px);}
   }
 
-  /* ---------- PC：LP＋カードをひと塊として中央寄せ（画面を広げても2つが離れない） ---------- */
   @media (min-width:1300px){
     body:not(.online-page){justify-content:center;}
     body:not(.online-page) .lp-main{margin-left:0;}
@@ -3517,57 +3323,56 @@
     }
     body:not(.online-page) .pc-left-inner{max-width:600px;}
   }
-  /* 1300〜1499px：カード幅が狭くなりバイクが文字にかぶるので、バイクを小さめに */
+
   @media (min-width:1300px) and (max-width:1499px){
     .pc-left-head::before{width:40%;max-width:230px;right:0;}
     .pc-left-lead{width:56%;font-size:12px;}
   }
-  /* LPとカードの間隔を広げる */
+
   @media (min-width:1300px){
     body:not(.online-page) .pc-left{padding-left:clamp(70px, 7vw, 120px);}
   }
-  /* 間隔は外側の余白で取り、カード自体の幅は保つ */
+
   @media (min-width:1300px){
     body:not(.online-page) .pc-left{padding-left:clamp(40px, 4vw, 70px);margin-left:clamp(30px, 3vw, 60px);}
   }
-  /* マンガ帯：SPで文字が写真に少しかぶるため、文字ブロックを数px右へ */
+
   @media (max-width:767px){
     .comic-head-text{padding-left:4px;}
   }
   @media (max-width:767px){
     .comic-head-text{padding-left:8px;}
   }
-  /* マンガ帯（SP）：写真を少し細く・左へ寄せ、文字はさらに右へ（手にかぶらないように） */
+
   @media (max-width:767px){
     .comic-head-staff{width:46%;margin-left:-10%;margin-right:-1%;}
     .comic-head-text{padding-left:14px;}
   }
-  /* マンガ帯：LP列は常に480px以下なので、幅に関係なく写真を細く・文字を右へ（手との重なり回避） */
+
   .comic-head-staff{width:46%;margin-left:-10%;margin-right:-1%;}
   .comic-head-text{padding-left:14px;}
-  /* マンガ帯：写真を大きく（左へ逃がす）、文字はさらに右へ */
+
   .comic-head-staff{width:52%;margin-left:-14%;margin-right:-2%;}
   .comic-head-text{padding-left:22px;}
-  /* 道路線の左端を「マンガ」の文字の左端に揃える（写真36%＋文字ブロックの左余白22px） */
+
   .comic-head-row::after{left:calc(36% + 22px);}
-  /* 文字を道路線の範囲（左端〜帯の右端）に対して中央配置。右端に余裕を持たせるため文字を一回り小さく */
+
   .comic-head-text{padding-right:0;text-align:center;}
   .comic-title{text-align:center;font-size:clamp(18px, 5.7vw, 27px);}
   .comic-title-line2{display:block;}
   .comic-head-icons{align-self:center;margin-left:0;margin-right:0;}
-  /* 写真を右へ（左の隠れを減らす）。文字ブロックと道路の起点も連動 */
+
   .comic-head-staff{width:50%;margin-left:-6%;margin-right:-4%;}
   .comic-head-text{padding-left:16px;}
   .comic-head-row::after{left:calc(40% + 16px);}
-  /* 文字をほんの少し左へ（道路起点も連動） */
+
   .comic-head-text{padding-left:10px;padding-right:6px;}
   .comic-head-row::after{left:calc(40% + 10px);}
   .comic-head-text{padding-left:7px;padding-right:9px;}
   .comic-head-row::after{left:calc(40% + 7px);}
-  /* カワサキのロゴ（リバーマーク版 PNG、6.2:1 の横長）：高さを揃える */
+
   .maker-logo[src*="kawasaki_logo"]{height:18px;padding:8px 10px;}
 
-  /* ---------- PC メニューカード：CTAを2つ横並び（無料出張査定／LINEオンライン査定） ---------- */
   @media (min-width:1100px){
     .pc-left-btns{display:flex;gap:12px;justify-content:center;margin:0 0 4px;}
     .pc-left-btns .pc-left-cta{flex:1 1 0;min-width:0;max-width:none;white-space:nowrap;padding:15px 14px;font-size:clamp(13.5px, 1.05vw, 16px);}
@@ -3577,12 +3382,374 @@
   @media (min-width:1100px) and (max-width:1299px){
     .pc-left-btns{flex-direction:column;gap:10px;}
   }
-  /* メニューカードのボタン：文字と矢印の間隔を詰め、左右の余白を増やす */
+
   @media (min-width:1100px){
     .pc-left-btns .pc-left-cta{gap:4px;padding:15px 22px;}
     .pc-left-btns .pc-left-cta .icon{width:14px;height:14px;}
   }
-  /* 文言が長くなった分、文字を少し小さく・余白を調整して1行に収める */
+
   @media (min-width:1100px){
     .pc-left-btns .pc-left-cta{font-size:clamp(12.5px, .95vw, 15px);padding:15px 16px;}
+  }
+
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left{scrollbar-width:none;-ms-overflow-style:none;}
+    .pc-left::-webkit-scrollbar{display:none;}
+
+    .pc-toc a{padding:6px 22px 6px 32px;}
+    .pc-left-card{padding-bottom:24px;}
+  }
+
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-btns .pc-left-cta{font-size:16px;padding:15px 20px;}
+  }
+
+
+  /* ========== ファーストビュー：画像の文字をHTMLで再現（写真は shinjo07.png のみ） ========== */
+  .hero{background:#fff;}
+  .hero-photo{
+    --hw:min(100vw, var(--maxw));
+    position:relative;aspect-ratio:1180 / 1252;overflow:hidden;
+    background:#03a4f4;
+    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+  }
+  .hero-photo > .hero-key{
+    position:absolute;left:24%;top:44.5%;width:57%;height:auto;object-fit:unset;
+    display:block;z-index:1;
+  }
+  .hero-copy{
+    position:absolute;left:0;right:0;top:5.6%;z-index:2;text-align:center;color:#fff;line-height:1;
+  }
+  .hero-h1{margin:0;font-weight:900;line-height:1;}
+  .hero-h1-main{
+    display:block;font-size:calc(var(--hw) * .128);letter-spacing:-.01em;line-height:1;
+    text-shadow:0 .02em 0 rgba(0,0,0,.05);
+  }
+  .hero-h1-main small{font-size:.72em;vertical-align:baseline;margin:0 .02em;}
+  .hero-h1-brand{
+    display:inline-block;margin-top:calc(var(--hw) * .028);
+    font-size:calc(var(--hw) * .056);letter-spacing:.01em;line-height:1.1;
+    padding-bottom:calc(var(--hw) * .012);
+    background:
+      linear-gradient(#f2e127, #f2e127) left bottom / 100% calc(var(--hw) * .005) no-repeat,
+      linear-gradient(#f2e127, #f2e127) left calc(100% - var(--hw) * .009) / 100% calc(var(--hw) * .002) no-repeat;
+  }
+  .hero-checks{
+    list-style:none;margin:calc(var(--hw) * .022) 0 0;padding:0;
+    display:flex;justify-content:center;gap:calc(var(--hw) * .03);
+    font-size:calc(var(--hw) * .024);font-weight:900;color:#fff;
+  }
+  .hero-checks li{display:inline-flex;align-items:center;gap:.3em;white-space:nowrap;}
+  .hero-checks li::before{
+    content:"";width:.95em;height:.6em;flex:none;
+    border-left:.22em solid #f2e127;border-bottom:.22em solid #f2e127;
+    transform:translateY(-.12em) rotate(-45deg);
+  }
+  .hero-catch{
+    margin:calc(var(--hw) * .012) 0 0;font-size:calc(var(--hw) * .056);font-weight:900;
+    color:#f2e127;letter-spacing:.01em;white-space:nowrap;line-height:1.15;
+  }
+  .hero-catch-slash{color:#fff;margin:0 .04em;font-weight:900;}
+  .hero-bubble{
+    position:absolute;left:17.5%;top:48%;z-index:3;margin:0;
+    background:#fff;color:#03a4f4;border-radius:999px;
+    padding:calc(var(--hw) * .024) calc(var(--hw) * .035);
+    font-size:calc(var(--hw) * .024);font-weight:900;line-height:1.45;text-align:center;
+    white-space:nowrap;
+  }
+  .hero-bubble::after{
+    content:"";position:absolute;right:11%;bottom:-13%;
+    border-left:calc(var(--hw) * .012) solid transparent;border-right:calc(var(--hw) * .012) solid transparent;
+    border-top:calc(var(--hw) * .02) solid #fff;transform:rotate(-30deg);
+  }
+  .hero-card{
+    position:absolute;left:5.1%;right:5.1%;top:85.6%;height:11.3%;z-index:4;
+    background:#fff;border-bottom:calc(var(--hw) * .0085) solid #f2e127;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--hw) * .008);
+    text-align:center;line-height:1.1;
+  }
+  .hero-card::after{
+    content:"";position:absolute;left:50%;bottom:calc(var(--hw) * -.0085 - var(--hw) * .026);transform:translateX(-50%);
+    border-left:calc(var(--hw) * .026) solid transparent;border-right:calc(var(--hw) * .026) solid transparent;
+    border-top:calc(var(--hw) * .026) solid #f2e127;
+  }
+  .hero-card-sub{font-size:calc(var(--hw) * .022);font-weight:900;color:#4db8f7;}
+  .hero-card-main{font-size:calc(var(--hw) * .047);font-weight:900;color:#ff5900;white-space:nowrap;letter-spacing:-.01em;}
+  /* FV：元画像に合わせてサイズを微調整 */
+  .hero-copy{top:5.2%;}
+  .hero-h1-main{font-size:calc(var(--hw) * .142);}
+  .hero-h1-brand{font-size:calc(var(--hw) * .062);margin-top:calc(var(--hw) * .03);padding-bottom:calc(var(--hw) * .014);}
+  .hero-checks{font-size:calc(var(--hw) * .028);gap:calc(var(--hw) * .034);margin-top:calc(var(--hw) * .024);}
+  .hero-catch{font-size:calc(var(--hw) * .061);margin-top:calc(var(--hw) * .014);}
+  .hero-catch-slash{font-weight:700;}
+  .hero-bubble{font-size:calc(var(--hw) * .027);top:47.2%;left:16.5%;padding:calc(var(--hw) * .026) calc(var(--hw) * .036);}
+  .hero-card-sub{font-size:calc(var(--hw) * .023);}
+  .hero-card-main{font-size:calc(var(--hw) * .051);}
+  .hero-photo > .hero-key{left:23.5%;top:44%;width:58%;}
+  /* FV：カードの三角が下端で切れないよう位置調整、人物を少し大きく */
+  .hero-card{top:84.6%;height:11.6%;}
+  .hero-card::after{bottom:calc(var(--hw) * -.0085 - var(--hw) * .024);border-left-width:calc(var(--hw) * .024);border-right-width:calc(var(--hw) * .024);border-top-width:calc(var(--hw) * .024);}
+  .hero-photo > .hero-key{left:22.5%;top:42.5%;width:60%;}
+
+  /* ===== FV 再現 v2：元画像（1180×1252）の実測値で各要素を絶対配置 ===== */
+  .hero-copy{position:static;}
+  .hero-h1{position:static;}
+  .hero-h1-main,.hero-h1-brand,.hero-h1-ul,.hero-checks,.hero-catch{position:absolute;left:0;right:0;margin:0;text-align:center;}
+  .hero-h1-main{top:4.6%;font-size:calc(var(--hw) * .143);letter-spacing:0;line-height:1;z-index:2;}
+  .hero-h1-brand{
+    top:19.9%;font-size:calc(var(--hw) * .064);letter-spacing:.005em;line-height:1;z-index:2;
+    background:none;padding:0;display:block;
+  }
+  .hero-h1-ul{
+    top:27.55%;left:20.8%;right:auto;width:58.4%;height:calc(var(--hw) * .0115);z-index:2;
+    background:
+      linear-gradient(#ffff00,#ffff00) left top / 100% calc(var(--hw) * .0017) no-repeat,
+      linear-gradient(#ffff00,#ffff00) left bottom / 100% calc(var(--hw) * .0068) no-repeat;
+  }
+  .hero-checks{top:29.6%;font-size:calc(var(--hw) * .031);gap:calc(var(--hw) * .036);line-height:1;z-index:2;display:flex;justify-content:center;}
+  .hero-checks li::before{border-color:#ffff00;width:.9em;height:.55em;border-left-width:.2em;border-bottom-width:.2em;}
+  .hero-catch{top:34.1%;font-size:calc(var(--hw) * .0605);color:#ffff00;line-height:1;letter-spacing:.005em;z-index:2;}
+  .hero-catch-slash{color:#fff;margin:0 .03em;}
+
+  .hero-photo > .hero-key{
+    left:16.9%;top:43.8%;width:64.6%;
+    filter:drop-shadow(calc(var(--hw) * .038) calc(var(--hw) * .026) 0 #027bb7);
+  }
+  .hero-bubble{
+    left:16.9%;top:46.4%;width:21.4%;height:12%;padding:0;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:50%;color:#2cadfa;font-size:calc(var(--hw) * .0255);line-height:1.5;
+  }
+  .hero-bubble::after{
+    right:9%;bottom:4%;transform:rotate(-55deg);
+    border-left:calc(var(--hw) * .011) solid transparent;border-right:calc(var(--hw) * .011) solid transparent;
+    border-top:calc(var(--hw) * .03) solid #fff;
+  }
+  .hero-card{
+    left:4.8%;right:4.8%;top:85.2%;height:11.5%;
+    border-bottom:calc(var(--hw) * .0085) solid #f2e127;gap:calc(var(--hw) * .014);
+    justify-content:center;
+  }
+  .hero-card::after{
+    bottom:calc(var(--hw) * -.0085 - var(--hw) * .024);
+    border-left:calc(var(--hw) * .037) solid transparent;border-right:calc(var(--hw) * .037) solid transparent;
+    border-top:calc(var(--hw) * .024) solid #f2e127;
+  }
+  .hero-card-sub{font-size:calc(var(--hw) * .0245);color:#2cadfa;line-height:1;}
+  .hero-card-main{font-size:calc(var(--hw) * .0485);color:#ff5900;line-height:1;letter-spacing:0;}
+  /* FV v2 微調整：実測との差分（幅は字詰め・横圧縮で合わせる） */
+  .hero-h1-main{top:5.5%;display:block;transform:scaleX(.94);transform-origin:center;}
+  .hero-h1-brand{top:20.6%;}
+  .hero-checks{top:30.0%;font-size:calc(var(--hw) * .0295);gap:calc(var(--hw) * .033);}
+  .hero-catch{top:34.0%;font-size:calc(var(--hw) * .06);letter-spacing:-.01em;display:block;transform:scaleX(.92);transform-origin:center;}
+  .hero-catch-slash{font-size:.85em;margin:0 .02em;vertical-align:.05em;}
+  .hero-card-main{font-size:calc(var(--hw) * .047);letter-spacing:-.02em;}
+  /* FV v3：吹き出しの形としっぽ、チェックの大きさ、スラッシュを細い白線に */
+  .hero-bubble{
+    border-radius:52% 52% 50% 50% / 58% 58% 42% 42%;
+    font-size:calc(var(--hw) * .029);line-height:1.45;font-weight:900;
+    overflow:visible;
+  }
+  .hero-bubble::after{
+    right:auto;left:66%;bottom:-11%;transform:rotate(-22deg);
+    border-left:calc(var(--hw) * .018) solid transparent;border-right:calc(var(--hw) * .006) solid transparent;
+    border-top:calc(var(--hw) * .036) solid #fff;
+  }
+  .hero-checks li::before{width:1.3em;height:.72em;border-left-width:.22em;border-bottom-width:.22em;transform:translateY(-.15em) rotate(-45deg);}
+  .hero-catch-slash{
+    display:inline-block;font-size:0;color:transparent;vertical-align:middle;
+    width:calc(var(--hw) * .0085);height:calc(var(--hw) * .058);background:#fff;border-radius:2px;
+    margin:0 calc(var(--hw) * .014);transform:rotate(-28deg);
+  }
+  .hero-catch-slash:last-child{transform:rotate(28deg);}
+  /* FV v4：スラッシュは黄色の斜線（元画像と同じ）、吹き出しのしっぽを本体に食い込ませる */
+  .hero-catch-slash{
+    background:#ffff00;width:calc(var(--hw) * .0095);height:calc(var(--hw) * .046);
+    margin:0 calc(var(--hw) * .006);transform:rotate(-35deg);vertical-align:-.05em;
+  }
+  .hero-catch-slash:last-child{transform:rotate(35deg);}
+  .hero-bubble::after{
+    left:60%;bottom:-6%;transform:rotate(-18deg);
+    border-left:calc(var(--hw) * .02) solid transparent;border-right:calc(var(--hw) * .005) solid transparent;
+    border-top:calc(var(--hw) * .04) solid #fff;
+  }
+  .hero-card::after{width:0;height:0;}
+  /* FV v5：青地はカードの黄色線で終わり、三角はその下（白地）にはみ出す。文字をわずかに太らせる */
+  .hero{position:relative;overflow:visible;}
+  .hero-photo{aspect-ratio:1180 / 1223;}
+  .hero-h1-main{top:4.7%;}
+  .hero-h1-brand{top:21.1%;}
+  .hero-h1-ul{top:28.2%;}
+  .hero-checks{top:30.7%;}
+  .hero-catch{top:34.9%;}
+  .hero-photo > .hero-key{top:44.8%;}
+  .hero-bubble{top:47.5%;height:12.3%;}
+  .hero-card{top:auto;bottom:0;height:11.8%;}
+  .hero-card::after{display:none;}
+  .hero::after{
+    content:"";position:absolute;left:50%;top:100%;transform:translateX(-50%);
+    width:0;height:0;z-index:5;
+    border-left:calc(var(--hw) * .037) solid transparent;border-right:calc(var(--hw) * .037) solid transparent;
+    border-top:calc(var(--hw) * .024) solid #f2e127;
+  }
+  .hero{--hw:min(100vw, var(--maxw));}
+  .quiz-section{padding-top:calc(var(--sect-y) * .35 + var(--hw, 480px) * .02);}
+  .hero-h1-main,.hero-h1-brand{-webkit-text-stroke:.012em #fff;paint-order:stroke fill;}
+  .hero-catch{-webkit-text-stroke:.01em #ffff00;paint-order:stroke fill;}
+  .hero-catch-slash{height:calc(var(--hw) * .042);margin:0 calc(var(--hw) * .004);vertical-align:middle;}
+  .hero-checks li::before{border-left-width:.16em;border-bottom-width:.16em;width:1.25em;height:.7em;}
+  .hero-bubble::after{
+    left:68%;bottom:-3%;transform:rotate(-26deg);
+    border-left:calc(var(--hw) * .016) solid transparent;border-right:calc(var(--hw) * .006) solid transparent;
+    border-top:calc(var(--hw) * .03) solid #fff;
+  }
+  /* FV v6：スラッシュを元画像の長さ・位置に、吹き出しのしっぽを丸みのある形に、縁取りを控えめに */
+  .hero-h1-main{top:5.1%;-webkit-text-stroke:.008em #fff;}
+  .hero-h1-brand{-webkit-text-stroke:.006em #fff;}
+  .hero-catch{-webkit-text-stroke:.004em #ffff00;}
+  .hero-catch-slash{
+    width:calc(var(--hw) * .011);height:calc(var(--hw) * .052);
+    margin:0 calc(var(--hw) * .012);vertical-align:-.08em;border-radius:3px;
+  }
+  .hero-checks li::before{border-left-width:.14em;border-bottom-width:.14em;}
+  .hero-bubble::after{
+    left:auto;right:7%;bottom:1%;
+    width:calc(var(--hw) * .046);height:calc(var(--hw) * .046);
+    border:none;background:#fff;border-radius:50% 50% 0 50%;
+    transform:rotate(18deg) skew(8deg, 8deg);
+  }
+  /* FV v7：スラッシュは文字の両脇に絶対配置（元画像の位置）、しっぽは右下の外側へ・文字の下に */
+  .hero-catch{position:absolute;}
+  .hero-catch-slash{
+    position:absolute;top:50%;margin:0;vertical-align:baseline;
+    left:calc(50% - var(--hw) * .345);transform:translate(-50%,-50%) rotate(-35deg);
+  }
+  .hero-catch-slash:last-child{left:calc(50% + var(--hw) * .345);transform:translate(-50%,-50%) rotate(35deg);}
+  .hero-bubble{isolation:isolate;}
+  .hero-bubble::after{
+    right:-3%;bottom:-7%;left:auto;z-index:-1;
+    width:calc(var(--hw) * .042);height:calc(var(--hw) * .042);
+    border-radius:50% 50% 0 50%;transform:rotate(12deg);
+  }
+  /* FV v8：しっぽを三角に、スラッシュ細く角あり、チェック太く、カード文字調整 */
+  .hero-bubble::after{
+    right:10%;bottom:-9%;left:auto;z-index:-1;
+    width:calc(var(--hw) * .055);height:calc(var(--hw) * .05);
+    border-radius:0;transform:none;background:#fff;
+    clip-path:polygon(0 0, 100% 0, 78% 100%);
+  }
+  .hero-catch-slash{width:calc(var(--hw) * .0085);border-radius:0;}
+  .hero-checks li::before{border-left-width:.19em;border-bottom-width:.19em;}
+  .hero-card-sub{font-size:calc(var(--hw) * .028);}
+  .hero-card-main{font-size:calc(var(--hw) * .046);letter-spacing:0;-webkit-text-stroke:.006em #ff5900;paint-order:stroke fill;}
+  .hero-card{gap:calc(var(--hw) * .012);}
+  /* FV v9：スラッシュを文字から少し離して長く、しっぽを右下寄りに */
+  .hero-catch-slash{height:calc(var(--hw) * .056);left:calc(50% - var(--hw) * .362);}
+  .hero-catch-slash:last-child{left:calc(50% + var(--hw) * .362);}
+  .hero-bubble::after{right:7%;bottom:-10%;width:calc(var(--hw) * .06);clip-path:polygon(0 0, 100% 0, 92% 100%);}
+  /* FV v10：カードの文字は通常書体（Noto Sans JP）に、FVと次セクションの間隔を広げる */
+  .hero-card{font-family:"Noto Sans JP",sans-serif;}
+  .hero-card-sub{font-weight:700;font-size:calc(var(--hw) * .026);}
+  .hero-card-main{font-weight:900;font-size:calc(var(--hw) * .046);-webkit-text-stroke:0;letter-spacing:.01em;}
+  .quiz-section{padding-top:calc(var(--sect-y) * .9 + 10px);}
+  /* しっぽを右斜め下向きに（先端を右へ） */
+  .hero-bubble::after{right:3%;bottom:-6%;width:calc(var(--hw) * .062);height:calc(var(--hw) * .046);clip-path:polygon(0 0, 100% 0, 118% 100%);transform:rotate(-20deg);transform-origin:top left;}
+  /* しっぽの先端をもっと右上寄りに */
+  .hero-bubble::after{right:2%;bottom:0;width:calc(var(--hw) * .07);height:calc(var(--hw) * .04);clip-path:polygon(0 0, 70% 0, 120% 100%);transform:rotate(-42deg);transform-origin:top left;}
+  /* しっぽ：回転をやめ、先端が右斜め下を向く三角を右下に直接置く */
+  .hero-bubble::after{
+    right:-9%;bottom:4%;left:auto;top:auto;transform:none;
+    width:calc(var(--hw) * .085);height:calc(var(--hw) * .06);
+    clip-path:polygon(0 0, 55% 10%, 100% 100%);
+  }
+  /* しっぽ：45度の右斜め下向きに、基部を太く */
+  .hero-bubble::after{
+    right:-5%;bottom:-9%;
+    width:calc(var(--hw) * .075);height:calc(var(--hw) * .065);
+    clip-path:polygon(0 0, 62% 0, 100% 100%);
+  }
+  /* FV v11：しっぽ短く、カードの黄色線の下に余白、社名〜チェック〜キャッチの行間を広げる */
+  .hero-bubble::after{
+    right:-2%;bottom:-6%;
+    width:calc(var(--hw) * .05);height:calc(var(--hw) * .045);
+    clip-path:polygon(0 0, 68% 0, 100% 100%);
+  }
+  .hero-photo{aspect-ratio:1180 / 1245;}
+  .hero-card{bottom:calc(var(--hw) * .018);}
+  .hero::after{top:auto;bottom:calc(var(--hw) * .018 - var(--hw) * .024);}
+  .hero-h1-brand{top:20.0%;}
+  .hero-h1-ul{top:27.3%;}
+  .hero-checks{top:30.4%;}
+  .hero-catch{top:35.2%;}
+  .hero-photo > .hero-key{top:44.6%;}
+  .hero-bubble{top:47.6%;}
+  /* FV v12：青は黄色線で終わり、その下は白の余白（人物が線の下に出ない）。行間をもう少し開ける */
+  .hero-photo{aspect-ratio:1180 / 1223;}
+  .hero-card{bottom:0;}
+  .hero::after{top:100%;bottom:auto;}
+  .hero{margin-bottom:calc(var(--hw) * .03);}
+  .quiz-section{padding-top:calc(var(--sect-y) * .6 + 10px);}
+  .hero-h1-brand{top:20.2%;}
+  .hero-h1-ul{top:27.7%;}
+  .hero-checks{top:30.8%;}
+  .hero-catch{top:35.6%;}
+  .hero-photo > .hero-key{top:44.8%;}
+  .hero-bubble{top:47.6%;}
+  /* FV v13：白カードを次のセクションにかぶせる（青はカードの途中で終わる） */
+  .hero{position:relative;overflow:visible;margin-bottom:calc(var(--hw) * .11);}
+  .hero-photo{aspect-ratio:1180 / 1150;overflow:hidden;}
+  .hero-card{
+    position:absolute;left:4.8%;right:4.8%;top:auto;bottom:calc(var(--hw) * -.062);
+    height:calc(var(--hw) * .124);z-index:4;
+    box-shadow:0 10px 24px rgba(0,0,0,.10);
+  }
+  .hero::after{top:calc(100% + var(--hw) * .062 + var(--hw) * .0085);}
+  .quiz-section{padding-top:calc(var(--sect-y) * .5);}
+  .hero-photo > .hero-key{top:46%;}
+  .hero-bubble{top:49%;}
+  /* しっぽ：さらに短く、先端をもう少し右（横寄り）に */
+  .hero-bubble::after{
+    right:-4%;bottom:0;
+    width:calc(var(--hw) * .046);height:calc(var(--hw) * .034);
+    clip-path:polygon(0 0, 60% 0, 100% 100%);
+  }
+  /* しっぽ：吹き出しの右側から右上に向けて出す */
+  .hero-bubble::after{
+    right:-9%;top:30%;bottom:auto;
+    width:calc(var(--hw) * .05);height:calc(var(--hw) * .04);
+    clip-path:polygon(0 25%, 0 100%, 100% 0);
+  }
+  /* しっぽ：右下寄りに戻しつつ少しだけ上向きに。吹き出しを左に寄せて写真との間隔を確保 */
+  .hero-bubble{left:14.5%;}
+  .hero-bubble::after{
+    right:-7%;top:auto;bottom:14%;
+    width:calc(var(--hw) * .046);height:calc(var(--hw) * .036);
+    clip-path:polygon(0 0, 0 100%, 100% 30%);
+  }
+  /* 吹き出しをもう少し左へ（写真との間隔を広げる） */
+  .hero-bubble{left:12%;}
+  /* FV：見出しの上に余白、見出し〜社名の行間を広げる（以降の要素も連動して下げる） */
+  .hero-h1-main{top:6.0%;}
+  .hero-h1-brand{top:21.8%;}
+  .hero-h1-ul{top:29.3%;}
+  .hero-checks{top:32.4%;}
+  .hero-catch{top:37.2%;}
+  .hero-photo > .hero-key{top:47%;}
+  .hero-bubble{top:50%;}
+  .hero-bubble{top:52.5%;}
+  /* FLOW：見出しの下に小さめの説明文。実績見出しは文字が増えた分だけ小さく */
+  .flow-lead{text-align:center;color:#fff;font-weight:700;font-size:var(--fs-sm);line-height:1.6;margin:-2px 0 var(--gap-title);opacity:.95;}
+  .sold-title{font-size:clamp(25px, 7.8vw, 34px);}
+  /* FV：吹き出しを少し斜めに（文字ごと傾ける）、しっぽは左下から */
+  .hero-bubble{transform:rotate(-8deg);transform-origin:center;}
+  .hero-bubble::after{
+    left:8%;right:auto;top:auto;bottom:-8%;
+    width:calc(var(--hw) * .046);height:calc(var(--hw) * .04);
+    clip-path:polygon(0 100%, 30% 0, 100% 0);
+  }
+  /* しっぽは右下から（吹き出しの傾きはそのまま） */
+  .hero-bubble::after{
+    left:auto;right:8%;top:auto;bottom:-8%;
+    width:calc(var(--hw) * .046);height:calc(var(--hw) * .04);
+    clip-path:polygon(0 0, 70% 0, 100% 100%);
   }

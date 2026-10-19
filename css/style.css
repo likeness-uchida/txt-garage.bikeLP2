@@ -3781,3 +3781,5 @@
   .reason-section .h-title{font-size:clamp(14px, 4.6vw, 20px);}
   .review-section .h-title{white-space:nowrap;font-size:clamp(20px, 6.4vw, 28px);}
   h2.shop-title{white-space:nowrap;font-size:clamp(26px, 8.4vw, 36px);}
+  /* FV：フォント差で折り返さないよう、見出し類は1行固定 */
+  .hero-h1-main,.hero-h1-brand,.hero-card-sub,.hero-card-main{white-space:nowrap;}

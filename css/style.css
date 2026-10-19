@@ -3753,3 +3753,6 @@
     width:calc(var(--hw) * .046);height:calc(var(--hw) * .04);
     clip-path:polygon(0 0, 70% 0, 100% 100%);
   }
+  /* FAQ：質問をh3で囲む（見た目は従来どおり） */
+  .faq-q-wrap{margin:0;font-size:inherit;font-weight:inherit;}
+  .faq-q-wrap .faq-q{width:100%;}

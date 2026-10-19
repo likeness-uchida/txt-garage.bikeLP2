@@ -11,6 +11,22 @@
     font-display:swap;
   }
 
+  @font-face{
+    font-family:"Noto Sans JP Fallback";
+    src:local("Hiragino Kaku Gothic ProN"),local("Hiragino Sans"),local("Yu Gothic"),local("YuGothic"),local("Meiryo");
+    ascent-override:116%;
+    descent-override:28.8%;
+    line-gap-override:0%;
+  }
+  @font-face{
+    font-family:"Corporate Logo Fallback";
+    src:local("Hiragino Kaku Gothic ProN"),local("Hiragino Sans"),local("Yu Gothic"),local("Meiryo");
+    size-adjust:92%;
+    ascent-override:88%;
+    descent-override:12%;
+    line-gap-override:0%;
+  }
+
   :root{
     --blue:#38a1db;
     --blue-dark:#2b84b8;
@@ -55,7 +71,7 @@
   html,body{margin:0;padding:0;}
   body{
 
-    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Hiragino Sans",-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;
+    font-family:"Noto Sans JP","Noto Sans JP Fallback","Hiragino Kaku Gothic ProN","Hiragino Sans",-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;
     color:var(--black);
     background:var(--white);
     line-height:1.7;
@@ -135,7 +151,7 @@
     .pc-toc a::before{
       content:counter(toc, decimal-leading-zero);
       position:absolute;left:0;top:50%;transform:translateY(-50%);
-      font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+      font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
       font-size:13px;font-weight:900;color:var(--blue);letter-spacing:.02em;
     }
     .pc-toc a::after{
@@ -327,7 +343,7 @@
   .flow-title,
   .sold-title,
   .quiz-lead-text{
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
   }
   .note{font-size:var(--fs-2xs);color:var(--gray-500);}
 
@@ -394,7 +410,7 @@
   .quiz-section{background:#fff;padding-top:calc(var(--sect-y) * .35);}
 
   .quiz-lead-text{
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     text-align:center;font-weight:900;color:var(--blue);
     font-size:clamp(18px, 5.6vw, 27px);
     line-height:1.35;margin:0 0 14px;
@@ -876,7 +892,7 @@
     margin:0 -30% 4px;letter-spacing:.04em;
   }
   .staff-cta-headline{
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     color:#fff;font-weight:900;line-height:1.15;
     font-size:clamp(24px, 7vw, 37px);
     margin:0 -45% 2px;
@@ -1012,7 +1028,7 @@
     border-right:14px solid #fff;
   }
   .final-cta h2{
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     font-size:clamp(12.5px, 3.75vw, 15px);font-weight:900;margin:0;color:var(--blue);
     white-space:nowrap;line-height:1.35;
   }
@@ -1505,7 +1521,7 @@
     font-size:clamp(15px, 4.6vw, 20px);letter-spacing:.06em;margin:0 0 6px;
   }
   .online-hero-title{
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     font-weight:900;line-height:1.2;color:#fff;
     font-size:clamp(30px, 9.6vw, 44px);margin:0 0 12px;
   }
@@ -1550,7 +1566,7 @@
   }
   .online-steps-num{
     display:inline-block;color:var(--accent);font-size:1.5em;margin:0 .05em;
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
   }
   .online-step-list{display:flex;flex-direction:column;gap:14px;margin-bottom:var(--gap-block);}
   .online-step{
@@ -1617,7 +1633,7 @@
   .online-cta{background:var(--accent);text-align:center;padding:var(--sect-y) 0;}
   .online-cta-lead{margin:0 0 8px;font-size:var(--fs-sm);font-weight:800;color:#5a4a00;}
   .online-cta-title{
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     margin:0 0 var(--gap-card);font-weight:900;color:var(--black);
     font-size:clamp(22px, 7vw, 30px);line-height:1.4;
   }
@@ -1889,7 +1905,7 @@
   .online-chat-points li > span.pt-num{
     position:absolute;right:10px;top:50%;transform:translateY(-50%);
     width:auto;height:auto;border-radius:0;background:none;
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     font-size:44px;font-weight:900;line-height:1;color:var(--blue);opacity:.14;
     pointer-events:none;
   }
@@ -1979,7 +1995,7 @@
     flex:none;width:56px;height:56px;border-radius:50%;
     background:#fff;color:var(--line-green);
     display:flex;flex-direction:column;align-items:center;justify-content:center;
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     font-size:24px;line-height:1;padding:0;margin:0;letter-spacing:0;
     box-shadow:0 6px 16px rgba(0,0,0,.18);
   }
@@ -2702,7 +2718,7 @@
     padding:5px 14px 4px;border-radius:999px;margin-bottom:10px;
   }
   .comic-title{
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     font-weight:900;color:var(--black);
     font-size:clamp(24px, 7.6vw, 34px);line-height:1.3;
     margin:0 0 16px;letter-spacing:.02em;
@@ -2731,7 +2747,7 @@
   }
   .comic-head-text{flex:1;min-width:0;padding:0 8px 10px 0;text-align:left;}
   .comic-title{
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
     font-weight:900;color:var(--black);text-align:left;
     font-size:clamp(17px, 5.4vw, 24px);line-height:1.35;
     margin:0 0 8px;letter-spacing:0;white-space:nowrap;
@@ -3411,7 +3427,7 @@
     --hw:min(100vw, var(--maxw));
     position:relative;aspect-ratio:1180 / 1252;overflow:hidden;
     background:#03a4f4;
-    font-family:"Corporate Logo","Noto Sans JP",sans-serif;
+    font-family:"Corporate Logo","Corporate Logo Fallback","Noto Sans JP",sans-serif;
   }
   .hero-photo > .hero-key{
     position:absolute;left:24%;top:44.5%;width:57%;height:auto;object-fit:unset;
@@ -3756,3 +3772,12 @@
   /* FAQ：質問をh3で囲む（見た目は従来どおり） */
   .faq-q-wrap{margin:0;font-size:inherit;font-weight:inherit;}
   .faq-q-wrap .faq-q{width:100%;}
+
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+
+  /* ---------- 端末・フォント差で意図しない折り返しが起きる見出しは、改行位置を固定し少し余裕を持たせる ---------- */
+  .style-select-title{white-space:nowrap;font-size:clamp(28px, 9vw, 40px);}
+  .reason-section .h-title{white-space:nowrap;}
+  .reason-section .h-title{font-size:clamp(14px, 4.6vw, 20px);}
+  .review-section .h-title{white-space:nowrap;font-size:clamp(20px, 6.4vw, 28px);}
+  h2.shop-title{white-space:nowrap;font-size:clamp(26px, 8.4vw, 36px);}

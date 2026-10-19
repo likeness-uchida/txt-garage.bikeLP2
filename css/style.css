@@ -3783,3 +3783,51 @@
   h2.shop-title{white-space:nowrap;font-size:clamp(26px, 8.4vw, 36px);}
   /* FV：フォント差で折り返さないよう、見出し類は1行固定 */
   .hero-h1-main,.hero-h1-brand,.hero-card-sub,.hero-card-main{white-space:nowrap;}
+  /* PCメニューカード：説明文はバイクの手前で必ず折り返す（nowrapをやめ、バイクの幅を差し引いた幅に制限） */
+  @media (min-width:1100px){
+    .pc-left-lead{white-space:normal;width:auto;max-width:calc(100% - 320px - 12px);min-width:46%;}
+  }
+  @media (min-width:1300px) and (max-width:1499px){
+    .pc-left-lead{max-width:calc(100% - 230px - 12px);}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-lead{max-width:calc(100% - 260px - 12px);min-width:0;}
+  }
+  /* バイクを少し小さくして文字側に幅を渡す（説明文が2〜3行に収まる） */
+  @media (min-width:1100px){
+    .pc-left-head::before{width:44%;max-width:270px;right:8px;}
+    .pc-left-lead{max-width:calc(100% - 270px - 10px);min-width:0;font-size:12.5px;line-height:1.7;}
+  }
+  @media (min-width:1300px) and (max-width:1499px){
+    .pc-left-head::before{width:40%;max-width:230px;right:0;}
+    .pc-left-lead{max-width:calc(100% - 230px - 10px);font-size:12px;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-head::before{width:42%;max-width:220px;right:4px;}
+    .pc-left-lead{max-width:calc(100% - 220px - 10px);font-size:12px;}
+  }
+  /* ---------- PCメニューカード上部：ロゴ｜バイク を上段、説明文は下段で全幅（重なりが起きない構造に） ---------- */
+  @media (min-width:1100px){
+    .pc-left-head{
+      display:grid;grid-template-columns:minmax(0,1fr) minmax(0,46%);grid-template-areas:"logo bike" "lead lead";
+      column-gap:8px;row-gap:6px;align-items:center;min-height:0;
+      padding-top:34px;padding-bottom:12px;
+    }
+    .pc-left-head::before{
+      content:"";position:static;grid-area:bike;top:auto;bottom:auto;right:auto;
+      width:100%;max-width:none;height:auto;aspect-ratio:1400 / 1360;
+      background:url("../img/bike-menu.png") no-repeat center / contain;
+      margin:-18px 0 -10px;
+    }
+    .pc-left-logo{grid-area:logo;width:100%;max-width:230px;margin:0;}
+    .pc-left-lead{
+      grid-area:lead;max-width:none;width:auto;min-width:0;white-space:normal;
+      font-size:13px;line-height:1.75;margin:0;
+    }
+    .pc-left-lead br{display:inline;}
+  }
+  @media (min-width:1100px) and (max-width:1299px){
+    .pc-left-head{grid-template-columns:minmax(0,1fr) minmax(0,44%);padding-top:28px;}
+    .pc-left-logo{max-width:200px;}
+    .pc-left-lead{font-size:12px;}
+  }

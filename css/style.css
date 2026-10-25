@@ -3795,3 +3795,6 @@
   @media (min-width:1100px) and (max-width:1299px){
     .pc-left-head::before{width:36%;max-width:200px;right:4px;}
   }
+  /* 追従バー：電話ボタン（リンク化に伴う見た目の統一） */
+  .float-cta a.btn{text-decoration:none;}
+  .float-cta .btn-primary .icon{width:16px;height:16px;}

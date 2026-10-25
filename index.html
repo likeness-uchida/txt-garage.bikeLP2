@@ -1074,6 +1074,10 @@
         <input type="tel" id="f-tel" placeholder="例：09012345678" inputmode="numeric">
       </div>
       <div class="field">
+        <label>メールアドレス<span class="optional">任意</span></label>
+        <input type="email" id="f-email" placeholder="例：example@txt-garage.jp" inputmode="email" autocomplete="email">
+      </div>
+      <div class="field">
         <label>郵便番号<span class="field-note">（出張エリア確認用）</span><span class="required">必須</span></label>
         <input type="text" id="f-postal" placeholder="例：1234567" inputmode="numeric" autocomplete="postal-code" maxlength="8">
       </div>
@@ -1367,6 +1371,8 @@ postalInput.addEventListener('input', () => {
 });
 
 function submitLead(){
+  const emailVal = (el('f-email') ? el('f-email').value.trim() : '');
+  if(emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)){ alert('メールアドレスの形式をご確認ください。'); return; }
   if(!el('f-name').value || !el('f-tel').value || !el('f-postal').value){
     alert('お名前・電話番号・郵便番号をご入力ください。');
     return;

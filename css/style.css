@@ -3798,3 +3798,5 @@
   /* 追従バー：電話ボタン（リンク化に伴う見た目の統一） */
   .float-cta a.btn{text-decoration:none;}
   .float-cta .btn-primary .icon{width:16px;height:16px;}
+  /* スパム対策用の非表示欄（人には見えない） */
+  .hp-field{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;}

@@ -13,10 +13,11 @@
 <meta property="og:title" content="バイク買取もティーバイティーガレージ｜不動車・事故車も無料出張査定">
 <meta property="og:description" content="乗らなくなったバイクの買取もティーバイティーガレージへ。動かないバイクや事故車、他社で断られたカスタム車も全国無料で出張査定いたします！最短即日現金払い、面倒な廃車手続きも代行します！">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://txt-garage-bike-lp-2.vercel.app/img/TxT_sns.png">
+<meta property="og:image" content="https://bike.txt-garage.com/lp/img/TxT_sns.png">
 <meta property="og:image:width" content="1201">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="https://txt-garage-bike-lp-2.vercel.app/">
+<meta property="og:url" content="https://bike.txt-garage.com/lp/">
+<link rel="canonical" href="https://bike.txt-garage.com/lp/">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="shortcut icon" href="img/favicon.ico">
@@ -27,7 +28,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800;900&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800;900&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=20261025180656">
+<link rel="stylesheet" href="css/style.css?v=20261026164332">
 </head>
 <body>
 
@@ -1077,6 +1078,7 @@
         <label>メールアドレス<span class="optional">任意</span></label>
         <input type="email" id="f-email" placeholder="例：example@txt-garage.jp" inputmode="email" autocomplete="email">
       </div>
+      <div class="field hp-field" aria-hidden="true"><label>Website</label><input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="field">
         <label>郵便番号<span class="field-note">（出張エリア確認用）</span><span class="required">必須</span></label>
         <input type="text" id="f-postal" placeholder="例：1234567" inputmode="numeric" autocomplete="postal-code" maxlength="8">
@@ -1236,7 +1238,9 @@ function scrollTopHard(){
   window.scrollTo(0,0);
   requestAnimationFrame(() => window.scrollTo(0,0));
 }
+window.__formStarted = window.__formStarted || Date.now();
 function openForm(){
+  window.__formStarted = Date.now();
   el('view-lp').classList.add('hidden');
   el('view-form').classList.remove('hidden');
   scrollTopHard();
@@ -1381,11 +1385,28 @@ function submitLead(){
 }
 
 function submitForm(){
-
-  el('btn-next').textContent = '送信中...';
-  setTimeout(() => {
-    goThanks();
-  }, 500);
+  const btn = el('btn-next');
+  const v = id => (el(id) ? el(id).value.trim() : '');
+  const payload = {
+    name: v('f-name'), tel: v('f-tel'), email: v('f-email'), postal: v('f-postal'), address: v('f-address'),
+    datetime: v('f-datetime'), maker: v('f-maker'), displacement: v('f-displacement'), model: v('f-model'),
+    website: v('f-website'), started: window.__formStarted || 0
+  };
+  const label = btn.textContent;
+  btn.disabled = true; btn.textContent = '送信中...';
+  fetch('/api/inquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+    .then(r => r.json().catch(() => ({})).then(j => ({ ok: r.ok && j && j.ok, j })))
+    .then(({ ok, j }) => {
+      if (ok) { goThanks(); return; }
+      const code = j && j.error;
+      const msg = code === 'tel' ? '電話番号の形式をご確認ください。'
+                : code === 'postal' ? '郵便番号は7桁の数字で入力してください。'
+                : code === 'email' ? 'メールアドレスの形式をご確認ください。'
+                : code === 'rate' ? '短時間に送信が集中しています。しばらく待ってからお試しください。'
+                : '送信に失敗しました。お手数ですがフリーダイヤル 0120-999-999 までお電話ください。';
+      alert(msg); btn.disabled = false; btn.textContent = label;
+    })
+    .catch(() => { alert('送信に失敗しました。通信環境をご確認のうえ、もう一度お試しください。'); btn.disabled = false; btn.textContent = label; });
 }
 
 let exitGuardArmed = false;
